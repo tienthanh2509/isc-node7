@@ -19,13 +19,13 @@ module.exports = function (grunt) {
         ' * app <%= pkg.name %> v<%= pkg.version %> (<%= pkg.homepage %>)\n' +
         ' * Build on <%= grunt.template.today("yyyy-mm-dd hh:mm:ss") %>\n' +
         ' * Copyright 2017\n' +
-        ' * Licensed under GPL-3.0 (https://github.com/tienthanh2509/isc-group-2-frontend/blob/master/LICENSE)\n' +
+        ' * Licensed under MIT (https://github.com/tienthanh2509/isc-node7/blob/master/LICENSE)\n' +
         ' */\n',
         // Tasks configuration
         sass: {
             dist: {
                 options: {
-                    cacheLocation: '/tmp/.sass',
+                    //cacheLocation: '/tmp/.sass',
                     style: 'expanded'
                 },
                 files: {
