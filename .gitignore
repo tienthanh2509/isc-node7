@@ -1,12 +1,12 @@
 
-# Created by https://www.gitignore.io/api/bower,linux,node,phpstorm,windows
+
+# Created by https://www.gitignore.io/api/bower,linux,node,phpstorm,visualstudiocode,sass,windows
 
 ### Bower ###
 bower_components
 .bower-cache
 .bower-registry
 .bower-tmp
-
 
 ### Linux ###
 *~
@@ -22,7 +22,6 @@ bower_components
 
 # .nfs files are created when an open file is removed but is still being accessed
 .nfs*
-
 
 ### Node ###
 # Logs
@@ -47,6 +46,8 @@ coverage
 
 # Grunt intermediate storage (http://gruntjs.com/creating-plugins#storing-task-files)
 .grunt
+
+# Bower dependency directory (https://bower.io/)
 
 # node-waf configuration
 .lock-wscript
@@ -73,6 +74,8 @@ jspm_packages
 # Yarn Integrity file
 .yarn-integrity
 
+# dotenv environment variables file
+.env
 
 
 ### PhpStorm ###
@@ -127,6 +130,16 @@ fabric.properties
 # .idea/misc.xml
 # *.ipr
 
+### Sass ###
+.sass-cache/
+*.css.map
+
+### VisualStudioCode ###
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
 
 ### Windows ###
 # Windows thumbnail cache files
@@ -149,7 +162,7 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
-# End of https://www.gitignore.io/api/bower,linux,node,phpstorm,windows
+# End of https://www.gitignore.io/api/bower,linux,node,phpstorm,visualstudiocode,sass,windows
 
+# Custom rules
 public/assets/
-public/bower_components/
