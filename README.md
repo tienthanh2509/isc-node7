@@ -39,3 +39,6 @@ grunt
 # Run nodejs express server | Use PORT env for custom listening port
 npm start
 ```
+
+# Coding Style Standards
+Reference https://github.com/felixge/node-style-guide
