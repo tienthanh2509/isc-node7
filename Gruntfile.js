@@ -1,7 +1,7 @@
 /*
- * Copyright (c) 2017 PT Studio
+ * Copyright (c) 2017 Node7 Team
  *
- * Licensed under GPL-3.0 (https://github.com/tienthanh2509/isc-group-2-frontend/blob/master/LICENSE)
+ * Licensed under MIT (https://github.com/tienthanh2509/isc-node7/blob/master/LICENSE)
  */
 
 "use strict";
