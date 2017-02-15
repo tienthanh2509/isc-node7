@@ -14,14 +14,14 @@ describe('Title block tests', function() {
 			fontStyle: 'bold',
 			padding: 10,
 			text: ''
-		})
+		});
 	});
 
 	it('should update correctly', function() {
 		var chart = {};
 
 		var options = Chart.helpers.clone(Chart.defaults.global.title);
-		options.text = "My title";
+		options.text = 'My title';
 
 		var title = new Chart.Title({
 			chart: chart,
@@ -50,7 +50,7 @@ describe('Title block tests', function() {
 		var chart = {};
 
 		var options = Chart.helpers.clone(Chart.defaults.global.title);
-		options.text = "My title";
+		options.text = 'My title';
 		options.position = 'left';
 
 		var title = new Chart.Title({
@@ -81,7 +81,7 @@ describe('Title block tests', function() {
 		var context = window.createMockContext();
 
 		var options = Chart.helpers.clone(Chart.defaults.global.title);
-		options.text = "My title";
+		options.text = 'My title';
 
 		var title = new Chart.Title({
 			chart: chart,
@@ -118,7 +118,7 @@ describe('Title block tests', function() {
 			args: [0]
 		}, {
 			name: 'fillText',
-			args: ['My title', 0, 0]
+			args: ['My title', 0, 0, 400]
 		}, {
 			name: 'restore',
 			args: []
@@ -130,7 +130,7 @@ describe('Title block tests', function() {
 		var context = window.createMockContext();
 
 		var options = Chart.helpers.clone(Chart.defaults.global.title);
-		options.text = "My title";
+		options.text = 'My title';
 		options.position = 'left';
 
 		var title = new Chart.Title({
@@ -168,7 +168,7 @@ describe('Title block tests', function() {
 			args: [-0.5 * Math.PI]
 		}, {
 			name: 'fillText',
-			args: ['My title', 0, 0]
+			args: ['My title', 0, 0, 400]
 		}, {
 			name: 'restore',
 			args: []
@@ -201,10 +201,72 @@ describe('Title block tests', function() {
 			args: [0.5 * Math.PI]
 		}, {
 			name: 'fillText',
-			args: ['My title', 0, 0]
+			args: ['My title', 0, 0, 400]
 		}, {
 			name: 'restore',
 			args: []
 		}]);
+	});
+
+	describe('config update', function() {
+		it ('should update the options', function() {
+			var chart = acquireChart({
+				type: 'line',
+				data: {
+					labels: ['A', 'B', 'C', 'D'],
+					datasets: [{
+						data: [10, 20, 30, 100]
+					}]
+				},
+				options: {
+					title: {
+						display: true
+					}
+				}
+			});
+			expect(chart.titleBlock.options.display).toBe(true);
+
+			chart.options.title.display = false;
+			chart.update();
+			expect(chart.titleBlock.options.display).toBe(false);
+		});
+
+		it ('should remove the title if the new options are false', function() {
+			var chart = acquireChart({
+				type: 'line',
+				data: {
+					labels: ['A', 'B', 'C', 'D'],
+					datasets: [{
+						data: [10, 20, 30, 100]
+					}]
+				}
+			});
+			expect(chart.titleBlock).not.toBe(undefined);
+
+			chart.options.title = false;
+			chart.update();
+			expect(chart.titleBlock).toBe(undefined);
+		});
+
+		it ('should create the title if the title options are changed to exist', function() {
+			var chart = acquireChart({
+				type: 'line',
+				data: {
+					labels: ['A', 'B', 'C', 'D'],
+					datasets: [{
+						data: [10, 20, 30, 100]
+					}]
+				},
+				options: {
+					title: false
+				}
+			});
+			expect(chart.titleBlock).toBe(undefined);
+
+			chart.options.title = {};
+			chart.update();
+			expect(chart.titleBlock).not.toBe(undefined);
+			expect(chart.titleBlock.options).toEqual(jasmine.objectContaining(Chart.defaults.global.title));
+		});
 	});
 });

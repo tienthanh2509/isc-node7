@@ -1,23 +1,25 @@
 {
-  "name": "Chart.js",
-  "version": "2.1.4",
-  "description": "Simple HTML5 Charts using the canvas element",
-  "homepage": "https://github.com/chartjs/Chart.js",
-  "author": "nnnick",
+  "name": "chart.js",
+  "description": "Simple HTML5 charts using the canvas element.",
+  "homepage": "http://www.chartjs.org",
   "license": "MIT",
-  "main": [
-    "dist/Chart.js"
+  "version": "2.5.0",
+  "main": "./dist/Chart.js",
+  "ignore": [
+    ".github",
+    ".codeclimate.yml",
+    ".gitignore",
+    ".npmignore",
+    ".travis.yml",
+    "scripts"
   ],
-  "devDependencies": {
-    "jquery": "~2.1.4"
-  },
-  "_release": "2.1.4",
+  "_release": "2.5.0",
   "_resolution": {
     "type": "version",
-    "tag": "v2.1.4",
-    "commit": "40d76b6a7ba14aeac69b05ad15d713c3402867b2"
+    "tag": "v2.5.0",
+    "commit": "7737d94130558c3c6428f6471d047e8d36203c1e"
   },
-  "_source": "https://github.com/nnnick/Chart.js.git",
-  "_target": "^2.0.2",
-  "_originalSource": "Chart.js"
+  "_source": "https://github.com/chartjs/Chart.js.git",
+  "_target": "^2.4.0",
+  "_originalSource": "chart.js"
 }

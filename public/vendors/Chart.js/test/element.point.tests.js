@@ -64,6 +64,36 @@ describe('Point element tests', function() {
 		});
 	});
 
+	it('should get the correct area', function() {
+		var point = new Chart.elements.Point({
+			_datasetIndex: 2,
+			_index: 1
+		});
+
+		// Attach a view object as if we were the controller
+		point._view = {
+			radius: 2,
+		};
+
+		expect(point.getArea()).toEqual(Math.PI * 4);
+	});
+
+	it('should get the correct center point', function() {
+		var point = new Chart.elements.Point({
+			_datasetIndex: 2,
+			_index: 1
+		});
+
+		// Attach a view object as if we were the controller
+		point._view = {
+			radius: 2,
+			x: 10,
+			y: 10
+		};
+
+		expect(point.getCenterPoint()).toEqual({x: 10, y: 10});
+	});
+
 	it ('should draw correctly', function() {
 		var mockContext = window.createMockContext();
 		var point = new Chart.elements.Point({
@@ -165,6 +195,9 @@ describe('Point element tests', function() {
 			name: 'setFillStyle',
 			args: ['rgba(0, 255, 0)']
 		}, {
+			name: 'beginPath',
+			args: []
+		}, {
 			name: 'fillRect',
 			args: [10 - 1 / Math.SQRT2 * 2, 15 - 1 / Math.SQRT2 * 2, 2 / Math.SQRT2 * 2, 2 / Math.SQRT2 * 2]
 		}, {
@@ -175,6 +208,30 @@ describe('Point element tests', function() {
 			args: []
 		}]);
 
+		var drawRoundedRectangleSpy = jasmine.createSpy('drawRoundedRectangle');
+		var drawRoundedRectangle = Chart.helpers.drawRoundedRectangle;
+		var offset = point._view.radius / Math.SQRT2;
+		Chart.helpers.drawRoundedRectangle = drawRoundedRectangleSpy;
+		mockContext.resetCalls();
+		point._view.pointStyle = 'rectRounded';
+		point.draw();
+
+		expect(drawRoundedRectangleSpy).toHaveBeenCalledWith(
+			mockContext,
+			10 - offset,
+			15 - offset,
+			Math.SQRT2 * 2,
+			Math.SQRT2 * 2,
+			2 / 2
+		);
+		expect(mockContext.getCalls()).toContain(
+			jasmine.objectContaining({
+				name: 'fill',
+				args: [],
+			})
+		);
+
+		Chart.helpers.drawRoundedRectangle = drawRoundedRectangle;
 		mockContext.resetCalls();
 		point._view.pointStyle = 'rectRot';
 		point.draw();
@@ -189,20 +246,26 @@ describe('Point element tests', function() {
 			name: 'setFillStyle',
 			args: ['rgba(0, 255, 0)']
 		}, {
-			name: 'translate',
-			args: [10, 15]
+			name: 'beginPath',
+			args: []
 		}, {
-			name: 'rotate',
-			args: [Math.PI / 4]
+			name: 'moveTo',
+			args: [10 - 1 / Math.SQRT2 * 2, 15]
 		}, {
-			name: 'fillRect',
-			args: [-1 / Math.SQRT2 * 2, -1 / Math.SQRT2 * 2, 2 / Math.SQRT2 * 2, 2 / Math.SQRT2 * 2],
+			name: 'lineTo',
+			args: [10, 15 + 1 / Math.SQRT2 * 2]
 		}, {
-			name: 'strokeRect',
-			args: [-1 / Math.SQRT2 * 2, -1 / Math.SQRT2 * 2, 2 / Math.SQRT2 * 2, 2 / Math.SQRT2 * 2],
+			name: 'lineTo',
+			args: [10 + 1 / Math.SQRT2 * 2, 15],
 		}, {
-			name: 'setTransform',
-			args: [1, 0, 0, 1, 0, 0],
+			name: 'lineTo',
+			args: [10, 15 - 1 / Math.SQRT2 * 2],
+		}, {
+			name: 'closePath',
+			args: []
+		}, {
+			name: 'fill',
+			args: [],
 		}, {
 			name: 'stroke',
 			args: []
@@ -236,7 +299,7 @@ describe('Point element tests', function() {
 		}, {
 			name: 'lineTo',
 			args: [12, 15],
-		},{
+		}, {
 			name: 'closePath',
 			args: [],
 		}, {
@@ -308,7 +371,7 @@ describe('Point element tests', function() {
 		}, {
 			name: 'lineTo',
 			args: [12, 15],
-		},{
+		}, {
 			name: 'moveTo',
 			args: [10 - Math.cos(Math.PI / 4) * 2, 15 - Math.sin(Math.PI / 4) * 2]
 		}, {

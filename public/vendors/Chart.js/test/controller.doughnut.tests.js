@@ -1,14 +1,5 @@
 // Test the bar controller
 describe('Doughnut controller tests', function() {
-
-	beforeEach(function() {
-		window.addDefaultMatchers(jasmine);
-	});
-
-	afterEach(function() {
-		window.releaseAllCharts();
-	});
-
 	it('should be constructed', function() {
 		var chart = window.acquireChart({
 			type: 'doughnut',
@@ -49,6 +40,20 @@ describe('Doughnut controller tests', function() {
 		expect(meta.data[3] instanceof Chart.elements.Arc).toBe(true);
 	});
 
+	it('should set the innerRadius to 0 if the config option is 0', function() {
+		var chart = window.acquireChart({
+			type: 'pie',
+			data: {
+				datasets: [{
+					data: [10, 15, 0, 4]
+				}],
+				labels: []
+			}
+		});
+
+		expect(chart.innerRadius).toBe(0);
+	});
+
 	it ('should reset and update elements', function() {
 		var chart = window.acquireChart({
 			type: 'doughnut',
@@ -75,8 +80,7 @@ describe('Doughnut controller tests', function() {
 					arc: {
 						backgroundColor: 'rgb(255, 0, 0)',
 						borderColor: 'rgb(0, 0, 255)',
-						borderWidth: 2,
-						hoverBackgroundColor: 'rgb(255, 255, 255)'
+						borderWidth: 2
 					}
 				}
 			}
@@ -88,10 +92,11 @@ describe('Doughnut controller tests', function() {
 
 		expect(meta.data.length).toBe(4);
 
-		[	{ c: 0 },
-			{ c: 0 },
-			{ c: 0,           },
-			{ c: 0 }
+		[
+			{c: 0},
+			{c: 0},
+			{c: 0},
+			{c: 0}
 		].forEach(function(expected, i) {
 			expect(meta.data[i]._model.x).toBeCloseToPixel(256);
 			expect(meta.data[i]._model.y).toBeCloseToPixel(272);
@@ -102,19 +107,19 @@ describe('Doughnut controller tests', function() {
 				startAngle: Math.PI * -0.5,
 				endAngle: Math.PI * -0.5,
 				label: chart.data.labels[i],
-				hoverBackgroundColor: 'rgb(255, 255, 255)',
 				backgroundColor: 'rgb(255, 0, 0)',
 				borderColor: 'rgb(0, 0, 255)',
 				borderWidth: 2
 			}));
-		})
+		});
 
 		chart.update();
 
-		[	{ c: 1.7453292519, s: -1.5707963267, e: 0.1745329251 },
-			{ c: 2.0943951023, s:  0.1745329251, e: 2.2689280275 },
-			{ c: 0,            s:  2.2689280275, e: 2.2689280275 },
-			{ c: 2.4434609527, s:  2.2689280275, e: 4.7123889803 }
+		[
+			{c: 1.7453292519, s: -1.5707963267, e: 0.1745329251},
+			{c: 2.0943951023, s: 0.1745329251, e: 2.2689280275},
+			{c: 0, s: 2.2689280275, e: 2.2689280275},
+			{c: 2.4434609527, s: 2.2689280275, e: 4.7123889803}
 		].forEach(function(expected, i) {
 			expect(meta.data[i]._model.x).toBeCloseToPixel(256);
 			expect(meta.data[i]._model.y).toBeCloseToPixel(272);
@@ -125,12 +130,11 @@ describe('Doughnut controller tests', function() {
 			expect(meta.data[i]._model.endAngle).toBeCloseTo(expected.e, 8);
 			expect(meta.data[i]._model).toEqual(jasmine.objectContaining({
 				label: chart.data.labels[i],
-				hoverBackgroundColor: 'rgb(255, 255, 255)',
 				backgroundColor: 'rgb(255, 0, 0)',
 				borderColor: 'rgb(0, 0, 255)',
 				borderWidth: 2
 			}));
-		})
+		});
 
 		// Change the amount of data and ensure that arcs are updated accordingly
 		chart.data.datasets[1].data = [1, 2]; // remove 2 elements from dataset 0
@@ -173,8 +177,7 @@ describe('Doughnut controller tests', function() {
 					arc: {
 						backgroundColor: 'rgb(255, 0, 0)',
 						borderColor: 'rgb(0, 0, 255)',
-						borderWidth: 2,
-						hoverBackgroundColor: 'rgb(255, 255, 255)'
+						borderWidth: 2
 					}
 				}
 			}
@@ -185,17 +188,18 @@ describe('Doughnut controller tests', function() {
 		expect(meta.data.length).toBe(2);
 
 		// Only startAngle, endAngle and circumference should be different.
-		[	{ c:     Math.PI / 8, s: Math.PI,               e: Math.PI + Math.PI / 8 },
-			{ c: 3 * Math.PI / 8, s: Math.PI + Math.PI / 8, e: Math.PI + Math.PI / 2 }
+		[
+			{c: Math.PI / 8, s: Math.PI, e: Math.PI + Math.PI / 8},
+			{c: 3 * Math.PI / 8, s: Math.PI + Math.PI / 8, e: Math.PI + Math.PI / 2}
 		].forEach(function(expected, i) {
 			expect(meta.data[i]._model.x).toBeCloseToPixel(495);
 			expect(meta.data[i]._model.y).toBeCloseToPixel(511);
 			expect(meta.data[i]._model.outerRadius).toBeCloseToPixel(478);
 			expect(meta.data[i]._model.innerRadius).toBeCloseToPixel(359);
-			expect(meta.data[i]._model.circumference).toBeCloseTo(expected.c,8);
+			expect(meta.data[i]._model.circumference).toBeCloseTo(expected.c, 8);
 			expect(meta.data[i]._model.startAngle).toBeCloseTo(expected.s, 8);
 			expect(meta.data[i]._model.endAngle).toBeCloseTo(expected.e, 8);
-		})
+		});
 	});
 
 	it ('should draw all arcs', function() {
