@@ -34,7 +34,7 @@ app.config(['$locationProvider', '$routeProvider', function ($locationProvider, 
         .when("/classroom", {
             templateUrl: "page/classroom.html"
         })
-		.when("/subject", {
+        .when("/subject", {
             templateUrl: "page/subject.html"
         })
         .when("/teacher1", {

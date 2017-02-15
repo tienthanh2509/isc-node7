@@ -8,13 +8,13 @@ var mysql = require("mysql");
 
 // Thiết lập kết nối CSDL dùng Pool
 /*var connection = mysql.createPool({
-    host: process.env.DB_HOST || 'localhost',
-    user: process.env.DB_USER || 'root',
-    port: process.env.DB_PORT || '3306',
-    //password: process.env.DB_PASSWORD || 'd13ht01',
-    database: process.env.DB_DATABASE || 'qlns'
+ host: process.env.DB_HOST || 'localhost',
+ user: process.env.DB_USER || 'root',
+ port: process.env.DB_PORT || '3306',
+ //password: process.env.DB_PASSWORD || 'd13ht01',
+ database: process.env.DB_DATABASE || 'qlns'
 
-});*/
+ });*/
 
 // Thiết lập kết nối CSDL dùng Connection
 var connection = mysql.createConnection({

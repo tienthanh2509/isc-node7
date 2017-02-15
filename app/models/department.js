@@ -6,9 +6,9 @@
 
 var connection = require('../models/connection');
 
-var getListDepartment = function(req, res){
+var getListDepartment = function (req, res) {
     var query = 'SELECT * FROM qlns.department';
-    connection.query(query, function(err, rows, field){
+    connection.query(query, function (err, rows, field) {
         console.log(rows);
         res.end(JSON.stringify(rows));
     });
@@ -16,4 +16,4 @@ var getListDepartment = function(req, res){
 
 module.exports = {
     getListDepartment: getListDepartment
-}
+};
