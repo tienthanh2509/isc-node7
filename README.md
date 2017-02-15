@@ -37,5 +37,5 @@ bower install
 grunt
 
 # Run nodejs express server | Use PORT env for custom listening port
-node app.js
+npm start
 ```
