@@ -1,0 +1,19 @@
+sudo: required
+dist: xenial
+addons:
+  apt:
+    packages:
+      - ruby
+language: node_js
+node_js:
+  - "6.1"
+
+before_install:
+    - "npm install -g npm"
+    - "gem install sass"
+install:
+    - npm install -g bower grunt
+    - npm install
+    - bower install
+script:
+    - grunt

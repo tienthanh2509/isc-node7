@@ -1,0 +1,88 @@
+ <div class="row col-md-12 custyle">
+ <h2 class="text-center">Danh Sách Giảng Viên Cơ Hữu</h2>
+    <table class="table table-striped custab">
+    <thead>
+    <button type="button" class="btn btn-primary btn-sm pull-right" data-toggle="modal" data-target="#myModal">Thêm mới giảng viên</button>
+        <tr>
+            <th>Mã giảng viên</th>
+            <th>Tên giảng viên</th>
+            <th>Ngày sinh</th>
+            <th>Giới tính</th>
+            <th>Email</th>
+            <th>Số điện thoại</th>
+            <th class="text-center">Thao tác</th>
+        </tr>
+    </thead>
+            <tr>
+                <td>ISC1PM</td>
+                <td>Lập trình Java</td>
+                <td>3/2/1975</td>
+                <td>Nữ</td>
+                <td>trantt@gmail.com</td>
+                <td>0923162956</td>
+                <td class="text-center">
+                	<button type="button" class="btn btn-primary btn-xs glyphicon glyphicon-edit" data-toggle="modal" data-target="#myModal">Sửa</button>
+                	<button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#myModal">Xóa</button>
+                	
+                </td>
+            </tr>
+            <tr>
+                <td>ISC1PM</td>
+                <td>Lập Java trình </td>
+                <td>31/12/1988</td>
+                <td>Nam</td>
+                <td>mandt@gmail.com</td>
+                <td>01261559662</td>
+                <td class="text-center">
+                    <button type="button" class="btn btn-primary btn-xs glyphicon glyphicon-edit" data-toggle="modal" data-target="#myModal">Sửa</button>
+                    <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#myModal">Xóa</button>
+                    
+                </td>
+            </tr>
+
+    </table>
+    </div>
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Giảng Viên Cơ Hữu</h4>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="name">Tên giảng viên:</label>
+                        <input type="name" class="form-control" id="name">
+                    </div>
+                    <div class="form-group">
+                        <label for="date">Ngày sinh:</label>
+                        <input type="date" class="form-control" id="date">
+                    </div>
+                    <div class="form-group">
+                        <label for="sex">Giới tính:</label>
+                        <label class="radio-inline">
+                            <input type="radio" name="sex">Nam
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="sex">Nữ
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                            <input type="email" class="form-control" id="email">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Số điện thoại:</label>
+                            <input type="phone" class="form-control" id="phone">
+                    </div>
+		        </form>            
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Thoát</button>
+        <button type="button" class="btn btn-primary">Lưu</button>
+      </div>
+    </div>
+  </div>
+</div>

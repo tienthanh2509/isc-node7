@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="eduSoft">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Quản Lý Điểm Học Viên</title>
+
+    <!-- Bootstrap -->
+    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- metisMenu -->
+    <link href="bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
+
+    <!-- Custom css -->
+    <link href="assets/css/edusoft.min.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<nav class="navbar navbar-inverse navbar-static-top" ng-controller="headerNavbarController">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">
+                Quản Lý Điểm Học Viên
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li ng-class="{ active: isActive('/')}">
+                    <a class="nav-link" href="#!/">Bảng điều khiển <span class="sr-only">(current)</span></a>
+                </li>
+                <li ng-class="{ active: isActive('/about')}">
+                    <a class="nav-link" href="#!/about">Thông tin</a>
+                </li>
+                <li ng-class="{ active: isActive('/contact')}">
+                    <a class="nav-link" href="#!/contact">Liên hệ</a>
+                </li>
+            </ul>
+
+            <ul class="nav navbar-nav pull-right">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-user fa-fw"></i> Chào <b>Châu</b> <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li><a href="#"><i class="fa fa-user fa-fw"></i> Hồ sơ</a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Thiết lập</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li><a href="/!logout"><i class="fa fa-sign-out fa-fw"></i> Đăng xuất</a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-user -->
+                </li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3">
+            <aside class="sidebar">
+                <nav class="sidebar-nav">
+                    <ul class="metismenu" id="menu">
+                        <li class="active">
+                            <a class="has-arrow" href="#" aria-expanded="true">
+                                <span class="sidebar-nav-item">
+                                    <i class="fa fa-university" aria-hidden="true"></i>
+                                    Lớp học
+                                </span>
+                            </a>
+                            <ul aria-expanded="true">
+                                <li>
+                                    <a href="#!/faculty">
+                                        Khoa
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#!/classroom">
+                                        <i class="fa fa-id-card-o" aria-hidden="true"></i>
+                                        Khóa học
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="has-arrow" href="#" aria-expanded="false">
+                                <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+                                Học viên</a>
+                            <ul aria-expanded="false">
+                                <li><a href="#!/student">
+                                    <i class="fa fa-users" aria-hidden="true"></i>
+                                    Danh sách học viên</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="has-arrow" href="#" aria-expanded="false">
+                                <i class="fa fa-book" aria-hidden="true"></i>
+                                Môn Học</a>
+                            <ul aria-expanded="false">
+                                <li><a href="#!/subject">
+                                    <i class="fa fa-sitemap" aria-hidden="true"></i>
+                                    Danh sách Môn Học</a>
+                                </li>
+                                <li><a href="#!/course">
+                                    <i class="fa fa-tags" aria-hidden="true"></i>
+                                    Chương Trình Học</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="has-arrow" href="#" aria-expanded="false">
+                                <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                                Giảng Viên</a>
+                            <ul aria-expanded="false">
+                                <li><a href="#!/teacher1">
+                                    <i class="fa fa-street-view" aria-hidden="true"></i>
+                                    Giảng Viên Cơ Hữu</a></li>
+                                <li><a href="#!/teacher2">
+                                    <i class="fa fa-suitcase" aria-hidden="true"></i>
+                                    Giảng Viên Thỉnh Giảng</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="has-arrow" href="#" aria-expanded="false">
+                                <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
+                                Thời Khóa Biểu</a>
+                            <ul aria-expanded="false">
+                                <li><a href="#!/schedule">
+                                    <i class="fa fa-calendar" aria-hidden="true"></i>
+                                    Xem Lịch</a></li>
+                                <li><a href="#!/timetable">
+                                    <i class="fa fa-clock-o" aria-hidden="true"></i>
+                                    Giờ Dạy</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="has-arrow" href="#" aria-expanded="false">
+                                <i class="fa fa-bar-chart" aria-hidden="true"></i>
+                                Điểm</a>
+                            <ul aria-expanded="false">
+                                <li><a href="#!/result">
+                                    <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                                    Quản Lý Điểm</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </aside>
+
+            <!--<ul class="nav nav-pills nav-stacked">-->
+                <!--<li role="presentation" class="active"><a href="#">Lớp học</a></li>-->
+                <!--<li role="presentation"><a href="#">Học viên</a></li>-->
+                <!--<li role="presentation"><a href="#"></a></li>-->
+            <!--</ul>-->
+        </div>
+        <div class="col-md-9">
+            <div ng-view></div>
+        </div>
+    </div>
+</div> <!-- /container -->
+
+<footer class="footer">
+    <div class="container-fluid clearfix">
+        <p class="pull-left">Designed by
+            <a target="_blank" href="https://d13ht01.tk/?utm_source=construction-cost-estimates&utm_medium=footer&utm_campaign=project">CD3T Studio</a>.
+        </p>
+        <p class="pull-right hidden-sm">
+            Built with <i class="fa fa-heart text-danger"></i> by
+            <a href="http://github.com/taminhchau" target="_blank">Châu</a>,
+            Đức,
+            <a href="http://github.com/tienthanh2509" target="_blank">Thành</a>,
+            <a href="http://github.com/monleden" target="_blank">Thiện</a>,
+            <a href="http://github.com/dknyonelil" target="_blank">Trọng</a>
+        </p>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap -->
+<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- metisMenu -->
+<script src="bower_components/metisMenu/dist/metisMenu.min.js"></script>
+<!-- AngularJS -->
+<script src="bower_components/angular/angular.min.js"></script>
+<script src="bower_components/angular-route/angular-route.min.js"></script>
+
+<!-- Edusoft Application -->
+<script src="assets/js/edusoft.min.js"></script>
+
+</body>
+</html>

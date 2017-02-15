@@ -1,0 +1,118 @@
+<!--
+  ~ Copyright (c) 2017 PT Studio
+  ~
+  ~ Licensed under GPL-3.0 (https://github.com/tienthanh2509/isc-group-2-frontend/blob/master/LICENSE)
+  -->
+
+<div class="row col-md-12" ng-controller="FacultyController">
+    <h2 class="text-center">Danh sách các khoa</h2>
+
+    <button type="button" class="btn btn-primary btn-sm pull-right" data-toggle="modal" data-target="#myModal">
+        <i class="fa fa-plus" aria-hidden="true"></i>
+        Thêm mới
+    </button>
+
+    <table class="table table-striped custab">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Mã khoa</th>
+            <th>Tên khoa</th>
+            <th class="text-center">Thao tác</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="i in faculty_list">
+            <td>{{ i.id }}</td>
+            <td>{{ i.ids }}</td>
+            <td>{{ i.name }}</td>
+            <td class="text-center">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModalEdit">
+                    <i class="fa fa-edit" aria-hidden="true"></i>
+                </button>
+                <button type="button" class="btn btn-danger" ng-click="delete(i.id)">
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                </button>
+
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- Modal thêm mới -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     ng-controller="FacultyAddController">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form name="facultyForm" ng-submit="submitForm()">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">
+                        <i class="fa fa-plus" aria-hidden="true"></i>
+                        Thêm khoa mới
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="faculty_id">Mã khoa</label>
+                        <input type="text" class="form-control" id="faculty_id" ng-model="faculty.id" required>
+                        <span class="help-block">VD: CNTT</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="faculty_name">Tên khoa</label>
+                        <input type="text" class="form-control" id="faculty_name" ng-model="faculty.name" required>
+                        <span class="help-block">VD: Công nghệ thông tin</span>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Hủy</button>
+                    <button type="submit" class="btn btn-primary" ng-disabled="facultyForm.$invalid" ng-hide="saving">
+                        Lưu
+                    </button>
+                    <button type="submit" class="btn btn-primary" disabled ng-show="saving">
+                        <i class="fa fa-spinner fa-spin"></i>
+                        Đang xử lý...
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Modal sửa thông tin -->
+<div class="modal fade" id="myModalEdit" tabindex="-1" role="dialog" aria-labelledby="myModalLabelEdit">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabelEdit"><i class="fa fa-plus" aria-hidden="true"></i> Cập nhật
+                    thông tin khoa</h4>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="faculty_id_new">Mã khoa</label>
+                        <input type="text" class="form-control" id="faculty_id_new">
+                        <span class="help-block">VD: CNTT</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="faculty_name_new">Tên khoa</label>
+                        <input type="text" class="form-control" id="faculty_name_new">
+                        <span class="help-block">VD: Công nghệ thông tin</span>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Hủy</button>
+                <button type="button" class="btn btn-primary">Cập nhật</button>
+            </div>
+        </div>
+    </div>
+</div>
