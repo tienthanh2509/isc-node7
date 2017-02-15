@@ -10,29 +10,36 @@
 
 var express = require('express');
 var bodyParser = require('body-parser');
-var mysql = require("mysql");
+//var mysql = require("mysql");
 
 var app = express();
+var server = require('http').createServer(app);
+
+var employees = require('./app/routes/employeeCtrl');
+var department = require('./app/routes/departmentCtrl');
 
 // Thiết lập kết nối CSDL
-var connection = mysql.createPool({
+/*var connection = mysql.createPool({
     host: process.env.DB_HOST || 'localhost',
     user: process.env.DB_USER || 'isc',
     port: process.env.DB_PORT || '3306',
     password: process.env.DB_PASSWORD || 'd13ht01',
     database: process.env.DB_DATABASE || 'quan-ly-hoc-vien'
 
-});
+});*/
 
 // Parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({extended: false}));
 // Parse application/json
 app.use(bodyParser.json());
 // WebRoot
-app.use(express.static('public'));
+app.use(express.static(__dirname + '/public'));
+
+app.use('/api', employees);
+app.use('/api', department);
 
 // API Section - Mock data
-app.get('/api/v1/faculty', function (req, res) {
+/*app.get('/api/v1/faculty', function (req, res) {
     var faculty = [
         {
             "id": "1",
@@ -114,8 +121,8 @@ app.get('/api/v1/subject', function (req, res) {
     ];
 
     res.json(subject);
-});
+});*/
 
-app.listen(process.env.PORT || 3000, function () {
+server.listen(process.env.PORT || 3000, function () {
     console.log('Listening on port ' + (process.env.PORT || 3000));
 });
