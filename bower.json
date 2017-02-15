@@ -1,5 +1,5 @@
 {
-  "name": "edu-soft",
+  "name": "hrm-soft",
   "authors": [
     "Phạm Tiến Thành <tienthanh.dqc@gmail.com>"
   ],
@@ -20,6 +20,7 @@
     "bootstrap": "^3.3.7",
     "chart.js": "^2.4.0",
     "font-awesome": "fontawesome#^4.7.0",
-    "metisMenu": "^2.6.1"
+    "metisMenu": "^2.6.1",
+    "ng-file-upload": "^12.2.13"
   }
 }
