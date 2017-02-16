@@ -27,6 +27,8 @@
 
     <!-- Custom Theme Style -->
     <link href="../build/css/custom.min.css" rel="stylesheet">
+    <link href="../css/styles/style.css" rel="stylesheet">
+
   </head>
 
   <body class="nav-md" ng-app="QuanLyNhanSu">
@@ -244,8 +246,7 @@
         <!-- page content -->
         <div class="right_col" role="main">
 
-
-
+          <div ng-view></div>
 
         </div>
         <!-- /page content -->
@@ -295,6 +296,9 @@
     <script src="../vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
     <!-- Angularjs -->
     <script src="../vendors/angular/angular.min.js"></script>
+    <script src="../vendors/angular-route/angular-route.min.js"></script>
+    <script src="../vendors/ng-file-upload/ng-file-upload-shim.min.js"></script>
+    <script src="../vendors/ng-file-upload/ng-file-upload.min.js"></script>
 
     <!-- Custom Theme Scripts -->
     <script src="../build/js/custom.min.js"></script>

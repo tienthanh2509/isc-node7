@@ -1,0 +1,172 @@
+<!-- Add Employee -->
+<div class="row">
+    <div class="col-lg-12 text-center">
+        <div class="h2">Thêm Mới Nhân Viên</div>
+    </div>
+</div>
+
+
+<div class="row">
+    <!-- Column 1 -->
+    <div class="col-lg-5">
+        <form class="form-horizontal">
+            <div class="form-group">
+                <label for="inputHo" class="col-sm-2 control-label">Họ:</label>
+                <div class="col-sm-10">
+                <input type="text" class="form-control" id="inputHo" placeholder="Họ...">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputTen" class="col-sm-2 control-label">Tên:</label>
+                <div class="col-sm-10">
+                <input type="text" class="form-control" id="inputTen" placeholder="Tên...">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputNgaysinh" class="col-sm-2 control-label">Ngày sinh:</label>
+                <div class="col-sm-10">
+                <input type="text" class="form-control" id="inputNgaysinh" placeholder="Ngày sinh ...">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputDiachi" class="col-sm-2 control-label">Địa chỉ:</label>
+                <div class="col-sm-10">
+                <input type="text" class="form-control" id="inputDiachi" placeholder="Địa chỉ...">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputGioiTinh" class="col-sm-2 control-label">Giới tính:</label>
+                <div class="col-sm-10">
+                <input type="text" class="form-control" id="inputGioiTinh" placeholder="Giới tính...">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputDienthoai" class="col-sm-2 control-label">Điện Thoại:</label>
+                <div class="col-sm-10">
+                <input type="number" class="form-control" id="inputDienthoai" placeholder="Số điện thoại...">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputEmail" class="col-sm-2 control-label">Email:</label>
+                <div class="col-sm-10">
+                <input type="text" class="form-control" id="inputEmail" placeholder="Email...">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputBaohiem" class="col-sm-2 control-label">Mã số bảo hiểm:</label>
+                <div class="col-sm-10">
+                <input type="text" class="form-control" id="inputBaohiem" placeholder="Mã số bảo hiểm...">
+                </div>
+            </div>
+        </form>
+    </div>
+    <!-- /Column 1 -->
+
+    <!-- Column 2 -->
+    <div class="col-lg-5 col-lg-offset-1">
+        <form class="form-horizontal">
+            <div class="form-group">
+                <label for="inputTrinhdo" class="col-sm-3 control-label">Trình độ:</label>
+                <div class="col-sm-9">
+                <input type="text" class="form-control" id="inputTrinhdo" placeholder="Trình độ...">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputTongiao" class="col-sm-3 control-label">Tôn giáo:</label>
+                <div class="col-sm-9">
+                <input type="text" class="form-control" id="inputTongiao" placeholder="Tôn giáo...">
+                </div>
+            </div>
+            <!-- Panel chứng chỉ -->
+            <div class="panel panel-default">
+                <div class="panel-heading"><label class="control-label">Các chứng chỉ chuyên ngành:</label></div>
+                <!-- Panel Body -->
+                <div class="panel-body">
+                     <div class="form-group">
+                        <label for="inputPassword3" class="col-sm-5 control-label">Chọn chuyên nghành:</label>
+                        <div class="col-sm-7">
+                            <div class="dropdown">
+                                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                    Chuyên ngành
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                    <li><a href="#">Action</a></li>
+                                    <li><a href="#">Another action</a></li>
+                                    <li><a href="#">Something else here</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href="#">Separated link</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <form>
+                            <label class="checkbox-inline">
+                            <input type="checkbox" value="">Option 1
+                            </label>
+                            <label class="checkbox-inline">
+                            <input type="checkbox" value="">Option 2
+                            </label>
+                            <label class="checkbox-inline">
+                            <input type="checkbox" value="">Option 3
+                            </label>
+                        </form>
+                    </div>
+                </div>
+                <!-- /Panel Body -->
+            </div>
+            <!-- /Panel chứng chỉ -->
+
+            <!-- Chứng chỉ anh văn -->
+                <label for="inputPassword3" class="col-sm-5 control-label">Chứng chỉ tiếng Anh:</label>
+                <div class="col-sm-10">
+                    <div class="checkbox">
+                    <label><input type="checkbox" value="">Toeic</label>
+                    </div>
+                    <div class="checkbox">
+                    <label><input type="checkbox" value="">Ielts</label>
+                    </div>
+                    <div class="checkbox disabled">
+                    <label><input type="checkbox" value="" disabled>Toefl</label>
+                    </div>
+                </div>
+            <!-- /Chứng chỉ anh văn -->
+        </form>
+    </div>
+    <!-- /Column 2 -->
+</div>
+
+<div class="row">
+    <div class="panel panel-default">
+        <div class="panel-heading">Tải lên các hồ sơ liên quan:</div>
+        <div class="panel-body">
+            <div class="col-lg-5">
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Đơn xin việc:</label>
+                        <div class="col-sm-9">
+                            <!-- Choose Image -->
+                            <form class="form-horizontal">
+                                <div class="form-group">
+                                    <label class="col-sm-9 control-label">
+                                        <!-- Drop image -->
+                                        <div ngf-drop ngf-select ng-model="files" class="drop-box" 
+                                        ngf-drag-over-class="'dragover'" ngf-multiple="true" ngf-allow-dir="true"
+                                        accept="image/*,application/pdf" 
+                                        ngf-pattern="'image/*,application/pdf'">Drop pdfs or images here or click to upload</div>
+                                        <!-- Drop image -->
+                                    </label>
+                                    <div class="col-sm-3">
+                                        <!-- button image -->
+                                        <div class="btn btn-default editButton" ngf-select ng-model="file" ngf-multiple="false">Select File</div>
+                                        <!-- button image -->
+                                    </div>
+                                </div>
+                            </form>
+                            <!-- /Choose Image -->
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
