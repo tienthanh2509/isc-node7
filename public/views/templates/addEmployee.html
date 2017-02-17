@@ -5,7 +5,6 @@
     </div>
 </div>
 
-
 <div class="row">
     <!-- Column 1 -->
     <div class="col-lg-5">
@@ -137,36 +136,224 @@
 
 <div class="row">
     <div class="panel panel-default">
-        <div class="panel-heading">Tải lên các hồ sơ liên quan:</div>
+        <div class="panel-heading"><label class="control-label">Tải lên các hồ sơ liên quan:</label></div>
         <div class="panel-body">
-            <div class="col-lg-5">
-                <form class="form-horizontal">
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label">Đơn xin việc:</label>
-                        <div class="col-sm-9">
-                            <!-- Choose Image -->
-                            <form class="form-horizontal">
-                                <div class="form-group">
-                                    <label class="col-sm-9 control-label">
-                                        <!-- Drop image -->
-                                        <div ngf-drop ngf-select ng-model="files" class="drop-box" 
-                                        ngf-drag-over-class="'dragover'" ngf-multiple="true" ngf-allow-dir="true"
-                                        accept="image/*,application/pdf" 
-                                        ngf-pattern="'image/*,application/pdf'">Drop pdfs or images here or click to upload</div>
-                                        <!-- Drop image -->
-                                    </label>
-                                    <div class="col-sm-3">
-                                        <!-- button image -->
-                                        <div class="btn btn-default editButton" ngf-select ng-model="file" ngf-multiple="false">Select File</div>
-                                        <!-- button image -->
+            <div class="row">
+                <div class="col-lg-5">
+                    <!-- Dơn xin việc -->
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Đơn xin việc:</label>
+                            <div class="col-sm-9">
+                                <!-- Choose Image -->
+                                <form class="form-horizontal">
+                                    <div class="form-group">
+                                        <label class="col-sm-9 control-label">
+                                            <!-- Drop image -->
+                                            <div ngf-drop ngf-select ng-model="files" class="drop-box" 
+                                            ngf-drag-over-class="'dragover'" ngf-multiple="true" ngf-allow-dir="true"
+                                            accept="image/*,application/pdf" 
+                                            ngf-pattern="'image/*,application/pdf'">Drop pdfs or images here or click to upload</div>
+                                            <!-- Drop image -->
+                                        </label>
+                                        <div class="col-sm-3">
+                                            <!-- button image -->
+                                            <div class="btn btn-default editButton" ngf-select ng-model="file" ngf-multiple="false">Select File</div>
+                                            <!-- button image -->
+                                        </div>
                                     </div>
-                                </div>
-                            </form>
-                            <!-- /Choose Image -->
+                                </form>
+                                <!-- /Choose Image -->
+                            </div>
                         </div>
-                    </div>
-                </form>
+                    </form>
+                    <!-- /Dơn xin việc -->
+                    <!-- Bảng điểm -->
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Bảng điểm:</label>
+                            <div class="col-sm-9">
+                                <!-- Choose Image -->
+                                <form class="form-horizontal">
+                                    <div class="form-group">
+                                        <label class="col-sm-9 control-label">
+                                            <!-- Drop image -->
+                                            <div ngf-drop ngf-select ng-model="files" class="drop-box" 
+                                            ngf-drag-over-class="'dragover'" ngf-multiple="true" ngf-allow-dir="true"
+                                            accept="image/*,application/pdf" 
+                                            ngf-pattern="'image/*,application/pdf'">Drop pdfs or images here or click to upload</div>
+                                            <!-- Drop image -->
+                                        </label>
+                                        <div class="col-sm-3">
+                                            <!-- button image -->
+                                            <div class="btn btn-default editButton" ngf-select ng-model="file" ngf-multiple="false">Tải lên</div>
+                                            <!-- button image -->
+                                        </div>
+                                    </div>
+                                </form>
+                                <!-- /Choose Image -->
+                            </div>
+                        </div>
+                    </form>
+                    <!-- /Bảng điểm -->
+                    <!-- Chứng chỉ -->
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Chứng chỉ:</label>
+                            <div class="col-sm-9">
+                                <!-- Choose Image -->
+                                <form class="form-horizontal">
+                                    <div class="form-group">
+                                        <label class="col-sm-9 control-label">
+                                            <!-- Drop image -->
+                                            <div ngf-drop ngf-select ng-model="files" class="drop-box" 
+                                            ngf-drag-over-class="'dragover'" ngf-multiple="true" ngf-allow-dir="true"
+                                            accept="image/*,application/pdf" 
+                                            ngf-pattern="'image/*,application/pdf'">Drop pdfs or images here or click to upload</div>
+                                            <!-- Drop image -->
+                                        </label>
+                                        <div class="col-sm-3">
+                                            <!-- button image -->
+                                            <div class="btn btn-default editButton" ngf-select ng-model="file" ngf-multiple="false">Tải lên</div>
+                                            <!-- button image -->
+                                        </div>
+                                    </div>
+                                </form>
+                                <!-- /Choose Image -->
+                            </div>
+                        </div>
+                    </form>
+                    <!-- /Chứng chỉ -->
+                </div>
+                <div class="col-lg-6">
+                    <!-- Hộ khẩu -->
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">Hộ khẩu:</label>
+                            <div class="col-sm-8">
+                                <!-- Choose Image -->
+                                <form class="form-horizontal">
+                                    <div class="form-group">
+                                        <label class="col-sm-9 control-label">
+                                            <!-- Drop image -->
+                                            <div ngf-drop ngf-select ng-model="files" class="drop-box" 
+                                            ngf-drag-over-class="'dragover'" ngf-multiple="true" ngf-allow-dir="true"
+                                            accept="image/*,application/pdf" 
+                                            ngf-pattern="'image/*,application/pdf'">Drop pdfs or images here or click to upload</div>
+                                            <!-- Drop image -->
+                                        </label>
+                                        <div class="col-sm-3">
+                                            <!-- button image -->
+                                            <div class="btn btn-default editButton" ngf-select ng-model="file" ngf-multiple="false">Tải lên</div>
+                                            <!-- button image -->
+                                        </div>
+                                    </div>
+                                </form>
+                                <!-- /Choose Image -->
+                            </div>
+                        </div>
+                    </form>
+                    <!-- /Hộ khẩu -->
+                    <!-- Bằng tốt nghiệp -->
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">Bằng tốt nghiệp:</label>
+                            <div class="col-sm-8">
+                                <!-- Choose Image -->
+                                <form class="form-horizontal">
+                                    <div class="form-group">
+                                        <label class="col-sm-9 control-label">
+                                            <!-- Drop image -->
+                                            <div ngf-drop ngf-select ng-model="files" class="drop-box" 
+                                            ngf-drag-over-class="'dragover'" ngf-multiple="true" ngf-allow-dir="true"
+                                            accept="image/*,application/pdf" 
+                                            ngf-pattern="'image/*,application/pdf'">Drop pdfs or images here or click to upload</div>
+                                            <!-- Drop image -->
+                                        </label>
+                                        <div class="col-sm-3">
+                                            <!-- button image -->
+                                            <div class="btn btn-default editButton" ngf-select ng-model="file" ngf-multiple="false">Tải lên</div>
+                                            <!-- button image -->
+                                        </div>
+                                    </div>
+                                </form>
+                                <!-- /Choose Image -->
+                            </div>
+                        </div>
+                    </form>
+                    <!-- /Bằng tốt nghiệp -->
+                    <!-- Giấy khám sức khỏe -->
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">Giấy khám sức khỏe:</label>
+                            <div class="col-sm-8">
+                                <!-- Choose Image -->
+                                <form class="form-horizontal">
+                                    <div class="form-group">
+                                        <label class="col-sm-9 control-label">
+                                            <!-- Drop image -->
+                                            <div ngf-drop ngf-select ng-model="files" class="drop-box" 
+                                            ngf-drag-over-class="'dragover'" ngf-multiple="true" ngf-allow-dir="true"
+                                            accept="image/*,application/pdf" 
+                                            ngf-pattern="'image/*,application/pdf'">Drop pdfs or images here or click to upload</div>
+                                            <!-- Drop image -->
+                                        </label>
+                                        <div class="col-sm-3">
+                                            <!-- button image -->
+                                            <div class="btn btn-default editButton" ngf-select ng-model="file" ngf-multiple="false">Tải lên</div>
+                                            <!-- button image -->
+                                        </div>
+                                    </div>
+                                </form>
+                                <!-- /Choose Image -->
+                            </div>
+                        </div>
+                    </form>
+                    <!-- /Giấy khám sức khỏe -->
+                </div>
             </div>
+            <div class="row" style="margin-top: 20px">
+                <div class="col-lg-5">
+                    <!-- Tải ảnh -->
+                     <form class="form-horizontal" style="margin-top: 30px">
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Tải ảnh:</label>
+                            <div class="col-sm-9">
+                                <!-- Choose Image -->
+                                <form class="form-horizontal">
+                                    <div class="form-group">
+                                        <label class="col-sm-9 control-label">
+                                            <!-- Drop image -->
+                                            <div ngf-drop ngf-select ng-model="files" class="drop-box" 
+                                            ngf-drag-over-class="'dragover'" ngf-multiple="true" ngf-allow-dir="true"
+                                            accept="image/*,application/pdf" 
+                                            ngf-pattern="'image/*,application/pdf'">Drop images here or click to upload</div>
+                                            <!-- Drop image -->
+                                        </label>
+                                        <div class="col-sm-3">
+                                            <!-- button image -->
+                                            <div class="btn btn-default editButton" ngf-select ng-model="file" ngf-multiple="false">Tải lên</div>
+                                            <!-- button image -->
+                                        </div>
+                                    </div>
+                                </form>
+                                <!-- /Choose Image -->
+                            </div>
+                        </div>
+                    </form>
+                    <!-- /Tải ảnh -->
+                </div>
+                <div class="col-lg-5 col-lg-offset-1">
+                    <!-- Ảnh nhân viên -->
+                    <img src="" alt="Picture"  width="250px" height="250px"/>
+                    <!-- /Ảnh nhân viên -->
+                </div>
+            </div>
+        </div>
+        <div class="panel-footer text-center">
+            <!-- Button Lưu -->
+            <button class="btn btn-primary btn-lg">Lưu</button>
+            <!-- /Button Lưu -->
         </div>
     </div>
 </div>
