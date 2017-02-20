@@ -7,9 +7,9 @@
 var connection = require('../models/connection');
 
 var getListEmployee = function (req, res) {
-    var query = 'SELECT * FROM qlns.employees';
+    var query = 'SELECT * FROM quanlynhansu.nhanvien';
     connection.query(query, function (err, rows, field) {
-        console.log(rows);
+        //console.log(rows);
         res.end(JSON.stringify(rows));
     });
 };

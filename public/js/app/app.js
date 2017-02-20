@@ -1,4 +1,4 @@
-var app = angular.module("QuanLyNhanSu", ["ngRoute"]);
+var app = angular.module("QuanLyNhanSu", ["ngRoute", "ngFileUpload"]);
 
 // Route angular
  app.config(['$routeProvider', '$locationProvider', function AppConfig($routeProvider, $locationProvider) {
@@ -9,6 +9,10 @@ var app = angular.module("QuanLyNhanSu", ["ngRoute"]);
         })
         .when('/addEmployee', {
             templateUrl: 'views/templates/addEmployee.html',
+            //controller:'createConstructionCtrl'
+        })
+        .when('/role', {
+            templateUrl: 'views/templates/role.html',
             //controller:'createConstructionCtrl'
         })
         // removed other routes ... *snip

@@ -14,8 +14,9 @@ var bodyParser = require('body-parser');
 var app = express();
 var server = require('http').createServer(app);
 
-//var employees = require('./app/routes/employeeCtrl');
+var employees = require('./app/routes/employeeCtrl');
 //var department = require('./app/routes/departmentCtrl');
+var role = require('./app/routes/roleRoute');
 
 // Parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({extended: false}));
@@ -24,8 +25,9 @@ app.use(bodyParser.json());
 // WebRoot
 app.use(express.static(__dirname + '/public'));
 
-//app.use('/api', employees);
+app.use('/api', employees);
 //app.use('/api', department);
+app.use('/api', role);
 
 server.listen(process.env.PORT || 3000, function () {
     console.log('Listening on port ' + (process.env.PORT || 3000));
