@@ -11,6 +11,10 @@ var app = angular.module("QuanLyNhanSu", ["ngRoute", "ngFileUpload"]);
             templateUrl: 'views/templates/addEmployee.html',
             //controller:'createConstructionCtrl'
         })
+        .when('/updateEmployee', {
+            templateUrl: 'views/templates/updateEmployee.html',
+            //controller:'createConstructionCtrl'
+        })
         .when('/role', {
             templateUrl: 'views/templates/role.html',
             //controller:'createConstructionCtrl'
