@@ -39,7 +39,6 @@
                         <div class="form-inline">
                             <input type="date" class="form-control" ng-model="NgaySinh" id="inputNgaysinh"
                                    placeholder="Ngày sinh ...">
-                            <b class="glyphicon glyphicon-calendar"></b>
                         </div>
                     </div>
                 </div>
@@ -53,8 +52,10 @@
                 <div class="form-group">
                     <label for="inputGioiTinh" class="col-sm-3 control-label">Giới tính:</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" ng-model="GioiTinh" id="inputGioiTinh"
-                               placeholder="Giới tính...">
+                        <form action="">
+                            <input type="radio" name="gender" value="male" checked> Nam
+                            <input type="radio" name="gender" value="female"> Nữ
+                        </form>
                     </div>
                 </div>
                 <div class="form-group">
@@ -242,7 +243,7 @@
                                             <div class="col-sm-3">
                                                 <!-- button image -->
                                                 <div class="btn btn-default editButton" ngf-select ng-model="CV"
-                                                     ngf-multiple="false">Select File
+                                                     ngf-multiple="false">Tải lên
                                                 </div>
                                                 <!-- button image -->
                                             </div>
