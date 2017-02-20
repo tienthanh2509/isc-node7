@@ -14,7 +14,7 @@ sudo apt-get install -y nodejs ruby
 #http://rubyinstaller.org/downloads/
 
 # Install Bower, Grunt, Sass
-npm install -g bower grunt
+npm install -g bower grunt grunt-cli
 gem install sass
 
 # Warning! Make sure you have private key before clone using ssh else try https instead
