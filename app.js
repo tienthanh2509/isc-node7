@@ -10,25 +10,44 @@
 
 var express = require('express');
 var bodyParser = require('body-parser');
+var cookieParser = require('cookie-parser');
 
 var app = express();
-var server = require('http').createServer(app);
 
 var employees = require('./app/routes/employeeCtrl');
 //var department = require('./app/routes/departmentCtrl');
 var role = require('./app/routes/roleRoute');
 
-// Parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({extended: false}));
-// Parse application/json
 app.use(bodyParser.json());
+app.use(cookieParser());
+
 // WebRoot
-app.use(express.static(__dirname + '/public'));
+app.use('/', express.static(__dirname + '/public'));
+app.use('/vendors', express.static(__dirname + '/bower_components'));
 
 app.use('/api', employees);
 //app.use('/api', department);
 app.use('/api', role);
 
-server.listen(process.env.PORT || 3000, function () {
-    console.log('Listening on port ' + (process.env.PORT || 3000));
+/////////////////////////////////////////////////
+// catch 404 and forward to error handler
+app.use(function(req, res, next) {
+    var err = new Error('Not Found');
+    err.status = 404;
+    next(err);
 });
+
+// error handler
+app.use(function(err, req, res) {
+    // set locals, only providing error in development
+    res.locals.message = err.message;
+    res.locals.error = req.app.get('env') === 'development' ? err : {};
+
+    // render the error page
+    res.status(err.status || 500);
+    res.render('error');
+});
+
+/////////////////////////////////////////////////
+module.exports = app;

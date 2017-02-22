@@ -163,7 +163,3 @@ $RECYCLE.BIN/
 *.lnk
 
 # End of https://www.gitignore.io/api/bower,linux,node,phpstorm,visualstudiocode,sass,windows
-
-# Custom rules
-public/assets/
-public/vendors/
