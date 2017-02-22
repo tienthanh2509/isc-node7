@@ -16,7 +16,12 @@ var dbConfig = {
 };
 var connection = mysql.createConnection(dbConfig);
 
-connection.connect(function () {
+connection.connect(function (err) {
+    if (err) {
+        console.error('[DB] ' + err.message);
+        return;
+    }
+
     console.log('[DB] Connected to ' + dbConfig.user + '@' + dbConfig.host + ':' + dbConfig.port);
 });
 
