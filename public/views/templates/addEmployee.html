@@ -1,386 +1,441 @@
-<div ng-controller="employeeCtrl">
-<!-- Add Employee -->
-<div class="row">
-    <div class="col-lg-12 text-center">
-        <div class="h2">Thêm Mới Nhân Viên</div>
-    </div>
-</div>
-
-<form class="form-horizontal">
+<div class="ng-scope">
+    <!-- Add Employee -->
     <div class="row">
-        <!-- Column 1 -->
-        <div class="col-lg-5">
-            
-                <div class="form-group">
-                    <label for="inputHo" class="col-sm-3 control-label">Họ:</label>
-                    <div class="col-sm-9">
-                    <input type="text" class="form-control" ng-model="Ho" id="inputHo" placeholder="Họ..." ng-minlength="1" ng-maxlength="30" ng-pattern="/^[a-zA-Z]+$/" required>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="inputTen" class="col-sm-3 control-label">Tên:</label>
-                    <div class="col-sm-9">
-                    <input type="text" class="form-control" ng-model="Ten" id="inputTen" placeholder="Tên..." ng-minlength="1" ng-maxlength="30" ng-pattern="/^[a-zA-Z]+$/" required>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="inputNgaysinh" class="col-sm-3 control-label">Ngày sinh:</label>
-                    <div class="col-sm-9">
-                    <div class="form-inline">
-                        <input type="date" class="form-control" ng-model="NgaySinh" id="inputNgaysinh" placeholder="Ngày sinh ...">
-                        <b class="glyphicon glyphicon-calendar"></b>
-                    </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="inputDiachi" class="col-sm-3 control-label">Địa chỉ:</label>
-                    <div class="col-sm-9">
-                    <input type="text" class="form-control" ng-model="DiaChi" id="inputDiachi" placeholder="Địa chỉ...">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="inputGioiTinh" class="col-sm-3 control-label">Giới tính:</label>
-                    <div class="col-sm-9">
-                    <input type="text" class="form-control" ng-model="GioiTinh" id="inputGioiTinh" placeholder="Giới tính...">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="inputDienthoai" class="col-sm-3 control-label">Điện Thoại:</label>
-                    <div class="col-sm-9">
-                    <input type="number" class="form-control" ng-model="DienThoai" id="inputDienthoai" placeholder="Số điện thoại...">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="inputEmail" class="col-sm-3 control-label">Email:</label>
-                    <div class="col-sm-9">
-                    <input type="text" class="form-control" ng-model="Email" id="inputEmail" placeholder="Email...">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="inputBaohiem" class="col-sm-3 control-label">Số bảo hiểm:</label>
-                    <div class="col-sm-9">
-                    <input type="text" class="form-control" ng-model="MaSoBaoHiem" id="inputBaohiem" placeholder="Mã số bảo hiểm...">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="inputBaohiem" class="col-sm-3 control-label">Phòng/ Ban:</label>
-                    <div class="col-sm-9">
-                    <div class="dropdown">
-                            <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Chọn...
-                            <span class="caret"></span></button>
-                            <ul class="dropdown-menu">
-                            <li><a href="#">HTML</a></li>
-                            <li><a href="#">CSS</a></li>
-                            <li><a href="#">JavaScript</a></li>
-                            </ul>
-                    </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="inputTongiao" class="col-sm-3 control-label">Chức vụ:</label>
-                    <div class="col-sm-9">
-                    <div class="dropdown">
-                            <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Chọn...
-                            <span class="caret"></span></button>
-                            <ul class="dropdown-menu">
-                            <li><a href="#">HTML</a></li>
-                            <li><a href="#">CSS</a></li>
-                            <li><a href="#">JavaScript</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+        <div class="col-md-12 text-center">
+            <div class="h2">Thêm Mới Nhân Viên</div>
+            <br>
         </div>
-        <!-- /Column 1 -->
+    </div>
 
-        <!-- Column 2 -->
-        <div class="col-lg-5 col-lg-offset-1">
-            <form class="form-horizontal">
+    <form class="form-horizontal ng-pristine ng-invalid ng-invalid-required ng-valid-pattern ng-valid-minlength ng-valid-maxlength">
+        <div class="row">
+            <!-- Column 1 -->
+            <div class="col-md-5">
+
                 <div class="form-group">
-                    <label for="inputTrinhdo" class="col-sm-3 control-label">Trình độ:</label>
-                    <div class="col-sm-9">
-                    <input type="text" class="form-control" ng-model="TrinhDo" id="inputTrinhdo" placeholder="Trình độ...">
+                    <label for="inputHo" class="col-md-3 control-label">Họ:</label>
+                    <div class="col-md-9">
+                        <input type="text"
+                               class="form-control ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required ng-valid-pattern ng-valid-minlength ng-valid-maxlength"
+                               ng-model="Ho" id="inputHo" placeholder="Họ..." ng-minlength="1" ng-maxlength="30"
+                               ng-pattern="/^[a-zA-Z]+$/" required="">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="inputTongiao" class="col-sm-3 control-label">Tôn giáo:</label>
-                    <div class="col-sm-9">
-                    <input type="text" class="form-control" ng-model="TonGiao" id="inputTongiao" placeholder="Tôn giáo...">
+                    <label for="inputTen" class="col-md-3 control-label">Tên:</label>
+                    <div class="col-md-9">
+                        <input type="text"
+                               class="form-control ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required ng-valid-pattern ng-valid-minlength ng-valid-maxlength"
+                               ng-model="Ten" id="inputTen" placeholder="Tên..." ng-minlength="1" ng-maxlength="30"
+                               ng-pattern="/^[a-zA-Z]+$/" required="">
                     </div>
                 </div>
-                <!-- Panel chứng chỉ -->
-                <div class="panel panel-default">
-                    <div class="panel-heading"><label class="control-label">Các chứng chỉ chuyên ngành:</label></div>
-                    <!-- Panel Body -->
-                    <div class="panel-body">
-                        <div class="form-group">
-                            <label for="inputPassword3" class="col-sm-5 control-label">Chọn chuyên nghành:</label>
-                            <div class="col-sm-7">
-                                <div class="dropdown">
-                                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                        Chuyên ngành
-                                        <span class="caret"></span>
-                                    </button>
-                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                                        <li><a href="#">Action</a></li>
-                                        <li><a href="#">Another action</a></li>
-                                        <li><a href="#">Something else here</a></li>
-                                        <li role="separator" class="divider"></li>
-                                        <li><a href="#">Separated link</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <form>
-                                <label class="checkbox-inline">
-                                <input type="checkbox" value="">Option 1
-                                </label>
-                                <label class="checkbox-inline">
-                                <input type="checkbox" value="">Option 2
-                                </label>
-                                <label class="checkbox-inline">
-                                <input type="checkbox" value="">Option 3
-                                </label>
-                            </form>
+                <div class="form-group">
+                    <label for="inputNgaysinh" class="col-md-3 control-label">Ngày sinh:</label>
+                    <div class="col-md-9">
+                        <div class="form-inline">
+                            <input type="date" class="form-control ng-pristine ng-untouched ng-valid ng-empty"
+                                   ng-model="NgaySinh" id="inputNgaysinh" placeholder="Ngày sinh ...">
                         </div>
                     </div>
-                    <!-- /Panel Body -->
                 </div>
+                <div class="form-group">
+                    <label for="inputDiachi" class="col-md-3 control-label">Địa chỉ:</label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control ng-pristine ng-untouched ng-valid ng-empty"
+                               ng-model="DiaChi" id="inputDiachi" placeholder="Địa chỉ...">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label">Giới tính:</label>
+                    <div class="col-md-9">
+
+                        <input type="radio" name="gender" value="male" checked=""> Nam
+                        <input type="radio" name="gender" value="female"> Nữ
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputDienthoai" class="col-md-3 control-label">Điện Thoại:</label>
+                    <div class="col-md-9">
+                        <input type="number" class="form-control ng-pristine ng-untouched ng-valid ng-empty"
+                               ng-model="DienThoai" id="inputDienthoai" placeholder="Số điện thoại...">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail" class="col-md-3 control-label">Email:</label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control ng-pristine ng-untouched ng-valid ng-empty"
+                               ng-model="Email" id="inputEmail" placeholder="Email...">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputBaohiem" class="col-md-3 control-label">Số bảo hiểm:</label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control ng-pristine ng-untouched ng-valid ng-empty"
+                               ng-model="MaSoBaoHiem" id="inputBaohiem" placeholder="Mã số bảo hiểm...">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputBaohiem" class="col-md-3 control-label">Phòng/ Ban:</label>
+                    <div class="col-md-9">
+                        <div class="dropdown">
+                            <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Chọn...
+                                <span class="caret"></span></button>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">HTML</a></li>
+                                <li><a href="#">CSS</a></li>
+                                <li><a href="#">JavaScript</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputTongiao" class="col-md-3 control-label">Chức vụ:</label>
+                    <div class="col-md-9">
+                        <div class="dropdown">
+                            <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Chọn...
+                                <span class="caret"></span></button>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">HTML</a></li>
+                                <li><a href="#">CSS</a></li>
+                                <li><a href="#">JavaScript</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /Column 1 -->
+
+            <!-- Column 2 -->
+            <div class="col-md-5 col-md-offset-1">
+                <form class="form-horizontal ng-pristine ng-valid">
+                    <div class="form-group">
+                        <label for="inputTrinhdo" class="col-md-3 control-label">Trình độ:</label>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control ng-pristine ng-untouched ng-valid ng-empty"
+                                   ng-model="TrinhDo" id="inputTrinhdo" placeholder="Trình độ...">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputTongiao" class="col-md-3 control-label">Tôn giáo:</label>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control ng-pristine ng-untouched ng-valid ng-empty"
+                                   ng-model="TonGiao" id="inputTongiao" placeholder="Tôn giáo...">
+                        </div>
+                    </div>
+                    <!-- Panel chứng chỉ -->
+                    <div class="panel panel-primary">
+                        <div class="panel-heading"><label class="control-label">Các chứng chỉ chuyên ngành:</label>
+                        </div>
+                        <!-- Panel Body -->
+                        <div class="panel-body">
+                            <div class="form-group">
+                                <label class="col-md-5 control-label">Chọn chuyên nghành:</label>
+                                <div class="col-md-7">
+                                    <div class="dropdown">
+                                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1"
+                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                            Chuyên ngành
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                            <li><a href="#">Action</a></li>
+                                            <li><a href="#">Another action</a></li>
+                                            <li><a href="#">Something else here</a></li>
+                                            <li role="separator" class="divider"></li>
+                                            <li><a href="#">Separated link</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <label class="checkbox-inline col-md-offset-1 col-md-3"><br>
+                                    <input type="checkbox" value="">Option 1
+                                </label>
+                                <label class="checkbox-inline col-md-3"><br>
+                                    <input type="checkbox" value="">Option 2
+                                </label>
+                                <label class="checkbox-inline col-md-3"><br>
+                                    <input type="checkbox" value="">Option 3
+                                </label>
+
+                            </div>
+                        </div>
+                        <!-- /Panel Body -->
+                    </div>
+                </form>
                 <!-- /Panel chứng chỉ -->
 
                 <!-- Chứng chỉ anh văn -->
-                    <label for="inputPassword3" class="col-sm-5 control-label">Chứng chỉ tiếng Anh:</label>
-                    <div class="col-sm-10">
-                        <div class="checkbox">
+                <label class="col-md-5 control-label">Chứng chỉ tiếng Anh:</label>
+                <div class="col-md-11">
+                    <div class="checkbox col-md-3">
                         <label><input type="checkbox" value="">Toeic</label>
-                        </div>
-                        <div class="checkbox">
-                        <label><input type="checkbox" value="">Ielts</label>
-                        </div>
-                        <div class="checkbox disabled">
-                        <label><input type="checkbox" value="" disabled>Toefl</label>
-                        </div>
                     </div>
+                    <div class="checkbox col-md-3">
+                        <label><input type="checkbox" value="">Ielts</label>
+                    </div>
+                    <div class="checkbox disabled col-md-3">
+                        <label><input type="checkbox" value="" disabled="">Toefl</label>
+                    </div>
+                </div>
                 <!-- /Chứng chỉ anh văn -->
                 <div class="form-group">
-                    <label for="inputTongiao" class="col-sm-4 control-label">Loại hợp đồng:</label>
-                    <div class="col-sm-8">
-                    <div class="dropdown">
-                            <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" style="margin-bottom: 10px">Chọn...
-                            <span class="caret"></span></button>
+                    <label for="inputTongiao" class="col-md-4 control-label">Loại hợp đồng:</label>
+                    <div class="col-md-6">
+                        <div class="dropdown">
+                            <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown"
+                                    style="margin-bottom: 10px">Chọn...
+                                <span class="caret"></span></button>
                             <ul class="dropdown-menu">
-                            <li><a href="#">HTML</a></li>
-                            <li><a href="#">CSS</a></li>
-                            <li><a href="#">JavaScript</a></li>
+                                <li><a href="#">HTML</a></li>
+                                <li><a href="#">CSS</a></li>
+                                <li><a href="#">JavaScript</a></li>
                             </ul>
                         </div>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="inputBaohiem" class="col-sm-4 control-label">Hợp đồng từ:</label>
-                    <div class="col-sm-8">
+                    <label for="inputBaohiem" class="col-md-3 control-label">Hợp đồng từ:</label>
+                    <div class="col-md-8">
                         <div class="form-inline">
                             <div class="input-group">
-                                <span class="input-group-addon" id="basic-addon1">Từ: </span>
+                                <span class="input-group-addon" id="idThoiGianTu">Từ: </span>
                                 <input type="date" class="form-control" aria-describedby="basic-addon1">
                             </div>
                             <div class="input-group">
-                                <span class="input-group-addon" id="basic-addon1">Đến: </span>
+                                <span class="input-group-addon" id="idThoiGianDen">Đến: </span>
                                 <input type="date" class="form-control" aria-describedby="basic-addon1">
                             </div>
                         </div>
                     </div>
                 </div>
-            </form>
+
+            </div>
+            <!-- /Column 2 -->
         </div>
-        <!-- /Column 2 -->
-    </div>
+    </form>
 
     <div class="row">
-        <div class="panel panel-default">
+        <div class="panel panel-primary">
             <div class="panel-heading"><label class="control-label">Tải lên các hồ sơ liên quan:</label></div>
             <div class="panel-body">
                 <div class="row">
-                    <div class="col-lg-5">
+                    <div class="col-md-5">
                         <!-- Dơn xin việc -->
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label">Đơn xin việc:</label>
-                                <div class="col-sm-9">
-                                    <!-- Choose Image -->
-                                    <form class="form-horizontal">
-                                        <div class="form-group">
-                                            <label class="col-sm-9 control-label">
-                                                <!-- Drop image -->
-                                                <div ngf-drop ngf-select ng-model="CVs" class="drop-box" 
-                                                ngf-drag-over-class="'dragover'" ngf-multiple="true" ngf-allow-dir="true"
-                                                accept="image/*,application/pdf" 
-                                                ngf-pattern="'image/*,application/pdf'">Drop pdfs or images here or click to upload</div>
-                                                <!-- Drop image -->
-                                            </label>
-                                            <div class="col-sm-3">
-                                                <!-- button image -->
-                                                <div class="btn btn-default editButton" ngf-select ng-model="CV" ngf-multiple="false">Select File</div>
-                                                <!-- button image -->
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Đơn xin việc:</label>
+                            <div class="col-md-9">
+                                <!-- Choose Image -->
+                                <form class="form-horizontal ng-pristine ng-valid">
+                                    <div class="form-group">
+                                        <label class="col-md-9 control-label">
+                                            <!-- Drop image -->
+                                            <div ngf-drop="" ngf-select="" ng-model="CVs"
+                                                 class="drop-box ng-pristine ng-untouched ng-valid ng-empty"
+                                                 ngf-drag-over-class="'dragover'" ngf-multiple="true"
+                                                 ngf-allow-dir="true" accept="image/*,application/pdf"
+                                                 ngf-pattern="'image/*,application/pdf'">Drop pdfs or images here or
+                                                click to upload
                                             </div>
+                                            <!-- Drop image -->
+                                        </label>
+                                        <div class="col-md-3">
+                                            <!-- button image -->
+                                            <div class="btn btn-default editButton ng-pristine ng-untouched ng-valid ng-empty"
+                                                 ngf-select="" ng-model="CV" ngf-multiple="false">Tải lên
+                                            </div>
+                                            <!-- button image -->
                                         </div>
+                                    </div>
                                     <!-- /Choose Image -->
-                                </div>
+                                </form>
                             </div>
-                        </form>
+                        </div>
+
                         <!-- /Dơn xin việc -->
                         <!-- Bảng điểm -->
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label">Bảng điểm:</label>
-                                <div class="col-sm-9">
-                                    <!-- Choose Image -->
-                                        <div class="form-group">
-                                            <label class="col-sm-9 control-label">
-                                                <!-- Drop image -->
-                                                <div ngf-drop ngf-select ng-model="ScoreTables" class="drop-box" 
-                                                ngf-drag-over-class="'dragover'" ngf-multiple="true" ngf-allow-dir="true"
-                                                accept="image/*,application/pdf" 
-                                                ngf-pattern="'image/*,application/pdf'">Drop pdfs or images here or click to upload</div>
-                                                <!-- Drop image -->
-                                            </label>
-                                            <div class="col-sm-3">
-                                                <!-- button image -->
-                                                <div class="btn btn-default editButton" ngf-select ng-model="ScoreTable" ngf-multiple="false">Tải lên</div>
-                                                <!-- button image -->
-                                            </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Bảng điểm:</label>
+                            <div class="col-md-9">
+                                <!-- Choose Image -->
+                                <div class="form-group">
+                                    <label class="col-md-9 control-label">
+                                        <!-- Drop image -->
+                                        <div ngf-drop="" ngf-select="" ng-model="ScoreTables"
+                                             class="drop-box ng-pristine ng-untouched ng-valid ng-empty"
+                                             ngf-drag-over-class="'dragover'" ngf-multiple="true" ngf-allow-dir="true"
+                                             accept="image/*,application/pdf" ngf-pattern="'image/*,application/pdf'">
+                                            Drop pdfs or images here or click to upload
                                         </div>
-                                    <!-- /Choose Image -->
+                                        <!-- Drop image -->
+                                    </label>
+                                    <div class="col-md-3">
+                                        <!-- button image -->
+                                        <div class="btn btn-default editButton ng-pristine ng-untouched ng-valid ng-empty"
+                                             ngf-select="" ng-model="ScoreTable" ngf-multiple="false">Tải
+                                            lên
+                                        </div>
+                                        <!-- button image -->
+                                    </div>
                                 </div>
+                                <!-- /Choose Image -->
                             </div>
+                        </div>
                         <!-- /Bảng điểm -->
                         <!-- Chứng chỉ -->
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label">Chứng chỉ:</label>
-                                <div class="col-sm-9">
-                                    <!-- Choose Image -->
-                                        <div class="form-group">
-                                            <label class="col-sm-9 control-label">
-                                                <!-- Drop image -->
-                                                <div ngf-drop ngf-select ng-model="Certificates" class="drop-box" 
-                                                ngf-drag-over-class="'dragover'" ngf-multiple="true" ngf-allow-dir="true"
-                                                accept="image/*,application/pdf" 
-                                                ngf-pattern="'image/*,application/pdf'">Drop pdfs or images here or click to upload</div>
-                                                <!-- Drop image -->
-                                            </label>
-                                            <div class="col-sm-3">
-                                                <!-- button image -->
-                                                <div class="btn btn-default editButton" ngf-select ng-model="Certificate" ngf-multiple="false">Tải lên</div>
-                                                <!-- button image -->
-                                            </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Chứng chỉ:</label>
+                            <div class="col-md-9">
+                                <!-- Choose Image -->
+                                <div class="form-group">
+                                    <label class="col-md-9 control-label">
+                                        <!-- Drop image -->
+                                        <div ngf-drop="" ngf-select="" ng-model="Certificates"
+                                             class="drop-box ng-pristine ng-untouched ng-valid ng-empty"
+                                             ngf-drag-over-class="'dragover'" ngf-multiple="true" ngf-allow-dir="true"
+                                             accept="image/*,application/pdf" ngf-pattern="'image/*,application/pdf'">
+                                            Drop pdfs or images here or click to upload
                                         </div>
-                                    <!-- /Choose Image -->
+                                        <!-- Drop image -->
+                                    </label>
+                                    <div class="col-md-3">
+                                        <!-- button image -->
+                                        <div class="btn btn-default editButton ng-pristine ng-untouched ng-valid ng-empty"
+                                             ngf-select="" ng-model="Certificate" ngf-multiple="false">Tải
+                                            lên
+                                        </div>
+                                        <!-- button image -->
+                                    </div>
                                 </div>
+                                <!-- /Choose Image -->
                             </div>
+                        </div>
                         <!-- /Chứng chỉ -->
                     </div>
-                    <div class="col-lg-6">
+                    <div class="col-md-6">
                         <!-- Hộ khẩu -->
-                            <div class="form-group">
-                                <label class="col-sm-4 control-label">Hộ khẩu:</label>
-                                <div class="col-sm-8">
-                                    <!-- Choose Image -->
-                                        <div class="form-group">
-                                            <label class="col-sm-9 control-label">
-                                                <!-- Drop image -->
-                                                <div ngf-drop ngf-select ng-model="Households" class="drop-box" 
-                                                ngf-drag-over-class="'dragover'" ngf-multiple="true" ngf-allow-dir="true"
-                                                accept="image/*,application/pdf" 
-                                                ngf-pattern="'image/*,application/pdf'">Drop pdfs or images here or click to upload</div>
-                                                <!-- Drop image -->
-                                            </label>
-                                            <div class="col-sm-3">
-                                                <!-- button image -->
-                                                <div class="btn btn-default editButton" ngf-select ng-model="Household" ngf-multiple="false">Tải lên</div>
-                                                <!-- button image -->
-                                            </div>
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Hộ khẩu:</label>
+                            <div class="col-md-8">
+                                <!-- Choose Image -->
+                                <div class="form-group">
+                                    <label class="col-md-9 control-label">
+                                        <!-- Drop image -->
+                                        <div ngf-drop="" ngf-select="" ng-model="Households"
+                                             class="drop-box ng-pristine ng-untouched ng-valid ng-empty"
+                                             ngf-drag-over-class="'dragover'" ngf-multiple="true" ngf-allow-dir="true"
+                                             accept="image/*,application/pdf" ngf-pattern="'image/*,application/pdf'">
+                                            Drop pdfs or images here or click to upload
                                         </div>
-                                    <!-- /Choose Image -->
+                                        <!-- Drop image -->
+                                    </label>
+                                    <div class="col-md-3">
+                                        <!-- button image -->
+                                        <div class="btn btn-default editButton ng-pristine ng-untouched ng-valid ng-empty"
+                                             ngf-select="" ng-model="Household" ngf-multiple="false">Tải
+                                            lên
+                                        </div>
+                                        <!-- button image -->
+                                    </div>
                                 </div>
+                                <!-- /Choose Image -->
                             </div>
+                        </div>
                         <!-- /Hộ khẩu -->
                         <!-- Bằng tốt nghiệp -->
-                            <div class="form-group">
-                                <label class="col-sm-4 control-label">Bằng tốt nghiệp:</label>
-                                <div class="col-sm-8">
-                                    <!-- Choose Image -->
-                                        <div class="form-group">
-                                            <label class="col-sm-9 control-label">
-                                                <!-- Drop image -->
-                                                <div ngf-drop ngf-select ng-model="Diplomas" class="drop-box" 
-                                                ngf-drag-over-class="'dragover'" ngf-multiple="true" ngf-allow-dir="true"
-                                                accept="image/*,application/pdf" 
-                                                ngf-pattern="'image/*,application/pdf'">Drop pdfs or images here or click to upload</div>
-                                                <!-- Drop image -->
-                                            </label>
-                                            <div class="col-sm-3">
-                                                <!-- button image -->
-                                                <div class="btn btn-default editButton" ngf-select ng-model="Diploma" ngf-multiple="false">Tải lên</div>
-                                                <!-- button image -->
-                                            </div>
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Bằng tốt nghiệp:</label>
+                            <div class="col-md-8">
+                                <!-- Choose Image -->
+                                <div class="form-group">
+                                    <label class="col-md-9 control-label">
+                                        <!-- Drop image -->
+                                        <div ngf-drop="" ngf-select="" ng-model="Diplomas"
+                                             class="drop-box ng-pristine ng-untouched ng-valid ng-empty"
+                                             ngf-drag-over-class="'dragover'" ngf-multiple="true" ngf-allow-dir="true"
+                                             accept="image/*,application/pdf" ngf-pattern="'image/*,application/pdf'">
+                                            Drop pdfs or images here or click to upload
                                         </div>
-                                    <!-- /Choose Image -->
+                                        <!-- Drop image -->
+                                    </label>
+                                    <div class="col-md-3">
+                                        <!-- button image -->
+                                        <div class="btn btn-default editButton ng-pristine ng-untouched ng-valid ng-empty"
+                                             ngf-select="" ng-model="Diploma" ngf-multiple="false">Tải lên
+                                        </div>
+                                        <!-- button image -->
+                                    </div>
                                 </div>
+                                <!-- /Choose Image -->
                             </div>
+                        </div>
                         <!-- /Bằng tốt nghiệp -->
                         <!-- Giấy khám sức khỏe -->
-                            <div class="form-group">
-                                <label class="col-sm-4 control-label">Giấy khám sức khỏe:</label>
-                                <div class="col-sm-8">
-                                    <!-- Choose Image -->
-                                        <div class="form-group">
-                                            <label class="col-sm-9 control-label">
-                                                <!-- Drop image -->
-                                                <div ngf-drop ngf-select ng-model="HealthCertifications" class="drop-box" 
-                                                ngf-drag-over-class="'dragover'" ngf-multiple="true" ngf-allow-dir="true"
-                                                accept="image/*,application/pdf" 
-                                                ngf-pattern="'image/*,application/pdf'">Drop pdfs or images here or click to upload</div>
-                                                <!-- Drop image -->
-                                            </label>
-                                            <div class="col-sm-3">
-                                                <!-- button image -->
-                                                <div class="btn btn-default editButton" ngf-select ng-model="HealthCertification" ngf-multiple="false">Tải lên</div>
-                                                <!-- button image -->
-                                            </div>
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Giấy khám sức khỏe:</label>
+                            <div class="col-md-8">
+                                <!-- Choose Image -->
+                                <div class="form-group">
+                                    <label class="col-md-9 control-label">
+                                        <!-- Drop image -->
+                                        <div ngf-drop="" ngf-select="" ng-model="HealthCertifications"
+                                             class="drop-box ng-pristine ng-untouched ng-valid ng-empty"
+                                             ngf-drag-over-class="'dragover'" ngf-multiple="true" ngf-allow-dir="true"
+                                             accept="image/*,application/pdf" ngf-pattern="'image/*,application/pdf'">
+                                            Drop pdfs or images here or click to upload
                                         </div>
-                                    <!-- /Choose Image -->
+                                        <!-- Drop image -->
+                                    </label>
+                                    <div class="col-md-3">
+                                        <!-- button image -->
+                                        <div class="btn btn-default editButton ng-pristine ng-untouched ng-valid ng-empty"
+                                             ngf-select="" ng-model="HealthCertification" ngf-multiple="false">Tải lên
+                                        </div>
+                                        <!-- button image -->
+                                    </div>
                                 </div>
+                                <!-- /Choose Image -->
                             </div>
+                        </div>
                         <!-- /Giấy khám sức khỏe -->
                     </div>
                 </div>
                 <div class="row" style="margin-top: 20px">
-                    <div class="col-lg-5">
+                    <div class="col-md-5">
                         <!-- Tải ảnh -->
-                            <div class="form-group" style="margin-top: 30px">
-                                <label class="col-sm-3 control-label">Tải ảnh:</label>
-                                <div class="col-sm-9">
-                                    <!-- Choose Image -->
-                                        <div class="form-group">
-                                            <label class="col-sm-9 control-label">
-                                                <!-- Drop image -->
-                                                <div ngf-drop ngf-select ng-model="imgEmploys" class="drop-box" 
-                                                ngf-drag-over-class="'dragover'" ngf-multiple="true" ngf-allow-dir="true"
-                                                accept="image/*,application/pdf" 
-                                                ngf-pattern="'image/*,application/pdf'">Drop images here or click to upload</div>
-                                                <!-- Drop image -->
-                                            </label>
-                                            <div class="col-sm-3">
-                                                <!-- button image -->
-                                                <div class="btn btn-default editButton" ngf-select ng-model="imgEmploy" ngf-multiple="false">Tải lên</div>
-                                                <!-- button image -->
-                                            </div>
+                        <div class="form-group" style="margin-top: 30px">
+                            <label class="col-md-3 control-label">Tải ảnh:</label>
+                            <div class="col-md-9">
+                                <!-- Choose Image -->
+                                <div class="form-group">
+                                    <label class="col-md-9 control-label">
+                                        <!-- Drop image -->
+                                        <div ngf-drop="" ngf-select="" ng-model="imgEmploys"
+                                             class="drop-box ng-pristine ng-untouched ng-valid ng-empty"
+                                             ngf-drag-over-class="'dragover'" ngf-multiple="true" ngf-allow-dir="true"
+                                             accept="image/*,application/pdf" ngf-pattern="'image/*,application/pdf'">
+                                            Drop images here or click to upload
                                         </div>
-                                    <!-- /Choose Image -->
+                                        <!-- Drop image -->
+                                    </label>
+                                    <div class="col-md-3">
+                                        <!-- button image -->
+                                        <div class="btn btn-default editButton ng-pristine ng-untouched ng-valid ng-empty"
+                                             ngf-select="" ng-model="imgEmploy" ngf-multiple="false">Tải
+                                            lên
+                                        </div>
+                                        <!-- button image -->
+                                    </div>
                                 </div>
+                                <!-- /Choose Image -->
                             </div>
+                        </div>
                         <!-- /Tải ảnh -->
                     </div>
-                    <div class="col-lg-5 col-lg-offset-1">
+                    <div class="col-md-5 col-md-offset-1">
                         <!-- Ảnh nhân viên -->
-                        <img src="" alt="Picture"  width="250px" height="250px"/>
+                        <img src="" alt="Picture" width="250px" height="250px">
                         <!-- /Ảnh nhân viên -->
                     </div>
                 </div>
@@ -392,5 +447,5 @@
             </div>
         </div>
     </div>
-</form>
+
 </div>
