@@ -15,7 +15,7 @@ var cookieParser = require('cookie-parser');
 var app = express();
 
 var employees = require('./app/routes/employeeCtrl');
-//var department = require('./app/routes/departmentCtrl');
+var department = require('./app/routes/departmentCtrl');
 var role = require('./app/routes/roleRoute');
 
 app.use(bodyParser.urlencoded({extended: false}));
@@ -27,7 +27,7 @@ app.use('/', express.static(__dirname + '/public'));
 app.use('/vendors', express.static(__dirname + '/bower_components'));
 
 app.use('/api', employees);
-//app.use('/api', department);
+app.use('/api', department);
 app.use('/api', role);
 
 /////////////////////////////////////////////////
