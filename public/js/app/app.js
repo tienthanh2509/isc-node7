@@ -20,7 +20,7 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider) {
 
         // Quản lý chức vụ
         .when('/role', {
-            templateUrl: 'views/templates/role.html'
+            templateUrl: 'views/templates/role/role.html'
         })
 
         // Quản lý nhân viên
