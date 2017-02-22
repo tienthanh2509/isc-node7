@@ -19,6 +19,11 @@ var app = angular.module("QuanLyNhanSu", ["ngRoute", "ngFileUpload"]);
             templateUrl: 'views/templates/role.html',
             //controller:'createConstructionCtrl'
         })
+
+        .when('/department', {
+            templateUrl: 'views/templates/department.html',
+            //controller:'createConstructionCtrl'
+        })
         // removed other routes ... *snip
         .otherwise({
             redirectTo: '/'
