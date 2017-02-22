@@ -7,9 +7,9 @@
 var connection = require('../models/connection');
 
 var getListEmployee = function (req, res) {
-    var query = 'SELECT * FROM quanlynhansu.nhanvien';
-    connection.query(query, function (err, rows, field) {
-        //console.log(rows);
+    var query = 'SELECT * FROM NHANVIEN';
+    console.log('Execute query:', query);
+    connection.query(query, function (err, rows) {
         res.end(JSON.stringify(rows));
     });
 };
