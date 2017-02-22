@@ -32,7 +32,7 @@ $(document).ready(function() {
         $RIGHT_COL.css('min-height', contentHeight);
     };
 
-    $SIDEBAR_MENU.find('a').on('click', function(ev) {
+    $SIDEBAR_MENU.find('a').on('click', function() {
         var $li = $(this).parent();
 
         if ($li.is('.active')) {
@@ -231,14 +231,3 @@ $(document).ready(function() {
         }
     });
 });
-
-// NProgress
-if (typeof NProgress != 'undefined') {
-    $(document).ready(function () {
-        NProgress.start();
-    });
-
-    $(window).load(function () {
-        NProgress.done();
-    });
-}

@@ -32,9 +32,9 @@ npm install
 # Install bower dependencies
 bower install
 
-~~# Grunt task "grunt watch" if needed!~~
-~~# Available task: default, css, js, clean, copy~~
-~~grunt~~
+# Grunt task "grunt watch" if needed!
+# Available task: default, css, js, clean
+grunt
 
 # Run nodejs express server | Use PORT env for custom listening port
 npm start
