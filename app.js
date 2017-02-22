@@ -14,9 +14,10 @@ var cookieParser = require('cookie-parser');
 
 var app = express();
 
-var employees = require('./app/routes/employeeCtrl');
-var department = require('./app/routes/departmentCtrl');
+var employees = require('./app/routes/employeeRoute');
+var department = require('./app/routes/departmentRoute');
 var role = require('./app/routes/roleRoute');
+var majoring = require('./app/routes/majoringRoute');
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
@@ -29,6 +30,7 @@ app.use('/vendors', express.static(__dirname + '/bower_components'));
 app.use('/api', employees);
 app.use('/api', department);
 app.use('/api', role);
+app.use('/api', majoring);
 
 /////////////////////////////////////////////////
 // catch 404 and forward to error handler

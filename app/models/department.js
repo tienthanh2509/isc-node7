@@ -14,6 +14,15 @@ var getListDepartment = function (req, res) {
     });
 };
 
+var getDepartmentName = function(req, res){
+    var query = 'SELECT MAPB,TENPHONGBAN FROM PHONGBAN';
+    connection.query(query, function(err, rows, field){
+        //console.log(rows);
+        res.end(JSON.stringify(rows));
+    });
+};
+
 module.exports = {
-    getListDepartment: getListDepartment
+    getListDepartment: getListDepartment,
+    getDepartmentName: getDepartmentName
 };
