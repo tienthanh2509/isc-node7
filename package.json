@@ -23,6 +23,7 @@
   "homepage": "https://github.com/tienthanh2509/isc-node7#readme",
   "dependencies": {
     "body-parser": "^1.16.0",
+    "cookie-parser": "^1.4.3",
     "express": "^4.14.0",
     "express-session": "^1.15.1",
     "install": "^0.8.6",
