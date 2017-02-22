@@ -11,4 +11,8 @@ router.get('/role', function(req, res){
     role.getRole(req, res);
 });
 
+router.get('/roleName', function(req, res){
+    role.getRoleName(req, res);
+});
+
 module.exports = router;

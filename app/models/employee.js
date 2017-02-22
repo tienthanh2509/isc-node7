@@ -14,6 +14,22 @@ var getListEmployee = function (req, res) {
     });
 };
 
+var insertEmployee = function(employee, res){
+    //console.log(employee);
+    var values = [
+        [employee.maChucVu, employee.maPhongBan, employee.MaNhanVien, employee.Ho, employee.Ten, employee.TonGiao, employee.NgaySinh, employee.DiaChi, employee.DienThoai, employee.Email, employee.imgEmployPath, employee.GioiTinh]
+    ];
+    connection.query("INSERT INTO NHANVIEN(MACV, MAPB, MANV, HONV, TENNV, TONGIAO, NGAYSINH, DIACHI, SODIENTHOAI, EMAIL, HINHANH, GIOITINH) VALUES ?", [values], function(err){
+        if(err){
+            res.end(err.message);
+        } else {
+            console.log('succes');
+            res.end('succes');      
+        }
+    });
+};
+
 module.exports = {
-    getListEmployee: getListEmployee
+    getListEmployee: getListEmployee,
+    insertEmployee: insertEmployee
 };

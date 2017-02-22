@@ -8,7 +8,7 @@
             "type": "node",
             "request": "launch",
             "name": "Launch Program",
-            "program": "${workspaceRoot}\\app.js",
+            "program": "${workspaceRoot}\\bin\\www",
             "cwd": "${workspaceRoot}",
             "env": {
                 "DB_HOST": "103.27.236.133",

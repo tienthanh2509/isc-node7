@@ -1,5 +1,5 @@
 app.controller('employeeCtrl', ['$scope', 'Upload', '$timeout', '$http', 'QLNS', function($scope, Upload, $timeout, $http, QLNS){
-
+    
     $scope.employee = {
         Ho: '',
         Ten: '',
@@ -19,37 +19,165 @@ app.controller('employeeCtrl', ['$scope', 'Upload', '$timeout', '$http', 'QLNS',
         CertificatePath: '',
         HouseholdPath: '',
         DiplomaPath: '',
-        HealthCertificationPath: ''
+        HealthCertificationPath: '',
+        PhongBan: '',
+        ChucVu: '',
+        maPhongBan: '',
+        maChucVu: '',
+        maChuyenNghanh: '',
+        ChuyenNghanh: '',
+        TuNgay: '',
+        DenNgay: '',
+        MaNhanVien: ''
     };
 
+var clearEmployee = function(){
+        $scope.employee = {
+        Ho: '',
+        Ten: '',
+        NgaySinh: '',
+        DiaChi: '',
+        GioiTinh: '',
+        DienThoai: '',
+        Email: '',
+        MaSoBaoHiem: '',
+        TrinhDo: '',
+        TonGiao: '',
+        ChungChiChuyenNghanh: '',
+        ChungChiAnhVan: '',
+        imgEmployPath: '',
+        CVPath: '',
+        ScoreTablePath: '',
+        CertificatePath: '',
+        HouseholdPath: '',
+        DiplomaPath: '',
+        HealthCertificationPath: '',
+        PhongBan: '',
+        ChucVu: '',
+        maPhongBan: '',
+        maChucVu: '',
+        maChuyenNghanh: '',
+        ChuyenNghanh: '',
+        TuNgay: '',
+        DenNgay: '',
+        MaNhanVien: ''
+    };
+    $scope.CVs[0].name = '';
+    $scope.ScoreTables[0].name = '';
+    $scope.Certificates[0].name = '';
+    $scope.Households[0].name = '';
+    $scope.Diplomas[0].name = '';
+    $scope.HealthCertifications[0].name = '';
+};
     // Lưu
-    $scope.Save = function(){
-        $scope.employee.Ho = $scope.Ho;
-        $scope.employee.Ten = $scope.Ten;
-        $scope.employee.NgaySinh = $scope.NgaySinh;
-        $scope.employee.DiaChi = $scope.DiaChi;
-        $scope.employee.GioiTinh = $scope.GioiTinh;
-        $scope.employee.DienThoai = $scope.DienThoai;
-        $scope.employee.Email = $scope.Email;
-        $scope.employee.MaSoBaoHiem = $scope.MaSoBaoHiem;
-        $scope.employee.TrinhDo = $scope.TrinhDo;
-        $scope.employee.TonGiao = $scope.TonGiao;
-        $scope.uploadImage($scope.imgEmploys);
-        $scope.uploadCV($scope.CVs);
-        $scope.uploadScoreTable($scope.ScoreTables);
-        $scope.uploadCertificate($scope.Certificates);
-        $scope.uploadHousehold($scope.Households);
-        $scope.uploadDiploma($scope.Diplomas);
-        $scope.uploadHealthCertification($scope.HealthCertifications);
-        console.log($scope.employee);
-        QLNS.employee.POST($scope.employee).then(function(res){
-            console.log('success');
+    $scope.Save = function(){     
+        //console.log($scope.employee);
+        if(!checkDepartment()){
+            alert('Vui lòng chọn Phòng Ban');
+        } else if(!checkRole()){
+            alert('VUi lòng chọn Chức Vụ');
+        } else if(!checkMajor()){
+            alert('Vui lòng chọn Chuyên Nghành');
+        } else if(!checkGender()){
+            alert('Vui lòng chọn Giới Tính');
+        } else{
+            QLNS.employee.POST($scope.employee).then(function(res){
+                alert(res.data);
+                clearEmployee();
+                refesh();
+            });
+        }
+    };
+
+    $scope.selectDepartment = function(mpb, pb){
+        $scope.employee.maPhongBan = mpb;
+        $scope.employee.PhongBan = pb;
+        console.log(pb);
+    };
+
+    $scope.selectRole = function(mcv, cv){
+        $scope.employee.maChucVu = mcv;
+        $scope.employee.ChucVu = cv;
+        console.log(cv);
+    };
+
+    $scope.selectMajoring = function(mcn, cn){
+        $scope.employee.maChuyenNghanh = mcn;
+        $scope.employee.ChuyenNghanh = cn;
+        console.log(cn);
+    };
+
+    $scope.selectGender = function(genderName){
+        if(genderName === 'Nam'){
+            $scope.employee.GioiTinh = 1;
+            $scope.gender = genderName;
+        } else if(genderName === 'Nữ'){
+            $scope.employee.GioiTinh = 0;
+            $scope.gender = genderName;
+        }
+    };
+
+    //Refesh Add Employee page
+    var refesh = function(){
+        $scope.employee.PhongBan = 'Chọn';
+        $scope.employee.ChucVu = 'Chọn';
+        $scope.employee.ChuyenNghanh = 'Chọn';
+        $scope.gender = 'Chọn';
+        QLNS.department.GETNAME().then(function(res){
+            //console.log(res.data);
+            $scope.departments = res.data;
+        });
+        QLNS.role.GETNAME().then(function(res){
+            //console.log(res.data);
+            $scope.roles = res.data;
+        });
+        QLNS.majoring.GET().then(function(res){
+            //console.log(res.data);
+            $scope.majoring = res.data;
         });
     };
+    refesh();
+
+    // Check Phòng Ban
+    var checkDepartment = function(){
+        if($scope.employee.PhongBan === 'Chọn' || $scope.employee.PhongBan === ''){
+            return false;
+        } else {
+            return true;
+        }
+    };
+
+    // check Chức Vụ
+    var checkRole = function(){
+        if($scope.employee.ChucVu === 'Chọn' || $scope.employee.ChucVu === ''){
+            return false;
+        } else {
+            return true;
+        }
+    };
+
+    // check Chuyên Nghành
+    var checkMajor = function(){
+        if($scope.employee.ChuyenNghanh === 'Chọn' || $scope.employee.ChuyenNghanh === ''){
+            return false;
+        } else {
+            return true;
+        }
+    };
+
+    // check Giới Tính
+    var checkGender = function(){
+        if($scope.gender === 'Chọn' || $scope.gender === ''){
+            return false;
+        } else {
+            return true;
+        }
+    }
 
     // Image Employee
     $scope.$watch('imgEmploys', function () {
-        console.log($scope.imgEmploys);  
+        //console.log($scope.imgEmploys);  
+        $scope.uploadImage($scope.imgEmploys);
     });
     $scope.$watch('imgEmploy', function () {
         if ($scope.imgEmploy != null) {
@@ -61,7 +189,8 @@ app.controller('employeeCtrl', ['$scope', 'Upload', '$timeout', '$http', 'QLNS',
 
     // CV
     $scope.$watch('CVs', function () {
-        console.log($scope.CVs);      
+        //console.log($scope.CVs[0].name);   
+        $scope.uploadCV($scope.CVs);   
     });
     $scope.$watch('CV', function () {
         if ($scope.CV != null) {
@@ -73,7 +202,8 @@ app.controller('employeeCtrl', ['$scope', 'Upload', '$timeout', '$http', 'QLNS',
 
     // Bảng điểm
     $scope.$watch('ScoreTables', function () {
-        console.log($scope.ScoreTables); 
+        //console.log($scope.ScoreTables); 
+        $scope.uploadScoreTable($scope.ScoreTables);
     });
     $scope.$watch('ScoreTable', function () {
         if ($scope.ScoreTable != null) {
@@ -85,7 +215,8 @@ app.controller('employeeCtrl', ['$scope', 'Upload', '$timeout', '$http', 'QLNS',
 
     // Chứng chỉ
     $scope.$watch('Certificates', function () {
-        console.log($scope.Certificates);
+        //console.log($scope.Certificates);
+        $scope.uploadCertificate($scope.Certificates);
     });
     $scope.$watch('Certificate', function () {
         if ($scope.Certificate != null) {
@@ -97,7 +228,8 @@ app.controller('employeeCtrl', ['$scope', 'Upload', '$timeout', '$http', 'QLNS',
 
     // Hộ khẩu
     $scope.$watch('Households', function () {
-        console.log($scope.Households);
+        //console.log($scope.Households);
+        $scope.uploadHousehold($scope.Households);
     });
     $scope.$watch('Household', function () {
         if ($scope.Household != null) {
@@ -109,7 +241,8 @@ app.controller('employeeCtrl', ['$scope', 'Upload', '$timeout', '$http', 'QLNS',
 
     // Bằng tốt nghiệp
     $scope.$watch('Diplomas', function () {
-        console.log($scope.Diplomas); 
+        //console.log($scope.Diplomas); 
+        $scope.uploadDiploma($scope.Diplomas);
     });
     $scope.$watch('Diploma', function () {
         if ($scope.Diploma != null) {
@@ -121,7 +254,8 @@ app.controller('employeeCtrl', ['$scope', 'Upload', '$timeout', '$http', 'QLNS',
 
     // Giấy khám sức khỏe
     $scope.$watch('HealthCertifications', function () {
-        console.log($scope.HealthCertifications);
+        //console.log($scope.HealthCertifications);
+        $scope.uploadHealthCertification($scope.HealthCertifications);
     });
     $scope.$watch('HealthCertification', function () {
         if ($scope.HealthCertification != null) {
@@ -143,7 +277,8 @@ app.controller('employeeCtrl', ['$scope', 'Upload', '$timeout', '$http', 'QLNS',
                       file: file  
                     }
                 }).then(function (resp) {
-                    $scope.employee.imgEmployPath = resp.data.path;
+                    //console.log(resp.data);
+                    $scope.employee.imgEmployPath = resp.data.originalname;
                     $timeout(function() {
                         $scope.logimg = 'file: ' +
                         resp.config.data.file.name +

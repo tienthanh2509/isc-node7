@@ -5,7 +5,7 @@
   ~ Licensed under MIT (https://github.com/tienthanh2509/isc-node7/blob/master/LICENSE)
   -->
 
- <div ng-app="QuanLyNhanSu" ng-controller="employeeCtrl">
+ <div ng-app="QuanLyNhanSu" ng-controller="departmentCtrl">
      <h1 class="text-center">Danh Sách Phòng Ban</h1>
 
     <div class="col-md-2 input-group-md pull-right">
@@ -28,7 +28,7 @@
         <div class="row">
 			<div class="col-md-12">
             	<div class="table-responsive">
-					<table class="table table-striped custab" ng-repeat="employee in records">
+					<table class="table table-striped custab">
 				        <thead>
 				        <tr>
 				            <th>Mã Phòng Ban</th>
@@ -42,7 +42,7 @@
 				        <tbody>
 					        <tr>
 					            <td>PDT</td>
-					            <td>{{employee.Ho}}</td>
+					            <td>Phòng Đào Tạo</td>
 					            <td>Trương Văn Sang</td>
 					            <td>Tham gia quản lý chương trình giảng day</td>
 					            <td ><input type="checkbox" class="checkthis" /></td>
@@ -67,11 +67,11 @@
 				</div>
 				
 			</div>
-			<!-- class col -->
+			<!-- /class col -->
 		</div>
-		<!-- class row -->
+		<!-- /class row -->
 	</div>
-	<!-- class container -->
+	<!-- /class container -->
 
 				<!-- modal Sua -->
 				<div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">

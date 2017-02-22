@@ -34,44 +34,42 @@ router.get('/employee', function (req, res) {
 });
 
 router.post('/employee', function(req, res){
-    console.log(req.body);
-    res.end();
+    employee.insertEmployee(req.body, res);
 });
-
 
 // upload files start
 router.post('/uploadImage', uploadImage.any(), function(req, res){
-    console.log(req.files);
+    //console.log(req.files);
     res.end(JSON.stringify(req.files[0]));
 });
 
 router.post('/uploadCV', uploadCV.any(), function(req, res){
-    console.log(req);
+    //console.log(req);
     res.end(JSON.stringify(req.files[0]));
 });
 
 router.post('/uploadScoreTable', uploadScoreTable.any(), function(req, res){
-    console.log(req);
+    //console.log(req);
     res.end(JSON.stringify(req.files[0]));
 });
 
 router.post('/uploadHousehold', uploadHousehold.any(), function(req, res){
-    console.log(req);
+    //console.log(req);
     res.end(JSON.stringify(req.files[0]));
 });
 
 router.post('/uploadDiploma', uploadDiploma.any(), function(req, res){
-    console.log(req);
+    //console.log(req);
     res.end(JSON.stringify(req.files[0]));
 });
 
 router.post('/uploadCertificate', uploadCertificate.any(), function(req, res){
-    console.log(req);
+    //console.log(req);
     res.end(JSON.stringify(req.files[0]));
 });
 
 router.post('/uploadHealthCertification', uploadHealthCertification.any(), function(req, res){
-    console.log(req);
+    //console.log(req);
     res.end(JSON.stringify(req.files[0]));
 });
 // upload files end

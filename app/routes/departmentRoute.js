@@ -12,4 +12,8 @@ router.get('/department', function (req, res) {
     department.getListDepartment(req, res);
 });
 
+router.get('/departmentName', function(req, res){
+    department.getDepartmentName(req, res);
+});
+
 module.exports = router;

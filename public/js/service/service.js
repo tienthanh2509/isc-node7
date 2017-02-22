@@ -11,7 +11,23 @@ app.factory('QLNS', function($http){
         role: {
             GET: function(){
                 return $http.get('/api/role')
+            },
+            GETNAME: function(){
+                return $http.get('/api/roleName')
             }
-        }  
+        },
+        department: {
+            GET: function(){
+                return $http.get('/api/department')
+            },
+            GETNAME: function(){
+                return $http.get('/api/departmentName')
+            }
+        },
+        majoring: {
+            GET: function(){
+                return $http.get('/api/majoring')
+            }
+        }
     } 
 });

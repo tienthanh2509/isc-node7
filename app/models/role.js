@@ -8,6 +8,15 @@ var getRole = function(req, res){
     });
 };
 
+var getRoleName = function(req, res){
+    var query = 'SELECT CHUCVU.MACV, CHUCVU.TENCHUVU FROM CHUCVU';
+    connection.query(query, function(err, rows, fileld){
+        //console.log(rows);
+        res.end(JSON.stringify(rows));
+    });
+};
+
 module.exports = {
-    getRole: getRole
+    getRole: getRole,
+    getRoleName: getRoleName
 };
