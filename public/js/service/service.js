@@ -12,6 +12,11 @@ app.factory('QLNS', function($http){
             GET: function(){
                 return $http.get('/api/role')
             }
+        },
+        department: {
+            GET: function(){
+                return $http.get('/api/department')
+            }
         }  
     } 
 });

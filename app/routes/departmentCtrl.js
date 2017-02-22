@@ -6,9 +6,14 @@
 
 var express = require('express');
 var router = express.Router();
+var bodyParser = require('body-parser');
+
+// use model employee
 var department = require('../models/department');
 
-router.get('/department', function (req, res) {
+router.use(bodyParser.json());
+
+router.get('/department', function(req, res){
     department.getListDepartment(req, res);
 });
 
