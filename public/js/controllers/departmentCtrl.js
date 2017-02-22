@@ -1,12 +1,18 @@
-app.controller('departmentCtrl', ['$scope', 'Upload', '$timeout', '$http', 'QLNS', function($scope, Upload, $timeout, $http, QLNS){
+'use strict';
+
+/**
+ * Created by AnhDuc on 22/02/2017.
+ */
+app.controller('departmentCtrl', ['$scope', 'QLNS', function ($scope, QLNS) {
     $scope.department = {
-        Ma: '',
-        TenPhongBan: '',
+        TenPB: '',
         MoTa: '',
-        TinhTrang: ''
+        TinhTrang: 1
     };
-    
-    QLNS.department.GET().then(function(res){
-        console.log(res);
-    });
+
+    $scope.Save = function () {
+        QLNS.department.POST($scope.department).then(function (res) {
+            alert(res.data.message);
+        })
+    }
 }]);
