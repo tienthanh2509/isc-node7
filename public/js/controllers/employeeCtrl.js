@@ -1,3 +1,5 @@
+'use strict';
+
 app.controller('employeeCtrl', ['$scope', 'Upload', '$timeout', '$http', 'QLNS', function($scope, Upload, $timeout, $http, QLNS){
     
     $scope.employee = {
