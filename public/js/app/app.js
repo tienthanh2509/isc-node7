@@ -24,18 +24,17 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider) {
         })
 
         // Quản lý nhân viên
+        .when('/employee', {
+            templateUrl: '/views/templates/showListEmployee.html'
+        })
         .when('/employee/add', {
             templateUrl: '/views/templates/addEmployee.html'
         })
         .when('/employee/update', {
             templateUrl: '/views/templates/updateEmployee.html'
         })
-        .when('/employee/show', {
-            templateUrl: '/views/templates/showListEmployee.html'
-        })
         .when('/employee/contact', {
-            templateUrl: 'views/templates/contactEmployee.html',
-            //controller:'createConstructionCtrl'
+            templateUrl: 'views/templates/contactEmployee.html'
         })
 
         // removed other routes ... *snip

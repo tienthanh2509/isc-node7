@@ -1,3 +1,5 @@
+'use strict';
+
 app.controller('contactCtrl', ['$scope', 'QLNS', function($scope, QLNS){
 
     $scope.email = {

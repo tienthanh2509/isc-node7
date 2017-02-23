@@ -16,10 +16,13 @@ sudo apt-get install -y nodejs ruby
 # Install Bower, Grunt, Sass
 npm install -g bower grunt grunt-cli
 gem install sass
+# Install node-sass if don't want install ruby-sass
+npm install -g node-sass
 
 # Warning! Make sure you have private key before clone using ssh else try https instead
 # Sign your commit with GPG keys
-git clone git@github.com:tienthanh2509/isc-node7.git
+# Fast-clone
+git clone --depth=1 git@github.com:tienthanh2509/isc-node7.git
 
 ```
 

@@ -1,3 +1,5 @@
+'use strict';
+
 app.factory('QLNS', function ($http) {
     return {
         employee: {

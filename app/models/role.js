@@ -10,9 +10,8 @@ var getRole = function(req, res){
 
 var getRoleName = function(req, res){
     var query = 'SELECT CHUCVU.MACV, CHUCVU.TENCHUVU FROM CHUCVU';
-    connection.query(query, function(err, rows, fileld){
-        //console.log(rows);
-        res.end(JSON.stringify(rows));
+    connection.query(query, function(err, rows){
+        res.json(rows);
     });
 };
 
