@@ -34,6 +34,10 @@ router.get('/employee', function (req, res) {
     employee.getListEmployee(req, res);
 });
 
+router.get('/employeeDepartment', function (req, res) {
+    employee.getEmployeeDepartment(req,res);
+});
+
 router.get('/employee/:id', function (req, res) {
     var id = req.params.id;
     console.log(id);

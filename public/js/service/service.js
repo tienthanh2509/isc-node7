@@ -12,6 +12,9 @@ app.factory('QLNS', function ($http) {
             },
             SENDMAIL: function(email){
                 return $http.post('/api/employee/contact', email)
+            },
+            GET_EMP_DEP: function(){
+                return $http.get('/api/employeeDepartment')
             }
         },
         role: {

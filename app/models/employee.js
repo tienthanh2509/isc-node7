@@ -22,6 +22,14 @@ var getEmployeeWithID = function (id, res) {
     });
 };
 
+var getEmployeeDepartment = function(req, res){
+    var query = 'Select ID_NV,HONV,TENNV,EMAIL,HINHANH,DIACHI,SODIENTHOAI,n.TINHTRANG,TENCHUVU,TENPHONGBAN From NHANVIEN n, CHUCVU c,PHONGBAN p Where n.MACV = c.MACV and n.MAPB = p.MAPB';
+    console.log('Execute query:', query);
+    connection.query(query, function (err, rows) {
+        res.end(JSON.stringify(rows));
+    });
+};
+
 var insertEmployee = function(employee, res){
     //console.log(employee);
     var values = [
@@ -40,5 +48,6 @@ var insertEmployee = function(employee, res){
 module.exports = {
     getListEmployee: getListEmployee,
     insertEmployee: insertEmployee,
-    getEmployeeWithID: getEmployeeWithID
+    getEmployeeWithID: getEmployeeWithID,
+    getEmployeeDepartment: getEmployeeDepartment
 };

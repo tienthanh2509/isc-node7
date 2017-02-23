@@ -8,7 +8,7 @@ app.controller('contactCtrl', ['$scope', 'QLNS', function($scope, QLNS){
     };
 
     var refesh = function(){
-        QLNS.employee.GET().then(function(res){
+        QLNS.employee.GET_EMP_DEP().then(function(res){
             //console.log(res.data);
             $scope.employees = res.data;
         });
@@ -27,7 +27,17 @@ app.controller('contactCtrl', ['$scope', 'QLNS', function($scope, QLNS){
     $scope.sendMail = function(){
         QLNS.employee.SENDMAIL($scope.email).then(function(res){
             alert(res.data);
+            $scope.clearMail();
         });
+    };
+
+    $scope.clearMail = function(){
+        $scope.email = {
+            ten: '',
+            email: '',
+            content: '',
+            subject: ''
+        };
     };
 
 }]);
