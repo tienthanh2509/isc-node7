@@ -1,71 +1,56 @@
 <!-- BEGIN: Quản lý phòng ban -->
-<div ng-controller="departmentCtrl">
-    <h1 class="text-center">Danh Sách Phòng Ban</h1>
-
-    <div class="col-md-2 input-group-md pull-right">
-        <input class="form-control" class="search-query" type="text" placeholder="Tìm Kiếm ">
-    </div>
-    <div class="dropdown col-md-10 pull-right">
-        <button class="btn btn-primary dropdown-toggle pull-right" type="button" data-toggle="dropdown">Mã Phòng
-            <span class="caret"></span></button>
-        <ul class="dropdown-menu">
-            <li><a href="#">PDT</a></li>
-            <li><a href="#">IT</a></li>
-            <li><a href="#">PMKT</a></li>
-            <li><a href="#">PVS</a></li>
-            <li><a href="#">PTS</a></li>
-            <li><a href="#">PNS</a></li>
+<div ng-controller="departmentCtrl" class="x_panel">
+    <div class="x_title">
+        <h2>Danh Sách Phòng Ban</h2>
+        <ul class="nav navbar-right panel_toolbox hidden-print">
+            <li>
+                <a href="#!/department/add"><i class="fa fa-plus"></i> Thêm phòng ban</a>
+            </li>
+            <li>
+                <a href="#" onclick="window.print();"><i class="fa fa-print"></i> In</a>
+            </li>
         </ul>
+        <div class="clearfix"></div>
     </div>
+    <div class="x_content">
 
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="table-responsive">
-                    <table class="table table-striped custab">
-                        <thead>
-                        <tr>
-                            <th>Mã Phòng Ban</th>
-                            <th>Tên Phòng Ban</th>
-                            <th>Trưởng Phòng</th>
-                            <th>Mô Tả</th>
-                            <th>Hoạt Động</th>
-                            <th class="text-center">Thao tác</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td>PDT</td>
-                            <td>Phòng Đào Tạo</td>
-                            <td>Trương Văn Sang</td>
-                            <td>Tham gia quản lý chương trình giảng day</td>
-                            <td><input type="checkbox" class="checkthis"/></td>
-                            <td class="text-center">
-                                <p data-placement="top" data-toggle="tooltip">
-                                    <button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit">
-                                        <span class="fa fa-pencil"></span></button>
-                                    <button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete">
-                                        <span class="fa fa-trash"></span></button>
-                                </p>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
+        <table class="table table-striped custab">
+            <thead>
+            <tr>
+                <th>Mã Phòng Ban</th>
+                <th>Tên Phòng Ban</th>
+                <th>Trưởng Phòng</th>
+                <th>Mô Tả</th>
+                <th>Hoạt Động</th>
+                <th class="text-center hidden-print">Thao tác</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-if="loading == null">
+                <td colspan="6" class="text-center">
+                    Đang tải dữ liệu...
+                    <i class="fa fa-refresh fa-spin fa-fw"></i>
+                </td>
+            </tr>
+            <tr ng-repeat="d in departments">
+                <td class="text-center">{{ d.MAPB }}</td>
+                <td>{{ d.TENPHONGBAN }}</td>
+                <td>{{ d.TRUONGPHONG }}</td>
+                <td>{{ d.MOTA }}</td>
+                <td><input type="checkbox" class="checkthis" ng-checked="d.TINHTRANG"/></td>
+                <td class="text-center hidden-print">
+                    <p data-placement="top" data-toggle="tooltip">
+                        <button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit">
+                            <span class="fa fa-pencil"></span></button>
+                        <button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete">
+                            <span class="fa fa-trash"></span></button>
+                    </p>
+                </td>
+            </tr>
+            </tbody>
+        </table>
 
-                    <a href="#!/department/add" class="btn btn-primary btn-sm pull-right">
-                        Thêm mới
-                    </a>
-                    <button type="button" class="btn btn-primary btn-sm pull-right">
-                        XUẤT FILE EXCEL
-                    </button>
-                </div>
-
-            </div>
-            <!-- /class col -->
-        </div>
-        <!-- /class row -->
     </div>
-    <!-- /class container -->
 
     <!-- modal Sua -->
     <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
@@ -122,4 +107,5 @@
     </div>
 
 </div>
+
 <!-- END: Quản lý phòng ban -->
