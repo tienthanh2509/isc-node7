@@ -10,15 +10,14 @@ var getListDepartment = function (req, res) {
     var query = 'SELECT * FROM PHONGBAN';
     console.log('Execute query:', query);
     connection.query(query, function (err, rows) {
-        res.end(JSON.stringify(rows));
+        res.json(rows);
     });
 };
 
 var getDepartmentName = function (req, res) {
     var query = 'SELECT MAPB,TENPHONGBAN FROM PHONGBAN';
     connection.query(query, function (err, rows, field) {
-        //console.log(rows);
-        res.end(JSON.stringify(rows));
+        res.json(rows);
     });
 };
 
