@@ -26,7 +26,10 @@
             </thead>
             <tbody>
             <tr ng-if="loading == null">
-                <td colspan="4" class="text-center">Đang tải dữ liệu...</td>
+                <td colspan="4" class="text-center">
+                    Đang tải dữ liệu...
+                    <i class="fa fa-refresh fa-spin fa-fw"></i>
+                </td>
             </tr>
             <tr ng-repeat="r in roles">
                 <td>{{ r.MACV }}</td>
