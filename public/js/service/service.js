@@ -6,6 +6,12 @@ app.factory('QLNS', function($http){
             },
             POST: function(employee){
                 return $http.post('/api/employee', employee)
+            },
+            GET_WITH_ID: function(id){
+                return $http.get('/api/employee/' + id)
+            },
+            SENDMAIL: function(email){
+                return $http.post('/api/employee/contact', email)
             }
         },
         role: {

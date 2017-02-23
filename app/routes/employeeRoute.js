@@ -8,6 +8,7 @@ var express = require('express');
 var router = express.Router();
 var bodyParser = require('body-parser');
 var multer = require('multer');
+var nodemailer = require('nodemailer');
 
 // direct image employee
 var uploadImage = multer({ dest: 'public/uploads/employeeImage/'});
@@ -33,9 +34,45 @@ router.get('/employee', function (req, res) {
     employee.getListEmployee(req, res);
 });
 
+router.get('/employee/:id', function (req, res) {
+    var id = req.params.id;
+    console.log(id);
+    employee.getEmployeeWithID(id, res);
+});
+
 router.post('/employee', function(req, res){
     employee.insertEmployee(req.body, res);
 });
+
+router.post('/employee/contact', function(req, res){
+    sendMail(req.body, res);
+});
+
+// chức năng send Mail
+var sendMail = function(body, res){
+     var transporter = nodemailer.createTransport({
+        service: 'Gmail',
+        auth: {
+            user: 'helloworldcoffeeshop@gmail.com',
+            pass: 'kimyen2209'
+        }
+    });
+    var mainOptions = {
+        from: 'Node7_Team',
+        to: body.email,
+        subject: body.subject,
+        text: 'You recieved message from ',
+        html: '<p>You have got a new message</b><ul><li>Username:' + body.ten + '</li><li>Email:' + body.email + '</li><li>Username:' + body.content + '</li></ul>'
+    }
+    transporter.sendMail(mainOptions, function(err, info){
+        if(err){
+            res.end('Lỗi mail: ' + err);
+        } else {
+            console.log('message info: ' + info.response);
+            res.end('gửi mail thành công');
+        }
+    });
+};
 
 // upload files start
 router.post('/uploadImage', uploadImage.any(), function(req, res){

@@ -36,6 +36,10 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider) {
             templateUrl: 'views/templates/showListEmployee.html',
             //controller:'createConstructionCtrl'
         })
+        .when('/employee/contact', {
+            templateUrl: 'views/templates/contactEmployee.html',
+            //controller:'createConstructionCtrl'
+        })
 
         // removed other routes ... *snip
         .otherwise({

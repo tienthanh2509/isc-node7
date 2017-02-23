@@ -18,9 +18,12 @@
 
     <!-- Custom Theme Style -->
     <link href="/dist/css/app.min.css" rel="stylesheet">
+    <link href="/vendors/build/css/custom.min.css" rel="stylesheet">
+    <link href="/vendors/css/styles/style.css" rel="stylesheet">
+
   </head>
 
-  <body class="login">
+  <body class="login" ng-app="QuanLyNhanSu" ng-controller="loginCtrl">
     <div>
       <a class="hiddenanchor" id="signup"></a>
       <a class="hiddenanchor" id="signin"></a>
@@ -58,5 +61,9 @@
 
       </div>
     </div>
+    <!-- App -->
+    <script src="/js/app/app.js"></script>
+    <!-- Service -->
+    <script src="/js/service/service.js"></script>
   </body>
 </html>

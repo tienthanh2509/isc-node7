@@ -14,6 +14,14 @@ var getListEmployee = function (req, res) {
     });
 };
 
+var getEmployeeWithID = function (id, res) {
+    var query = 'SELECT * FROM NHANVIEN WHERE ID_NV = ' + id;
+    console.log('Execute query:', query);
+    connection.query(query, function (err, rows) {
+        res.end(JSON.stringify(rows));
+    });
+};
+
 var insertEmployee = function(employee, res){
     //console.log(employee);
     var values = [
@@ -31,5 +39,6 @@ var insertEmployee = function(employee, res){
 
 module.exports = {
     getListEmployee: getListEmployee,
-    insertEmployee: insertEmployee
+    insertEmployee: insertEmployee,
+    getEmployeeWithID: getEmployeeWithID
 };
