@@ -142,39 +142,23 @@ var clearEmployee = function(){
 
     // Check Phòng Ban
     var checkDepartment = function(){
-        if($scope.employee.PhongBan === 'Chọn' || $scope.employee.PhongBan === ''){
-            return false;
-        } else {
-            return true;
-        }
+        return !($scope.employee.PhongBan === 'Chọn' || $scope.employee.PhongBan === '');
     };
 
     // check Chức Vụ
     var checkRole = function(){
-        if($scope.employee.ChucVu === 'Chọn' || $scope.employee.ChucVu === ''){
-            return false;
-        } else {
-            return true;
-        }
+        return !($scope.employee.ChucVu === 'Chọn' || $scope.employee.ChucVu === '');
     };
 
     // check Chuyên Nghành
     var checkMajor = function(){
-        if($scope.employee.ChuyenNghanh === 'Chọn' || $scope.employee.ChuyenNghanh === ''){
-            return false;
-        } else {
-            return true;
-        }
+        return !($scope.employee.ChuyenNghanh === 'Chọn' || $scope.employee.ChuyenNghanh === '');
     };
 
     // check Giới Tính
     var checkGender = function(){
-        if($scope.gender === 'Chọn' || $scope.gender === ''){
-            return false;
-        } else {
-            return true;
-        }
-    }
+        return !($scope.gender === 'Chọn' || $scope.gender === '');
+    };
 
     // Image Employee
     $scope.$watch('imgEmploys', function () {
