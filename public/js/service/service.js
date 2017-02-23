@@ -43,6 +43,11 @@ app.factory('QLNS', function ($http) {
             GET: function () {
                 return $http.get('/api/majoring')
             }
+        },
+        certificate:{
+            GET: function(){
+                return $http.get('/api/certificate')
+            }
         }
     }
 });

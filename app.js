@@ -18,6 +18,7 @@ var employees = require('./app/routes/employeeRoute');
 var department = require('./app/routes/departmentRoute');
 var role = require('./app/routes/roleRoute');
 var majoring = require('./app/routes/majoringRoute');
+var certificate = require('./app/routes/certificateRoute');
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
@@ -31,6 +32,7 @@ app.use('/api', employees);
 app.use('/api', department);
 app.use('/api', role);
 app.use('/api', majoring);
+app.use('/api', certificate);
 
 /////////////////////////////////////////////////
 // catch 404 and forward to error handler
