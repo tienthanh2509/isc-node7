@@ -34,6 +34,10 @@ app.factory('QLNS', function ($http) {
             GET: function () {
                 return $http.get('/api/department')
             },
+            // Lấy danh sách phòng ban + trưởng phòng
+            getDepartmentWithLeader: function () {
+                return $http.get('/api/department/getDepartmentWithLeader')
+            },
             GETNAME: function () {
                 return $http.get('/api/departmentName')
             },

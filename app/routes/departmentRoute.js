@@ -15,6 +15,9 @@ router.get('/department', function (req, res) {
 router.get('/departmentName', function (req, res) {
     department.getDepartmentName(req, res);
 });
+router.get('/department/getDepartmentWithLeader', function (req, res) {
+    department.getDepartmentWithLeader(req, res);
+});
 
 router.post('/department', function (req, res) {
     department.insertDepartment(req.body, res);

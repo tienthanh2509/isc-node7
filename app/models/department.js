@@ -14,6 +14,14 @@ var getListDepartment = function (req, res) {
     });
 };
 
+var getDepartmentWithLeader = function (req, res) {
+    var query = 'SELECT * FROM DS_PHONGBAN';
+    console.log('Execute query:', query);
+    connection.query(query, function (err, rows) {
+        res.json(rows);
+    });
+};
+
 var getDepartmentName = function (req, res) {
     var query = 'SELECT MAPB,TENPHONGBAN FROM PHONGBAN';
     connection.query(query, function (err, rows, field) {
@@ -54,5 +62,6 @@ var insertDepartment = function (department, res) {
 module.exports = {
     getListDepartment: getListDepartment,
     getDepartmentName: getDepartmentName,
+    getDepartmentWithLeader: getDepartmentWithLeader,
     insertDepartment: insertDepartment
 };

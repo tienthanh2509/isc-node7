@@ -11,7 +11,7 @@ app.controller('departmentCtrl', ['$scope', 'QLNS', function ($scope, QLNS) {
         TinhTrang: 1
     };
 
-    QLNS.department.GET().then(function(res){
+    QLNS.department.getDepartmentWithLeader().then(function(res){
         $scope.loading = false;
         $scope.departments = res.data;
     });
