@@ -30,24 +30,40 @@ var employee = require('../models/employee');
 
 router.use(bodyParser.json());
 
+// API lấy tất cả nhân viên
 router.get('/employee', function (req, res) {
     employee.getListEmployee(req, res);
 });
 
+// API lấy nhân viên có phòng ban và chức vụ
 router.get('/employeeDepartment', function (req, res) {
     employee.getEmployeeDepartment(req,res);
 });
 
+// API lấy nhân viên theo ID
 router.get('/employee/:id', function (req, res) {
     var id = req.params.id;
-    console.log(id);
     employee.getEmployeeWithID(id, res);
 });
 
+// API lấy nhân viên theo Tên
+router.get('/employee/getWithName/:id', function (req, res) {
+    var id = req.params.id;
+    employee.getEmployeeWithName(id, res);
+});
+
+// API lấy danh sách nhân viên theo ID phòng ban
+router.get('/employee/getByIdDepartment/:id', function(req, res){
+    var id = req.params.id;
+    employee.getEmployeeWithDepartmentID(id, res);
+});
+
+// API thêm mới một nhân viên
 router.post('/employee', function(req, res){
     employee.insertEmployee(req.body, res);
 });
 
+// API gửi mail cho nhân viên
 router.post('/employee/contact', function(req, res){
     sendMail(req.body, res);
 });

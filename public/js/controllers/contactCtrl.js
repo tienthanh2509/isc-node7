@@ -7,13 +7,14 @@ app.controller('contactCtrl', ['$scope', 'QLNS', function($scope, QLNS){
         subject: ''
     };
 
-    var refesh = function(){
+    // Làm mới trang
+    $scope.refesh = function(){
         QLNS.employee.GET_EMP_DEP().then(function(res){
             //console.log(res.data);
             $scope.employees = res.data;
         });
     };
-    refesh();
+    $scope.refesh();
 
     // Lấy nhân viên theo id
     $scope.inputEmail = function(id){
@@ -24,6 +25,7 @@ app.controller('contactCtrl', ['$scope', 'QLNS', function($scope, QLNS){
         });
     };
 
+    // Gửi mail cho một nhân viên
     $scope.sendMail = function(){
         QLNS.employee.SENDMAIL($scope.email).then(function(res){
             alert(res.data);
@@ -31,6 +33,14 @@ app.controller('contactCtrl', ['$scope', 'QLNS', function($scope, QLNS){
         });
     };
 
+    // Tìm kiếm theo tên nhân viên
+    $scope.search = function(){
+        QLNS.employee.GET_WITH_NAME($scope.searchName).then(function(res){
+            $scope.employees = res.data;
+        });
+    };
+
+    // Làm mới Mail
     $scope.clearMail = function(){
         $scope.email = {
             ten: '',

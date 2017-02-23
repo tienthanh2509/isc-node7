@@ -6,6 +6,7 @@
 
 var connection = require('../models/connection');
 
+// Lấy ra danh sách tất cả nhân viên
 var getListEmployee = function (req, res) {
     var query = 'SELECT * FROM NHANVIEN';
     console.log('Execute query:', query);
@@ -14,6 +15,7 @@ var getListEmployee = function (req, res) {
     });
 };
 
+// Lấy ra danh sách nhân viên theo ID
 var getEmployeeWithID = function (id, res) {
     var query = 'SELECT * FROM NHANVIEN WHERE ID_NV = ' + id;
     console.log('Execute query:', query);
@@ -22,6 +24,16 @@ var getEmployeeWithID = function (id, res) {
     });
 };
 
+// Lấy ra nhân viên theo tên
+var getEmployeeWithName = function(name, res){
+    var query = "SELECT * FROM NHANVIEN WHERE TENNV like '%" + name + "'";
+    console.log('Execute query:', query);
+    connection.query(query, function (err, rows) {
+        res.end(JSON.stringify(rows));
+    });
+};
+
+// Lấy ra danh sách nhân viên, phòng ban, chức vụ
 var getEmployeeDepartment = function(req, res){
     var query = 'Select ID_NV,HONV,TENNV,EMAIL,HINHANH,DIACHI,SODIENTHOAI,n.TINHTRANG,TENCHUVU,TENPHONGBAN From NHANVIEN n, CHUCVU c,PHONGBAN p Where n.MACV = c.MACV and n.MAPB = p.MAPB';
     console.log('Execute query:', query);
@@ -30,6 +42,16 @@ var getEmployeeDepartment = function(req, res){
     });
 };
 
+// Lấy ra danh sách nhân viên theo mã phòng ban
+var getEmployeeWithDepartmentID = function(id, res){
+    var query = "SELECT * FROM NHANVIEN WHERE MAPB = " + id;
+    console.log('Execute query:', query);
+    connection.query(query, function(err, rows){
+        res.end(JSON.stringify(rows));
+    });
+};
+
+// Thêm mới một nhân viên
 var insertEmployee = function(employee, res){
     //console.log(employee);
     var values = [
@@ -49,5 +71,7 @@ module.exports = {
     getListEmployee: getListEmployee,
     insertEmployee: insertEmployee,
     getEmployeeWithID: getEmployeeWithID,
-    getEmployeeDepartment: getEmployeeDepartment
+    getEmployeeDepartment: getEmployeeDepartment,
+    getEmployeeWithDepartmentID: getEmployeeWithDepartmentID,
+    getEmployeeWithName: getEmployeeWithName
 };

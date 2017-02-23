@@ -15,6 +15,9 @@ app.factory('QLNS', function ($http) {
             },
             GET_EMP_DEP: function(){
                 return $http.get('/api/employeeDepartment')
+            },
+            GET_WITH_NAME: function(name){
+                return $http.get('/api/employee/getWithName/' + name)
             }
         },
         role: {
