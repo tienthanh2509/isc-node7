@@ -12,8 +12,12 @@ router.get('/department', function (req, res) {
     department.getListDepartment(req, res);
 });
 
-router.get('/departmentName', function(req, res){
+router.get('/departmentName', function (req, res) {
     department.getDepartmentName(req, res);
+});
+
+router.post('/department', function (req, res) {
+    department.insertDepartment(req.body, res);
 });
 
 module.exports = router;

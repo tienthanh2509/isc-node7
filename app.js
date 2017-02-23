@@ -36,7 +36,7 @@ app.use('/api', majoring);
 // catch 404 and forward to error handler
 app.use(function (req, res) {
     res.status(404);
-    console.info(req.method + ": " + req.url);
+    console.error(req.method + ": " + req.url);
     res.end();
 });
 

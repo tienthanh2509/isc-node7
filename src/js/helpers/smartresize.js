@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * Resize function without multiple trigger
  * 

@@ -14,15 +14,46 @@ var getListDepartment = function (req, res) {
     });
 };
 
-var getDepartmentName = function(req, res){
+var getDepartmentName = function (req, res) {
     var query = 'SELECT MAPB,TENPHONGBAN FROM PHONGBAN';
-    connection.query(query, function(err, rows, field){
+    connection.query(query, function (err, rows, field) {
         //console.log(rows);
         res.end(JSON.stringify(rows));
     });
 };
 
+var insertDepartment = function (department, res) {
+    var values = [
+        [
+            department.TenPB,
+            department.MoTa,
+            department.TinhTrang
+        ]
+    ];
+
+    connection.query("INSERT INTO PHONGBAN(TENPHONGBAN,MOTA,TINHTRANG) VALUES ?", [values], function (err) {
+        if (err) {
+            console.log('Lỗi khi thêm phòng ban.', values);
+            res.json({
+                error: 1,
+                message: err.message
+            });
+        }
+        else {
+            console.log('Đã thêm phòng ban thành công.', values);
+
+            res.json({
+                error: 0,
+                message: 'OK'
+            });
+        }
+
+    })
+
+};
+
 module.exports = {
     getListDepartment: getListDepartment,
-    getDepartmentName: getDepartmentName
+    getDepartmentName: getDepartmentName,
+    insertDepartment: insertDepartment
 };

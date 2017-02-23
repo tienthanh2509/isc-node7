@@ -1,0 +1,45 @@
+<!-- BEGIN: Quản lý chức vụ -->
+<div class="x_panel" ng-controller="roleCtrl">
+    <div class="x_title">
+        <h2>Danh sách chức vụ</h2>
+        <ul class="nav navbar-right panel_toolbox">
+            <li>
+                <a href="#"><i class="fa fa-plus"></i> Thêm chức vụ mới</a>
+            </li>
+            <li>
+                <a href="#" onclick="window.print();"><i class="fa fa-print"></i> In</a>
+            </li>
+        </ul>
+
+        <div class="clearfix"></div>
+    </div>
+    <div class="x_content">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Chức vụ</th>
+                <th>Ngày tạo</th>
+                <th>Ngày cập nhật</th>
+                <th>Thao tác</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-if="loading == null">
+                <td colspan="4" class="text-center">Đang tải dữ liệu...</td>
+            </tr>
+            <tr ng-repeat="r in roles">
+                <td>{{ r.MACV }}</td>
+                <td>{{ r.TENCHUVU }}</td>
+                <td>{{ r.CREATED_AT }}</td>
+                <td>{{ r.UPDATED_AT }}</td>
+                <td>
+                    <button class="btn btn-default btn-sm"><i class="fa fa-edit"></i></button>
+                    <button class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<!-- END: Quản lý chức vụ -->

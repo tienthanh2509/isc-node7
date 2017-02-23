@@ -1,10 +1,10 @@
-app.factory('QLNS', function($http){
+app.factory('QLNS', function ($http) {
     return {
         employee: {
-            GET: function(){
+            GET: function () {
                 return $http.get('/api/employee')
             },
-            POST: function(employee){
+            POST: function (employee) {
                 return $http.post('/api/employee', employee)
             },
             GET_WITH_ID: function(id){
@@ -15,25 +15,28 @@ app.factory('QLNS', function($http){
             }
         },
         role: {
-            GET: function(){
+            GET: function () {
                 return $http.get('/api/role')
             },
-            GETNAME: function(){
+            GETNAME: function () {
                 return $http.get('/api/roleName')
             }
         },
         department: {
-            GET: function(){
+            GET: function () {
                 return $http.get('/api/department')
             },
-            GETNAME: function(){
+            GETNAME: function () {
                 return $http.get('/api/departmentName')
+            },
+            POST: function (department) {
+                return $http.post('/api/department', department)
             }
         },
         majoring: {
-            GET: function(){
+            GET: function () {
                 return $http.get('/api/majoring')
             }
         }
-    } 
+    }
 });
