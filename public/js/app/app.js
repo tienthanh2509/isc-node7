@@ -24,7 +24,7 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider) {
         })
 
         // Quản lý nhân viên
-        .when('/employee/', {
+        .when('/employee', {
             templateUrl: '/views/templates/showListEmployee.html'
         })
         .when('/employee/add', {
