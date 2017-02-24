@@ -50,6 +50,11 @@ app.factory('QLNS', function ($http) {
                 return $http.get('/api/majoring')
             }
         },
+        diploma:{
+            GET: function () {
+                return $http.get('/api/diploma')
+            }
+        },
         certificate:{
             GET: function(){
                 return $http.get('/api/certificate')
