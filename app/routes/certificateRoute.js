@@ -10,7 +10,7 @@ router.use(bodyParser.json());
 
 // API lấy danh sách tất cả chứng chỉ
 router.get('/certificate', function(req, res){
-    certificate.getListCertificate(req, res);
+    certificate.getAll(req, res);
 });
 
 module.exports = router;
