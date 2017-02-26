@@ -25,6 +25,11 @@ app.controller('showListEmployeeCtrl', ['$scope', 'QLNS', function($scope, QLNS)
         });
     };
 
+    // Lấy mã nhân viên lưu vào biến toàn cục
+    $scope.saveIdGobal = function(id){
+        QLNS.values.SET_ID_EMPLOYEE(id);
+    };
+
     // Làm mới trang
     $scope.refesh = function(){
         $scope.getEmployee();

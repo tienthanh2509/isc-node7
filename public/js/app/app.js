@@ -31,7 +31,7 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider) {
             templateUrl: '/views/templates/addEmployee.html'
         })
         .when('/employee/update', {
-            templateUrl: '/views/templates/updateEmployee.html'
+            templateUrl: '/views/templates/employee/updateEmployee.html'
         })
         .when('/employee/contact', {
             templateUrl: 'views/templates/contactEmployee.html'
