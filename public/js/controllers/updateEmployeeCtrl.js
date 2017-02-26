@@ -41,7 +41,6 @@ app.controller('updateEmployeeCtrl', ['$scope', 'QLNS', function($scope, QLNS){
     // Lấy nhân viên theo ID
     $scope.getEmployee = function(){
         QLNS.employee.GET_DE_ROLE(QLNS.values.GET_ID_EMPLOYEE()).then(function(res){
-            console.log(res.data[0]);
             $scope.employee = res.data[0];
         });
     };
