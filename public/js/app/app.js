@@ -37,6 +37,22 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider) {
             templateUrl: 'views/templates/contactEmployee.html'
         })
 
+        // Chứng chỉ
+        .when('/certificate', {
+            templateUrl: 'views/templates/certificate/certificate.html'
+        })
+        .when('/certificate/add', {
+            templateUrl: 'views/templates/certificate/add.html'
+        })
+
+        // Bằng cấp
+        .when('/diploma', {
+            templateUrl: 'views/templates/diploma/diploma.html'
+        })
+        .when('/diploma/add', {
+            templateUrl: 'views/templates/diploma/add.html'
+        })
+
         // removed other routes ... *snip
         .otherwise({
             redirectTo: '/'

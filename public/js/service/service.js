@@ -74,6 +74,11 @@ app.factory('QLNS', function ($http) {
                 return $http.get('/api/majoring')
             }
         },
+        diploma:{
+            GET: function () {
+                return $http.get('/api/diploma')
+            }
+        },
         certificate:{
             // Lấy tất cả chứng chỉ
             GET: function(){

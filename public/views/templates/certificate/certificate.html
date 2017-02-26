@@ -1,13 +1,13 @@
 <!-- BEGIN: Quản lý chức vụ -->
-<div class="x_panel" ng-controller="roleCtrl">
+<div class="x_panel" ng-controller="certificateCtrl">
     <div class="x_title">
-        <h2>Danh sách chức vụ</h2>
+        <h2>Danh sách chứng chỉ</h2>
         <ul class="nav navbar-right panel_toolbox hidden-print">
             <li>
-                <a href="#"><i class="fa fa-plus"></i> Thêm chức vụ mới</a>
+                <a href="#!/certificate/add"><i class="fa fa-plus"></i> Thêm chứng chỉ mới</a>
             </li>
             <li>
-                <a href="#" onclick="window.print();"><i class="fa fa-print"></i> In</a>
+                <a href="#" onclick="window.print(); return false;"><i class="fa fa-print"></i> In</a>
             </li>
         </ul>
 
@@ -19,23 +19,21 @@
             <tr>
                 <th>#</th>
                 <th>Chức vụ</th>
-                <th>Ngày tạo</th>
-                <th>Ngày cập nhật</th>
+                <th>Ghi chú</th>
                 <th class="text-center hidden-print">Thao tác</th>
             </tr>
             </thead>
             <tbody>
             <tr ng-if="loading == null">
-                <td colspan="5" class="text-center">
+                <td colspan="4" class="text-center">
                     Đang tải dữ liệu...
                     <i class="fa fa-refresh fa-spin fa-fw"></i>
                 </td>
             </tr>
-            <tr ng-repeat="r in roles">
-                <td>{{ r.MACV }}</td>
-                <td>{{ r.TENCHUVU }}</td>
-                <td>{{ r.CREATED_AT }}</td>
-                <td>{{ r.UPDATED_AT }}</td>
+            <tr ng-repeat="c in certificates">
+                <td>{{ c.MACHUNGCHI }}</td>
+                <td>{{ c.TENCHUNGCHI }}</td>
+                <td>{{ c.GHICHU }}</td>
                 <td class="text-center hidden-print">
                     <button class="btn btn-default btn-xs"><i class="fa fa-edit"></i></button>
                     <button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button>

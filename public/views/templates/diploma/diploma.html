@@ -1,10 +1,9 @@
-<!-- BEGIN: Quản lý chức vụ -->
-<div class="x_panel" ng-controller="roleCtrl">
+<div class="x_panel" ng-controller="dipplomaCtrl">
     <div class="x_title">
-        <h2>Danh sách chức vụ</h2>
+        <h2>Danh sách bằng cấp</h2>
         <ul class="nav navbar-right panel_toolbox hidden-print">
             <li>
-                <a href="#"><i class="fa fa-plus"></i> Thêm chức vụ mới</a>
+                <a href="#"><i class="fa fa-plus"></i> Thêm bằng cấp mới</a>
             </li>
             <li>
                 <a href="#" onclick="window.print();"><i class="fa fa-print"></i> In</a>
@@ -18,7 +17,7 @@
             <thead>
             <tr>
                 <th>#</th>
-                <th>Chức vụ</th>
+                <th>Tên bằng cấp</th>
                 <th>Ngày tạo</th>
                 <th>Ngày cập nhật</th>
                 <th class="text-center hidden-print">Thao tác</th>
@@ -31,11 +30,11 @@
                     <i class="fa fa-refresh fa-spin fa-fw"></i>
                 </td>
             </tr>
-            <tr ng-repeat="r in roles">
-                <td>{{ r.MACV }}</td>
-                <td>{{ r.TENCHUVU }}</td>
-                <td>{{ r.CREATED_AT }}</td>
-                <td>{{ r.UPDATED_AT }}</td>
+            <tr ng-repeat="d in diplomas">
+                <td>{{ d.MABANGCAP }}</td>
+                <td>{{ d.TENBANGCAP }}</td>
+                <td>{{ d.CREATED_AT }}</td>
+                <td>{{ d.UPDATED_AT }}</td>
                 <td class="text-center hidden-print">
                     <button class="btn btn-default btn-xs"><i class="fa fa-edit"></i></button>
                     <button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button>
@@ -44,5 +43,3 @@
             </tbody>
         </table>
     </div>
-</div>
-<!-- END: Quản lý chức vụ -->
