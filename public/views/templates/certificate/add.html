@@ -1,0 +1,54 @@
+<!-- BEGIN: Form thông tin chứng chỉ -->
+<div class="x_panel" ng-controller="certificateCtrl">
+    <div class="x_title">
+        <h2>Thêm Mới Chứng Chỉ
+            <small>Nhập thông tin</small>
+        </h2>
+        <div class="clearfix"></div>
+    </div>
+    <div class="x_content">
+        <form class="form-horizontal">
+            <div class="row">
+                <!-- Column 1 -->
+                <div class="col-lg-12">
+
+                    <div class="form-group">
+                        <label for="inputMa" class="col-sm-3 control-label">Mã Chứng Chỉ:</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" ng-model="certificate.MaChungChi" id="inputMa" placeholder="Mã Chứng Chỉ..." ng-minlength="1" ng-maxlength="30" disabled>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputTenChungChi" class="col-sm-3 control-label">Tên Chứng Chỉ:</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" ng-model="certificate.TenChungChi" id="inputTenChungChi" placeholder="Tên Chứng Chỉ..." ng-minlength="1" ng-maxlength="32" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputGhiChu" class="col-sm-3 control-label">Ghi Chú:</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" ng-model="certificate.GhiChu" id="inputGhiChu" placeholder="Ghi Chú..." ng-minlength="1" ng-maxlength="255" required>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </form>
+
+        <div class="ln_solid"></div>
+        <div class="col-md-12">
+            <a href="#!/certificate" class="btn btn-default btn-lg pull-left">Hủy</a>
+            <button type="button" class="btn btn-success btn-lg pull-right" ng-click="Save()">Lưu</button>
+        </div>
+    </div>
+</div>
+<!-- END: Form thông tin chứng chỉ -->
+
+<script>
+    $(document).ready(function () {
+        $('input.flat').iCheck({
+            checkboxClass: 'icheckbox_flat-green',
+            radioClass: 'iradio_flat-green'
+        });
+    });
+</script>

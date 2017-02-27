@@ -15,7 +15,38 @@ var getRoleName = function(req, res){
     });
 };
 
+var insertRole = function (role, res) {
+    var values = [
+        [
+            role.MaCV,
+            role.TenCV
+        ]
+    ];
+
+    connection.query("INSERT INTO CHUCVU(MACV, TENCHUVU) VALUES ?", [values], function (err) {
+        if (err) {
+            console.log('Lỗi khi thêm chức vụ.', values);
+            res.json({
+                error: 1,
+                message: err.message
+            });
+        }
+        else {
+            console.log('Đã thêm chức vụ thành công.', values);
+
+            res.json({
+                error: 0,
+                message: 'OK'
+            });
+        }
+
+    })
+
+};
+
 module.exports = {
     getRole: getRole,
-    getRoleName: getRoleName
+    getRoleName: getRoleName,
+    insertRole: insertRole
+
 };

@@ -19,6 +19,7 @@ app.factory('QLNS', function ($http) {
             GET_WITH_ID: function(id){
                 return $http.get('/api/employee/' + id)
             },
+
             // API gửi mail đến nhân viên
             SENDMAIL: function(email){
                 return $http.post('/api/employee/contact', email)
@@ -31,6 +32,14 @@ app.factory('QLNS', function ($http) {
             GET_WITH_NAME: function(name){
                 return $http.get('/api/employee/getWithName/' + name)
             },
+            //Lấy theo chứng chỉ
+            GET_BY_CERTIFICATE: function(id){
+                return $http.get('/api/employee/getEmployeeByCertificate/'+id)
+            },
+            //Lấy theo phòng ban
+            GET_BY_DEPARTMENT: function(id){
+                return $http.get('/api/employee/getEmployeeByDepartment/'+id)
+            },
             // Lấy mốt nhân viên + phòng ban + chức vụ theo ID
             GET_DE_ROLE: function(id){
                 return $http.get('/api/employee/withDepartmentandRole/' + id)
@@ -38,6 +47,10 @@ app.factory('QLNS', function ($http) {
             // Cập nhật nhân viên
             UPDATE: function(employee){
                 return $http.post('/api/employee/update', employee)
+            },
+            // Xóa nhân viên
+            DELETE: function(id){
+                return $http.delete('/api/employee/' + id)
             }
         },
         role: {
@@ -48,6 +61,10 @@ app.factory('QLNS', function ($http) {
             // Lấy tất cả tên chức vụ
             GETNAME: function () {
                 return $http.get('/api/roleName')
+            },
+            //Thêm mới chức vụ
+            POST: function (role) {
+                return $http.post('/api/role', role)
             }
         },
         department: {
@@ -79,15 +96,24 @@ app.factory('QLNS', function ($http) {
             }
         },
         diploma:{
+            //Lấy tất cả bằng cấp
             GET: function () {
                 return $http.get('/api/diploma')
+            },
+            // Thêm mới bằng cấp
+            POST: function (diploma) {
+                return $http.post('/api/diploma', diploma)
             }
         },
         certificate:{
             // Lấy tất cả chứng chỉ
             GET: function(){
                 return $http.get('/api/certificate')
-            }
+            },
+
+            // Thêm mới một chứng chỉ
+            POST: function (certificate) {
+                return $http.post('/api/certificate', certificate)
         },
         values:{
             // Gán giá trị ID nhân viên được chọn làm biến toàn cụ
@@ -100,4 +126,4 @@ app.factory('QLNS', function ($http) {
             }
         }
     }
-});
+}});

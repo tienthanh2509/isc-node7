@@ -51,6 +51,17 @@ router.get('/employee/withDepartmentandRole/:id', function (req, res) {
     var id = req.params.id;
     employee.getEmployeeDepartmentRoleWithID(id, res);
 });
+//API lấy nhân viên theo chứng chỉ
+router.get('/employee/getEmployeeByCertificate/:id', function(req,res){
+    var id = req.params.id;
+    employee.getEmployeeByCertificate(id,res);
+});
+
+//API lấy nhân viên theo phòng ban
+router.get('/employee/getEmployeeByDepartment/:id', function(req,res){
+    var id = req.params.id;
+    employee.getEmployeeByDepartment(id,res);
+});
 
 // API lấy nhân viên theo Tên
 router.get('/employee/getWithName/:id', function (req, res) {
@@ -72,6 +83,12 @@ router.post('/employee', function(req, res){
 // API sửa nhân viên
 router.post('/employee/update', function(req, res){
     employee.updateEmployee(req.body, res);
+});
+
+// API xóa nhân viên
+router.delete('/employee/:id', function(req, res){
+    var id = req.params.id;
+    employee.deleteEmployee(id, res);
 });
 
 // API gửi mail cho nhân viên
