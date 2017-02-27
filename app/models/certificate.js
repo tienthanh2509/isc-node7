@@ -19,9 +19,9 @@ var getAll = function (req, res) {
 var insertCertificate = function(certificate, res){
     //console.log(certificate);
     var values = [
-        [certificate.maChungChi, certificate.TenChungChi, certificate.GhiChu]
+        [certificate.TenChungChi, certificate.GhiChu]
     ];
-    connection.query("INSERT INTO CHUNGCHI(MACHUNGCHI, TENCHUNGCHI, GHICHU) VALUES ?", [values], function(err){
+    connection.query("INSERT INTO CHUNGCHI(TENCHUNGCHI, GHICHU) VALUES ?", [values], function(err){
         if(err){
             res.end(err.message);
         } else {
