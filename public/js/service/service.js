@@ -87,7 +87,7 @@ app.factory('QLNS', function ($http) {
 
             // Thêm mới một chứng chỉ
             POST: function (certificate) {
-                return $http.post('/api/certificate', employee)
+                return $http.post('/api/certificate', certificate)
         },
         values:{
             // Gán giá trị ID nhân viên được chọn làm biến toàn cụ
