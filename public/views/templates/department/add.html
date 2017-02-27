@@ -2,7 +2,6 @@
 <div class="x_panel" ng-controller="departmentCtrl">
     <div class="x_title">
         <h2>Thêm Mới Phòng Ban
-            <small>Nhập thông tin</small>
         </h2>
         <div class="clearfix"></div>
     </div>
@@ -33,8 +32,8 @@
                     <div class="form-group">
                         <label class="col-sm-3 control-label">Trạng Thái:</label>
                         <div class="col-sm-6">
-                            <input type="radio" class="flat" ng-click="department.TinhTrang=1" value="1" checked> Đang Hoạt Động
-                            <input type="radio" class="flat" ng-click="department.TinhTrang=0" value="0"> Ngừng Hoạt Động
+                            <input name="gender" type="radio" class="flat" ng-click="department.TinhTrang=1" value="1" checked> Đang Hoạt Động
+                            <input name="gender" type="radio" class="flat" ng-click="department.TinhTrang=0" value="0"> Ngừng Hoạt Động
                         </div>
                     </div>
                 </div>
@@ -43,9 +42,9 @@
         </form>
 
         <div class="ln_solid"></div>
-        <div class="col-md-12">
-            <a href="#!/department" class="btn btn-default btn-lg pull-left">Hủy</a>
-            <button type="button" class="btn btn-success btn-lg pull-right" ng-click="Save()">Lưu</button>
+        <div class="col-md-offset-5 col-md-12">
+            <button type="button" class="btn btn-success btn-lg " ng-click="Save()">Lưu</button>
+            <a href="#!/department" class="btn btn-default btn-lg ">Hủy</a>
         </div>
     </div>
 </div>
