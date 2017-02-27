@@ -19,6 +19,7 @@ app.factory('QLNS', function ($http) {
             GET_WITH_ID: function(id){
                 return $http.get('/api/employee/' + id)
             },
+
             // API gửi mail đến nhân viên
             SENDMAIL: function(email){
                 return $http.post('/api/employee/contact', email)
@@ -30,6 +31,14 @@ app.factory('QLNS', function ($http) {
             // Lấy ra nhân viên với tên truyền vào
             GET_WITH_NAME: function(name){
                 return $http.get('/api/employee/getWithName/' + name)
+            },
+            //Lấy theo chứng chỉ
+            GET_BY_CERTIFICATE: function(id){
+                return $http.get('/api/employee/getEmployeeByCertificate/'+id)
+            },
+            //Lấy theo phòng ban
+            GET_BY_DEPARTMENT: function(id){
+                return $http.get('/api/employee/getEmployeeByDepartment/'+id)
             },
             // Lấy mốt nhân viên + phòng ban + chức vụ theo ID
             GET_DE_ROLE: function(id){
