@@ -13,7 +13,35 @@ var getDiploma = function(req, res){
         res.json(rows);
     });
 };
+var insertDiploma = function (diploma, res) {
+    var values = [
+        [
+            diploma.TENBANGCAP
+        ]
+    ];
+
+    connection.query("INSERT INTO BANGCAP(TENBANGCAP) VALUES ?", [values], function (err) {
+        if (err) {
+            console.log('Lỗi khi thêm bằng cấp.', values);
+            res.json({
+                error: 1,
+                message: err.message
+            });
+        }
+        else {
+            console.log('Đã thêm bằng cấp thành công.', values);
+
+            res.json({
+                error: 0,
+                message: 'OK'
+            });
+        }
+
+    })
+
+};
 
 module.exports = {
-    getDiploma: getDiploma
+    getDiploma: getDiploma,
+    insertDiploma: insertDiploma
 };

@@ -93,7 +93,6 @@ var insertEmployee = function(employee, res){
 
 // Cập nhật nhân viên
 var updateEmployee = function(employee, res){
-    console.log(employee);
     var values = {
         MACV: employee.MACV,
         MAPB: employee.MAPB,
@@ -118,6 +117,18 @@ var updateEmployee = function(employee, res){
     });
 };
 
+// Xóa nhân viên
+var deleteEmployee = function(id, res){
+    var query = "DELETE FROM NHANVIEN WHERE ID_NV = ?";
+    connection.query(query, [id], function(err, result){
+        if(err){
+            res.end(err.message);
+        } else {
+            res.end('delete succes');
+        }
+    });
+};
+
 module.exports = {
     getListEmployee: getListEmployee,
     insertEmployee: insertEmployee,
@@ -130,4 +141,5 @@ module.exports = {
     getEmployeeWithName: getEmployeeWithName,
     getEmployeeByCertificate: getEmployeeByCertificate,
     getEmployeeByDepartment: getEmployeeByDepartment,
+    deleteEmployee: deleteEmployee
 };

@@ -85,6 +85,12 @@ router.post('/employee/update', function(req, res){
     employee.updateEmployee(req.body, res);
 });
 
+// API xóa nhân viên
+router.delete('/employee/:id', function(req, res){
+    var id = req.params.id;
+    employee.deleteEmployee(id, res);
+});
+
 // API gửi mail cho nhân viên
 router.post('/employee/contact', function(req, res){
     sendMail(req.body, res);

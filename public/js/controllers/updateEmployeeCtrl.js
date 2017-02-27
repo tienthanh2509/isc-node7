@@ -38,10 +38,18 @@ app.controller('updateEmployeeCtrl', ['$scope', 'QLNS', function($scope, QLNS){
         UPDATED_AT: ''
     };
 
+    // Biến tạm
+    $scope.gioitinh = null;
+
     // Lấy nhân viên theo ID
     $scope.getEmployee = function(){
         QLNS.employee.GET_DE_ROLE(QLNS.values.GET_ID_EMPLOYEE()).then(function(res){
             $scope.employee = res.data[0];
+            if(res.data[0].GIOITINH === 1){
+                $scope.gioitinh = "Nam";
+            } else if (res.data[0].GIOITINH === 0){
+                $scope.gioitinh = "Nữ";
+            }
         });
     };
 
@@ -52,8 +60,22 @@ app.controller('updateEmployeeCtrl', ['$scope', 'QLNS', function($scope, QLNS){
         });
     };
 
+    // Xử lý giới tính
+    $scope.selectGender = function(genderName){
+        if(genderName === 'Nam'){
+            $scope.employee.GIOITINH = 1;
+            $scope.gioitinh = genderName;
+        } else if(genderName === 'Nữ'){
+            $scope.employee.GIOITINH = 0;
+            $scope.gioitinh = genderName;
+        }
+    };
+
     // Tải lên thông tin của nhân viên
-    $scope.getEmployee();
+    $scope.refresh = function(){
+        $scope.getEmployee();
+    };
+    $scope.refresh();
 
     // Image Employee
     $scope.$watch('imgEmploys', function () {

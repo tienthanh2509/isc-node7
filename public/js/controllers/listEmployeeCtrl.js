@@ -75,6 +75,19 @@ app.controller('showListEmployeeCtrl', ['$scope', 'QLNS', function($scope, QLNS)
             $scope.phongban = 'Phòng/ Ban';
         }
     }
+    // Xóa nhân viên
+    $scope.delete = function(id){
+        QLNS.employee.DELETE(id).then(function(res){
+            $scope.refesh();
+        });
+    };
+
+    // Chi tiết nhân viên
+    $scope.detail = function(id){
+        QLNS.employee.GET_WITH_ID(id).then(function(res){
+            $scope.oneEmployee = res.data[0];
+        });
+    };
 
     // load dữ liệu khi vào trang
     $scope.refesh();

@@ -47,6 +47,10 @@ app.factory('QLNS', function ($http) {
             // Cập nhật nhân viên
             UPDATE: function(employee){
                 return $http.post('/api/employee/update', employee)
+            },
+            // Xóa nhân viên
+            DELETE: function(id){
+                return $http.delete('/api/employee/' + id)
             }
         },
         role: {
@@ -84,15 +88,24 @@ app.factory('QLNS', function ($http) {
             }
         },
         diploma:{
+            //Lấy tất cả bằng cấp
             GET: function () {
                 return $http.get('/api/diploma')
+            },
+            // Thêm mới bằng cấp
+            POST: function (diploma) {
+                return $http.post('/api/diploma', diploma)
             }
         },
         certificate:{
             // Lấy tất cả chứng chỉ
             GET: function(){
                 return $http.get('/api/certificate')
-            }
+            },
+
+            // Thêm mới một chứng chỉ
+            POST: function (certificate) {
+                return $http.post('/api/certificate', certificate)
         },
         values:{
             // Gán giá trị ID nhân viên được chọn làm biến toàn cụ
@@ -105,4 +118,4 @@ app.factory('QLNS', function ($http) {
             }
         }
     }
-});
+}});

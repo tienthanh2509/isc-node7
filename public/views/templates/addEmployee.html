@@ -1,280 +1,305 @@
 <div ng-controller="employeeCtrl">
-<!-- Add Employee -->
-<div class="row">
-    <div class="col-lg-12 text-center">
-        <div class="h2">Thêm Mới Nhân Viên</div>
-    </div>
-</div>
-
-<form class="form-horizontal" name="form" novalidate>
+    <!-- Add Employee -->
     <div class="row">
-        <!-- Column 1 -->
-        <div class="col-lg-5">     
-            <!-- Họ -->
+        <div class="col-lg-12 text-center">
+            <div class="h2">Thêm Mới Nhân Viên</div>
+        </div>
+    </div>
+
+    <form class="form-horizontal" name="form" novalidate>
+        <div class="row">
+            <!-- Column 1 -->
+            <div class="col-lg-5">
+                <!-- Họ -->
                 <div class="form-group">
                     <label for="inputHo" class="col-sm-3 control-label">Họ:</label>
                     <div class="col-sm-9">
-                    <input type="text" class="form-control" name="Ho" ng-model="employee.Ho" id="inputHo" placeholder="Họ..." ng-minlength="2" ng-maxlength="30" required>
-                    <i class="fa fa-check text-success" ng-show="form.Ho.$dirty && form.Ho.$valid"></i>
-                    <!-- Error -->
-                    <div ng-show="form.Ho.$dirty && form.Ho.$invalid" class="text-danger">
-                        <i class="fa fa-times text-danger"></i>
-                        <span ng-show="form.Ho.$error.required">
+                        <input type="text" class="form-control" name="Ho" ng-model="employee.Ho" id="inputHo"
+                               placeholder="Họ..." ng-minlength="2" ng-maxlength="30" required>
+                        <i class="fa fa-check text-success" ng-show="form.Ho.$dirty && form.Ho.$valid"></i>
+                        <!-- Error -->
+                        <div ng-show="form.Ho.$dirty && form.Ho.$invalid" class="text-danger">
+                            <i class="fa fa-times text-danger"></i>
+                            <span ng-show="form.Ho.$error.required">
                         Họ không được bỏ trống
                         </span>
-                        <span ng-show="form.Ho.$error.minlength">
+                            <span ng-show="form.Ho.$error.minlength">
                         Họ phải dài hơn 2 kí tự
                         </span>
-                        <span ng-show="form.Ho.$error.maxlength">
+                            <span ng-show="form.Ho.$error.maxlength">
                         Họ phải ngắn hơn 30 kí tự
                         </span>
-                    </div>
-                    <!-- /Error -->
+                        </div>
+                        <!-- /Error -->
                     </div>
                 </div>
-            <!-- /Họ -->
-            <!-- Tên -->
+                <!-- /Họ -->
+                <!-- Tên -->
                 <div class="form-group">
                     <label for="inputTen" class="col-sm-3 control-label">Tên:</label>
                     <div class="col-sm-9">
-                    <input type="text" class="form-control" name="Ten" ng-model="employee.Ten" id="inputTen" placeholder="Tên..." ng-minlength="2" ng-maxlength="15" required>
-                    <i class="fa fa-check text-success" ng-show="form.Ten.$dirty && form.Ten.$valid"></i>
-                    <!-- Error -->
-                    <div ng-show="form.Ten.$dirty && form.Ten.$invalid" class="text-danger">
-                        <i class="fa fa-times text-danger"></i>
-                        <span ng-show="form.Ten.$error.required">
+                        <input type="text" class="form-control" name="Ten" ng-model="employee.Ten" id="inputTen"
+                               placeholder="Tên..." ng-minlength="2" ng-maxlength="15" required>
+                        <i class="fa fa-check text-success" ng-show="form.Ten.$dirty && form.Ten.$valid"></i>
+                        <!-- Error -->
+                        <div ng-show="form.Ten.$dirty && form.Ten.$invalid" class="text-danger">
+                            <i class="fa fa-times text-danger"></i>
+                            <span ng-show="form.Ten.$error.required">
                         Tên không được bỏ trống
                         </span>
-                        <span ng-show="form.Ten.$error.minlength">
+                            <span ng-show="form.Ten.$error.minlength">
                         Tên phải dài hơn 1 kí tự
                         </span>
-                        <span ng-show="form.Ten.$error.maxlength">
+                            <span ng-show="form.Ten.$error.maxlength">
                         Tên phải ngắn hơn 15 kí tự
                         </span>
-                    </div>
-                    <!-- /Error -->
+                        </div>
+                        <!-- /Error -->
                     </div>
                 </div>
-            <!-- /Tên -->
-            <!-- Ngày sinh -->
+                <!-- /Tên -->
+                <!-- Ngày sinh -->
                 <div class="form-group">
                     <label for="inputNgaysinh" class="col-sm-3 control-label">Ngày sinh:</label>
                     <div class="col-sm-9">
-                    <div class="form-inline">
-                        <!-- <input type="text" class="form-control" name="NgaySinh" ng-model="employee.NgaySinh" placeholder="dd-mm-yyyy" ng-pattern="/^(0?[1-9]|[12][0-9]|3[01])-(0?[1-9]|1[012])-((19[0-9]{2})|(20[0-1]{1}[0-4]{1}))$/" /> -->
-                        <input type="text" class="form-control" name="NgaySinh" ng-model="employee.NgaySinh" placeholder="yyyy-mm-dd" ng-pattern="/^((19[0-9]{2})|(20[0-9]{1}[0-9]{1}))-(0?[1-9]|1[012])-(0?[1-9]|[12][0-9]|3[01])$/" />
-                        <b class="fa fa-calendar"></b>
-                        <!-- Error -->
-                        <i class="fa fa-check text-success" ng-show="form.NgaySinh.$dirty && form.NgaySinh.$valid"> </i> 
-                        <div ng-show="form.NgaySinh.$dirty && form.NgaySinh.$invalid" class="text-danger"> 
-                        <i class="fa fa-times text-danger"></i> Nhập ngày sinh theo đúng định dạng yyyy-mm-dd 
-                        </div> 
-                        <!-- /Error -->
-                    </div>
+                        <div class="form-inline">
+                            <!-- <input type="text" class="form-control" name="NgaySinh" ng-model="employee.NgaySinh" placeholder="dd-mm-yyyy" ng-pattern="/^(0?[1-9]|[12][0-9]|3[01])-(0?[1-9]|1[012])-((19[0-9]{2})|(20[0-1]{1}[0-4]{1}))$/" /> -->
+                            <input type="text" class="form-control" name="NgaySinh" ng-model="employee.NgaySinh"
+                                   placeholder="yyyy-mm-dd"
+                                   ng-pattern="/^((19[0-9]{2})|(20[0-9]{1}[0-9]{1}))-(0?[1-9]|1[012])-(0?[1-9]|[12][0-9]|3[01])$/"/>
+                            <b class="fa fa-calendar"></b>
+                            <!-- Error -->
+                            <i class="fa fa-check text-success"
+                               ng-show="form.NgaySinh.$dirty && form.NgaySinh.$valid"> </i>
+                            <div ng-show="form.NgaySinh.$dirty && form.NgaySinh.$invalid" class="text-danger">
+                                <i class="fa fa-times text-danger"></i> Nhập ngày sinh theo đúng định dạng
+                                yyyy-mm-dd
+                            </div>
+                            <!-- /Error -->
+                        </div>
                     </div>
                 </div>
-            <!-- /Ngày sinh -->
-            <!-- Địa chỉ -->
+                <!-- /Ngày sinh -->
+                <!-- Địa chỉ -->
                 <div class="form-group">
                     <label for="inputDiachi" class="col-sm-3 control-label">Địa chỉ:</label>
                     <div class="col-sm-9">
-                    <input type="text" class="form-control" name="DiaChi" ng-model="employee.DiaChi" id="inputDiachi" placeholder="Địa chỉ..."  ng-minlength="6" ng-maxlength="50" required>
-                    <i class="fa fa-check text-success" ng-show="form.DiaChi.$dirty && form.DiaChi.$valid"></i>
-                    <!-- Error -->
-                    <div ng-show="form.DiaChi.$dirty && form.DiaChi.$invalid" class="text-danger">
-                        <i class="fa fa-times text-danger"></i>
-                        <span ng-show="form.DiaChi.$error.required">
+                        <input type="text" class="form-control" name="DiaChi" ng-model="employee.DiaChi"
+                               id="inputDiachi" placeholder="Địa chỉ..." ng-minlength="6" ng-maxlength="50" required>
+                        <i class="fa fa-check text-success" ng-show="form.DiaChi.$dirty && form.DiaChi.$valid"></i>
+                        <!-- Error -->
+                        <div ng-show="form.DiaChi.$dirty && form.DiaChi.$invalid" class="text-danger">
+                            <i class="fa fa-times text-danger"></i>
+                            <span ng-show="form.DiaChi.$error.required">
                         Địa chỉ không được bỏ trống
                         </span>
-                        <span ng-show="form.DiaChi.$error.minlength">
+                            <span ng-show="form.DiaChi.$error.minlength">
                         Địa chỉ phải dài hơn 6 kí tự
                         </span>
-                        <span ng-show="form.DiaChi.$error.maxlength">
+                            <span ng-show="form.DiaChi.$error.maxlength">
                         Địa chỉ phải ngắn hơn 50 kí tự
                         </span>
-                    </div>
-                    <!-- /Error -->
+                        </div>
+                        <!-- /Error -->
                     </div>
                 </div>
-            <!-- / Địa chỉ -->
-            <!-- Giới tính -->
+                <!-- / Địa chỉ -->
+                <!-- Giới tính -->
                 <div class="form-group">
                     <label for="inputGioiTinh" class="col-sm-3 control-label">Giới tính:</label>
                     <div class="col-sm-9">
-                    <div class="dropdown">
-                            <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">{{gender}}
-                            <span class="caret"></span></button>
+                        <div class="dropdown">
+                            <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
+                                {{gender}}
+                                <span class="caret"></span></button>
                             <ul class="dropdown-menu">
-                            <li><a ng-click="selectGender('Nam')">Nam</a></li>
-                            <li><a ng-click="selectGender('Nữ')">Nữ</a></li>
-                            </ul>
-                    </div>
-                    </div>
-                </div>
-            <!-- Giới tính -->
-            <!-- Điện thoại -->
-                <div class="form-group">
-                    <label for="inputDienthoai" class="col-sm-3 control-label">Điện Thoại:</label>
-                    <div class="col-sm-9">
-                    <input type="number" class="form-control" name="DienThoai" ng-model="employee.DienThoai" id="inputDienthoai" placeholder="Số điện thoại..."  ng-minlength="8" ng-maxlength="11" required>
-                    <i class="fa fa-check text-success" ng-show="form.DienThoai.$dirty && form.DienThoai.$valid"></i>
-                    <!-- Error -->
-                    <div ng-show="form.DienThoai.$dirty && form.DienThoai.$invalid" class="text-danger">
-                        <i class="fa fa-times text-danger"></i>
-                        <span ng-show="form.DienThoai.$error.required">
-                        Điện thoại không được bỏ trống
-                        </span>
-                        <span ng-show="form.DienThoai.$error.minlength">
-                        Điện thoại phải dài hơn 8 kí tự
-                        </span>
-                        <span ng-show="form.DienThoai.$error.maxlength">
-                        Điện thoại phải ngắn hơn 11 kí tự
-                        </span>
-                    </div>
-                    <!-- /Error -->
-                    </div>
-                </div>
-            <!-- /Điện thoại -->
-            <!-- Email -->
-                <div class="form-group">
-                    <label for="inputEmail" class="col-sm-3 control-label">Email:</label>
-                    <div class="col-sm-9">
-                    <input type="email" class="form-control" name="Email" ng-model="employee.Email" id="inputEmail" placeholder="Email..."  ng-minlength="12" ng-maxlength="40" ng-pattern="/^.+@gmail\.com$/" required>
-                    <i class="fa fa-check text-success" ng-show="form.Email.$dirty && form.Email.$valid"></i>
-                    <!-- Error -->
-                    <div ng-show="form.Email.$dirty && form.Email.$invalid" class="text-danger">
-                        <i class="fa fa-times text-danger"></i>
-                        <span ng-show="form.Email.$error.required">
-                        Email không được bỏ trống
-                        </span>
-                        <span ng-show="form.Email.$error.minlength">
-                        Email phải dài hơn 12 kí tự
-                        </span>
-                        <span ng-show="form.Email.$error.maxlength">
-                        Email phải ngắn hơn 40 kí tự
-                        </span>
-                        <span ng-show="form.Email.$error.pattern">
-                        Thêm  @gmail.com
-                        </span>
-                    </div>
-                    <!-- /Error -->
-                    </div>
-                </div>
-            <!-- /Email -->
-            <!-- Số bảo hiểm -->
-                <div class="form-group">
-                    <label for="inputBaohiem" class="col-sm-3 control-label">Số bảo hiểm:</label>
-                    <div class="col-sm-9">
-                    <input type="text" class="form-control" name="MaSoBaoHiem" ng-model="employee.MaSoBaoHiem" id="inputBaohiem" placeholder="Mã số bảo hiểm..."  ng-minlength="6" ng-maxlength="30" required>
-                    <i class="fa fa-check text-success" ng-show="form.MaSoBaoHiem.$dirty && form.MaSoBaoHiem.$valid"></i>
-                    <!-- Error -->
-                    <div ng-show="form.MaSoBaoHiem.$dirty && form.MaSoBaoHiem.$invalid" class="text-danger">
-                        <i class="fa fa-times text-danger"></i>
-                        <span ng-show="form.MaSoBaoHiem.$error.required">
-                        Mã số bảo hiểm không được bỏ trống
-                        </span>
-                        <span ng-show="form.MaSoBaoHiem.$error.minlength">
-                        Mã số bảo hiểm phải dài hơn 6 kí tự
-                        </span>
-                        <span ng-show="form.MaSoBaoHiem.$error.maxlength">
-                        Mã số bảo hiểm phải ngắn hơn 30 kí tự
-                        </span>
-                    </div>
-                    <!-- /Error -->
-                    </div>
-                </div>
-            <!-- /Số bảo hiểm -->
-            <!-- Phòng ban -->
-                <div class="form-group">
-                    <label for="inputBaohiem" class="col-sm-3 control-label">Phòng/ Ban:</label>
-                    <div class="col-sm-9">
-                    <div class="dropdown">
-                            <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">{{employee.PhongBan}}
-                            <span class="caret"></span></button>
-                            <ul class="dropdown-menu">
-                            <li><a ng-repeat="d in departments" ng-click="selectDepartment(d.MAPB, d.TENPHONGBAN)">{{d.TENPHONGBAN}}</a></li>
-                            </ul>
-                    </div>
-                    </div>
-                </div>
-            <!-- /Phòng ban -->
-            <!-- Chức vụ -->
-                <div class="form-group">
-                    <label for="inputTongiao" class="col-sm-3 control-label">Chức vụ:</label>
-                    <div class="col-sm-9">
-                    <div class="dropdown">
-                            <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" required>{{employee.ChucVu}}
-                            <span class="caret"></span></button>
-                            <ul class="dropdown-menu">
-                            <li><a ng-repeat="r in roles" ng-click="selectRole(r.MACV, r.TENCHUVU)">{{r.TENCHUVU}}</a></li>
+                                <li><a ng-click="selectGender('Nam')">Nam</a></li>
+                                <li><a ng-click="selectGender('Nữ')">Nữ</a></li>
                             </ul>
                         </div>
                     </div>
                 </div>
-            <!-- /Chức vụ -->
-            <!-- Mã nhân viên -->
+                <!-- Giới tính -->
+                <!-- Điện thoại -->
+                <div class="form-group">
+                    <label for="inputDienthoai" class="col-sm-3 control-label">Điện Thoại:</label>
+                    <div class="col-sm-9">
+                        <input type="number" class="form-control" name="DienThoai" ng-model="employee.DienThoai"
+                               id="inputDienthoai" placeholder="Số điện thoại..." ng-minlength="8" ng-maxlength="11"
+                               required>
+                        <i class="fa fa-check text-success"
+                           ng-show="form.DienThoai.$dirty && form.DienThoai.$valid"></i>
+                        <!-- Error -->
+                        <div ng-show="form.DienThoai.$dirty && form.DienThoai.$invalid" class="text-danger">
+                            <i class="fa fa-times text-danger"></i>
+                            <span ng-show="form.DienThoai.$error.required">
+                        Điện thoại không được bỏ trống
+                        </span>
+                            <span ng-show="form.DienThoai.$error.minlength">
+                        Điện thoại phải dài hơn 8 kí tự
+                        </span>
+                            <span ng-show="form.DienThoai.$error.maxlength">
+                        Điện thoại phải ngắn hơn 11 kí tự
+                        </span>
+                        </div>
+                        <!-- /Error -->
+                    </div>
+                </div>
+                <!-- /Điện thoại -->
+                <!-- Email -->
+                <div class="form-group">
+                    <label for="inputEmail" class="col-sm-3 control-label">Email:</label>
+                    <div class="col-sm-9">
+                        <input type="email" class="form-control" name="Email" ng-model="employee.Email" id="inputEmail"
+                               placeholder="Email..." ng-minlength="12" ng-maxlength="40" ng-pattern="/^.+@gmail\.com$/"
+                               required>
+                        <i class="fa fa-check text-success" ng-show="form.Email.$dirty && form.Email.$valid"></i>
+                        <!-- Error -->
+                        <div ng-show="form.Email.$dirty && form.Email.$invalid" class="text-danger">
+                            <i class="fa fa-times text-danger"></i>
+                            <span ng-show="form.Email.$error.required">
+                        Email không được bỏ trống
+                        </span>
+                            <span ng-show="form.Email.$error.minlength">
+                        Email phải dài hơn 12 kí tự
+                        </span>
+                            <span ng-show="form.Email.$error.maxlength">
+                        Email phải ngắn hơn 40 kí tự
+                        </span>
+                            <span ng-show="form.Email.$error.pattern">
+                        Thêm  @gmail.com
+                        </span>
+                        </div>
+                        <!-- /Error -->
+                    </div>
+                </div>
+                <!-- /Email -->
+                <!-- Số bảo hiểm -->
+                <div class="form-group">
+                    <label for="inputBaohiem" class="col-sm-3 control-label">Số bảo hiểm:</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" name="MaSoBaoHiem" ng-model="employee.MaSoBaoHiem"
+                               id="inputBaohiem" placeholder="Mã số bảo hiểm..." ng-minlength="6" ng-maxlength="30"
+                               required>
+                        <i class="fa fa-check text-success"
+                           ng-show="form.MaSoBaoHiem.$dirty && form.MaSoBaoHiem.$valid"></i>
+                        <!-- Error -->
+                        <div ng-show="form.MaSoBaoHiem.$dirty && form.MaSoBaoHiem.$invalid" class="text-danger">
+                            <i class="fa fa-times text-danger"></i>
+                            <span ng-show="form.MaSoBaoHiem.$error.required">
+                        Mã số bảo hiểm không được bỏ trống
+                        </span>
+                            <span ng-show="form.MaSoBaoHiem.$error.minlength">
+                        Mã số bảo hiểm phải dài hơn 6 kí tự
+                        </span>
+                            <span ng-show="form.MaSoBaoHiem.$error.maxlength">
+                        Mã số bảo hiểm phải ngắn hơn 30 kí tự
+                        </span>
+                        </div>
+                        <!-- /Error -->
+                    </div>
+                </div>
+                <!-- /Số bảo hiểm -->
+                <!-- Phòng ban -->
+                <div class="form-group">
+                    <label for="inputBaohiem" class="col-sm-3 control-label">Phòng/ Ban:</label>
+                    <div class="col-sm-9">
+                        <div class="dropdown">
+                            <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
+                                {{employee.PhongBan}}
+                                <span class="caret"></span></button>
+                            <ul class="dropdown-menu">
+                                <li><a ng-repeat="d in departments" ng-click="selectDepartment(d.MAPB, d.TENPHONGBAN)">{{d.TENPHONGBAN}}</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- /Phòng ban -->
+                <!-- Chức vụ -->
+                <div class="form-group">
+                    <label for="inputTongiao" class="col-sm-3 control-label">Chức vụ:</label>
+                    <div class="col-sm-9">
+                        <div class="dropdown">
+                            <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown"
+                                    required>{{employee.ChucVu}}
+                                <span class="caret"></span></button>
+                            <ul class="dropdown-menu">
+                                <li><a ng-repeat="r in roles"
+                                       ng-click="selectRole(r.MACV, r.TENCHUVU)">{{r.TENCHUVU}}</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- /Chức vụ -->
+                <!-- Mã nhân viên -->
                 <div class="form-group">
                     <label for="inputMaNV" class="col-sm-3 control-label">Mã Nhân Viên:</label>
                     <div class="col-sm-9">
-                    <input type="text" class="form-control" name="MaNhanVien" ng-model="employee.MaNhanVien" id="inputBaohiem" placeholder="Mã nhân viên..."  ng-minlength="5" ng-maxlength="10" ng-pattern="/^[a-zA-Z0-9]+$/" required>
-                    <i class="fa fa-check text-success" ng-show="form.MaNhanVien.$dirty && form.MaNhanVien.$valid"></i>
-                    <!-- Error -->
-                    <div ng-show="form.MaNhanVien.$dirty && form.MaNhanVien.$invalid" class="text-danger">
-                        <i class="fa fa-times text-danger"></i>
-                        <span ng-show="form.MaNhanVien.$error.required">
+                        <input type="text" class="form-control" name="MaNhanVien" ng-model="employee.MaNhanVien"
+                               id="inputBaohiem" placeholder="Mã nhân viên..." ng-minlength="5" ng-maxlength="10"
+                               ng-pattern="/^[a-zA-Z0-9]+$/" required>
+                        <i class="fa fa-check text-success"
+                           ng-show="form.MaNhanVien.$dirty && form.MaNhanVien.$valid"></i>
+                        <!-- Error -->
+                        <div ng-show="form.MaNhanVien.$dirty && form.MaNhanVien.$invalid" class="text-danger">
+                            <i class="fa fa-times text-danger"></i>
+                            <span ng-show="form.MaNhanVien.$error.required">
                         Mã nhân viên không được bỏ trống
                         </span>
-                        <span ng-show="form.MaNhanVien.$error.minlength">
-                        Mã nhân viên phải dài hơn 1 kí tự
+                            <span ng-show="form.MaNhanVien.$error.minlength">
+                        Mã nhân viên phải dài hơn hoặc bằng 5 kí tự
                         </span>
-                        <span ng-show="form.MaNhanVien.$error.maxlength">
+                            <span ng-show="form.MaNhanVien.$error.maxlength">
                         Mã nhân viên phải ngắn hơn 30 kí tự
                         </span>
-                        <span ng-show="form.MaNhanVien.$error.pattern">
+                            <span ng-show="form.MaNhanVien.$error.pattern">
                         Mã nhân viên giáo chỉ bao gồm các chử cái và số
                         </span>
-                    </div>
-                    <!-- /Error -->
+                        </div>
+                        <!-- /Error -->
                     </div>
                 </div>
-            <!-- /Mã nhân viê -->
-        </div>
-        <!-- /Column 1 -->
+                <!-- /Mã nhân viê -->
+            </div>
+            <!-- /Column 1 -->
 
-        <!-- Column 2 -->
-        <div class="col-lg-5 col-lg-offset-1">
-            <!-- Trình độ -->
+            <!-- Column 2 -->
+            <div class="col-lg-5 col-lg-offset-1">
+                <!-- Trình độ -->
                 <div class="form-group">
                     <label for="inputTrinhdo" class="col-sm-3 control-label">Trình độ:</label>
                     <div class="col-sm-9">
-                    <input type="text" class="form-control" ng-model="employee.TrinhDo" id="inputTrinhdo" placeholder="Trình độ...">
+                        <input type="text" class="form-control" ng-model="employee.TrinhDo" id="inputTrinhdo"
+                               placeholder="Trình độ...">
                     </div>
                 </div>
-            <!-- /trình độ -->
-            <!-- Tôn giáo -->
+                <!-- /trình độ -->
+                <!-- Tôn giáo -->
                 <div class="form-group">
                     <label for="inputTongiao" class="col-sm-3 control-label">Tôn giáo:</label>
                     <div class="col-sm-9">
-                    <input type="text" class="form-control" name="TonGiao" ng-model="employee.TonGiao" id="inputTongiao" placeholder="Tôn giáo..." ng-minlength="3" ng-maxlength="30" required>
-                    <i class="fa fa-check text-success" ng-show="form.TonGiao.$dirty && form.TonGiao.$valid"></i>
-                    <!-- Error -->
-                    <div ng-show="form.TonGiao.$dirty && form.TonGiao.$invalid" class="text-danger">
-                        <i class="fa fa-times text-danger"></i>
-                        <span ng-show="form.TonGiao.$error.required">
+                        <input type="text" class="form-control" name="TonGiao" ng-model="employee.TonGiao"
+                               id="inputTongiao" placeholder="Tôn giáo..." ng-minlength="3" ng-maxlength="30" required>
+                        <i class="fa fa-check text-success" ng-show="form.TonGiao.$dirty && form.TonGiao.$valid"></i>
+                        <!-- Error -->
+                        <div ng-show="form.TonGiao.$dirty && form.TonGiao.$invalid" class="text-danger">
+                            <i class="fa fa-times text-danger"></i>
+                            <span ng-show="form.TonGiao.$error.required">
                         Tôn giáo không được bỏ trống
                         </span>
-                        <span ng-show="form.TonGiao.$error.minlength">
+                            <span ng-show="form.TonGiao.$error.minlength">
                         Tôn giáo phải dài hơn 3 kí tự
                         </span>
-                        <span ng-show="form.TonGiao.$error.maxlength">
+                            <span ng-show="form.TonGiao.$error.maxlength">
                         Tôn giáo phải ngắn hơn 30 kí tự
                         </span>
-                    </div>
-                    <!-- /Error -->
+                        </div>
+                        <!-- /Error -->
                     </div>
                 </div>
-            <!-- /Tôn giáo -->
-            <!-- Panel chứng chỉ -->
+                <!-- /Tôn giáo -->
+                <!-- Panel chứng chỉ -->
                 <div class="panel panel-default">
                     <div class="panel-heading"><label class="control-label">Các chứng chỉ chuyên ngành:</label></div>
                     <!-- Panel Body -->
@@ -283,24 +308,26 @@
                             <label for="inputPassword3" class="col-sm-5 control-label">Chọn chuyên nghành:</label>
                             <div class="col-sm-7">
                                 <div class="dropdown">
-                                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1"
+                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                                         {{employee.ChuyenNghanh}}
                                         <span class="caret"></span>
                                     </button>
                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                                        <li><a ng-repeat="m in majoring" ng-click="selectMajoring(m.MANGANH, m.TENNH)">{{m.TENNH}}</a></li>
+                                        <li><a ng-repeat="m in majoring" ng-click="selectMajoring(m.MANGANH, m.TENNH)">{{m.TENNH}}</a>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
                             <form>
                                 <label class="checkbox-inline">
-                                <input type="checkbox" value="">Option 1
+                                    <input type="checkbox" value="">Option 1
                                 </label>
                                 <label class="checkbox-inline">
-                                <input type="checkbox" value="">Option 2
+                                    <input type="checkbox" value="">Option 2
                                 </label>
                                 <label class="checkbox-inline">
-                                <input type="checkbox" value="">Option 3
+                                    <input type="checkbox" value="">Option 3
                                 </label>
                             </form>
                         </div>
@@ -310,29 +337,30 @@
                 <!-- /Panel chứng chỉ -->
 
                 <!-- Chứng chỉ anh văn -->
-                    <label for="inputPassword3" class="col-sm-5 control-label">Chứng chỉ tiếng Anh:</label>
-                    <div class="col-sm-10">
-                        <div class="checkbox">
+                <label for="inputPassword3" class="col-sm-5 control-label">Chứng chỉ tiếng Anh:</label>
+                <div class="col-sm-10">
+                    <div class="checkbox">
                         <label><input type="checkbox" value="">Toeic</label>
-                        </div>
-                        <div class="checkbox">
-                        <label><input type="checkbox" value="">Ielts</label>
-                        </div>
-                        <div class="checkbox disabled">
-                        <label><input type="checkbox" value="" disabled>Toefl</label>
-                        </div>
                     </div>
+                    <div class="checkbox">
+                        <label><input type="checkbox" value="">Ielts</label>
+                    </div>
+                    <div class="checkbox disabled">
+                        <label><input type="checkbox" value="" disabled>Toefl</label>
+                    </div>
+                </div>
                 <!-- /Chứng chỉ anh văn -->
                 <div class="form-group">
                     <label for="inputTongiao" class="col-sm-4 control-label">Loại hợp đồng:</label>
                     <div class="col-sm-8">
-                    <div class="dropdown">
-                            <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" style="margin-bottom: 10px">Chọn...
-                            <span class="caret"></span></button>
+                        <div class="dropdown">
+                            <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown"
+                                    style="margin-bottom: 10px">Chọn...
+                                <span class="caret"></span></button>
                             <ul class="dropdown-menu">
-                            <li><a href="#">HTML</a></li>
-                            <li><a href="#">CSS</a></li>
-                            <li><a href="#">JavaScript</a></li>
+                                <li><a href="#">HTML</a></li>
+                                <li><a href="#">CSS</a></li>
+                                <li><a href="#">JavaScript</a></li>
                             </ul>
                         </div>
                     </div>
@@ -343,57 +371,72 @@
                         <div class="form-inline">
                             <div class="input-group">
                                 <span class="input-group-addon" id="basic-addon1">Từ: </span>
-                                <input type="text" class="form-control" aria-describedby="basic-addon1" name="TuNgay" ng-model="employee.TuNgay" placeholder="dd-mm-yyyy" ng-pattern="/^(0?[1-9]|[12][0-9]|3[01])-(0?[1-9]|1[012])-((20[0-9]{1}[0-9]{1}))$/" required/>
+                                <input type="text" class="form-control" aria-describedby="basic-addon1" name="TuNgay"
+                                       ng-model="employee.TuNgay" placeholder="dd-mm-yyyy"
+                                       ng-pattern="/^(0?[1-9]|[12][0-9]|3[01])-(0?[1-9]|1[012])-((20[0-9]{1}[0-9]{1}))$/"
+                                       required/>
                                 <!-- Error -->
-                                <i class="fa fa-check text-success" ng-show="form.TuNgay.$dirty && form.TuNgay.$valid"> </i> 
-                                <div ng-show="form.TuNgay.$dirty && form.TuNgay.$invalid" class="text-danger"> 
-                                <i class="fa fa-times text-danger"></i> Nhập ngày sinh theo đúng định dạng dd-mm-yyyy
-                                </div> 
+                                <i class="fa fa-check text-success"
+                                   ng-show="form.TuNgay.$dirty && form.TuNgay.$valid"> </i>
+                                <div ng-show="form.TuNgay.$dirty && form.TuNgay.$invalid" class="text-danger">
+                                    <i class="fa fa-times text-danger"></i> Nhập ngày sinh theo đúng định dạng
+                                    dd-mm-yyyy
+                                </div>
                                 <!-- /Error -->
                             </div>
                             <div class="input-group">
                                 <span class="input-group-addon" id="basic-addon1">Đến: </span>
-                                <input type="text" class="form-control" aria-describedby="basic-addon1" name="DenNgay" ng-model="employee.DenNgay" placeholder="dd-mm-yyyy" ng-pattern="/^(0?[1-9]|[12][0-9]|3[01])-(0?[1-9]|1[012])-((20[0-9]{1}[0-9]{1}))$/" required/>
+                                <input type="text" class="form-control" aria-describedby="basic-addon1" name="DenNgay"
+                                       ng-model="employee.DenNgay" placeholder="dd-mm-yyyy"
+                                       ng-pattern="/^(0?[1-9]|[12][0-9]|3[01])-(0?[1-9]|1[012])-((20[0-9]{1}[0-9]{1}))$/"
+                                       required/>
                                 <!-- Error -->
-                                <i class="fa fa-check text-success" ng-show="form.DenNgay.$dirty && form.DenNgay.$valid"> </i> 
-                                <div ng-show="form.DenNgay.$dirty && form.DenNgay.$invalid" class="text-danger"> 
-                                <i class="fa fa-times text-danger"></i> Nhập ngày sinh theo đúng định dạng dd-mm-yyyy
-                                </div> 
+                                <i class="fa fa-check text-success"
+                                   ng-show="form.DenNgay.$dirty && form.DenNgay.$valid"> </i>
+                                <div ng-show="form.DenNgay.$dirty && form.DenNgay.$invalid" class="text-danger">
+                                    <i class="fa fa-times text-danger"></i> Nhập ngày sinh theo đúng định dạng
+                                    dd-mm-yyyy
+                                </div>
                                 <!-- /Error -->
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
+            <!-- /Column 2 -->
         </div>
-        <!-- /Column 2 -->
-    </div>
 
-    <div class="row">
-        <div class="panel panel-default">
-            <div class="panel-heading"><label class="control-label">Tải lên các hồ sơ liên quan:</label></div>
-            <div class="panel-body">
-                <div class="row">
-                    <div class="col-lg-5">
-                        <!-- Dơn xin việc -->
+        <div class="row">
+            <div class="panel panel-default">
+                <div class="panel-heading"><label class="control-label">Tải lên các hồ sơ liên quan:</label></div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-lg-5">
+                            <!-- Dơn xin việc -->
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">Đơn xin việc:</label>
                                 <div class="col-sm-9">
                                     <!-- Choose Image -->
-                                        <div class="form-group">
-                                            <label class="col-sm-9 control-label">
-                                                <!-- Drop image -->
-                                                <div ngf-drop ngf-select ng-model="CVs" class="drop-box" 
-                                                ngf-drag-over-class="'dragover'" ngf-multiple="true" ngf-allow-dir="true"
-                                                accept="image/*,application/pdf" 
-                                                ngf-pattern="'image/*,application/pdf'">Thả file pdf hoặc ảnh hoặc click để tải ảnh</div>
-                                                <!-- Drop image -->
-                                            </label>
-                                            <div class="col-sm-3">
-                                                <!-- button image -->
-                                                <div class="btn btn-default editButton" ngf-select ng-model="CV" ngf-multiple="false">Tải lên</div>
-                                                <!-- button image -->
+                                    <div class="form-group">
+                                        <label class="col-sm-9 control-label">
+                                            <!-- Drop image -->
+                                            <div ngf-drop ngf-select ng-model="CVs" class="drop-box"
+                                                 ngf-drag-over-class="'dragover'" ngf-multiple="true"
+                                                 ngf-allow-dir="true"
+                                                 accept="image/*,application/pdf"
+                                                 ngf-pattern="'image/*,application/pdf'">Thả file pdf hoặc ảnh hoặc
+                                                click để tải ảnh
                                             </div>
+                                            <!-- Drop image -->
+                                        </label>
+                                        <div class="col-sm-3">
+                                            <!-- button image -->
+                                            <div class="btn btn-default editButton" ngf-select ng-model="CV"
+                                                 ngf-multiple="false">Tải lên
+                                            </div>
+                                            <!-- button image -->
                                         </div>
+                                    </div>
                                     <!-- /Choose Image -->
                                 </div>
                                 <div class="row">
@@ -401,28 +444,33 @@
                                         <label><i>{{CVs[0].name}}</i></label>
                                     </div>
                                 </div>
-                            </div>     
-                        <!-- /Dơn xin việc -->
-                        <!-- Bảng điểm -->
+                            </div>
+                            <!-- /Dơn xin việc -->
+                            <!-- Bảng điểm -->
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">Bảng điểm:</label>
                                 <div class="col-sm-9">
                                     <!-- Choose Image -->
-                                        <div class="form-group">
-                                            <label class="col-sm-9 control-label">
-                                                <!-- Drop image -->
-                                                <div ngf-drop ngf-select ng-model="ScoreTables" class="drop-box" 
-                                                ngf-drag-over-class="'dragover'" ngf-multiple="true" ngf-allow-dir="true"
-                                                accept="image/*,application/pdf" 
-                                                ngf-pattern="'image/*,application/pdf'">Thả file pdf hoặc ảnh hoặc click để tải ảnh</div>
-                                                <!-- Drop image -->
-                                            </label>
-                                            <div class="col-sm-3">
-                                                <!-- button image -->
-                                                <div class="btn btn-default editButton" ngf-select ng-model="ScoreTable" ngf-multiple="false">Tải lên</div>
-                                                <!-- button image -->
+                                    <div class="form-group">
+                                        <label class="col-sm-9 control-label">
+                                            <!-- Drop image -->
+                                            <div ngf-drop ngf-select ng-model="ScoreTables" class="drop-box"
+                                                 ngf-drag-over-class="'dragover'" ngf-multiple="true"
+                                                 ngf-allow-dir="true"
+                                                 accept="image/*,application/pdf"
+                                                 ngf-pattern="'image/*,application/pdf'">Thả file pdf hoặc ảnh hoặc
+                                                click để tải ảnh
                                             </div>
+                                            <!-- Drop image -->
+                                        </label>
+                                        <div class="col-sm-3">
+                                            <!-- button image -->
+                                            <div class="btn btn-default editButton" ngf-select ng-model="ScoreTable"
+                                                 ngf-multiple="false">Tải lên
+                                            </div>
+                                            <!-- button image -->
                                         </div>
+                                    </div>
                                     <!-- /Choose Image -->
                                 </div>
                                 <div class="row">
@@ -431,28 +479,33 @@
                                     </div>
                                 </div>
                             </div>
-                        <!-- /Bảng điểm -->
-                        <!-- Chứng chỉ -->
+                            <!-- /Bảng điểm -->
+                            <!-- Chứng chỉ -->
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">Chứng chỉ:</label>
                                 <div class="col-sm-9">
                                     <!-- Choose Image -->
-                                        <div class="form-group">
-                                            <label class="col-sm-9 control-label">
-                                                <!-- Drop image -->
-                                                <div ngf-drop ngf-select ng-model="Certificates" class="drop-box" 
-                                                ngf-drag-over-class="'dragover'" ngf-multiple="true" ngf-allow-dir="true"
-                                                accept="image/*,application/pdf" 
-                                                ngf-pattern="'image/*,application/pdf'">Thả file pdf hoặc ảnh hoặc click để tải ảnh</div>
-                                                <!-- Drop image -->
-                                            </label>
-                                            <div class="col-sm-3">
-                                                <!-- button image -->
-                                                <div class="btn btn-default editButton" ngf-select ng-model="Certificate" ngf-multiple="false">Tải lên</div>
-                                                <!-- button image -->
+                                    <div class="form-group">
+                                        <label class="col-sm-9 control-label">
+                                            <!-- Drop image -->
+                                            <div ngf-drop ngf-select ng-model="Certificates" class="drop-box"
+                                                 ngf-drag-over-class="'dragover'" ngf-multiple="true"
+                                                 ngf-allow-dir="true"
+                                                 accept="image/*,application/pdf"
+                                                 ngf-pattern="'image/*,application/pdf'">Thả file pdf hoặc ảnh hoặc
+                                                click để tải ảnh
                                             </div>
-
+                                            <!-- Drop image -->
+                                        </label>
+                                        <div class="col-sm-3">
+                                            <!-- button image -->
+                                            <div class="btn btn-default editButton" ngf-select ng-model="Certificate"
+                                                 ngf-multiple="false">Tải lên
+                                            </div>
+                                            <!-- button image -->
                                         </div>
+
+                                    </div>
                                     <!-- /Choose Image -->
                                 </div>
                                 <div class="row">
@@ -461,29 +514,34 @@
                                     </div>
                                 </div>
                             </div>
-                        <!-- /Chứng chỉ -->
-                    </div>
-                    <div class="col-lg-6">
-                        <!-- Hộ khẩu -->
+                            <!-- /Chứng chỉ -->
+                        </div>
+                        <div class="col-lg-6">
+                            <!-- Hộ khẩu -->
                             <div class="form-group">
                                 <label class="col-sm-4 control-label">Hộ khẩu:</label>
                                 <div class="col-sm-8">
                                     <!-- Choose Image -->
-                                        <div class="form-group">
-                                            <label class="col-sm-9 control-label">
-                                                <!-- Drop image -->
-                                                <div ngf-drop ngf-select ng-model="Households" class="drop-box" 
-                                                ngf-drag-over-class="'dragover'" ngf-multiple="true" ngf-allow-dir="true"
-                                                accept="image/*,application/pdf" 
-                                                ngf-pattern="'image/*,application/pdf'">Thả file pdf hoặc ảnh hoặc click để tải ảnh</div>
-                                                <!-- Drop image -->
-                                            </label>
-                                            <div class="col-sm-3">
-                                                <!-- button image -->
-                                                <div class="btn btn-default editButton" ngf-select ng-model="Household" ngf-multiple="false">Tải lên</div>
-                                                <!-- button image -->
+                                    <div class="form-group">
+                                        <label class="col-sm-9 control-label">
+                                            <!-- Drop image -->
+                                            <div ngf-drop ngf-select ng-model="Households" class="drop-box"
+                                                 ngf-drag-over-class="'dragover'" ngf-multiple="true"
+                                                 ngf-allow-dir="true"
+                                                 accept="image/*,application/pdf"
+                                                 ngf-pattern="'image/*,application/pdf'">Thả file pdf hoặc ảnh hoặc
+                                                click để tải ảnh
                                             </div>
+                                            <!-- Drop image -->
+                                        </label>
+                                        <div class="col-sm-3">
+                                            <!-- button image -->
+                                            <div class="btn btn-default editButton" ngf-select ng-model="Household"
+                                                 ngf-multiple="false">Tải lên
+                                            </div>
+                                            <!-- button image -->
                                         </div>
+                                    </div>
                                     <!-- /Choose Image -->
                                 </div>
                                 <div class="row">
@@ -492,27 +550,32 @@
                                     </div>
                                 </div>
                             </div>
-                        <!-- /Hộ khẩu -->
-                        <!-- Bằng tốt nghiệp -->
+                            <!-- /Hộ khẩu -->
+                            <!-- Bằng tốt nghiệp -->
                             <div class="form-group">
                                 <label class="col-sm-4 control-label">Bằng tốt nghiệp:</label>
                                 <div class="col-sm-8">
                                     <!-- Choose Image -->
-                                        <div class="form-group">
-                                            <label class="col-sm-9 control-label">
-                                                <!-- Drop image -->
-                                                <div ngf-drop ngf-select ng-model="Diplomas" class="drop-box" 
-                                                ngf-drag-over-class="'dragover'" ngf-multiple="true" ngf-allow-dir="true"
-                                                accept="image/*,application/pdf" 
-                                                ngf-pattern="'image/*,application/pdf'">Thả file pdf hoặc ảnh hoặc click để tải ảnh</div>
-                                                <!-- Drop image -->
-                                            </label>
-                                            <div class="col-sm-3">
-                                                <!-- button image -->
-                                                <div class="btn btn-default editButton" ngf-select ng-model="Diploma" ngf-multiple="false">Tải lên</div>
-                                                <!-- button image -->
+                                    <div class="form-group">
+                                        <label class="col-sm-9 control-label">
+                                            <!-- Drop image -->
+                                            <div ngf-drop ngf-select ng-model="Diplomas" class="drop-box"
+                                                 ngf-drag-over-class="'dragover'" ngf-multiple="true"
+                                                 ngf-allow-dir="true"
+                                                 accept="image/*,application/pdf"
+                                                 ngf-pattern="'image/*,application/pdf'">Thả file pdf hoặc ảnh hoặc
+                                                click để tải ảnh
                                             </div>
+                                            <!-- Drop image -->
+                                        </label>
+                                        <div class="col-sm-3">
+                                            <!-- button image -->
+                                            <div class="btn btn-default editButton" ngf-select ng-model="Diploma"
+                                                 ngf-multiple="false">Tải lên
+                                            </div>
+                                            <!-- button image -->
                                         </div>
+                                    </div>
                                     <!-- /Choose Image -->
                                 </div>
                                 <div class="row">
@@ -521,27 +584,32 @@
                                     </div>
                                 </div>
                             </div>
-                        <!-- /Bằng tốt nghiệp -->
-                        <!-- Giấy khám sức khỏe -->
+                            <!-- /Bằng tốt nghiệp -->
+                            <!-- Giấy khám sức khỏe -->
                             <div class="form-group">
                                 <label class="col-sm-4 control-label">Giấy khám sức khỏe:</label>
                                 <div class="col-sm-8">
                                     <!-- Choose Image -->
-                                        <div class="form-group">
-                                            <label class="col-sm-9 control-label">
-                                                <!-- Drop image -->
-                                                <div ngf-drop ngf-select ng-model="HealthCertifications" class="drop-box" 
-                                                ngf-drag-over-class="'dragover'" ngf-multiple="true" ngf-allow-dir="true"
-                                                accept="image/*,application/pdf" 
-                                                ngf-pattern="'image/*,application/pdf'">Thả file pdf hoặc ảnh hoặc click để tải ảnh</div>
-                                                <!-- Drop image -->
-                                            </label>
-                                            <div class="col-sm-3">
-                                                <!-- button image -->
-                                                <div class="btn btn-default editButton" ngf-select ng-model="HealthCertification" ngf-multiple="false">Tải lên</div>
-                                                <!-- button image -->
+                                    <div class="form-group">
+                                        <label class="col-sm-9 control-label">
+                                            <!-- Drop image -->
+                                            <div ngf-drop ngf-select ng-model="HealthCertifications" class="drop-box"
+                                                 ngf-drag-over-class="'dragover'" ngf-multiple="true"
+                                                 ngf-allow-dir="true"
+                                                 accept="image/*,application/pdf"
+                                                 ngf-pattern="'image/*,application/pdf'">Thả file pdf hoặc ảnh hoặc
+                                                click để tải ảnh
                                             </div>
+                                            <!-- Drop image -->
+                                        </label>
+                                        <div class="col-sm-3">
+                                            <!-- button image -->
+                                            <div class="btn btn-default editButton" ngf-select
+                                                 ng-model="HealthCertification" ngf-multiple="false">Tải lên
+                                            </div>
+                                            <!-- button image -->
                                         </div>
+                                    </div>
                                     <!-- /Choose Image -->
                                 </div>
                                 <div class="row">
@@ -550,98 +618,102 @@
                                     </div>
                                 </div>
                             </div>
-                        <!-- /Giấy khám sức khỏe -->
+                            <!-- /Giấy khám sức khỏe -->
+                        </div>
                     </div>
-                </div>
-                <div class="row" style="margin-top: 20px">
-                    <div class="col-lg-5">
-                        <!-- Tải ảnh -->
+                    <div class="row" style="margin-top: 20px">
+                        <div class="col-lg-5">
+                            <!-- Tải ảnh -->
                             <div class="form-group" style="margin-top: 30px">
                                 <label class="col-sm-3 control-label">Tải ảnh:</label>
                                 <div class="col-sm-9">
                                     <!-- Choose Image -->
-                                        <div class="form-group">
-                                            <label class="col-sm-12 control-label">
-                                                <!-- Drop image -->
-                                                    <!-- <div ngf-drop ngf-select ng-model="imgEmploys" class="drop-box" 
-                                                    ngf-drag-over-class="'dragover'" ngf-multiple="true" ngf-allow-dir="true"
-                                                    accept="image/*" 
-                                                    ngf-pattern="'image/*'">Drop images here or click to upload</div> -->
-                                                <!-- Drop image -->
+                                    <div class="form-group">
+                                        <label class="col-sm-12 control-label">
+                                            <!-- Drop image -->
+                                            <!-- <div ngf-drop ngf-select ng-model="imgEmploys" class="drop-box"
+                                            ngf-drag-over-class="'dragover'" ngf-multiple="true" ngf-allow-dir="true"
+                                            accept="image/*"
+                                            ngf-pattern="'image/*'">Drop images here or click to upload</div> -->
+                                            <!-- Drop image -->
                                             <!-- button image -->
-                                                <div id="myfileupload">
-                                                    <input type="file" id="uploadfile" onchange="readURL(this);" ngf-select ng-model="imgEmploy" accept="image/*" ngf-multiple="false" />
-                                                </div>
-                                                <div id="boxchoice">
-                                                    <a href="javascript:" class="Choicefile btn-default">Chọn ảnh nhân viên</a>
-                                                    <p style="clear:both"></p>
-                                                </div>
+                                            <div id="myfileupload">
+                                                <input type="file" id="uploadfile" onchange="readURL(this);" ngf-select
+                                                       ng-model="imgEmploy" accept="image/*" ngf-multiple="false"/>
+                                            </div>
+                                            <div id="boxchoice">
+                                                <a href="javascript:" class="Choicefile btn-default">Chọn ảnh nhân
+                                                    viên</a>
+                                                <p style="clear:both"></p>
+                                            </div>
                                             <!-- button image -->
-                                            </label>
-                                        </div>
+                                        </label>
+                                    </div>
                                     <!-- /Choose Image -->
                                 </div>
                             </div>
-                        <!-- /Tải ảnh -->
-                    </div>
-                    <div class="col-lg-5 col-lg-offset-2">
-                        <!-- Ảnh nhân viên -->
-                        <div id="thumbbox">
-                            <img alt="Picture" width="250px" height="250px" id="thumbimage" style="display: none" />
-                            <a class="removeimg" href="javascript:" ></a>
+                            <!-- /Tải ảnh -->
                         </div>
-                        <label class="filename"></label>
-                        <!-- /Ảnh nhân viên -->
+                        <div class="col-lg-5 col-lg-offset-2">
+                            <!-- Ảnh nhân viên -->
+                            <div id="thumbbox">
+                                <img alt="Picture" width="250px" height="250px" id="thumbimage" style="display: none"/>
+                                <a class="removeimg" href="javascript:"></a>
+                            </div>
+                            <label class="filename"></label>
+                            <!-- /Ảnh nhân viên -->
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="panel-footer text-center">
-                <!-- Button Lưu -->
-                <button class="btn btn-primary btn-lg" ng-disabled="!form.$dirty || (form.$dirty && form.$invalid)" ng-click="Save()"><i class="fa fa-save"></i> Lưu</button>
-                <!-- /Button Lưu -->
+                <div class="panel-footer text-center">
+                    <!-- Button Lưu -->
+                    <button class="btn btn-primary btn-lg" ng-disabled="!form.$dirty || (form.$dirty && form.$invalid)"
+                            ng-click="Save()"><i class="fa fa-save"></i> Lưu
+                    </button>
+                    <!-- /Button Lưu -->
+                </div>
             </div>
         </div>
-    </div>
-</form>
+    </form>
 </div>
 
 <!-- Code JQuery upload ảnh -->
-    <script type="text/javascript">
-        function readURL(input,thumbimage) {
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
-                reader.onload = function (e) {
-                    $("#thumbimage").attr('src', e.target.result);
-                }
-                reader.readAsDataURL(input.files[0]);
-                $("#thumbimage").show();
+<script type="text/javascript">
+    function readURL(input, thumbimage) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $("#thumbimage").attr('src', e.target.result);
             }
-            else {
-                $("#thumbimage").attr('src', input.value);
-                $("#thumbimage").show();
-            }
-            $('.filename').text($("#uploadfile").val());
-            $('.Choicefile').css('background', '#C4C4C4');
-            $('.Choicefile').css('cursor', 'default');
-            $(".Choicefile").unbind('click');
-            $(".removeimg").show();
+            reader.readAsDataURL(input.files[0]);
+            $("#thumbimage").show();
         }
-        $(document).ready(function () {
+        else {
+            $("#thumbimage").attr('src', input.value);
+            $("#thumbimage").show();
+        }
+        $('.filename').text($("#uploadfile").val());
+        $('.Choicefile').css('background', '#C4C4C4');
+        $('.Choicefile').css('cursor', 'default');
+        $(".Choicefile").unbind('click');
+        $(".removeimg").show();
+    }
+    $(document).ready(function () {
+        $(".Choicefile").bind('click', function () {
+            alert('asd');
+            $("#uploadfile").click();
+
+        });
+        $(".removeimg").click(function () {
+            $("#thumbimage").attr('src', '').hide();
+            $("#myfileupload").html('<input type="file" id="uploadfile" onchange="readURL(this);" />');
+            $(".removeimg").hide();
             $(".Choicefile").bind('click', function () {
-              alert('asd');
                 $("#uploadfile").click();
-                
             });
-            $(".removeimg").click(function () {
-                $("#thumbimage").attr('src', '').hide();
-                $("#myfileupload").html('<input type="file" id="uploadfile" onchange="readURL(this);" />');
-                $(".removeimg").hide();
-                $(".Choicefile").bind('click', function () {
-                    $("#uploadfile").click();
-                });
-                $('.Choicefile').css('background','#0877D8');
-                $('.Choicefile').css('cursor', 'pointer');
-                $(".filename").text("");
-            });
-        })
-    </script>
+            $('.Choicefile').css('background', '#0877D8');
+            $('.Choicefile').css('cursor', 'pointer');
+            $(".filename").text("");
+        });
+    })
+</script>
