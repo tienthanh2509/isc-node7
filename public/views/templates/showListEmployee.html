@@ -126,7 +126,7 @@
                             <td>
                             <a type="button" class="btn btn-default btn-xs" data-title="Edit" ng-click="saveIdGobal(i.ID_NV)" href="/#!/employee/update">
                             <span class="fa fa-pencil"></span></a>
-                            <button class="btn btn-danger btn-xs" data-title="Delete">
+                            <button class="btn btn-danger btn-xs" data-title="Delete" ng-click="detail(i.ID_NV)" data-toggle="modal" data-target="#modalDelete">
                             <span class="fa fa-trash"></span></button>
                             </td>
                         </tr>
@@ -139,6 +139,29 @@
         </div>
     </div>
     </div>
+    <!-- Modal -->
+        <div class="modal fade bs-example-modal-sm" id="modalDelete" role="dialog">
+            <div class="modal-dialog">
+            
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Xóa nhân viên</h4>
+                </div>
+                <div class="modal-body">
+                <p>Bạn có chắc muốn xóa nhân viên <b>{{oneEmployee.HONV}} {{oneEmployee.TENNV}}</b></p>
+                <p class="h4"><b>Tất cả dữ liệu liên quan sẽ bị xóa hết!</b></p>
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-danger" ng-click="delete(oneEmployee.ID_NV)" data-dismiss="modal">Xóa</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Hủy</button>
+                </div>
+            </div>
+            
+            </div>
+        </div>
+    <!-- /Modal -->
 </div>
 
 <script type="text/javascript">

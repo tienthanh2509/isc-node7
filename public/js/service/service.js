@@ -38,6 +38,10 @@ app.factory('QLNS', function ($http) {
             // Cập nhật nhân viên
             UPDATE: function(employee){
                 return $http.post('/api/employee/update', employee)
+            },
+            // Xóa nhân viên
+            DELETE: function(id){
+                return $http.delete('/api/employee/' + id)
             }
         },
         role: {
