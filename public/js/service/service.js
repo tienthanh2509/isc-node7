@@ -103,6 +103,10 @@ app.factory('QLNS', function ($http) {
             // Thêm mới bằng cấp
             POST: function (diploma) {
                 return $http.post('/api/diploma', diploma)
+            },
+            // Cập nhật thông tin bằng cấp
+            updateDiploma: function (diploma) {
+                return $http.post('/api/diploma/update/' + diploma.MaBC, diploma)
             }
         },
         certificate:{

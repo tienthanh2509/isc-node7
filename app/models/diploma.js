@@ -40,8 +40,42 @@ var insertDiploma = function (diploma, res) {
     })
 
 };
+var updateDiploma = function (MaBC, diploma, res) {
+    console.log(diploma);
+
+    var values = [
+        diploma.TENBANGCAP,
+        MaPB
+    ];
+
+    var query = 'UPDATE BANGCAP SET TENBANGCAP = ? WHERE MABANGCAP = ?';
+    console.log('Execute query:', query, values);
+
+    connection.query(query, values, function (err) {
+        if (err) {
+            console.log('Lỗi khi cập nhật bằng cấp.');
+            console.log(err.message);
+
+            res.json({
+                error: 1,
+                message: err.message
+            });
+        }
+        else {
+            console.log('Đã cập nhật bằng cấp thành công.');
+
+            res.json({
+                error: 0,
+                message: 'OK'
+            });
+        }
+
+    })
+
+};
 
 module.exports = {
     getDiploma: getDiploma,
-    insertDiploma: insertDiploma
+    insertDiploma: insertDiploma,
+    updateDiploma: updateDiploma
 };
