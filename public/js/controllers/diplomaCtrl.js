@@ -25,11 +25,11 @@ app.controller('diplomaCtrl', ['$scope', 'QLNS', function ($scope, QLNS) {
     $scope.updateDiploma = function () {
         console.log($scope.diploma);
 
-        $scope.saving = true;
+        $scope.loading = true;
         QLNS.diploma.updateDiploma($scope.diploma).then(function (response) {
             console.log(response);
 
-            $scope.saving = false;
+            $scope.loading = false;
             $scope.diploma = {
                 MaBC: null,
                 TENBANGCAP: ''
@@ -40,7 +40,7 @@ app.controller('diplomaCtrl', ['$scope', 'QLNS', function ($scope, QLNS) {
         }, function (response) {
             // TODO: Thiết lập thông báo lỗi
             alert('Some thing went wrong!');
-            $scope.saving = false;
+            $scope.loading = false;
         });
     };
 }]);
