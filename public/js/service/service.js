@@ -105,4 +105,4 @@ app.factory('QLNS', function ($http) {
             }
         }
     }
-});
+}});
