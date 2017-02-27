@@ -37,14 +37,19 @@
                 <td>{{ d.TENPHONGBAN }}</td>
                 <td>{{ d.TRUONGPHONG }}</td>
                 <td>{{ d.MOTA }}</td>
-                <td><input type="checkbox" class="checkthis" ng-checked="d.TINHTRANG"/></td>
+                <td>
+                    <label>
+                        <input type="checkbox" class="checkthis" ng-checked="d.TINHTRANG" disabled>
+                    </label>
+                </td>
                 <td class="text-center hidden-print">
-                    <p data-placement="top" data-toggle="tooltip">
-                        <button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit">
-                            <span class="fa fa-pencil"></span></button>
-                        <button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete">
-                            <span class="fa fa-trash"></span></button>
-                    </p>
+                    <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#editModal"
+                            ng-click="setData($index)">
+                        <span class="fa fa-pencil"></span>
+                    </button>
+                    <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteModal">
+                        <span class="fa fa-trash"></span>
+                    </button>
                 </td>
             </tr>
             </tbody>
@@ -52,60 +57,90 @@
 
     </div>
 
-    <!-- modal Sua -->
-    <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="fa fa-remove" aria-hidden="true"></span></button>
-                    <h4 class="modal-title custom_align" id="HeadingEdit">Cập Nhật Phòng Ban</h4>
+    <!-- BEBIN: Modal cập nhật thông tin phòng ban -->
+    <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+        <form name="departmentForm" ng-submit="updateDepartment()">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span
+                                class="fa fa-remove" aria-hidden="true"></span></button>
+                        <h4 class="modal-title custom_align" id="HeadingEdit">Cập Nhật Phòng Ban</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label>
+                                <input class="form-control" type="text" value="{{ department.MaPB }}" readonly>
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" type="text" placeholder="Tên phòng ban"
+                                   ng-model="department.TenPB" required>
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" type="text" placeholder="Mô tả" ng-model="department.MoTa">
+                        </div>
+                        <div class="form-group">
+                            <label for="ckActive">
+                                <input id="ckActive" type="radio" name="TinhTrang" value="1"
+                                       ng-checked="department.TinhTrang"
+                                       ng-click="department.TinhTrang = 1"> Đang Hoạt Động
+                            </label>
+                            <label for="ckInactive">
+                                <input id="ckInactive" type="radio" name="TinhTrang" value="0"
+                                       ng-checked="!department.TinhTrang"
+                                       ng-click="department.TinhTrang = 0">
+                                Ngưng Hoạt Động
+                            </label>
+                        </div>
+                    </div>
+                    <div class="modal-footer ">
+                        <button type="submit" class="btn btn-warning btn-lg" style="width: 100%;"
+                                ng-disabled="departmentForm.$invalid" ng-hide="saving">
+                            <span class="fa fa-ok-sign"></span> Cập Nhật
+                        </button>
+                        <button type="button" class="btn btn-warning btn-lg" style="width: 100%;" disabled
+                                ng-show="saving">
+                            <i class="fa fa-spinner fa-spin"></i>
+                            Đang xử lý...
+                        </button>
+                    </div>
                 </div>
-                <div class="modal-body">
-                    <div class="form-group">
-                        <input class="form-control " type="text" placeholder="PDT">
-                    </div>
-                    <div class="form-group">
-                        <input class="form-control " type="text" placeholder="Phòng Đào Tạo">
-                    </div>
-                    <div class="form-group">
-                        <input class="form-control " type="text" placeholder="Tham gia quản lý chương trình giảng day">
-                    </div>
-                    <div class="radio">
-                        <label><input type="radio" name="optradio">Đang Hoạt Động</label>
-                    </div>
-                </div>
-                <div class="modal-footer ">
-                    <button type="button" class="btn btn-warning btn-lg" style="width: 100%;"><span class="fa fa-ok-sign"></span> Cập Nhật</button>
-                </div>
+                <!-- /.modal-content -->
             </div>
-            <!-- /.modal-content -->
-        </div>
+        </form>
         <!-- /.modal-dialog -->
     </div>
+    <!-- END: Modal cập nhật thông tin phòng ban -->
 
-    <!-- modal Xoa -->
-    <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+    <!-- BEBIN: Modal xóa phòng ban -->
+    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="fa fa-remove" aria-hidden="true"></span></button>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span
+                            class="fa fa-remove" aria-hidden="true"></span></button>
                     <h4 class="modal-title custom_align" id="Heading">Xóa Phòng Ban</h4>
                 </div>
                 <div class="modal-body">
-
-                    <div class="alert alert-danger"><span class="fa fa-warning-sign"></span> Bạn có muốn xóa phòng ban này?</div>
-
+                    <div class="alert alert-danger"><span class="fa fa-warning-sign"></span> Bạn có muốn xóa phòng ban
+                        này?
+                    </div>
                 </div>
                 <div class="modal-footer ">
-                    <button type="button" class="btn btn-success"><span class="fa fa-ok-sign"></span> Đồng Ý</button>
-                    <a type="button" class="btn btn-default" data-dismiss="modal"><span class="fa fa-remove"></span>Không</a>
+                    <button type="button" class="btn btn-success">
+                        <span class="fa fa-check-circle"></span> Đồng Ý
+                    </button>
+                    <a type="button" class="btn btn-default" data-dismiss="modal">
+                        <span class="fa fa-ban"></span> Không
+                    </a>
                 </div>
             </div>
             <!-- /.modal-content -->
         </div>
         <!-- /.modal-dialog -->
     </div>
+    <!-- END: Modal xóa phòng ban -->
 
 </div>
-
 <!-- END: Quản lý phòng ban -->

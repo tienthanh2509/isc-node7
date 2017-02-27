@@ -65,7 +65,11 @@ app.factory('QLNS', function ($http) {
             },
             // Thêm mới phòng ban
             POST: function (department) {
-                return $http.post('/api/department', department)
+                return $http.post('/api/department/add', department)
+            },
+            // Cập nhật thông tin phòng ban
+            updateDepartment: function (department) {
+                return $http.post('/api/department/update/' + department.MaPB, department)
             }
         },
         majoring: {

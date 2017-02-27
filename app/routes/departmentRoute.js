@@ -19,8 +19,14 @@ router.get('/department/getDepartmentWithLeader', function (req, res) {
     department.getDepartmentWithLeader(req, res);
 });
 
-router.post('/department', function (req, res) {
+router.post('/department/add', function (req, res) {
     department.insertDepartment(req.body, res);
+});
+
+// Cập nhật thông tin phòng ban
+router.post('/department/update/:id', function (req, res) {
+    var id = req.params.id;
+    department.updateDepartment(id, req.body, res);
 });
 
 module.exports = router;

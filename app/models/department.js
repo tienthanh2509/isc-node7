@@ -24,6 +24,7 @@ var getDepartmentWithLeader = function (req, res) {
 
 var getDepartmentName = function (req, res) {
     var query = 'SELECT MAPB,TENPHONGBAN FROM PHONGBAN';
+    console.log('Execute query:', query);
     connection.query(query, function (err, rows, field) {
         res.json(rows);
     });
@@ -59,9 +60,46 @@ var insertDepartment = function (department, res) {
 
 };
 
+var updateDepartment = function (MaPB, department, res) {
+    console.log(department);
+
+    var values = [
+        department.TenPB,
+        department.MoTa,
+        department.TinhTrang,
+        MaPB
+    ];
+
+    var query = 'UPDATE PHONGBAN SET TENPHONGBAN = ?, MOTA = ?, TINHTRANG = ? WHERE MAPB = ?';
+    console.log('Execute query:', query, values);
+
+    connection.query(query, values, function (err) {
+        if (err) {
+            console.log('Lỗi khi cập nhật phòng ban.');
+            console.log(err.message);
+
+            res.json({
+                error: 1,
+                message: err.message
+            });
+        }
+        else {
+            console.log('Đã cập nhật phòng ban thành công.');
+
+            res.json({
+                error: 0,
+                message: 'OK'
+            });
+        }
+
+    })
+
+};
+
 module.exports = {
     getListDepartment: getListDepartment,
     getDepartmentName: getDepartmentName,
     getDepartmentWithLeader: getDepartmentWithLeader,
-    insertDepartment: insertDepartment
+    insertDepartment: insertDepartment,
+    updateDepartment: updateDepartment
 };
