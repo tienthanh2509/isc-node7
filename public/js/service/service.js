@@ -111,10 +111,23 @@ app.factory('QLNS', function ($http) {
                 return $http.get('/api/certificate')
             },
 
+            // Lấy chứng chỉ theo ID
+            GET_WITH_IDCC: function(id){
+                return $http.get('/api/certificate/' + id)
+            },
+
             // Thêm mới một chứng chỉ
             POST: function (certificate) {
                 return $http.post('/api/certificate', certificate)
+            },
+
+            // Xóa chứng chỉ
+            DELETE: function(id){
+                return $http.delete('/api/certificate/' + id)
+            }
+            
         },
+
         values:{
             // Gán giá trị ID nhân viên được chọn làm biến toàn cụ
             SET_ID_EMPLOYEE: function(id){
@@ -123,7 +136,15 @@ app.factory('QLNS', function ($http) {
             // Lấy ra biến nhân viên toàn cục
             GET_ID_EMPLOYEE: function(){
                 return ID_EMPLOYEE; 
+            },
+            
+            // Gán giá trị ID chứng chỉ được chọn làm biến toàn cụ
+            SET_ID_CERTIFICATE: function(id){
+                ID_CERTIFICATE = id;
+            },
+            // Lấy ra biến chứng chỉ toàn cục
+            GET_ID_CERTIFICATE: function(){
+                return ID_CERTIFICATE; 
             }
         }
-    }
 }});
