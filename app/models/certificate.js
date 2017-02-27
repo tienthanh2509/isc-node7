@@ -2,7 +2,7 @@ var connection = require('../models/connection');
 
 // Lấy danh sách tất cả chứng chỉ
 var getListCertificate = function (req, res) {
-    var query = 'SELECT TENCHUNGCHI FROM CHUNGCHI ';
+    var query = 'SELECT TENCHUNGCHI,MACHUNGCHI FROM CHUNGCHI ';
     connection.query(query, function (err, rows) {
         res.json(rows);
     });

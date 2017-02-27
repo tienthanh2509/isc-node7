@@ -8,7 +8,7 @@ var connection = require('../models/connection');
 
 // Lấy ra danh sách tất cả nhân viên
 var getListEmployee = function (req, res) {
-    var query = 'SELECT * FROM NHANVIEN';
+    var query = 'SELECT * FROM PHONGBAN_NHANVIEN_CHUNGCHI';
     console.log('Execute query:', query);
     connection.query(query, function (err, rows) {
         res.json(rows);
@@ -50,7 +50,22 @@ var getEmployeeDepartment = function(req, res){
         res.end(JSON.stringify(rows));
     });
 };
-
+//Lấy nhân viên theo chứng chỉ
+var getEmployeeByCertificate = function(id,res){
+    var query = "SELECT * FROM PHONGBAN_NHANVIEN_CHUNGCHI WHERE MACHUNGCHI = " +id;
+    console.log("Execute query:",query);
+    connection.query(query,function(err,rows){
+        res.end(JSON.stringify(rows));
+    });
+};
+//Lấy nhân viên theo phòng ban
+var getEmployeeByDepartment = function(id,res){
+    var query = "SELECT * FROM PHONGBAN_NHANVIEN_CHUNGCHI WHERE MAPB = " +id;
+    console.log("Execute query:",query);
+    connection.query(query,function(err,rows){
+        res.end(JSON.stringify(rows));
+    });
+};
 // Lấy ra danh sách nhân viên theo mã phòng ban
 var getEmployeeWithDepartmentID = function(id, res){
     var query = "SELECT * FROM NHANVIEN WHERE MAPB = " + id;
@@ -111,5 +126,8 @@ module.exports = {
     getEmployeeWithDepartmentID: getEmployeeWithDepartmentID,
     getEmployeeWithName: getEmployeeWithName,
     getEmployeeDepartmentRoleWithID: getEmployeeDepartmentRoleWithID,
-    updateEmployee: updateEmployee
+    updateEmployee: updateEmployee,
+    getEmployeeWithName: getEmployeeWithName,
+    getEmployeeByCertificate: getEmployeeByCertificate,
+    getEmployeeByDepartment: getEmployeeByDepartment,
 };
