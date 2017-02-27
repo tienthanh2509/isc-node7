@@ -1,10 +1,12 @@
 app.controller('showListEmployeeCtrl', ['$scope', 'QLNS', function($scope, QLNS){
     $scope.phongban = 'Phòng/ Ban';
     $scope.chungchi = 'Chứng chỉ';
+    $scope.loading = false;
     //Lấy toàn bộ danh sách nhân viên
     $scope.getEmployee = function(){
          QLNS.employee.GET().then(function(res){
             $scope.employee = res.data;
+            $scope.loading = true;
             //console.log(res);
             //console.log(res.data[0])
         });

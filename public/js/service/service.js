@@ -119,6 +119,7 @@ app.factory('QLNS', function ($http) {
             // Thêm mới một chứng chỉ
             POST: function (certificate) {
                 return $http.post('/api/certificate', certificate)
+<<<<<<< HEAD
             },
 
             // Xóa chứng chỉ
@@ -126,6 +127,9 @@ app.factory('QLNS', function ($http) {
                 return $http.delete('/api/certificate/' + id)
             }
             
+=======
+            }
+>>>>>>> 98ca8cf9152b00088e829878e162276d7feeff79
         },
 
         values:{
@@ -147,4 +151,9 @@ app.factory('QLNS', function ($http) {
                 return ID_CERTIFICATE; 
             }
         }
+<<<<<<< HEAD
 }});
+=======
+    }
+});
+>>>>>>> 98ca8cf9152b00088e829878e162276d7feeff79
