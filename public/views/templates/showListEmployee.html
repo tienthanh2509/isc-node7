@@ -82,8 +82,14 @@
                 <div class="col-md-12">
                     <hr>
                 </div>
-                
-                <div class="x_panel">
+                <!-- Loading-->
+                <div class="row" ng-hide="loading">
+                    <div class="col-md-12 col-sm-12 col-xs-12 text-center">
+                        <img src="/images/loading.gif" style="width: 150px; height: 150px"/>
+                    </div>
+                </div>
+                <!-- Bảng nhân viên -->
+                <div class="x_panel" ng-show="loading">
                   <div class="x_title">
                     <h2>Danh sách nhân viên </h2>
                     <ul class="nav navbar-right panel_toolbox hidden-print text-right">
@@ -103,6 +109,7 @@
                     <table id="datatable" class="table table-striped table-bordered">
                       <thead>
                         <tr>
+                            <th>STT</th>
                             <th>Mã NV</th>
                             <th>Họ</th>
                             <th>Tên</th>
@@ -120,6 +127,7 @@
 
                     <tbody >
                         <tr ng-repeat="i in employee">
+                            <td>{{ $index + 1 }}</td>
                             <td>{{i.MANV}}</td>
                             <td>{{i.HONV}}</td>
                             <td>{{i.TENNV}}</td>
