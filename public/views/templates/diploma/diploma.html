@@ -36,11 +36,58 @@
                 <td>{{ d.CREATED_AT }}</td>
                 <td>{{ d.UPDATED_AT }}</td>
                 <td class="text-center hidden-print">
-                    <button class="btn btn-default btn-xs"><i class="fa fa-edit"></i></button>
-                    <button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button>
+                <td class="text-center hidden-print">
+                    <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#editModal"
+                            ng-click="setData($index)">
+                        <span class="fa fa-pencil"></span>
+                    </button>
+                    <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteModal">
+                        <span class="fa fa-trash"></span>
+                    </button>
                 </td>
             </tr>
             </tbody>
         </table>
     </div>
+
+    <!-- BEBIN: Modal cập nhật thông tin bằng cấp -->
+    <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+        <form name="diplomaForm" ng-submit="updateDiploma()">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span
+                                class="fa fa-remove" aria-hidden="true"></span></button>
+                        <h4 class="modal-title custom_align" id="HeadingEdit">Cập Nhật Chứng chỉ</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label>
+                                <input class="form-control" type="text" value="{{ diploma.MaBC }}" readonly>
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" type="text" placeholder="Tên bằng cấp"
+                                   ng-model="diploma.TenBC" required>
+                        </div>
+                    </div>
+                    <div class="modal-footer ">
+                        <button type="submit" class="btn btn-warning btn-lg" style="width: 100%;"
+                                ng-disabled="diplomaForm.$invalid" ng-hide="saving">
+                            <span class="fa fa-ok-sign"></span> Cập Nhật
+                        </button>
+                        <button type="button" class="btn btn-warning btn-lg" style="width: 100%;" disabled
+                                ng-show="loading">
+                            <i class="fa fa-spinner fa-spin"></i>
+                            Đang xử lý...
+                        </button>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+        </form>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- END: Modal cập nhật thông tin phòng ban -->
+
 </div>
