@@ -13,4 +13,9 @@ router.get('/certificate', function(req, res){
     certificate.getAll(req, res);
 });
 
+// API thêm mới một chứng chỉ
+router.post('/certificate', function(req, res){
+    certificate.insertCertificate(req.body, res);
+});
+
 module.exports = router;

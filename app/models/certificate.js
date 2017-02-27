@@ -5,7 +5,7 @@ var getListCertificate = function (req, res) {
     var query = 'SELECT TENCHUNGCHI FROM CHUNGCHI ';
     connection.query(query, function (err, rows) {
         res.json(rows);
-    });
+    }); 
 };
 
 var getAll = function (req, res) {
@@ -15,7 +15,24 @@ var getAll = function (req, res) {
     });
 };
 
+//Thêm mới chứng chỉ
+var insertCertificate = function(certificate, res){
+    //console.log(certificate);
+    var values = [
+        [certificate.maChungChi, certificate.TenChungChi, certificate.GhiChu]
+    ];
+    connection.query("INSERT INTO CHUNGCHI(MACHUNGCHI, TENCHUNGCHI, GHICHU) VALUES ?", [values], function(err){
+        if(err){
+            res.end(err.message);
+        } else {
+            console.log('succes');
+            res.end('succes');      
+        }
+    });
+};
+
 module.exports = {
     getAll: getAll,
+    insertCertificate: insertCertificate,
     getListCertificate: getListCertificate
 };
