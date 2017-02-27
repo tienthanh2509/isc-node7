@@ -78,6 +78,10 @@ app.factory('QLNS', function ($http) {
             //Lấy tất cả bằng cấp
             GET: function () {
                 return $http.get('/api/diploma')
+            },
+            // Thêm mới bằng cấp
+            POST: function (diploma) {
+                return $http.post('/api/diploma', diploma)
             }
         },
         certificate:{

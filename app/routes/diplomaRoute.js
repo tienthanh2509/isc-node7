@@ -16,5 +16,7 @@ router.use(bodyParser.json());
 router.get('/diploma', function(req, res){
     diploma.getDiploma(req, res);
 });
-
+router.post('/diploma', function (req, res) {
+    diploma.insertDiploma(req.body, res);
+});
 module.exports = router;
