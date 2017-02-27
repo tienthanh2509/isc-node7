@@ -5,10 +5,12 @@ app.controller('diplomaCtrl', ['$scope', 'QLNS', function ($scope, QLNS) {
         MaBC: null,
         TenBC: ''
     };
-    QLNS.diploma.GET().then(function (res) {
-        $scope.loading = false;
-        $scope.diplomas = res.data;
-    });
+    $scope.refresh = function () {
+        QLNS.diploma.GET().then(function (res) {
+            $scope.loading = false;
+            $scope.diplomas = res.data;
+        });
+    };
     $scope.Save = function () {
         QLNS.diploma.POST($scope.diploma).then(function (res) {
             alert(res.data.message);
@@ -35,6 +37,7 @@ app.controller('diplomaCtrl', ['$scope', 'QLNS', function ($scope, QLNS) {
                 TENBANGCAP: ''
             };
 
+            $scope.refresh();
 
             $('#editModal').modal('hide');
         }, function (response) {
@@ -43,4 +46,6 @@ app.controller('diplomaCtrl', ['$scope', 'QLNS', function ($scope, QLNS) {
             $scope.loading = false;
         });
     };
+
+    $scope.refresh();
 }]);

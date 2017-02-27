@@ -19,4 +19,11 @@ router.get('/diploma', function(req, res){
 router.post('/diploma/add', function (req, res) {
     diploma.insertDiploma(req.body, res);
 });
+
+// Sửa bằng cấp
+router.post('/diploma/update/:id', function (req, res) {
+    var id = req.params.id;
+    diploma.updateDiploma(id, req.body, res);
+});
+
 module.exports = router;

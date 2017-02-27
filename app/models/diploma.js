@@ -44,8 +44,8 @@ var updateDiploma = function (MaBC, diploma, res) {
     console.log(diploma);
 
     var values = [
-        diploma.TENBANGCAP,
-        MaPB
+        diploma.TenBC,
+        MaBC
     ];
 
     var query = 'UPDATE BANGCAP SET TENBANGCAP = ? WHERE MABANGCAP = ?';
