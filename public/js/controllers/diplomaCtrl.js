@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('dipplomaCtrl', ['$scope', 'QLNS', function($scope, QLNS){
+app.controller('diplomaCtrl', ['$scope', 'QLNS', function($scope, QLNS){
     $scope.diploma = {
         TenBangcap: '',
     };

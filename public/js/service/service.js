@@ -75,6 +75,7 @@ app.factory('QLNS', function ($http) {
             }
         },
         diploma:{
+            //Lấy tất cả bằng cấp
             GET: function () {
                 return $http.get('/api/diploma')
             }
