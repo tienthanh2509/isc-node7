@@ -96,10 +96,38 @@ var updateDepartment = function (MaPB, department, res) {
 
 };
 
+var deleteDepartment = function (MaPB, res) {
+    var query = 'DELETE FROM PHONGBAN WHERE MAPB = ?';
+    console.log('Execute query:', query, MaPB);
+
+    connection.query(query, [MaPB], function (err) {
+        if (err) {
+            console.log('Lỗi khi xóa phòng ban.');
+            console.log(err.message);
+
+            res.json({
+                error: 1,
+                message: err.message
+            });
+        }
+        else {
+            console.log('Đã xóa phòng ban thành công.');
+
+            res.json({
+                error: 0,
+                message: 'OK'
+            });
+        }
+
+    })
+
+};
+
 module.exports = {
     getListDepartment: getListDepartment,
     getDepartmentName: getDepartmentName,
     getDepartmentWithLeader: getDepartmentWithLeader,
     insertDepartment: insertDepartment,
-    updateDepartment: updateDepartment
+    updateDepartment: updateDepartment,
+    deleteDepartment: deleteDepartment
 };

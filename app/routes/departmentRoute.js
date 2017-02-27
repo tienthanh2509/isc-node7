@@ -29,4 +29,10 @@ router.post('/department/update/:id', function (req, res) {
     department.updateDepartment(id, req.body, res);
 });
 
+// Xóa phòng ban
+router.delete('/department/:id', function (req, res) {
+    var id = req.params.id;
+    department.deleteDepartment(id, res);
+});
+
 module.exports = router;

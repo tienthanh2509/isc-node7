@@ -47,7 +47,8 @@
                             ng-click="setData($index)">
                         <span class="fa fa-pencil"></span>
                     </button>
-                    <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteModal">
+                    <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteModal"
+                            ng-click="setData($index)">
                         <span class="fa fa-trash"></span>
                     </button>
                 </td>
@@ -123,16 +124,20 @@
                     <h4 class="modal-title custom_align" id="Heading">Xóa Phòng Ban</h4>
                 </div>
                 <div class="modal-body">
-                    <div class="alert alert-danger"><span class="fa fa-warning-sign"></span> Bạn có muốn xóa phòng ban
-                        này?
+                    <div class="alert alert-danger"><span class="fa fa-warning-sign"></span> Bạn có muốn xóa phòng ban?
+                        "{{ department.MaPB }} - {{ department.TenPB }}"
                     </div>
                 </div>
                 <div class="modal-footer ">
-                    <button type="button" class="btn btn-success">
-                        <span class="fa fa-check-circle"></span> Đồng Ý
+                    <button type="button" class="btn btn-danger" ng-click="delete(department.MaPB)" ng-hide="loading">
+                        <span class="fa fa-ban"></span> Đồng Ý
                     </button>
-                    <a type="button" class="btn btn-default" data-dismiss="modal">
-                        <span class="fa fa-ban"></span> Không
+                    <button type="button" class="btn btn-danger" ng-show="loading" disabled>
+                        <i class="fa fa-spinner fa-spin"></i>
+                        Đang xử lý...
+                    </button>
+                    <a type="button" class="btn btn-success" data-dismiss="modal">
+                        <span class="fa fa-check-circle"></span> Không
                     </a>
                 </div>
             </div>

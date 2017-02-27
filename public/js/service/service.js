@@ -16,40 +16,40 @@ app.factory('QLNS', function ($http) {
                 return $http.post('/api/employee', employee)
             },
             // Lấy nhên viên theo ID
-            GET_WITH_ID: function(id){
+            GET_WITH_ID: function (id) {
                 return $http.get('/api/employee/' + id)
             },
 
             // API gửi mail đến nhân viên
-            SENDMAIL: function(email){
+            SENDMAIL: function (email) {
                 return $http.post('/api/employee/contact', email)
             },
             // Lấy danh sách nhân viên + phòng ban
-            GET_EMP_DEP: function(){
+            GET_EMP_DEP: function () {
                 return $http.get('/api/employeeDepartment')
             },
             // Lấy ra nhân viên với tên truyền vào
-            GET_WITH_NAME: function(name){
+            GET_WITH_NAME: function (name) {
                 return $http.get('/api/employee/getWithName/' + name)
             },
             //Lấy theo chứng chỉ
-            GET_BY_CERTIFICATE: function(id){
-                return $http.get('/api/employee/getEmployeeByCertificate/'+id)
+            GET_BY_CERTIFICATE: function (id) {
+                return $http.get('/api/employee/getEmployeeByCertificate/' + id)
             },
             //Lấy theo phòng ban
-            GET_BY_DEPARTMENT: function(id){
-                return $http.get('/api/employee/getEmployeeByDepartment/'+id)
+            GET_BY_DEPARTMENT: function (id) {
+                return $http.get('/api/employee/getEmployeeByDepartment/' + id)
             },
             // Lấy mốt nhân viên + phòng ban + chức vụ theo ID
-            GET_DE_ROLE: function(id){
+            GET_DE_ROLE: function (id) {
                 return $http.get('/api/employee/withDepartmentandRole/' + id)
             },
             // Cập nhật nhân viên
-            UPDATE: function(employee){
+            UPDATE: function (employee) {
                 return $http.post('/api/employee/update', employee)
             },
             // Xóa nhân viên
-            DELETE: function(id){
+            DELETE: function (id) {
                 return $http.delete('/api/employee/' + id)
             }
         },
@@ -85,8 +85,12 @@ app.factory('QLNS', function ($http) {
                 return $http.post('/api/department/add', department)
             },
             // Cập nhật thông tin phòng ban
-            updateDepartment: function (department) {
+            UPDATE: function (department) {
                 return $http.post('/api/department/update/' + department.MaPB, department)
+            },
+            // Xóa phòng ban
+            DELETE: function (id) {
+                return $http.delete('/api/department/' + id)
             }
         },
         majoring: {
@@ -95,7 +99,7 @@ app.factory('QLNS', function ($http) {
                 return $http.get('/api/majoring')
             }
         },
-        diploma:{
+        diploma: {
             //Lấy tất cả bằng cấp
             GET: function () {
                 return $http.get('/api/diploma')
@@ -105,25 +109,26 @@ app.factory('QLNS', function ($http) {
                 return $http.post('/api/diploma', diploma)
             }
         },
-        certificate:{
+        certificate: {
             // Lấy tất cả chứng chỉ
-            GET: function(){
+            GET: function () {
                 return $http.get('/api/certificate')
             },
 
             // Thêm mới một chứng chỉ
             POST: function (certificate) {
                 return $http.post('/api/certificate', certificate)
+            }
         },
-        values:{
+        values: {
             // Gán giá trị ID nhân viên được chọn làm biến toàn cụ
-            SET_ID_EMPLOYEE: function(id){
+            SET_ID_EMPLOYEE: function (id) {
                 ID_EMPLOYEE = id;
             },
             // Lấy ra biến nhân viên toàn cục
-            GET_ID_EMPLOYEE: function(){
-                return ID_EMPLOYEE; 
+            GET_ID_EMPLOYEE: function () {
+                return ID_EMPLOYEE;
             }
         }
     }
-}});
+});

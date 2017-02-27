@@ -38,7 +38,7 @@ app.controller('departmentCtrl', ['$scope', 'QLNS', function ($scope, QLNS) {
         console.log($scope.department);
 
         $scope.saving = true;
-        QLNS.department.updateDepartment($scope.department).then(function (response) {
+        QLNS.department.UPDATE($scope.department).then(function (response) {
             console.log(response);
 
             $scope.saving = false;
@@ -59,6 +59,34 @@ app.controller('departmentCtrl', ['$scope', 'QLNS', function ($scope, QLNS) {
             // TODO: Thiết lập thông báo lỗi
             alert('Some thing went wrong!');
             $scope.saving = false;
+        });
+    };
+
+    $scope.delete = function (id) {
+        console.log('Xóa phòng ban', id, $scope.department);
+
+        $scope.loading = true;
+        QLNS.department.DELETE(id).then(function (response) {
+            console.log(response);
+
+            $scope.loading = false;
+            $scope.department = {
+                MaPB: null,
+                TenPB: '',
+                MoTa: '',
+                TinhTrang: 1
+            };
+
+            QLNS.department.getDepartmentWithLeader().then(function (res) {
+                $scope.loading = false;
+                $scope.departments = res.data;
+            });
+
+            $('#deleteModal').modal('hide');
+        }, function (response) {
+            // TODO: Thiết lập thông báo lỗi
+            alert('Some thing went wrong!');
+            $scope.loading = false;
         });
     };
 }]);
