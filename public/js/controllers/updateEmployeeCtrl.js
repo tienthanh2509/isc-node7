@@ -1,164 +1,59 @@
 'use strict';
 
-app.controller('employeeCtrl', ['$scope', 'Upload', '$timeout', '$http', 'QLNS', function($scope, Upload, $timeout, $http, QLNS){
+app.controller('updateEmployeeCtrl', ['$scope', 'QLNS', function($scope, QLNS){
 
+    // Thuộc tính nhân viên
     $scope.employee = {
-        Ho: '',
-        Ten: '',
-        NgaySinh: '',
-        DiaChi: '',
-        GioiTinh: '',
-        DienThoai: '',
-        Email: '',
+        HONV: '',
+        TENNV: '',
+        NGAYSINH: '',
+        DIACHI: '',
+        GIOITINH: '',
+        SODIENTHOAI: '',
+        EMAIL: '',
         MaSoBaoHiem: '',
         TrinhDo: '',
-        TonGiao: '',
+        TONGIAO: '',
         ChungChiChuyenNghanh: '',
         ChungChiAnhVan: '',
-        imgEmployPath: '',
+        HINHANH: '',
         CVPath: '',
         ScoreTablePath: '',
         CertificatePath: '',
         HouseholdPath: '',
         DiplomaPath: '',
         HealthCertificationPath: '',
-        PhongBan: '',
-        ChucVu: '',
-        maPhongBan: '',
-        maChucVu: '',
+        TENPHONGBAN: '',
+        TENCHUVU: '',
+        MAPB: '',
+        MACV: '',
         maChuyenNghanh: '',
         ChuyenNghanh: '',
         TuNgay: '',
         DenNgay: '',
-        MaNhanVien: ''
+        MANV: '',
+        MOTA: '',
+        TINHTRANG: '',
+        CREATED_AT: '',
+        UPDATED_AT: ''
     };
 
-var clearEmployee = function(){
-        $scope.employee = {
-        Ho: '',
-        Ten: '',
-        NgaySinh: '',
-        DiaChi: '',
-        GioiTinh: '',
-        DienThoai: '',
-        Email: '',
-        MaSoBaoHiem: '',
-        TrinhDo: '',
-        TonGiao: '',
-        ChungChiChuyenNghanh: '',
-        ChungChiAnhVan: '',
-        imgEmployPath: '',
-        CVPath: '',
-        ScoreTablePath: '',
-        CertificatePath: '',
-        HouseholdPath: '',
-        DiplomaPath: '',
-        HealthCertificationPath: '',
-        PhongBan: '',
-        ChucVu: '',
-        maPhongBan: '',
-        maChucVu: '',
-        maChuyenNghanh: '',
-        ChuyenNghanh: '',
-        TuNgay: '',
-        DenNgay: '',
-        MaNhanVien: ''
-    };
-    $scope.CVs[0].name = '';
-    $scope.ScoreTables[0].name = '';
-    $scope.Certificates[0].name = '';
-    $scope.Households[0].name = '';
-    $scope.Diplomas[0].name = '';
-    $scope.HealthCertifications[0].name = '';
-};
-    // Lưu
-    $scope.Save = function(){     
-        //console.log($scope.employee);
-        if(!checkDepartment()){
-            alert('Vui lòng chọn Phòng Ban');
-        } else if(!checkRole()){
-            alert('VUi lòng chọn Chức Vụ');
-        } else if(!checkMajor()){
-            alert('Vui lòng chọn Chuyên Nghành');
-        } else if(!checkGender()){
-            alert('Vui lòng chọn Giới Tính');
-        } else{
-            QLNS.employee.POST($scope.employee).then(function(res){
-                alert(res.data);
-                clearEmployee();
-                refesh();
-            });
-        }
-    };
-
-    $scope.selectDepartment = function(mpb, pb){
-        $scope.employee.maPhongBan = mpb;
-        $scope.employee.PhongBan = pb;
-        console.log(pb);
-    };
-
-    $scope.selectRole = function(mcv, cv){
-        $scope.employee.maChucVu = mcv;
-        $scope.employee.ChucVu = cv;
-        console.log(cv);
-    };
-
-    $scope.selectMajoring = function(mcn, cn){
-        $scope.employee.maChuyenNghanh = mcn;
-        $scope.employee.ChuyenNghanh = cn;
-        console.log(cn);
-    };
-
-    $scope.selectGender = function(genderName){
-        if(genderName === 'Nam'){
-            $scope.employee.GioiTinh = 1;
-            $scope.gender = genderName;
-        } else if(genderName === 'Nữ'){
-            $scope.employee.GioiTinh = 0;
-            $scope.gender = genderName;
-        }
-    };
-
-    //Refesh Add Employee page
-    var refesh = function(){
-        $scope.employee.PhongBan = 'Chọn';
-        $scope.employee.ChucVu = 'Chọn';
-        $scope.employee.ChuyenNghanh = 'Chọn';
-        $scope.gender = 'Chọn';
-        QLNS.department.GETNAME().then(function(res){
-            //console.log(res.data);
-            $scope.departments = res.data;
-        });
-        QLNS.role.GETNAME().then(function(res){
-            //console.log(res.data);
-            $scope.roles = res.data;
-        });
-        QLNS.majoring.GET().then(function(res){
-            //console.log(res.data);
-            $scope.majoring = res.data;
+    // Lấy nhân viên theo ID
+    $scope.getEmployee = function(){
+        QLNS.employee.GET_DE_ROLE(QLNS.values.GET_ID_EMPLOYEE()).then(function(res){
+            $scope.employee = res.data[0];
         });
     };
-    refesh();
 
-    // Check Phòng Ban
-    var checkDepartment = function(){
-        return !($scope.employee.PhongBan === 'Chọn' || $scope.employee.PhongBan === '');
+    // Lưu chỉnh sửa nhân viên
+    $scope.Save = function(){
+        QLNS.employee.UPDATE($scope.employee).then(function(res){
+            alert(res.data);
+        });
     };
 
-    // check Chức Vụ
-    var checkRole = function(){
-        return !($scope.employee.ChucVu === 'Chọn' || $scope.employee.ChucVu === '');
-    };
-
-    // check Chuyên Nghành
-    var checkMajor = function(){
-        return !($scope.employee.ChuyenNghanh === 'Chọn' || $scope.employee.ChuyenNghanh === '');
-    };
-
-    // check Giới Tính
-    var checkGender = function(){
-        return !($scope.gender === 'Chọn' || $scope.gender === '');
-    };
+    // Tải lên thông tin của nhân viên
+    $scope.getEmployee();
 
     // Image Employee
     $scope.$watch('imgEmploys', function () {
@@ -264,7 +159,7 @@ var clearEmployee = function(){
                     }
                 }).then(function (resp) {
                     //console.log(resp.data);
-                    $scope.employee.imgEmployPath = resp.data.originalname;
+                    $scope.employee.HINHANH = resp.data.originalname;
                     $timeout(function() {
                         $scope.logimg = 'file: ' +
                         resp.config.data.file.name +

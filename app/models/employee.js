@@ -24,6 +24,15 @@ var getEmployeeWithID = function (id, res) {
     });
 };
 
+// Lấy ra danh sách nhân viên vs Phòng Ban, Chức Vụ theo ID
+var getEmployeeDepartmentRoleWithID = function (id, res) {
+    var query = 'SELECT * FROM NHANVIEN n,PHONGBAN p,CHUCVU c WHERE n.MAPB = p.MAPB and n.MACV = c.MACV and n.ID_NV = ' + id;
+    console.log('Execute query:', query);
+    connection.query(query, function (err, rows) {
+        res.json(rows);
+    });
+};
+
 // Lấy ra nhân viên theo tên
 var getEmployeeWithName = function(name, res){
     var query = "SELECT * FROM NHANVIEN WHERE TENNV like '%" + name + "'";
@@ -67,11 +76,40 @@ var insertEmployee = function(employee, res){
     });
 };
 
+// Cập nhật nhân viên
+var updateEmployee = function(employee, res){
+    console.log(employee);
+    var values = {
+        MACV: employee.MACV,
+        MAPB: employee.MAPB,
+        HONV: employee.HONV,
+        TENNV: employee.TENNV,
+        TONGIAO: employee.TONGIAO,
+        GIOITINH: employee.GIOITINH,
+        NGAYSINH: employee.NGAYSINH,
+        DIACHI: employee.DIACHI,
+        SODIENTHOAI: employee.SODIENTHOAI,
+        EMAIL: employee.EMAIL,
+        HINHANH: employee.HINHANH
+    };
+    var query = "UPDATE NHANVIEN SET ? WHERE ?";
+    connection.query(query, [values, {ID_NV: employee.ID_NV}], function(err){
+        if(err){
+            res.end(err.message);
+        } else {
+            console.log('succes');
+            res.end('succes');      
+        }
+    });
+};
+
 module.exports = {
     getListEmployee: getListEmployee,
     insertEmployee: insertEmployee,
     getEmployeeWithID: getEmployeeWithID,
     getEmployeeDepartment: getEmployeeDepartment,
     getEmployeeWithDepartmentID: getEmployeeWithDepartmentID,
-    getEmployeeWithName: getEmployeeWithName
+    getEmployeeWithName: getEmployeeWithName,
+    getEmployeeDepartmentRoleWithID: getEmployeeDepartmentRoleWithID,
+    updateEmployee: updateEmployee
 };

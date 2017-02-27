@@ -6,7 +6,6 @@
         <div class="x_panel">
         <!--Tiêu đề và thanh tìm kiếm-->
             <div class="x_title col-lg-8 col-lg-offset-2">
-                <h1 class="text-center">Danh Sách Nhân Viên</h1>
                 <div class="clearfix"></div>
                 <div class="input-group">
                     <input type="text" class="form-control" ng-model="searchName" placeholder="Tìm kiếm theo tên nhân viên...">
@@ -69,59 +68,71 @@
                         <!--Hết dropdownbox Chứng chỉ-->
                     </div>
                 </div>
-                <div class="table-responsive col-lg-12">
-                    <div class="dataTables_length" id="datatable_length">
-                        <label>Show 
-                            <select name="datatable_length" aria-controls="datatable" class="form-control input-sm">
-                                <option value="10">10</option>
-                                <option value="25">25</option>
-                                <option value="50">50</option>
-                                <option value="100">100</option>
-                            </select> entries
-                        </label>
-                    </div>
-                     <table id="datatable" class="table table-striped table-bordered "  >
-                <thead>
-                <tr>
-                    <th>Mã NV</th>
-                    <th>Họ</th>
-                    <th>Tên</th>
-                    <th>Ngày sinh</th>
-                    <th>Phòng/ Ban</th>
-                    <th>Chuyên ngành</th>
-                    <th>Trình độ</th>
-                    <th>Chứng chỉ</th>
-                    <th>SĐT</th>
-                    <th>Email</th>
-                    <th>Hồ sơ</th>
-                    <th>Cập nhật</th>
-                </tr>
-                </thead>
-                <tbody >
-                    <tr ng-repeat="i in employee">
-                        <td>{{i.MANV}}</td>
-                        <td>{{i.HONV}}</td>
-                        <td>{{i.TENNV}}</td>
-                        <td>{{i.NGAYSINH}}</td>
-                        <td>{{i.MAPB}}</td>
-                        <!--Đoạn này là dữ liệu "chế"-->
-                        <td>Web Developer</td>
-                        <td>Đại học</td>
-                        <td>xXx</td>
-                        <!--:)))-->
-                        <td>{{i.SODIENTHOAI}}</td>
-                        <td>{{i.EMAIL}}</td>
-                        <td>
-                            <a href="#">Xem hồ sơ</a>
-                        </td>
-                        <td>
-                            <form class="btn-group">
-                                <button type="button" class="btn btn-primary">Cập nhật</button>
-                            </form>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+                
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Danh sách nhân viên </h2>
+                    <ul class="nav navbar-right panel_toolbox hidden-print text-right">
+                            <li>          
+                                <a class="btn" ng-click="refesh()"><i class="fa fa-repeat"></i> Làm mới</a>
+                            </li>
+                            <li>
+                                <a href="#!/employee/add"><i class="fa fa-plus"></i> Thêm nhân viên</a>
+                            </li>
+                            <li>
+                                <a href="#" onclick="window.print();"><i class="fa fa-print"></i> In</a>
+                            </li>
+                    </ul> 
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <table id="datatable" class="table table-striped table-bordered">
+                      <thead>
+                        <tr>
+                            <th>Mã NV</th>
+                            <th>Họ</th>
+                            <th>Tên</th>
+                            <th>Ngày sinh</th>
+                            <th>Phòng/ Ban</th>
+                            <th>Chuyên ngành</th>
+                            <th>Trình độ</th>
+                            <th>Chứng chỉ</th>
+                            <th>SĐT</th>
+                            <th>Email</th>
+                            <th>Hồ sơ</th>
+                            <th>Cập nhật</th>
+                        </tr>
+                      </thead>
+
+                    <tbody >
+                        <tr ng-repeat="i in employee">
+                            <td>{{i.MANV}}</td>
+                            <td>{{i.HONV}}</td>
+                            <td>{{i.TENNV}}</td>
+                            <td>{{i.NGAYSINH}}</td>
+                            <td>{{i.MAPB}}</td>
+                            <!--Đoạn này là dữ liệu "chế"-->
+                            <td>Web Developer</td>
+                            <td>Đại học</td>
+                            <td>xXx</td>
+                            <!--:)))-->
+                            <td>{{i.SODIENTHOAI}}</td>
+                            <td>{{i.EMAIL}}</td>
+                            <td>
+                                <a class="btn">
+                                <i class="fa fa-inbox"></i> Hồ sơ
+                                </a>
+                            </td>
+                            <td>
+                            <a type="button" class="btn btn-default btn-xs" data-title="Edit" ng-click="saveIdGobal(i.ID_NV)" href="/#!/employee/update">
+                            <span class="fa fa-pencil"></span></a>
+                            <button class="btn btn-danger btn-xs" data-title="Delete">
+                            <span class="fa fa-trash"></span></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                    </table>
+                </div>
                 </div>      
             </div>
         </div>
