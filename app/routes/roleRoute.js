@@ -15,4 +15,8 @@ router.get('/roleName', function(req, res){
     role.getRoleName(req, res);
 });
 
+router.post('/role', function (req, res) {
+    role.insertRole(req.body, res);
+});
+
 module.exports = router;

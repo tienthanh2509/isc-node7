@@ -48,6 +48,10 @@ app.factory('QLNS', function ($http) {
             // Lấy tất cả tên chức vụ
             GETNAME: function () {
                 return $http.get('/api/roleName')
+            },
+            //Thêm mới chức vụ
+            POST: function (role) {
+                return $http.post('/api/role', role)
             }
         },
         department: {
