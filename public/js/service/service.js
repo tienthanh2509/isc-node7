@@ -106,7 +106,11 @@ app.factory('QLNS', function ($http) {
             },
             // Thêm mới bằng cấp
             POST: function (diploma) {
-                return $http.post('/api/diploma', diploma)
+                return $http.post('/api/diploma/add', diploma)
+            },
+            // Cập nhật thông tin bằng cấp
+            updateDiploma: function (diploma) {
+                return $http.post('/api/diploma/update/' + diploma.MaBC, diploma)
             }
         },
         certificate: {
@@ -115,9 +119,18 @@ app.factory('QLNS', function ($http) {
                 return $http.get('/api/certificate')
             },
 
+            // Lấy chứng chỉ theo ID
+            GET_WITH_IDCC: function (id) {
+                return $http.get('/api/certificate/' + id)
+            },
+
             // Thêm mới một chứng chỉ
             POST: function (certificate) {
                 return $http.post('/api/certificate', certificate)
+            },
+            // Xóa chứng chỉ
+            DELETE: function (id) {
+                return $http.delete('/api/certificate/' + id)
             }
         },
         values: {
@@ -128,6 +141,14 @@ app.factory('QLNS', function ($http) {
             // Lấy ra biến nhân viên toàn cục
             GET_ID_EMPLOYEE: function () {
                 return ID_EMPLOYEE;
+            },
+            // Gán giá trị ID chứng chỉ được chọn làm biến toàn cụ
+            SET_ID_CERTIFICATE: function (id) {
+                ID_CERTIFICATE = id;
+            },
+            // Lấy ra biến chứng chỉ toàn cục
+            GET_ID_CERTIFICATE: function () {
+                return ID_CERTIFICATE;
             }
         }
     }
