@@ -15,7 +15,8 @@ app.controller('certificateCtrl', ['$scope', 'QLNS', function($scope, QLNS){
         $scope.certificate = {
         TenChungChi: '',
         GhiChu: ''
-    };
+        };
+    }
 
     // Lưu
     $scope.Save = function(){     
@@ -23,8 +24,7 @@ app.controller('certificateCtrl', ['$scope', 'QLNS', function($scope, QLNS){
         QLNS.certificate.POST($scope.certificate).then(function(res){
                 alert(res.data);
                 clearCertificate();
-                refesh();
             });
         }
-    };
-}]);
+    }
+]);
