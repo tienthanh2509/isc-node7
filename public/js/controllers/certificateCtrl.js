@@ -1,13 +1,19 @@
 'use strict';
 
 app.controller('certificateCtrl', ['$scope', 'QLNS', function($scope, QLNS){
+    $scope.certificate = {
+        MaChungChi: null,
+        TenChungChi: '',
+        GhiChu: ''
+    };
+    
     QLNS.certificate.GET().then(function(res){
         $scope.loading = false;
         $scope.certificates = res.data;
     });
 
     //Lấy toàn bộ các chứng chỉ
-    $scope.getCertificate = function(){
+    $scope.getListCertificate = function(){
         QLNS.certificate.GET().then(function(res){
             $scope.certificate = res.data;
             //console.log(res);
@@ -20,21 +26,13 @@ app.controller('certificateCtrl', ['$scope', 'QLNS', function($scope, QLNS){
         GhiChu: ''
     };
 
-    /*var clearCertificate = function(){
-        $scope.certificate = {
-        TenChungChi: '',
-        GhiChu: ''
-        };
-    }*/
-
     // Làm mới trang
     $scope.refesh = function(){
-        $scope.getCertificate();
+        $scope.getListCertificate();
     };
 
     // Lưu
     $scope.Save = function(){     
-        //console.log($scope.certificate);
         QLNS.certificate.POST($scope.certificate).then(function(res){
                 alert(res.data);
                 //clearCertificate();
@@ -54,4 +52,43 @@ app.controller('certificateCtrl', ['$scope', 'QLNS', function($scope, QLNS){
             $scope.oneCertificate = res.data[0];
         });
     };    
+
+    
+    $scope.setData = function (i) {
+        var d = $scope.certificates[i];
+
+        $scope.certificate = {
+            MaChungChi: d.MACHUNGCHI,
+            TenChungChi: d.TENCHUNGCHI,
+            GhiChu: d.GHICHU
+        };
+    };
+
+    // Cập nhật
+    $scope.updateCertificate = function () {
+        console.log($scope.certificate);
+
+        $scope.saving = true;
+        QLNS.certificate.updateCertificate($scope.certificate).then(function (response) {
+            console.log(response);
+
+            $scope.saving = false;
+            $scope.certificate = {
+                MaChungChi: null,
+                TenChungChi: '',
+                GhiChu: ''
+            };
+
+            QLNS.certificate.getListCertificate().then(function (res) {
+                $scope.loading = false;
+                $scope.certificates = res.data;
+            });
+
+            $('#editModal').modal('hide');
+        }, function (response) {
+            // TODO: Thiết lập thông báo lỗi
+            alert('Some thing went wrong!');
+            $scope.saving = false;
+        });
+    };
 }]);

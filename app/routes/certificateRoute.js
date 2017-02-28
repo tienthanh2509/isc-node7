@@ -30,4 +30,10 @@ router.delete('/certificate/:id', function(req, res){
     certificate.deleteCertificate(id, res);
 });
 
+// API Cập nhật chứng chỉ
+router.post('/certificate/update/:id', function (req, res) {
+    var id = req.params.id;
+    certificate.updateCertificate(id, req.body, res);
+});
+
 module.exports = router;

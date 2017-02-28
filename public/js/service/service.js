@@ -4,6 +4,7 @@ app.factory('QLNS', function ($http) {
 
     // Biến ID nhân viên toàn cục
     var ID_EMPLOYEE = 0;
+    var ID_CERTIFICATE = 0;
 
     return {
         employee: {
@@ -124,6 +125,11 @@ app.factory('QLNS', function ($http) {
             // Xóa chứng chỉ
             DELETE: function(id){
                 return $http.delete('/api/certificate/' + id)
+            },
+
+            // Cập nhật thông tin phòng ban
+            updateCertificate: function (certificate) {
+                return $http.post('/api/certificate/update/' + certificate.MaChungChi, certificate)
             }
         },
 
