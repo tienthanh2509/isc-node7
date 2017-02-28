@@ -41,7 +41,30 @@ var insertDiploma = function (diploma, res) {
 
 };
 
+// Lấy ra danh sách bằng cấp theo ID
+var getDiplomaWithID = function (id, res) {
+    var query = 'SELECT * FROM BANGCAP WHERE MABANGCAP = ' + id;
+    console.log('Execute query:', query);
+    connection.query(query, function (err, rows) {
+        res.json(rows);
+    });
+};
+
+// Xóa bằng cấp
+var deleteDiploma = function(id, res){
+    var query = "DELETE FROM BANGCAP WHERE MABANGCAP = ?";
+    connection.query(query, [id], function(err, result){
+        if(err){
+            res.end(err.message);
+        } else {
+            res.end('delete succes');
+        }
+    });
+};
+
 module.exports = {
     getDiploma: getDiploma,
-    insertDiploma: insertDiploma
+    insertDiploma: insertDiploma,
+    getDiplomaWithID: getDiplomaWithID,
+    deleteDiploma: deleteDiploma
 };

@@ -5,6 +5,7 @@ app.factory('QLNS', function ($http) {
     // Biến ID nhân viên toàn cục
     var ID_EMPLOYEE = 0;
     var ID_CERTIFICATE = 0;
+    var ID_DIPLOMA = 0;
 
     return {
         employee: {
@@ -104,7 +105,15 @@ app.factory('QLNS', function ($http) {
             // Thêm mới bằng cấp
             POST: function (diploma) {
                 return $http.post('/api/diploma', diploma)
-            }
+            },
+            // Lấy bằng cấp theo ID
+            GET_WITH_IDBC: function(id){
+                return $http.get('/api/diploma/' + id)
+            },
+             // Xóa bằng cấp
+            DELETE: function(id){
+                return $http.delete('/api/diploma/' + id)
+            },
         },
         certificate:{
             // Lấy tất cả chứng chỉ
@@ -150,6 +159,15 @@ app.factory('QLNS', function ($http) {
             // Lấy ra biến chứng chỉ toàn cục
             GET_ID_CERTIFICATE: function(){
                 return ID_CERTIFICATE; 
+            },
+
+            // Gán giá trị ID bằng cấp được chọn làm biến toàn cụ
+            SET_ID_DIPLOMA: function(id){
+                ID_DIPLOMA = id;
+            },
+            // Lấy ra biến bằng cấp toàn cục
+            GET_ID_DIPLOMA: function(){
+                return ID_DIPLOMA; 
             }
         },
         administrator:{

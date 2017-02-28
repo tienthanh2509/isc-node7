@@ -47,7 +47,6 @@ var deleteCertificate = function(id, res){
         if(err){
             res.end(err.message);
         } else {
-            console.log('Execute query:', query);
             res.end('delete succes');
         }
     });

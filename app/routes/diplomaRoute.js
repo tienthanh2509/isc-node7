@@ -19,4 +19,16 @@ router.get('/diploma', function(req, res){
 router.post('/diploma', function (req, res) {
     diploma.insertDiploma(req.body, res);
 });
+
+// API lấy bằng cấp theo ID
+router.get('/diploma/:id', function (req, res) {
+    var id = req.params.id;
+    diploma.getDiplomaWithID(id, res);
+});
+
+// API xóa bằng cấp
+router.delete('/diploma/:id', function(req, res){
+    var id = req.params.id;
+    diploma.deleteDiploma(id, res);
+});
 module.exports = router;

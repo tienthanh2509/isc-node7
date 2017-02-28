@@ -36,11 +36,39 @@
                 <td>{{ d.CREATED_AT }}</td>
                 <td>{{ d.UPDATED_AT }}</td>
                 <td class="text-center hidden-print">
-                    <button class="btn btn-default btn-xs"><i class="fa fa-edit"></i></button>
-                    <button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button>
+                    <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#editModal">
+                        <span class="fa fa-pencil"></span>
+                    </button>
+                    <button class="btn btn-danger btn-xs" data-title="Delete" ng-click="detail(d.MABANGCAP)" data-toggle="modal" data-target="#modalDelete">
+                            <span class="fa fa-trash"></span></button>
                 </td>
             </tr>
             </tbody>
         </table>
     </div>
+
+    <!-- Modal Xóa Bằng Cấp-->
+    <div class="modal fade bs-example-modal-sm" id="modalDelete" role="dialog">
+                <div class="modal-dialog">
+                
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Xóa chứng chỉ</h4>
+                    </div>
+                    <div class="modal-body">
+                    <p>Bạn có chắc muốn xóa {{oneDiploma.TENBANGCAP}}?</p>
+                    <p class="h4"><b>Tất cả dữ liệu liên quan sẽ bị xóa hết!</b></p>
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" ng-click="delete(oneDiploma.MABANGCAP)" data-dismiss="modal">Xóa</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Hủy</button>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+        <!-- /END: Modal Xóa -->
+
 </div>
