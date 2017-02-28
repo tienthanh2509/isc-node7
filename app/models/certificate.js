@@ -15,6 +15,15 @@ var getAll = function (req, res) {
     });
 };
 
+// Lấy ra danh sách chứng chỉ theo ID
+var getCertificateWithID = function (id, res) {
+    var query = 'SELECT * FROM CHUNGCHI WHERE MACHUNGCHI = ' + id;
+    console.log('Execute query:', query);
+    connection.query(query, function (err, rows) {
+        res.json(rows);
+    });
+};
+
 //Thêm mới chứng chỉ
 var insertCertificate = function(certificate, res){
     //console.log(certificate);
@@ -31,8 +40,23 @@ var insertCertificate = function(certificate, res){
     });
 };
 
+// Xóa chứng chỉ
+var deleteCertificate = function(id, res){
+    var query = "DELETE FROM CHUNGCHI WHERE MACHUNGCHI = ?";
+    connection.query(query, [id], function(err, result){
+        if(err){
+            res.end(err.message);
+        } else {
+            console.log('Execute query:', query);
+            res.end('delete succes');
+        }
+    });
+};
+
 module.exports = {
     getAll: getAll,
+    getCertificateWithID: getCertificateWithID,
     insertCertificate: insertCertificate,
-    getListCertificate: getListCertificate
+    getListCertificate: getListCertificate,
+    deleteCertificate: deleteCertificate
 };
