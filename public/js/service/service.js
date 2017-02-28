@@ -125,6 +125,11 @@ app.factory('QLNS', function ($http) {
             GET_ID_EMPLOYEE: function(){
                 return ID_EMPLOYEE; 
             }
+        },
+        administrator:{
+            LOGIN: function(admin){
+                return $http.post('/api/administratorLogin', admin)
+            }
         }
     }
 });

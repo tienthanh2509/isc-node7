@@ -20,6 +20,7 @@ var role = require('./app/routes/roleRoute');
 var majoring = require('./app/routes/majoringRoute');
 var certificate = require('./app/routes/certificateRoute');
 var diploma = require('./app/routes/diplomaRoute');
+var administrator = require('./app/routes/administratorRoute');
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
@@ -35,6 +36,7 @@ app.use('/api', role);
 app.use('/api', majoring);
 app.use('/api', certificate);
 app.use('/api', diploma);
+app.use('/api', administrator);
 
 /////////////////////////////////////////////////
 // catch 404 and forward to error handler
