@@ -151,5 +151,10 @@ app.factory('QLNS', function ($http) {
             GET_ID_CERTIFICATE: function(){
                 return ID_CERTIFICATE; 
             }
+        },
+        administrator:{
+            LOGIN: function(admin){
+                return $http.post('/api/administratorLogin', admin)
+            }
         }
      }} );
