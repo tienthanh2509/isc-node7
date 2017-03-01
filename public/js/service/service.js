@@ -4,8 +4,10 @@ app.factory('QLNS', function ($http) {
 
     // Biến ID nhân viên toàn cục
     var ID_EMPLOYEE = 0;
+    var ID_CERTIFICATE = 0;
 
     return {
+        // API nhân viên
         employee: {
             // Lấy danh sách tất cả nhân viên
             GET: function () {
@@ -53,6 +55,7 @@ app.factory('QLNS', function ($http) {
                 return $http.delete('/api/employee/' + id)
             }
         },
+        // API chức vụ
         role: {
             // Lấy tất cả chức vụ
             GET: function () {
@@ -67,6 +70,7 @@ app.factory('QLNS', function ($http) {
                 return $http.post('/api/role', role)
             }
         },
+        // API phòng ban
         department: {
             // Lấy danh sách tất cả phòng ban
             GET: function () {
@@ -93,12 +97,14 @@ app.factory('QLNS', function ($http) {
                 return $http.delete('/api/department/' + id)
             }
         },
+        // API chuyên ngành
         majoring: {
             // Lấy tất cả danh sách chuyên nghành
             GET: function () {
                 return $http.get('/api/majoring')
             }
         },
+        // API bằng cấp
         diploma: {
             //Lấy tất cả bằng cấp
             GET: function () {
@@ -113,6 +119,7 @@ app.factory('QLNS', function ($http) {
                 return $http.post('/api/diploma/update/' + diploma.MaBC, diploma)
             }
         },
+        // API chứng chỉ
         certificate: {
             // Lấy tất cả chứng chỉ
             GET: function () {
@@ -133,6 +140,7 @@ app.factory('QLNS', function ($http) {
                 return $http.delete('/api/certificate/' + id)
             }
         },
+        // API chung
         values: {
             // Gán giá trị ID nhân viên được chọn làm biến toàn cụ
             SET_ID_EMPLOYEE: function (id) {
