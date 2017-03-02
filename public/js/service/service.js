@@ -65,9 +65,17 @@ app.factory('QLNS', function ($http) {
             GETNAME: function () {
                 return $http.get('/api/roleName')
             },
-            //Thêm mới chức vụ
+            // Thêm mới chức vụ
             POST: function (role) {
-                return $http.post('/api/role', role)
+                return $http.post('/api/role/add', role)
+            },
+            // Cập nhật thông tin chức vụ
+            UPDATE: function (role) {
+                return $http.post('/api/role/update/' + role.MaCV, role)
+            },
+            // Xóa chức vụ
+            DELETE: function (id) {
+                return $http.delete('/api/role/' + id)
             }
         },
         // API phòng ban

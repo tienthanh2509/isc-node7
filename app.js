@@ -29,6 +29,7 @@ app.use(cookieParser());
 app.use('/', express.static(__dirname + '/public'));
 app.use('/vendors', express.static(__dirname + '/bower_components'));
 
+// API routes
 app.use('/api', employees);
 app.use('/api', department);
 app.use('/api', role);
@@ -40,7 +41,7 @@ app.use('/api', diploma);
 // catch 404 and forward to error handler
 app.use(function (req, res) {
     res.status(404);
-    console.error(req.method + ": " + req.url);
+    console.error('404 ' + req.method + ": " + req.url);
     res.end();
 });
 
