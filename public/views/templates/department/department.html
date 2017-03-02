@@ -21,6 +21,7 @@
                 <th>Tên Phòng Ban</th>
                 <th>Trưởng Phòng</th>
                 <th>Mô Tả</th>
+                <th>SL Nhân Viên</th>
                 <th>Hoạt Động</th>
                 <th class="text-center hidden-print">Thao tác</th>
             </tr>
@@ -37,6 +38,7 @@
                 <td>{{ d.TENPHONGBAN }}</td>
                 <td>{{ d.TRUONGPHONG }}</td>
                 <td>{{ d.MOTA }}</td>
+                <td class="text-center">{{ d.COUNT }}</td>
                 <td>
                     <label>
                         <input type="checkbox" class="checkthis" ng-checked="d.TINHTRANG" disabled>
