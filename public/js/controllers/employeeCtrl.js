@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('employeeCtrl', ['$scope', 'Upload', '$timeout', '$http', 'QLNS', function($scope, Upload, $timeout, $http, QLNS){
+app.controller('employeeCtrl', ['$scope', 'Upload', '$timeout', '$http', 'QLNS', function ($scope, Upload, $timeout, $http, QLNS) {
 
     $scope.employee = {
         Ho: '',
@@ -33,57 +33,57 @@ app.controller('employeeCtrl', ['$scope', 'Upload', '$timeout', '$http', 'QLNS',
         MaNhanVien: ''
     };
 
-var clearEmployee = function(){
+    var clearEmployee = function () {
         $scope.employee = {
-        Ho: '',
-        Ten: '',
-        NgaySinh: '',
-        DiaChi: '',
-        GioiTinh: '',
-        DienThoai: '',
-        Email: '',
-        MaSoBaoHiem: '',
-        TrinhDo: '',
-        TonGiao: '',
-        ChungChiChuyenNghanh: '',
-        ChungChiAnhVan: '',
-        imgEmployPath: '',
-        CVPath: '',
-        ScoreTablePath: '',
-        CertificatePath: '',
-        HouseholdPath: '',
-        DiplomaPath: '',
-        HealthCertificationPath: '',
-        PhongBan: '',
-        ChucVu: '',
-        maPhongBan: '',
-        maChucVu: '',
-        maChuyenNghanh: '',
-        ChuyenNghanh: '',
-        TuNgay: '',
-        DenNgay: '',
-        MaNhanVien: ''
+            Ho: '',
+            Ten: '',
+            NgaySinh: '',
+            DiaChi: '',
+            GioiTinh: '',
+            DienThoai: '',
+            Email: '',
+            MaSoBaoHiem: '',
+            TrinhDo: '',
+            TonGiao: '',
+            ChungChiChuyenNghanh: '',
+            ChungChiAnhVan: '',
+            imgEmployPath: '',
+            CVPath: '',
+            ScoreTablePath: '',
+            CertificatePath: '',
+            HouseholdPath: '',
+            DiplomaPath: '',
+            HealthCertificationPath: '',
+            PhongBan: '',
+            ChucVu: '',
+            maPhongBan: '',
+            maChucVu: '',
+            maChuyenNghanh: '',
+            ChuyenNghanh: '',
+            TuNgay: '',
+            DenNgay: '',
+            MaNhanVien: ''
+        };
+        $scope.CVs[0].name = '';
+        $scope.ScoreTables[0].name = '';
+        $scope.Certificates[0].name = '';
+        $scope.Households[0].name = '';
+        $scope.Diplomas[0].name = '';
+        $scope.HealthCertifications[0].name = '';
     };
-    $scope.CVs[0].name = '';
-    $scope.ScoreTables[0].name = '';
-    $scope.Certificates[0].name = '';
-    $scope.Households[0].name = '';
-    $scope.Diplomas[0].name = '';
-    $scope.HealthCertifications[0].name = '';
-};
     // Lưu
-    $scope.Save = function(){     
+    $scope.Save = function () {
         //console.log($scope.employee);
-        if(!checkDepartment()){
+        if (!checkDepartment()) {
             alert('Vui lòng chọn Phòng Ban');
-        } else if(!checkRole()){
+        } else if (!checkRole()) {
             alert('VUi lòng chọn Chức Vụ');
-        } else if(!checkMajor()){
+        } else if (!checkMajor()) {
             alert('Vui lòng chọn Chuyên Nghành');
-        } else if(!checkGender()){
+        } else if (!checkGender()) {
             alert('Vui lòng chọn Giới Tính');
-        } else{
-            QLNS.employee.POST($scope.employee).then(function(res){
+        } else {
+            QLNS.employee.POST($scope.employee).then(function (res) {
                 alert(res.data);
                 clearEmployee();
                 refesh();
@@ -91,49 +91,49 @@ var clearEmployee = function(){
         }
     };
 
-    $scope.selectDepartment = function(mpb, pb){
+    $scope.selectDepartment = function (mpb, pb) {
         $scope.employee.maPhongBan = mpb;
         $scope.employee.PhongBan = pb;
         console.log(pb);
     };
 
-    $scope.selectRole = function(mcv, cv){
+    $scope.selectRole = function (mcv, cv) {
         $scope.employee.maChucVu = mcv;
         $scope.employee.ChucVu = cv;
         console.log(cv);
     };
 
-    $scope.selectMajoring = function(mcn, cn){
+    $scope.selectMajoring = function (mcn, cn) {
         $scope.employee.maChuyenNghanh = mcn;
         $scope.employee.ChuyenNghanh = cn;
         console.log(cn);
     };
 
-    $scope.selectGender = function(genderName){
-        if(genderName === 'Nam'){
+    $scope.selectGender = function (genderName) {
+        if (genderName === 'Nam') {
             $scope.employee.GioiTinh = 1;
             $scope.gender = genderName;
-        } else if(genderName === 'Nữ'){
+        } else if (genderName === 'Nữ') {
             $scope.employee.GioiTinh = 0;
             $scope.gender = genderName;
         }
     };
 
     //Refesh Add Employee page
-    var refesh = function(){
+    var refesh = function () {
         $scope.employee.PhongBan = 'Chọn';
         $scope.employee.ChucVu = 'Chọn';
         $scope.employee.ChuyenNghanh = 'Chọn';
         $scope.gender = 'Chọn';
-        QLNS.department.GETNAME().then(function(res){
+        QLNS.department.GETNAME().then(function (res) {
             //console.log(res.data);
             $scope.departments = res.data;
         });
-        QLNS.role.GETNAME().then(function(res){
+        QLNS.role.GETNAME().then(function (res) {
             //console.log(res.data);
             $scope.roles = res.data;
         });
-        QLNS.majoring.GET().then(function(res){
+        QLNS.majoring.GET().then(function (res) {
             //console.log(res.data);
             $scope.majoring = res.data;
         });
@@ -141,22 +141,22 @@ var clearEmployee = function(){
     refesh();
 
     // Check Phòng Ban
-    var checkDepartment = function(){
+    var checkDepartment = function () {
         return !($scope.employee.PhongBan === 'Chọn' || $scope.employee.PhongBan === '');
     };
 
     // check Chức Vụ
-    var checkRole = function(){
+    var checkRole = function () {
         return !($scope.employee.ChucVu === 'Chọn' || $scope.employee.ChucVu === '');
     };
 
     // check Chuyên Nghành
-    var checkMajor = function(){
+    var checkMajor = function () {
         return !($scope.employee.ChuyenNghanh === 'Chọn' || $scope.employee.ChuyenNghanh === '');
     };
 
     // check Giới Tính
-    var checkGender = function(){
+    var checkGender = function () {
         return !($scope.gender === 'Chọn' || $scope.gender === '');
     };
 
@@ -168,7 +168,7 @@ var clearEmployee = function(){
     $scope.$watch('imgEmploy', function () {
         if ($scope.imgEmploy != null) {
             //console.log($scope.files);
-            $scope.imgEmploys = [$scope.imgEmploy]; 
+            $scope.imgEmploys = [$scope.imgEmploy];
         }
     });
     $scope.logimg = '';
@@ -176,12 +176,12 @@ var clearEmployee = function(){
     // CV
     $scope.$watch('CVs', function () {
         //console.log($scope.CVs[0].name);   
-        $scope.uploadCV($scope.CVs);   
+        $scope.uploadCV($scope.CVs);
     });
     $scope.$watch('CV', function () {
         if ($scope.CV != null) {
             //console.log($scope.files);
-            $scope.CVs = [$scope.CV]; 
+            $scope.CVs = [$scope.CV];
         }
     });
     $scope.logCV = '';
@@ -194,7 +194,7 @@ var clearEmployee = function(){
     $scope.$watch('ScoreTable', function () {
         if ($scope.ScoreTable != null) {
             //console.log($scope.files);
-            $scope.ScoreTables = [$scope.ScoreTable]; 
+            $scope.ScoreTables = [$scope.ScoreTable];
         }
     });
     $scope.logScoreTable = '';
@@ -207,7 +207,7 @@ var clearEmployee = function(){
     $scope.$watch('Certificate', function () {
         if ($scope.Certificate != null) {
             //console.log($scope.files);
-            $scope.Certificates = [$scope.Certificate]; 
+            $scope.Certificates = [$scope.Certificate];
         }
     });
     $scope.logCertificate = '';
@@ -220,7 +220,7 @@ var clearEmployee = function(){
     $scope.$watch('Household', function () {
         if ($scope.Household != null) {
             //console.log($scope.files);
-            $scope.Households = [$scope.Household]; 
+            $scope.Households = [$scope.Household];
         }
     });
     $scope.logHousehold = '';
@@ -233,7 +233,7 @@ var clearEmployee = function(){
     $scope.$watch('Diploma', function () {
         if ($scope.Diploma != null) {
             //console.log($scope.files);
-            $scope.Diplomas = [$scope.Diploma]; 
+            $scope.Diplomas = [$scope.Diploma];
         }
     });
     $scope.logDiploma = '';
@@ -246,7 +246,7 @@ var clearEmployee = function(){
     $scope.$watch('HealthCertification', function () {
         if ($scope.HealthCertification != null) {
             //console.log($scope.files);
-            $scope.HealthCertifications = [$scope.HealthCertification]; 
+            $scope.HealthCertifications = [$scope.HealthCertification];
         }
     });
     $scope.logHealthCertification = '';
@@ -255,30 +255,30 @@ var clearEmployee = function(){
     $scope.uploadImage = function (files) {
         if (files && files.length) {
             for (var i = 0; i < files.length; i++) {
-              var file = files[i];
-              if (!file.$error) {
-                Upload.upload({
-                    url: '/api/uploadImage',
-                    data: {
-                      file: file  
-                    }
-                }).then(function (resp) {
-                    //console.log(resp.data);
-                    $scope.employee.imgEmployPath = resp.data.originalname;
-                    $timeout(function() {
-                        $scope.logimg = 'file: ' +
-                        resp.config.data.file.name +
-                        ', Response: ' + JSON.stringify(resp.data) +
-                        '\n' + $scope.logimg;
+                var file = files[i];
+                if (!file.$error) {
+                    Upload.upload({
+                        url: '/api/uploadImage',
+                        data: {
+                            file: file
+                        }
+                    }).then(function (resp) {
+                        //console.log(resp.data);
+                        $scope.employee.imgEmployPath = resp.data.originalname;
+                        $timeout(function () {
+                            $scope.logimg = 'file: ' +
+                                resp.config.data.file.name +
+                                ', Response: ' + JSON.stringify(resp.data) +
+                                '\n' + $scope.logimg;
+                        });
+                    }, null, function (evt) {
+                        var progressPercentage = parseInt(100.0 *
+                            evt.loaded / evt.total);
+                        $scope.logimg = 'progress: ' + progressPercentage +
+                            '% ' + evt.config.data.file.name + '\n' +
+                            $scope.logimg;
                     });
-                }, null, function (evt) {
-                    var progressPercentage = parseInt(100.0 *
-                    		evt.loaded / evt.total);
-                    $scope.logimg = 'progress: ' + progressPercentage + 
-                    	'% ' + evt.config.data.file.name + '\n' + 
-                      $scope.logimg;
-                });
-              }
+                }
             }
         }
     };
@@ -287,31 +287,31 @@ var clearEmployee = function(){
     $scope.uploadCV = function (files) {
         if (files && files.length) {
             for (var i = 0; i < files.length; i++) {
-              var file = files[i];
-              if (!file.$error) {
-                Upload.upload({
-                    url: '/api/uploadCV',
-                    data: {
-                      file: file  
-                    }
-                }).then(function (resp) {
-                    $scope.employee.CVPath = resp.data.path;
-                    $timeout(function() {
-                        $scope.logCV = 'file: ' +
-                        resp.config.data.file.name +
-                        ', Response: ' + JSON.stringify(resp.data) +
-                        '\n' + $scope.logCV;
-                    });
-                }, null, function (evt) {
-                    var progressPercentage = parseInt(100.0 *
-                    		evt.loaded / evt.total);
-                    $scope.logCV = 'progress: ' + progressPercentage + 
-                    	'% ' + evt.config.data.file.name + '\n' + 
-                      $scope.logCV;
+                var file = files[i];
+                if (!file.$error) {
+                    Upload.upload({
+                        url: '/api/uploadCV',
+                        data: {
+                            file: file
+                        }
+                    }).then(function (resp) {
+                        $scope.employee.CVPath = resp.data.path;
+                        $timeout(function () {
+                            $scope.logCV = 'file: ' +
+                                resp.config.data.file.name +
+                                ', Response: ' + JSON.stringify(resp.data) +
+                                '\n' + $scope.logCV;
+                        });
+                    }, null, function (evt) {
+                        var progressPercentage = parseInt(100.0 *
+                            evt.loaded / evt.total);
+                        $scope.logCV = 'progress: ' + progressPercentage +
+                            '% ' + evt.config.data.file.name + '\n' +
+                            $scope.logCV;
 
-                      console.log($scope.logCV);
-                });
-              }
+                        console.log($scope.logCV);
+                    });
+                }
             }
         }
     };
@@ -320,29 +320,29 @@ var clearEmployee = function(){
     $scope.uploadScoreTable = function (files) {
         if (files && files.length) {
             for (var i = 0; i < files.length; i++) {
-              var file = files[i];
-              if (!file.$error) {
-                Upload.upload({
-                    url: '/api/uploadScoreTable',
-                    data: {
-                      file: file  
-                    }
-                }).then(function (resp) {
-                    $scope.employee.ScoreTablePath = resp.data.path;
-                    $timeout(function() {
-                        $scope.logScoreTable = 'file: ' +
-                        resp.config.data.file.name +
-                        ', Response: ' + JSON.stringify(resp.data) +
-                        '\n' + $scope.logScoreTable;
+                var file = files[i];
+                if (!file.$error) {
+                    Upload.upload({
+                        url: '/api/uploadScoreTable',
+                        data: {
+                            file: file
+                        }
+                    }).then(function (resp) {
+                        $scope.employee.ScoreTablePath = resp.data.path;
+                        $timeout(function () {
+                            $scope.logScoreTable = 'file: ' +
+                                resp.config.data.file.name +
+                                ', Response: ' + JSON.stringify(resp.data) +
+                                '\n' + $scope.logScoreTable;
+                        });
+                    }, null, function (evt) {
+                        var progressPercentage = parseInt(100.0 *
+                            evt.loaded / evt.total);
+                        $scope.logScoreTable = 'progress: ' + progressPercentage +
+                            '% ' + evt.config.data.file.name + '\n' +
+                            $scope.logScoreTable;
                     });
-                }, null, function (evt) {
-                    var progressPercentage = parseInt(100.0 *
-                    		evt.loaded / evt.total);
-                    $scope.logScoreTable = 'progress: ' + progressPercentage + 
-                    	'% ' + evt.config.data.file.name + '\n' + 
-                      $scope.logScoreTable;
-                });
-              }
+                }
             }
         }
     };
@@ -351,29 +351,29 @@ var clearEmployee = function(){
     $scope.uploadCertificate = function (files) {
         if (files && files.length) {
             for (var i = 0; i < files.length; i++) {
-              var file = files[i];
-              if (!file.$error) {
-                Upload.upload({
-                    url: '/api/uploadCertificate',
-                    data: {
-                      file: file  
-                    }
-                }).then(function (resp) {
-                    $scope.employee.CertificatePath = resp.data.path;
-                    $timeout(function() {
-                        $scope.logCertificate = 'file: ' +
-                        resp.config.data.file.name +
-                        ', Response: ' + JSON.stringify(resp.data) +
-                        '\n' + $scope.logCertificate;
+                var file = files[i];
+                if (!file.$error) {
+                    Upload.upload({
+                        url: '/api/uploadCertificate',
+                        data: {
+                            file: file
+                        }
+                    }).then(function (resp) {
+                        $scope.employee.CertificatePath = resp.data.path;
+                        $timeout(function () {
+                            $scope.logCertificate = 'file: ' +
+                                resp.config.data.file.name +
+                                ', Response: ' + JSON.stringify(resp.data) +
+                                '\n' + $scope.logCertificate;
+                        });
+                    }, null, function (evt) {
+                        var progressPercentage = parseInt(100.0 *
+                            evt.loaded / evt.total);
+                        $scope.logCertificate = 'progress: ' + progressPercentage +
+                            '% ' + evt.config.data.file.name + '\n' +
+                            $scope.logCertificate;
                     });
-                }, null, function (evt) {
-                    var progressPercentage = parseInt(100.0 *
-                    		evt.loaded / evt.total);
-                    $scope.logCertificate = 'progress: ' + progressPercentage + 
-                    	'% ' + evt.config.data.file.name + '\n' + 
-                      $scope.logCertificate;
-                });
-              }
+                }
             }
         }
     };
@@ -382,29 +382,29 @@ var clearEmployee = function(){
     $scope.uploadHousehold = function (files) {
         if (files && files.length) {
             for (var i = 0; i < files.length; i++) {
-              var file = files[i];
-              if (!file.$error) {
-                Upload.upload({
-                    url: '/api/uploadHousehold',
-                    data: {
-                      file: file  
-                    }
-                }).then(function (resp) {
-                    $scope.employee.HouseholdPath = resp.data.path;
-                    $timeout(function() {
-                        $scope.logHousehold = 'file: ' +
-                        resp.config.data.file.name +
-                        ', Response: ' + JSON.stringify(resp.data) +
-                        '\n' + $scope.logHousehold;
+                var file = files[i];
+                if (!file.$error) {
+                    Upload.upload({
+                        url: '/api/uploadHousehold',
+                        data: {
+                            file: file
+                        }
+                    }).then(function (resp) {
+                        $scope.employee.HouseholdPath = resp.data.path;
+                        $timeout(function () {
+                            $scope.logHousehold = 'file: ' +
+                                resp.config.data.file.name +
+                                ', Response: ' + JSON.stringify(resp.data) +
+                                '\n' + $scope.logHousehold;
+                        });
+                    }, null, function (evt) {
+                        var progressPercentage = parseInt(100.0 *
+                            evt.loaded / evt.total);
+                        $scope.logHousehold = 'progress: ' + progressPercentage +
+                            '% ' + evt.config.data.file.name + '\n' +
+                            $scope.logHousehold;
                     });
-                }, null, function (evt) {
-                    var progressPercentage = parseInt(100.0 *
-                    		evt.loaded / evt.total);
-                    $scope.logHousehold = 'progress: ' + progressPercentage + 
-                    	'% ' + evt.config.data.file.name + '\n' + 
-                      $scope.logHousehold;
-                });
-              }
+                }
             }
         }
     };
@@ -413,29 +413,29 @@ var clearEmployee = function(){
     $scope.uploadDiploma = function (files) {
         if (files && files.length) {
             for (var i = 0; i < files.length; i++) {
-              var file = files[i];
-              if (!file.$error) {
-                Upload.upload({
-                    url: '/api/uploadDiploma',
-                    data: {
-                      file: file  
-                    }
-                }).then(function (resp) {
-                    $scope.employee.DiplomaPath = resp.data.path;
-                    $timeout(function() {
-                        $scope.logDiploma = 'file: ' +
-                        resp.config.data.file.name +
-                        ', Response: ' + JSON.stringify(resp.data) +
-                        '\n' + $scope.logDiploma;
+                var file = files[i];
+                if (!file.$error) {
+                    Upload.upload({
+                        url: '/api/uploadDiploma',
+                        data: {
+                            file: file
+                        }
+                    }).then(function (resp) {
+                        $scope.employee.DiplomaPath = resp.data.path;
+                        $timeout(function () {
+                            $scope.logDiploma = 'file: ' +
+                                resp.config.data.file.name +
+                                ', Response: ' + JSON.stringify(resp.data) +
+                                '\n' + $scope.logDiploma;
+                        });
+                    }, null, function (evt) {
+                        var progressPercentage = parseInt(100.0 *
+                            evt.loaded / evt.total);
+                        $scope.logDiploma = 'progress: ' + progressPercentage +
+                            '% ' + evt.config.data.file.name + '\n' +
+                            $scope.logDiploma;
                     });
-                }, null, function (evt) {
-                    var progressPercentage = parseInt(100.0 *
-                    		evt.loaded / evt.total);
-                    $scope.logDiploma = 'progress: ' + progressPercentage + 
-                    	'% ' + evt.config.data.file.name + '\n' + 
-                      $scope.logDiploma;
-                });
-              }
+                }
             }
         }
     };
@@ -444,29 +444,29 @@ var clearEmployee = function(){
     $scope.uploadHealthCertification = function (files) {
         if (files && files.length) {
             for (var i = 0; i < files.length; i++) {
-              var file = files[i];
-              if (!file.$error) {
-                Upload.upload({
-                    url: '/api/uploadHealthCertification',
-                    data: {
-                      file: file  
-                    }
-                }).then(function (resp) {
-                    $scope.employee.HealthCertificationPath = resp.data.path;
-                    $timeout(function() {
-                        $scope.logHealthCertification = 'file: ' +
-                        resp.config.data.file.name +
-                        ', Response: ' + JSON.stringify(resp.data) +
-                        '\n' + $scope.logHealthCertification;
+                var file = files[i];
+                if (!file.$error) {
+                    Upload.upload({
+                        url: '/api/uploadHealthCertification',
+                        data: {
+                            file: file
+                        }
+                    }).then(function (resp) {
+                        $scope.employee.HealthCertificationPath = resp.data.path;
+                        $timeout(function () {
+                            $scope.logHealthCertification = 'file: ' +
+                                resp.config.data.file.name +
+                                ', Response: ' + JSON.stringify(resp.data) +
+                                '\n' + $scope.logHealthCertification;
+                        });
+                    }, null, function (evt) {
+                        var progressPercentage = parseInt(100.0 *
+                            evt.loaded / evt.total);
+                        $scope.logHealthCertification = 'progress: ' + progressPercentage +
+                            '% ' + evt.config.data.file.name + '\n' +
+                            $scope.logHealthCertification;
                     });
-                }, null, function (evt) {
-                    var progressPercentage = parseInt(100.0 *
-                    		evt.loaded / evt.total);
-                    $scope.logHealthCertification = 'progress: ' + progressPercentage + 
-                    	'% ' + evt.config.data.file.name + '\n' + 
-                      $scope.logHealthCertification;
-                });
-              }
+                }
             }
         }
     };
