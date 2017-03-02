@@ -9,7 +9,7 @@ router.use(bodyParser.json());
 
 // 1. GET
 router.get('/role', function (req, res) {
-    role.get(req, res);
+    role.getStat(req, res);
 });
 
 // 2. GET Name

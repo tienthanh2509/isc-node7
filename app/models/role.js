@@ -17,6 +17,13 @@ var getName = function (req, res) {
     });
 };
 
+var getStat = function (req, res) {
+    var query = 'SELECT * FROM DS_CHUCVU';
+    connection.query(query, function (err, rows) {
+        res.json(rows);
+    });
+};
+
 var insert = function (role, res) {
     var values = [
         [
@@ -110,6 +117,7 @@ var del = function (MaCV, res) {
 module.exports = {
     get: get,
     getName: getName,
+    getStat: getStat,
     insert: insert,
     update: update,
     del: del
