@@ -71,7 +71,7 @@ app.factory('QLNS', function ($http) {
             },
             // Cập nhật thông tin chức vụ
             UPDATE: function (role) {
-                return $http.post('/api/role/update/' + role.MaCV, role)
+                return $http.put('/api/role/' + role.MaCV, role)
             },
             // Xóa chức vụ
             DELETE: function (id) {

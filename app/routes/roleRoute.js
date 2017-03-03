@@ -2,10 +2,7 @@
 
 var express = require('express');
 var router = express.Router();
-var bodyParser = require('body-parser');
-
 var role = require('../models/role');
-router.use(bodyParser.json());
 
 // 1. GET
 router.get('/role', function (req, res) {
@@ -23,7 +20,7 @@ router.post('/role/add', function (req, res) {
 });
 
 // 4. UPDATE
-router.post('/role/update/:id', function (req, res) {
+router.put('/role/:id', function (req, res) {
     var id = req.params.id;
     role.update(id, req.body, res);
 });
