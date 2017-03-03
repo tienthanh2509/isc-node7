@@ -4,6 +4,9 @@
         <h2>Danh Sách Phòng Ban</h2>
         <ul class="nav navbar-right panel_toolbox hidden-print">
             <li>
+                <a href="javascript:void(0)" ng-click="refresh()"><i class="fa fa-refresh"></i> Làm tươi</a>
+            </li>
+            <li>
                 <a href="#!/department/add"><i class="fa fa-plus"></i> Thêm phòng ban</a>
             </li>
             <li>
@@ -21,13 +24,14 @@
                 <th>Tên Phòng Ban</th>
                 <th>Trưởng Phòng</th>
                 <th>Mô Tả</th>
+                <th>SL Nhân Viên</th>
                 <th>Hoạt Động</th>
                 <th class="text-center hidden-print">Thao tác</th>
             </tr>
             </thead>
             <tbody>
             <tr ng-if="loading == null">
-                <td colspan="6" class="text-center">
+                <td colspan="7" class="text-center">
                     Đang tải dữ liệu...
                     <i class="fa fa-refresh fa-spin fa-fw"></i>
                 </td>
@@ -37,6 +41,7 @@
                 <td>{{ d.TENPHONGBAN }}</td>
                 <td>{{ d.TRUONGPHONG }}</td>
                 <td>{{ d.MOTA }}</td>
+                <td class="text-center">{{ d.COUNT }}</td>
                 <td>
                     <label>
                         <input type="checkbox" class="checkthis" ng-checked="d.TINHTRANG" disabled>
@@ -48,7 +53,7 @@
                         <span class="fa fa-pencil"></span>
                     </button>
                     <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteModal"
-                            ng-click="setData($index)">
+                            ng-click="setData($index)" ng-hide="d.COUNT > 0">
                         <span class="fa fa-trash"></span>
                     </button>
                 </td>
@@ -97,11 +102,11 @@
                     </div>
                     <div class="modal-footer ">
                         <button type="submit" class="btn btn-warning btn-lg" style="width: 100%;"
-                                ng-disabled="departmentForm.$invalid" ng-hide="saving">
+                                ng-disabled="departmentForm.$invalid" ng-hide="loading">
                             <span class="fa fa-ok-sign"></span> Cập Nhật
                         </button>
                         <button type="button" class="btn btn-warning btn-lg" style="width: 100%;" disabled
-                                ng-show="saving">
+                                ng-show="loading">
                             <i class="fa fa-spinner fa-spin"></i>
                             Đang xử lý...
                         </button>

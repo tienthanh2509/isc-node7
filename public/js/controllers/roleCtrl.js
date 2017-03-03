@@ -3,6 +3,9 @@
 app.controller('roleCtrl', ['$scope', 'QLNS', function ($scope, QLNS) {
     // 1. Làm tươi nội dung
     $scope.refresh = function () {
+        $scope.loading = null;
+        $scope.roles = null;
+
         // Clear biến tạm
         $scope.role = {
             MaCV: '',
