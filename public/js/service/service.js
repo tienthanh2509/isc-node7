@@ -67,7 +67,7 @@ app.factory('QLNS', function ($http) {
             },
             // Thêm mới chức vụ
             POST: function (role) {
-                return $http.post('/api/role/add', role)
+                return $http.post('/api/role', role)
             },
             // Cập nhật thông tin chức vụ
             UPDATE: function (role) {

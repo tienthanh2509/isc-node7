@@ -15,7 +15,7 @@ router.get('/roleName', function (req, res) {
 });
 
 // 3. ADD
-router.post('/role/add', function (req, res) {
+router.post('/role', function (req, res) {
     role.insert(req.body, res);
 });
 
