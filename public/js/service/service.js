@@ -150,5 +150,10 @@ app.factory('QLNS', function ($http) {
             LOGIN: function(admin){
                 return $http.post('/api/administratorLogin', admin)
             }
+        },
+        typecontract:{
+            GET: function(){
+                return $http.get('/api/typecontract')
+            }
         }
      }} );
