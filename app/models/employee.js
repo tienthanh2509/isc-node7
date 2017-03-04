@@ -79,7 +79,7 @@ var getEmployeeWithDepartmentID = function(id, res){
 var insertEmployee = function(employee, res){
     //console.log(employee);
     var values = [
-        [employee.maChucVu, employee.maPhongBan, employee.MaNhanVien, employee.Ho, employee.Ten, employee.TonGiao, employee.NgaySinh, employee.DiaChi, employee.DienThoai, employee.Email, employee.imgEmployPath, employee.GioiTinh]
+        [employee.MACV, employee.MAPB, employee.MANV, employee.HONV, employee.TENNV, employee.TONGIAO, employee.NGAYSINH, employee.DIACHI, employee.SODIENTHOAI, employee.EMAIL, employee.HINHANH, employee.GIOITINH]
     ];
     connection.query("INSERT INTO NHANVIEN(MACV, MAPB, MANV, HONV, TENNV, TONGIAO, NGAYSINH, DIACHI, SODIENTHOAI, EMAIL, HINHANH, GIOITINH) VALUES ?", [values], function(err){
         if(err){
