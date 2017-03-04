@@ -2,6 +2,14 @@ app.controller('showListEmployeeCtrl', ['$scope', 'QLNS', function($scope, QLNS)
     $scope.phongban = 'Phòng/ Ban';
     $scope.chungchi = 'Chứng chỉ';
     $scope.loading = false;
+
+    $scope.email = {
+        ten: '',
+        email: '',
+        content: '',
+        subject: ''
+    };
+
     //Lấy toàn bộ danh sách nhân viên
     $scope.getEmployee = function(){
          QLNS.employee.GET().then(function(res){
@@ -88,7 +96,27 @@ app.controller('showListEmployeeCtrl', ['$scope', 'QLNS', function($scope, QLNS)
     $scope.detail = function(id){
         QLNS.employee.GET_WITH_ID(id).then(function(res){
             $scope.oneEmployee = res.data[0];
+            $scope.email.ten = res.data[0].TENNV;
+            $scope.email.email = res.data[0].EMAIL;
         });
+    };
+
+    // Gửi mail cho một nhân viên
+    $scope.sendMail = function(){
+        QLNS.employee.SENDMAIL($scope.email).then(function(res){
+            alert(res.data);
+            $scope.clearMail();
+        });
+    };
+
+    // Làm mới Mail
+    $scope.clearMail = function(){
+        $scope.email = {
+            ten: '',
+            email: '',
+            content: '',
+            subject: ''
+        };
     };
 
     // load dữ liệu khi vào trang
