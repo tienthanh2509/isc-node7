@@ -21,6 +21,7 @@ var majoring = require('./app/routes/majoringRoute');
 var certificate = require('./app/routes/certificateRoute');
 var diploma = require('./app/routes/diplomaRoute');
 var administrator = require('./app/routes/administratorRoute');
+var typecontract = require('./app/routes/typecontractRoute');
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
@@ -37,6 +38,7 @@ app.use('/api', majoring);
 app.use('/api', certificate);
 app.use('/api', diploma);
 app.use('/api', administrator);
+app.use('/api', typecontract);
 
 /////////////////////////////////////////////////
 // catch 404 and forward to error handler
