@@ -14,7 +14,7 @@
                 <div class="form-group">
                     <label for="inputHo" class="col-sm-3 control-label">Họ:</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" name="Ho" ng-model="employee.Ho" id="inputHo"
+                        <input type="text" class="form-control" name="Ho" ng-model="employee.HONV" id="inputHo"
                                placeholder="Họ..." ng-minlength="2" ng-maxlength="30" required>
                         <i class="fa fa-check text-success" ng-show="form.Ho.$dirty && form.Ho.$valid"></i>
                         <!-- Error -->
@@ -38,7 +38,7 @@
                 <div class="form-group">
                     <label for="inputTen" class="col-sm-3 control-label">Tên:</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" name="Ten" ng-model="employee.Ten" id="inputTen"
+                        <input type="text" class="form-control" name="Ten" ng-model="employee.TENNV" id="inputTen"
                                placeholder="Tên..." ng-minlength="2" ng-maxlength="15" required>
                         <i class="fa fa-check text-success" ng-show="form.Ten.$dirty && form.Ten.$valid"></i>
                         <!-- Error -->
@@ -63,19 +63,9 @@
                     <label for="inputNgaysinh" class="col-sm-3 control-label">Ngày sinh:</label>
                     <div class="col-sm-9">
                         <div class="form-inline">
-                            <!-- <input type="text" class="form-control" name="NgaySinh" ng-model="employee.NgaySinh" placeholder="dd-mm-yyyy" ng-pattern="/^(0?[1-9]|[12][0-9]|3[01])-(0?[1-9]|1[012])-((19[0-9]{2})|(20[0-1]{1}[0-4]{1}))$/" /> -->
-                            <input type="text" class="form-control" name="NgaySinh" ng-model="employee.NgaySinh"
-                                   placeholder="yyyy-mm-dd"
-                                   ng-pattern="/^((19[0-9]{2})|(20[0-9]{1}[0-9]{1}))-(0?[1-9]|1[012])-(0?[1-9]|[12][0-9]|3[01])$/"/>
+                            <input type="date" class="form-control" name="NgaySinh" ng-model="employee.NGAYSINH" />
                             <b class="fa fa-calendar"></b>
-                            <!-- Error -->
-                            <i class="fa fa-check text-success"
-                               ng-show="form.NgaySinh.$dirty && form.NgaySinh.$valid"> </i>
-                            <div ng-show="form.NgaySinh.$dirty && form.NgaySinh.$invalid" class="text-danger">
-                                <i class="fa fa-times text-danger"></i> Nhập ngày sinh theo đúng định dạng
-                                yyyy-mm-dd
-                            </div>
-                            <!-- /Error -->
+
                         </div>
                     </div>
                 </div>
@@ -84,7 +74,7 @@
                 <div class="form-group">
                     <label for="inputDiachi" class="col-sm-3 control-label">Địa chỉ:</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" name="DiaChi" ng-model="employee.DiaChi"
+                        <input type="text" class="form-control" name="DiaChi" ng-model="employee.DIACHI"
                                id="inputDiachi" placeholder="Địa chỉ..." ng-minlength="6" ng-maxlength="50" required>
                         <i class="fa fa-check text-success" ng-show="form.DiaChi.$dirty && form.DiaChi.$valid"></i>
                         <!-- Error -->
@@ -108,7 +98,7 @@
                 <div class="form-group">
                     <label for="inputGioiTinh" class="col-sm-3 control-label">Giới tính:</label>
                     <div class="col-sm-9">
-                        <div class="dropdown">
+                        <!--<div class="dropdown">
                             <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
                                 {{gender}}
                                 <span class="caret"></span></button>
@@ -116,7 +106,14 @@
                                 <li><a ng-click="selectGender('Nam')">Nam</a></li>
                                 <li><a ng-click="selectGender('Nữ')">Nữ</a></li>
                             </ul>
-                        </div>
+                        </div>-->
+
+                      <p>
+                        Nam:
+                        <input type="radio" class="flat" name="gender" id="genderM" ng-click="employee.GIOITINH = 1" value="M" checked="" required /> 
+                        Nữ:
+                        <input type="radio" class="flat" name="gender" id="genderF" ng-click="employee.GIOITINH = 0" value="F" />
+                      </p>
                     </div>
                 </div>
                 <!-- Giới tính -->
@@ -124,7 +121,7 @@
                 <div class="form-group">
                     <label for="inputDienthoai" class="col-sm-3 control-label">Điện Thoại:</label>
                     <div class="col-sm-9">
-                        <input type="number" class="form-control" name="DienThoai" ng-model="employee.DienThoai"
+                        <input type="number" class="form-control" name="DienThoai" ng-model="employee.SODIENTHOAI"
                                id="inputDienthoai" placeholder="Số điện thoại..." ng-minlength="8" ng-maxlength="11"
                                required>
                         <i class="fa fa-check text-success"
@@ -150,7 +147,7 @@
                 <div class="form-group">
                     <label for="inputEmail" class="col-sm-3 control-label">Email:</label>
                     <div class="col-sm-9">
-                        <input type="email" class="form-control" name="Email" ng-model="employee.Email" id="inputEmail"
+                        <input type="email" class="form-control" name="Email" ng-model="employee.EMAIL" id="inputEmail"
                                placeholder="Email..." ng-minlength="12" ng-maxlength="40" ng-pattern="/^.+@gmail\.com$/"
                                required>
                         <i class="fa fa-check text-success" ng-show="form.Email.$dirty && form.Email.$valid"></i>
@@ -206,7 +203,7 @@
                     <div class="col-sm-9">
                         <div class="dropdown">
                             <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
-                                {{employee.PhongBan}}
+                                {{employee.TENPHONGBAN}}
                                 <span class="caret"></span></button>
                             <ul class="dropdown-menu">
                                 <li><a ng-repeat="d in departments" ng-click="selectDepartment(d.MAPB, d.TENPHONGBAN)">{{d.TENPHONGBAN}}</a>
@@ -222,7 +219,7 @@
                     <div class="col-sm-9">
                         <div class="dropdown">
                             <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown"
-                                    required>{{employee.ChucVu}}
+                                    required>{{employee.TENCHUVU}}
                                 <span class="caret"></span></button>
                             <ul class="dropdown-menu">
                                 <li><a ng-repeat="r in roles"
@@ -236,7 +233,7 @@
                 <div class="form-group">
                     <label for="inputMaNV" class="col-sm-3 control-label">Mã Nhân Viên:</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" name="MaNhanVien" ng-model="employee.MaNhanVien"
+                        <input type="text" class="form-control" name="MaNhanVien" ng-model="employee.MANV"
                                id="inputBaohiem" placeholder="Mã nhân viên..." ng-minlength="5" ng-maxlength="10"
                                ng-pattern="/^[a-zA-Z0-9]+$/" required>
                         <i class="fa fa-check text-success"
@@ -279,7 +276,7 @@
                 <div class="form-group">
                     <label for="inputTongiao" class="col-sm-3 control-label">Tôn giáo:</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" name="TonGiao" ng-model="employee.TonGiao"
+                        <input type="text" class="form-control" name="TonGiao" ng-model="employee.TONGIAO"
                                id="inputTongiao" placeholder="Tôn giáo..." ng-minlength="3" ng-maxlength="30" required>
                         <i class="fa fa-check text-success" ng-show="form.TonGiao.$dirty && form.TonGiao.$valid"></i>
                         <!-- Error -->
@@ -305,21 +302,29 @@
                     <!-- Panel Body -->
                     <div class="panel-body">
                         <div class="form-group">
-                            <label for="inputPassword3" class="col-sm-5 control-label">Chọn chuyên nghành:</label>
+                            <label for="inputPassword3" class="col-sm-5">Chọn chuyên nghành:</label>
                             <div class="col-sm-7">
                                 <div class="dropdown">
                                     <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1"
                                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                        {{employee.ChuyenNghanh}}
+                                        {{employee.TENCN}}
                                         <span class="caret"></span>
                                     </button>
                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                                        <li><a ng-repeat="m in majoring" ng-click="selectMajoring(m.MANGANH, m.TENNH)">{{m.TENNH}}</a>
+                                        <li><a ng-repeat="m in majoring" ng-click="selectMajoring(m.MACN, m.TENCN)">{{m.TENCN}}</a>
                                         </li>
                                     </ul>
                                 </div>
                             </div>
-                            <form>
+                            <!-- Chứng chỉ anh văn -->
+                                <label for="inputPassword3" class="col-sm-5">Chứng chỉ:</label>
+                                <div class="col-sm-10">
+                                    <div class="checkbox">
+                                        <label style="margin: 5px" ng-repeat="c in certificate"><input type="checkbox" value="">{{c.TENCHUNGCHI}}</label>
+                                    </div>
+                                </div>
+                            <!-- /Chứng chỉ anh văn -->
+                            <!--<form>
                                 <label class="checkbox-inline">
                                     <input type="checkbox" value="">Option 1
                                 </label>
@@ -329,27 +334,13 @@
                                 <label class="checkbox-inline">
                                     <input type="checkbox" value="">Option 3
                                 </label>
-                            </form>
+                            </form>-->
                         </div>
                     </div>
                     <!-- /Panel Body -->
                 </div>
                 <!-- /Panel chứng chỉ -->
 
-                <!-- Chứng chỉ anh văn -->
-                <label for="inputPassword3" class="col-sm-5 control-label">Chứng chỉ tiếng Anh:</label>
-                <div class="col-sm-10">
-                    <div class="checkbox">
-                        <label><input type="checkbox" value="">Toeic</label>
-                    </div>
-                    <div class="checkbox">
-                        <label><input type="checkbox" value="">Ielts</label>
-                    </div>
-                    <div class="checkbox disabled">
-                        <label><input type="checkbox" value="" disabled>Toefl</label>
-                    </div>
-                </div>
-                <!-- /Chứng chỉ anh văn -->
                 <div class="form-group">
                     <label for="inputTongiao" class="col-sm-4 control-label">Loại hợp đồng:</label>
                     <div class="col-sm-8">
@@ -358,9 +349,7 @@
                                     style="margin-bottom: 10px">Chọn...
                                 <span class="caret"></span></button>
                             <ul class="dropdown-menu">
-                                <li><a href="#">HTML</a></li>
-                                <li><a href="#">CSS</a></li>
-                                <li><a href="#">JavaScript</a></li>
+                                <li><a ng-repeat="t in typecontract">{{t.TENLOAIHOPDONG}}</a></li>
                             </ul>
                         </div>
                     </div>
@@ -370,34 +359,16 @@
                     <div class="col-sm-8">
                         <div class="form-inline">
                             <div class="input-group">
-                                <span class="input-group-addon" id="basic-addon1">Từ: </span>
-                                <input type="text" class="form-control" aria-describedby="basic-addon1" name="TuNgay"
+                                <span class="input-group-addon" id="basic-addon1">Từ : </span>
+                                <input type="date" class="form-control" aria-describedby="basic-addon1" name="TuNgay"
                                        ng-model="employee.TuNgay" placeholder="dd-mm-yyyy"
-                                       ng-pattern="/^(0?[1-9]|[12][0-9]|3[01])-(0?[1-9]|1[012])-((20[0-9]{1}[0-9]{1}))$/"
                                        required/>
-                                <!-- Error -->
-                                <i class="fa fa-check text-success"
-                                   ng-show="form.TuNgay.$dirty && form.TuNgay.$valid"> </i>
-                                <div ng-show="form.TuNgay.$dirty && form.TuNgay.$invalid" class="text-danger">
-                                    <i class="fa fa-times text-danger"></i> Nhập ngày sinh theo đúng định dạng
-                                    dd-mm-yyyy
-                                </div>
-                                <!-- /Error -->
                             </div>
                             <div class="input-group">
                                 <span class="input-group-addon" id="basic-addon1">Đến: </span>
-                                <input type="text" class="form-control" aria-describedby="basic-addon1" name="DenNgay"
+                                <input type="date" class="form-control" aria-describedby="basic-addon1" name="DenNgay"
                                        ng-model="employee.DenNgay" placeholder="dd-mm-yyyy"
-                                       ng-pattern="/^(0?[1-9]|[12][0-9]|3[01])-(0?[1-9]|1[012])-((20[0-9]{1}[0-9]{1}))$/"
                                        required/>
-                                <!-- Error -->
-                                <i class="fa fa-check text-success"
-                                   ng-show="form.DenNgay.$dirty && form.DenNgay.$valid"> </i>
-                                <div ng-show="form.DenNgay.$dirty && form.DenNgay.$invalid" class="text-danger">
-                                    <i class="fa fa-times text-danger"></i> Nhập ngày sinh theo đúng định dạng
-                                    dd-mm-yyyy
-                                </div>
-                                <!-- /Error -->
                             </div>
                         </div>
                     </div>
@@ -431,9 +402,7 @@
                                         </label>
                                         <div class="col-sm-3">
                                             <!-- button image -->
-                                            <div class="btn btn-default editButton" ngf-select ng-model="CV"
-                                                 ngf-multiple="false">Tải lên
-                                            </div>
+
                                             <!-- button image -->
                                         </div>
                                     </div>
@@ -441,7 +410,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-12">
-                                        <label><i>{{CVs[0].name}}</i></label>
+                                        <label><i>{{employee.CVPath}}</i></label>
                                     </div>
                                 </div>
                             </div>
@@ -465,9 +434,7 @@
                                         </label>
                                         <div class="col-sm-3">
                                             <!-- button image -->
-                                            <div class="btn btn-default editButton" ngf-select ng-model="ScoreTable"
-                                                 ngf-multiple="false">Tải lên
-                                            </div>
+
                                             <!-- button image -->
                                         </div>
                                     </div>
@@ -475,7 +442,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-12">
-                                        <label><i>{{ScoreTables[0].name}}</i></label>
+                                        <label><i>{{employee.ScoreTablePath}}</i></label>
                                     </div>
                                 </div>
                             </div>
@@ -499,9 +466,7 @@
                                         </label>
                                         <div class="col-sm-3">
                                             <!-- button image -->
-                                            <div class="btn btn-default editButton" ngf-select ng-model="Certificate"
-                                                 ngf-multiple="false">Tải lên
-                                            </div>
+
                                             <!-- button image -->
                                         </div>
 
@@ -510,7 +475,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-12">
-                                        <label><i>{{Certificates[0].name}}</i></label>
+                                        <label><i>{{employee.CertificatePath}}</i></label>
                                     </div>
                                 </div>
                             </div>
@@ -536,9 +501,7 @@
                                         </label>
                                         <div class="col-sm-3">
                                             <!-- button image -->
-                                            <div class="btn btn-default editButton" ngf-select ng-model="Household"
-                                                 ngf-multiple="false">Tải lên
-                                            </div>
+
                                             <!-- button image -->
                                         </div>
                                     </div>
@@ -546,7 +509,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-12">
-                                        <label><i>{{Households[0].name}}</i></label>
+                                        <label><i>{{employee.HouseholdPath}}</i></label>
                                     </div>
                                 </div>
                             </div>
@@ -570,9 +533,7 @@
                                         </label>
                                         <div class="col-sm-3">
                                             <!-- button image -->
-                                            <div class="btn btn-default editButton" ngf-select ng-model="Diploma"
-                                                 ngf-multiple="false">Tải lên
-                                            </div>
+
                                             <!-- button image -->
                                         </div>
                                     </div>
@@ -580,7 +541,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-12">
-                                        <label><i>{{Diplomas[0].name}}</i></label>
+                                        <label><i>{{employee.DiplomaPath}}</i></label>
                                     </div>
                                 </div>
                             </div>
@@ -604,9 +565,7 @@
                                         </label>
                                         <div class="col-sm-3">
                                             <!-- button image -->
-                                            <div class="btn btn-default editButton" ngf-select
-                                                 ng-model="HealthCertification" ngf-multiple="false">Tải lên
-                                            </div>
+
                                             <!-- button image -->
                                         </div>
                                     </div>
@@ -614,7 +573,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-12">
-                                        <label><i>{{HealthCertifications[0].name}}</i></label>
+                                        <label><i>{{employee.HealthCertificationPath}}</i></label>
                                     </div>
                                 </div>
                             </div>
@@ -666,11 +625,18 @@
                     </div>
                 </div>
                 <div class="panel-footer text-center">
+                    <!-- Button Quay Lại -->
+                    <a class="btn btn-success btn-lg" href="#!/employee" ><i class="fa fa-remove" aria-hidden="true"></i> Quay Lại
+                    </a>
+                    <!-- /Button Quay Lại -->
                     <!-- Button Lưu -->
                     <button class="btn btn-primary btn-lg" ng-disabled="!form.$dirty || (form.$dirty && form.$invalid)"
                             ng-click="Save()"><i class="fa fa-save"></i> Lưu
                     </button>
                     <!-- /Button Lưu -->
+                    <!-- Button Làm mới -->
+                    <button class="btn btn-warning btn-lg"ng-click="reset()"><i class="fa fa-repeat"></i> Làm mới</button>
+                    <!-- /Button Làm mới -->
                 </div>
             </div>
         </div>
