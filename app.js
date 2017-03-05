@@ -11,6 +11,7 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
+var session = require('express-session');
 
 var app = express();
 
@@ -22,15 +23,26 @@ var certificate = require('./app/routes/certificateRoute');
 var diploma = require('./app/routes/diplomaRoute');
 var administrator = require('./app/routes/administratorRoute');
 var typecontract = require('./app/routes/typecontractRoute');
+var login = require('./app/routes/loginRoute');
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.use(cookieParser());
 
+app.use(session({
+    secret: '2C44-4D44-WppQ38S',
+    resave: true,
+    saveUninitialized: true
+}));
+
 // WebRoot
 app.use('/', express.static(__dirname + '/public'));
 app.use('/vendors', express.static(__dirname + '/bower_components'));
 
+// Set engine ejs
+app.set('view engine', 'ejs');
+
+app.use('/', login);
 app.use('/api', employees);
 app.use('/api', department);
 app.use('/api', role);
