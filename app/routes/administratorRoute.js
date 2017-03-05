@@ -7,7 +7,7 @@ router.use(bodyParser.json());
 
 router.post('/administratorLogin', function(req, res){
     var admin = req.body;
-    administrator.loginAdmin(admin, res);
+    administrator.loginAdmin(admin, req, res);
 });
 
 module.exports = router;
