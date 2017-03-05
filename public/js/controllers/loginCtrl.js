@@ -1,9 +1,6 @@
 'use strict';
 
-app.controller('loginCtrl', ['$scope', 'QLNS', function($scope, QLNS){
-    
-    //$scope.showLogin = true; // Mở giá trị true và đóng giá trị false để dùng login
-    $scope.showLogin = false;
+app.controller('loginCtrl', ['$scope', 'QLNS', '$window', function($scope, QLNS, $window){
 
     $scope.admin = {
         TAIKHOAN: '',
@@ -12,20 +9,20 @@ app.controller('loginCtrl', ['$scope', 'QLNS', function($scope, QLNS){
 
     // login lấy giá trị TAIKHOAN vs MATKHAU từ form để xét qua API
     $scope.login = function(){
-        QLNS.administrator.LOGIN($scope.admin).then(function(res){
-            if(res.data.TONTAI === 0){
-                alert('Tài Khoản và mật khẩu không tồn tại');
+        QLNS.login.POST($scope.admin).then(function(res){
+            if(res.data.status === '0'){
+                $scope.err = res.data.comment;
             } else {
-                $scope.administrator = res.data; 
-                $scope.showLogin = false;
+                $window.location.href = '/';
             }
         });
     };
 
     // phương thức trả thuộc tính showLogin về false là về trang đang nhập
     $scope.logout = function(){
-        $scope.administrator = null;
-        $scope.showLogin = true;
+      QLNS.logout.GET().then(function(){
+          $window.location.href = '/login';
+      });  
     };
 
 }]);

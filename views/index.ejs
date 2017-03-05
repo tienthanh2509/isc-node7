@@ -27,14 +27,7 @@
 
 </head>
 
-<body class="nav-md login" ng-app="QuanLyNhanSu" ng-controller="loginCtrl">
-
-<!-- Page Login -->
-    <div ng-show="showLogin" >
-        <div ng-include="'/views/includes/login.html'"></div>
-    </div>
-<!-- /Page Login -->
-
+<body class="nav-md login" ng-app="QuanLyNhanSu">
 <!-- Page QLNS -->
     <div class="container body " ng-hide="showLogin">
         <div class="main_container">
@@ -50,7 +43,7 @@
                     <div class="clearfix"></div>
 
                     <!-- menu profile quick info -->
-                    <div ng-include="'/views/includes/profile.html'"></div>
+                    <% include ../public/views/includes/profile.ejs %>
                     <!-- /menu profile quick info -->
 
                     <br/>
@@ -92,7 +85,7 @@
             </div>
 
             <!-- top navigation -->
-            <div class="top_nav hidden-print">
+            <div class="top_nav hidden-print" ng-controller="loginCtrl">
                 <div class="nav_menu">
                     <nav>
                         <div class="nav toggle">
@@ -102,9 +95,9 @@
                         <ul class="nav navbar-nav navbar-right">
                             <li class="">
                                 <a href="javascript:" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                    <img src="//placehold.it/128x128" alt="">Minh Châu <!-- {{administrator.HO}} {{administrator.TEN}} -->
+                                    <img src="//placehold.it/128x128" alt=""><%= admin.HO %> <%= admin.TEN %>
                                     <span class=" fa fa-angle-down"></span>
-                                </a>
+                                </a>                        
                                 <ul class="dropdown-menu dropdown-usermenu pull-right">
                                     <li><a href="javascript:"> Hồ Sơ</a></li>
                                     <li>

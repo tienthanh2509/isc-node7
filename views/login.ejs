@@ -24,7 +24,6 @@
   </head>
 
   <body class="login" ng-app="QuanLyNhanSu" ng-controller="loginCtrl">
-    <div>
       <a class="hiddenanchor" id="signup"></a>
       <a class="hiddenanchor" id="signin"></a>
 
@@ -34,20 +33,21 @@
             <form>
               <h1>Login Form</h1>
               <div>
-                <input type="text" class="form-control" placeholder="Username" required="" />
+                <input type="text" class="form-control" ng-model="admin.TAIKHOAN" placeholder="Username" required="" />
               </div>
               <div>
-                <input type="password" class="form-control" placeholder="Password" required="" />
+                <input type="password" class="form-control" ng-model="admin.MATKHAU" placeholder="Password" required="" />
               </div>
               <div>
-                <a class="btn btn-default submit" href="/">Đăng nhập</a>
+                <a class="btn btn-default" ng-click="login()">Đăng nhập</a>
                 <a class="reset_pass" href="#">Quên mật khẩu?</a>
               </div>
 
               <div class="clearfix"></div>
-
+              
               <div class="separator">
                 <div class="clearfix"></div>
+                <label>{{err}}</label>
                 <br />
 
                 <div>
@@ -58,12 +58,17 @@
             </form>
           </section>
         </div>
-
+        <!-- Angularjs -->
+        <script src="/vendors/angular/angular.min.js"></script>
+        <script src="/vendors/angular-route/angular-route.min.js"></script>
+        <script src="/vendors/ng-file-upload/ng-file-upload-shim.min.js"></script>
+        <script src="/vendors/ng-file-upload/ng-file-upload.min.js"></script>
+        <!-- App -->
+        <script src="/js/app/app.js"></script>
+        <!-- Service -->
+        <script src="/js/service/service.js"></script>
+        <!-- Controllers -->
+        <script src="/js/controllers/loginCtrl.js"></script>
       </div>
-    </div>
-    <!-- App -->
-    <script src="/js/app/app.js"></script>
-    <!-- Service -->
-    <script src="/js/service/service.js"></script>
   </body>
 </html>
