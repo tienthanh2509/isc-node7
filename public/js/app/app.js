@@ -27,17 +27,17 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider) {
         })
 
         // Quản lý nhân viên
-        .when('/employee', {
-            templateUrl: '/views/templates/showListEmployee.html'
+        .when('/employee/list', {
+            templateUrl: '/views/templates/employee/showListEmployee.html'
         })
         .when('/employee/add', {
-            templateUrl: '/views/templates/addEmployee.html'
+            templateUrl: '/views/templates/employee/addEmployee.html'
         })
         .when('/employee/update', {
             templateUrl: '/views/templates/employee/updateEmployee.html'
         })
-        .when('/employee/contact', {
-            templateUrl: 'views/templates/contactEmployee.html'
+        .when('/employee/thumbnail', {
+            templateUrl: 'views/templates/employee/contactEmployee.html'
         })
 
         // Chứng chỉ
