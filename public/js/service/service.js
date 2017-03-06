@@ -166,6 +166,21 @@ app.factory('QLNS', function ($http) {
             GET_ID_CERTIFICATE: function () {
                 return ID_CERTIFICATE;
             }
+        },
+        typecontract:{
+            GET: function(){
+                return $http.get('/api/typecontract')
+            }
+        },
+        login:{
+            POST: function(admin){
+                return $http.post('/login', admin)
+            }
+        },
+        logout:{
+            GET: function(){
+                return $http.get('/logout')
+            }
         }
     }
 });
