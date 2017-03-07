@@ -140,7 +140,7 @@
                       </thead>
 
                     <tbody >
-                        <tr ng-repeat="i in employee">
+                        <tr ng-repeat="i in employee | filter: searchName">
                             <td>{{ $index + 1 }}</td>
                             <td>{{i.MANV}}</td>
                             <td>{{i.HONV}}</td>
