@@ -133,12 +133,6 @@ app.factory('QLNS', function ($http) {
             GET: function () {
                 return $http.get('/api/certificate')
             },
-
-            // Lấy chứng chỉ theo ID
-            GET_WITH_IDCC: function (id) {
-                return $http.get('/api/certificate/' + id)
-            },
-
             // Thêm mới một chứng chỉ
             POST: function (certificate) {
                 return $http.post('/api/certificate', certificate)
@@ -146,6 +140,10 @@ app.factory('QLNS', function ($http) {
             // Xóa chứng chỉ
             DELETE: function (id) {
                 return $http.delete('/api/certificate/' + id)
+            },
+             // Cập nhật thông tin phòng ban
+            UPDATE: function (certificate) {
+                return $http.post('/api/certificate/update/' + certificate.MaChungChi, certificate)
             }
         },
         // API chung
@@ -157,14 +155,6 @@ app.factory('QLNS', function ($http) {
             // Lấy ra biến nhân viên toàn cục
             GET_ID_EMPLOYEE: function () {
                 return ID_EMPLOYEE;
-            },
-            // Gán giá trị ID chứng chỉ được chọn làm biến toàn cụ
-            SET_ID_CERTIFICATE: function (id) {
-                ID_CERTIFICATE = id;
-            },
-            // Lấy ra biến chứng chỉ toàn cục
-            GET_ID_CERTIFICATE: function () {
-                return ID_CERTIFICATE;
             }
         },
         typecontract:{
