@@ -110,6 +110,8 @@ app.controller('showListEmployeeCtrl', ['$scope', 'QLNS', function ($scope, QLNS
         $scope.getEmployee();
         $scope.getCertificate();
         $scope.listDepartment();
+        $scope.phongban = 'Phòng/ Ban';
+        $scope.chungchi = 'Chứng chỉ';
     };
 
     //Rename dropdown box chứng chỉ và phòng ban
