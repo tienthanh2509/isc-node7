@@ -4,7 +4,6 @@ app.factory('QLNS', function ($http) {
 
     // Biến ID nhân viên toàn cục
     var ID_EMPLOYEE = 0;
-    var ID_CERTIFICATE = 0;
 
     return {
         // API nhân viên

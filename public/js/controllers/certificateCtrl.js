@@ -24,9 +24,8 @@ app.controller('certificateCtrl', ['$scope', 'QLNS', '$window', function($scope,
     // Lưu
     $scope.Save = function () {
         QLNS.certificate.POST($scope.certificate).then(function (res) {
-            alert(res.data.message);
-            // Tải lại nội dung trang
-            $window.location.href = '/certificate';
+            $window.location.href = '#!/certificate';
+            alert(res.data);
         });
     };
 
