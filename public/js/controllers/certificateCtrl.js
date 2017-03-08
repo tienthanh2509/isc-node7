@@ -31,9 +31,23 @@ app.controller('certificateCtrl', ['$scope', 'QLNS', function ($scope, QLNS) {
     };
 
     // Xóa
-    $scope.delete = function (id) {
-        QLNS.certificate.DELETE(id).then(function (res) {
-            $scope.refesh();
+   $scope.delete = function (id) {
+        console.log('Xóa chứng chỉ', id, $scope.certificate);
+
+        $scope.loading = true;
+        QLNS.certificate.DELETE(id).then(function (response) {
+            console.log(response);
+
+            // Tải lại nội dung trang
+            $scope.loading = false;
+            $scope.refresh();
+
+            // Đóng modal
+            $('#deleteModal').modal('hide');
+        }, function (response) {
+            // TODO: Thiết lập thông báo lỗi
+            alert('Some thing went wrong!');
+            $scope.loading = false;
         });
     };
 

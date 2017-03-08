@@ -19,7 +19,7 @@ router.post('/certificate', function(req, res){
 });
 
 // API xóa chứng chỉ
-router.delete('/certificate/:id', function(req, res){
+router.delete('/certificate/:id', function (req, res) {
     var id = req.params.id;
     certificate.deleteCertificate(id, res);
 });

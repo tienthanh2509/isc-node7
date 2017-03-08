@@ -141,7 +141,7 @@ app.factory('QLNS', function ($http) {
             DELETE: function (id) {
                 return $http.delete('/api/certificate/' + id)
             },
-             // Cập nhật thông tin phòng ban
+             // Cập nhật thông tin chứng chỉ
             UPDATE: function (certificate) {
                 return $http.post('/api/certificate/update/' + certificate.MaChungChi, certificate)
             }

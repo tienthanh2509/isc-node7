@@ -26,16 +26,31 @@ var insertCertificate = function(certificate, res){
 };
 
 // Xóa chứng chỉ
-var deleteCertificate = function(id, res){
-    var query = "DELETE FROM CHUNGCHI WHERE MACHUNGCHI = ?";
-    connection.query(query, [id], function(err, result){
-        if(err){
-            res.end(err.message);
-        } else {
-            console.log('Execute query:', query);
-            res.end('delete succes');
+var deleteCertificate = function (MaPB, res) {
+    var query = 'DELETE FROM CHUNGCHI WHERE MACHUNGCHI = ?';
+    console.log('Execute query:', query, MaPB);
+
+    connection.query(query, [MaPB], function (err) {
+        if (err) {
+            console.log('Lỗi khi xóa chứng chỉ.');
+            console.log(err.message);
+
+            res.json({
+                error: 1,
+                message: err.message
+            });
         }
-    });
+        else {
+            console.log('Đã xóa chứng chỉ thành công.');
+
+            res.json({
+                error: 0,
+                message: 'OK'
+            });
+        }
+
+    })
+
 };
 
 // Cập nhật chứng chỉ
