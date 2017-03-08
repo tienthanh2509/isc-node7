@@ -319,7 +319,7 @@
                                     </ul>
                                 </div>
                             </div>
-                            <form>
+                            <<form>
                                 <label class="checkbox-inline">
                                     <input type="checkbox" value="">Option 1
                                 </label>
@@ -329,7 +329,7 @@
                                 <label class="checkbox-inline">
                                     <input type="checkbox" value="">Option 3
                                 </label>
-                            </form>
+                            </form>>
                         </div>
                     </div>
                     <!-- /Panel Body -->
@@ -338,15 +338,17 @@
 
                 <!-- Chứng chỉ anh văn -->
                 <label for="inputPassword3" class="col-sm-5 control-label">Chứng chỉ tiếng Anh:</label>
-                <div class="col-sm-10">
-                    <div class="checkbox">
-                        <label><input type="checkbox" value="">Toeic</label>
-                    </div>
-                    <div class="checkbox">
-                        <label><input type="checkbox" value="">Ielts</label>
-                    </div>
-                    <div class="checkbox disabled">
-                        <label><input type="checkbox" value="" disabled>Toefl</label>
+                <div class="form-group">
+                    <div class="col-sm-9">
+                        <div class="dropdown">
+                            <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
+                                {{employee.PhongBan}}
+                                <span class="caret"></span></button>
+                            <ul class="dropdown-menu">
+                                <li><a ng-repeat="d in departments" ng-click="selectDepartment(d.MAPB, d.TENPHONGBAN)">{{d.TENPHONGBAN}}</a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
                 <!-- /Chứng chỉ anh văn -->

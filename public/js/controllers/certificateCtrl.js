@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('certificateCtrl', ['$scope', 'QLNS', function ($scope, QLNS) {
+app.controller('certificateCtrl', ['$scope', 'QLNS', '$window', function($scope, QLNS, $window) {
     // Làm mới trang
     $scope.refresh = function () {
         $scope.loading = null;
@@ -23,10 +23,10 @@ app.controller('certificateCtrl', ['$scope', 'QLNS', function ($scope, QLNS) {
 
     // Lưu
     $scope.Save = function () {
-        //console.log($scope.certificate);
         QLNS.certificate.POST($scope.certificate).then(function (res) {
-            alert(res.data);
-            //clearCertificate();
+            alert(res.data.message);
+            // Tải lại nội dung trang
+            $window.location.href = '/certificate';
         });
     };
 
