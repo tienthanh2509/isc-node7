@@ -2,13 +2,6 @@ var connection = require('../models/connection');
 
 // Lấy danh sách tất cả chứng chỉ
 var getListCertificate = function (req, res) {
-    var query = 'SELECT TENCHUNGCHI,MACHUNGCHI FROM CHUNGCHI ';
-    connection.query(query, function (err, rows) {
-        res.json(rows);
-    }); 
-};
-
-var getAll = function (req, res) {
     var query = 'SELECT * FROM CHUNGCHI ';
     connection.query(query, function (err, rows) {
         res.json(rows);
@@ -53,10 +46,46 @@ var deleteCertificate = function(id, res){
     });
 };
 
+// Cập Nhật
+var updateCertificate = function (MaChungChi, certificate, res) {
+    console.log(certificate);
+
+    var values = [
+        certificate.TenChungChi,
+        certificate.GhiChu,
+        MaChungChi
+    ];
+
+    var query = 'UPDATE CHUNGCHI SET TENCHUNGCHI = ?, GHICHU = ? WHERE MACHUNGCHI = ?';
+    console.log('Execute query:', query, values);
+
+    connection.query(query, values, function (err) {
+        if (err) {
+            console.log('Lỗi khi cập nhật chứng chỉ.');
+            console.log(err.message);
+
+            res.json({
+                error: 1,
+                message: err.message
+            });
+        }
+        else {
+            console.log('Đã cập nhật chứng chỉ thành công.');
+
+            res.json({
+                error: 0,
+                message: 'OK'
+            });
+        }
+
+    })
+
+};
+
 module.exports = {
-    getAll: getAll,
     getCertificateWithID: getCertificateWithID,
     insertCertificate: insertCertificate,
     getListCertificate: getListCertificate,
-    deleteCertificate: deleteCertificate
+    deleteCertificate: deleteCertificate,
+    updateCertificate: updateCertificate
 };

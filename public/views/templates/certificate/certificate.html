@@ -39,41 +39,50 @@
                             ng-click="setData($index)">
                         <span class="fa fa-pencil"></span>
                     </button>
-                    <button class="btn btn-danger btn-xs" data-title="Delete" ng-click="detail(c.MACHUNGCHI)" data-toggle="modal" data-target="#modalDelete">
-                            <span class="fa fa-trash"></span></button>
+                    <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteModal"
+                            ng-click="setData($index)">
+                        <span class="fa fa-trash"></span>
+                    </button>
                 </td>
             </tr>
             </tbody>
         </table>
     </div>
-    <!-- Modal Xóa Chứng Chỉ-->
-    <div class="modal fade bs-example-modal-sm" id="modalDelete" role="dialog">
-                <div class="modal-dialog">
-                
-                <!-- Modal content-->
-                <div class="modal-content">
-                    <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Xóa chứng chỉ</h4>
-                    </div>
-                    <div class="modal-body">
-                    <p>Bạn có chắc muốn xóa? {{oneCertificate.TENCHUNGCHI}}</p>
-                    <p class="h4"><b>Tất cả dữ liệu liên quan sẽ bị xóa hết!</b></p>
-                    </div>
-                    <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" ng-click="delete(oneCertificate.MACHUNGCHI)" data-dismiss="modal">Xóa</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Hủy</button>
+    
+    <!-- BEBIN: Modal xóa chứng chỉ -->
+    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span
+                            class="fa fa-remove" aria-hidden="true"></span></button>
+                    <h4 class="modal-title custom_align" id="Heading">Xóa Chứng Chỉ</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="alert alert-danger"><span class="fa fa-warning-sign"></span> Bạn có muốn xóa chứng chỉ?
+                        "{{ certificate.MaChungChi }} - {{ certificate.TenChungChi }}"
                     </div>
                 </div>
-                
+                <div class="modal-footer ">
+                    <button type="button" class="btn btn-danger" ng-click="delete(certificate.MaChungChi)" ng-hide="loading">
+                        <span class="fa fa-ban"></span> Đồng Ý
+                    </button>
+                    <button type="button" class="btn btn-danger" ng-show="loading" disabled>
+                        <i class="fa fa-spinner fa-spin"></i>
+                        Đang xử lý...
+                    </button>
+                    <a type="button" class="btn btn-success" data-dismiss="modal">
+                        <span class="fa fa-check-circle"></span> Không
+                    </a>
                 </div>
             </div>
-        <!-- /END: Modal Xóa Chứng Chỉ -->
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
     </div>
-</div>
-
-
- <!-- BEBIN: Modal cập nhật chứng chỉ -->
+    <!-- END: Modal xóa chứng chỉ -->
+    
+    <!-- BEBIN: Modal cập nhật chứng chỉ -->
     <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
         <form name="certificateForm" ng-submit="updateCertificate()">
             <div class="modal-dialog">
@@ -86,23 +95,24 @@
                     <div class="modal-body">
                         <div class="form-group">
                             <label>
-                                <input class="form-control" type="text" placeholder="Mã Chứng Chỉ" value="{{ certificate.MACHUNGCHI }}" readonly>
+                                <input class="form-control" type="text" value="{{ certificate.MaChungChi }}" readonly>
                             </label>
                         </div>
                         <div class="form-group">
                             <input class="form-control" type="text" placeholder="Tên chứng chỉ"
-                                   ng-model="certificate.TENCHUNGCHI" required>
+                                   ng-model="certificate.TenChungChi" required>
                         </div>
                         <div class="form-group">
-                            <input class="form-control" type="text" placeholder="Ghi Chú" ng-model="certificate.GHICHU">
+                            <input class="form-control" type="text" placeholder="Ghi Chú" ng-model="certificate.GhiChu">
                         </div>
+                    </div>
                     <div class="modal-footer ">
                         <button type="submit" class="btn btn-warning btn-lg" style="width: 100%;"
-                                ng-disabled="certificate.$invalid" ng-hide="saving">
+                                ng-disabled="certificateForm.$invalid" ng-hide="loading">
                             <span class="fa fa-ok-sign"></span> Cập Nhật
                         </button>
                         <button type="button" class="btn btn-warning btn-lg" style="width: 100%;" disabled
-                                ng-show="saving">
+                                ng-show="loading">
                             <i class="fa fa-spinner fa-spin"></i>
                             Đang xử lý...
                         </button>
@@ -114,10 +124,6 @@
         <!-- /.modal-dialog -->
     </div>
     <!-- END: Modal cập nhật chứng chỉ -->
+</div>
 
-<script type="text/javascript">
-$(document).ready(function() {
-  $(".js-example-basic-single").select2();
-});
-</script> 
 <!-- END: Quản lý chức vụ -->
