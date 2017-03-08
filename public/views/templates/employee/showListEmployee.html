@@ -107,6 +107,9 @@
                             </li>
                     </ul>
                     <ul class="nav navbar-right panel_toolbox hidden-print text-right">
+                            <li>
+                                <a  id="downLoadExcel"><img src="/images/excel.png" style="height: 25px; width: 25px" > Tải file <span style="color:green">Excel</span></a>
+                            </li>
                             <li>          
                                 <a class="btn" ng-click="refesh()"><i class="fa fa-repeat"></i> Làm mới</a>
                             </li>
@@ -205,3 +208,17 @@ $(document).ready(function() {
   $(".js-example-basic-single").select2();
 });
 </script> 
+<script>
+    $(document).ready(function(e){
+        $("#downLoadExcel").click(function(e){
+                $("#datatable").table2excel({
+                name: "Excel Document Name",
+                filename: "DanhSachNhanVien",
+                fileext: ".xls",
+                exclude_img: true,
+                exclude_links: true,
+                exclude_inputs: true
+            });
+        })  
+    })  
+</script>
