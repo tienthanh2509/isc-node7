@@ -1,22 +1,34 @@
+'use strict';
+
 var express = require('express');
 var router = express.Router();
-var bodyParser = require('body-parser');
-
-// use model employee
 var role = require('../models/role');
 
-router.use(bodyParser.json());
-
-router.get('/role', function(req, res){
-    role.getRole(req, res);
+// 1. GET
+router.get('/role', function (req, res) {
+    role.getStat(req, res);
 });
 
-router.get('/roleName', function(req, res){
-    role.getRoleName(req, res);
+// 2. GET Name
+router.get('/roleName', function (req, res) {
+    role.getName(req, res);
 });
 
+// 3. ADD
 router.post('/role', function (req, res) {
-    role.insertRole(req.body, res);
+    role.insert(req.body, res);
+});
+
+// 4. UPDATE
+router.put('/role/:id', function (req, res) {
+    var id = req.params.id;
+    role.update(id, req.body, res);
+});
+
+// 5. DELETE
+router.delete('/role/:id', function (req, res) {
+    var id = req.params.id;
+    role.del(id, res);
 });
 
 module.exports = router;

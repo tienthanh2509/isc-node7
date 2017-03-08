@@ -4,6 +4,9 @@
         <h2>Danh sách chức vụ</h2>
         <ul class="nav navbar-right panel_toolbox hidden-print">
             <li>
+                <a href="javascript:void(0)" ng-click="refresh()"><i class="fa fa-refresh"></i> Làm tươi</a>
+            </li>
+            <li>
                 <a href="#!/role/add"><i class="fa fa-plus"></i> Thêm chức vụ mới</a>
             </li>
             <li>
@@ -19,6 +22,7 @@
             <tr>
                 <th>#</th>
                 <th>Chức vụ</th>
+                <th>SL Nhân viên</th>
                 <th>Ngày tạo</th>
                 <th>Ngày cập nhật</th>
                 <th class="text-center hidden-print">Thao tác</th>
@@ -26,7 +30,7 @@
             </thead>
             <tbody>
             <tr ng-if="loading == null">
-                <td colspan="5" class="text-center">
+                <td colspan="6" class="text-center">
                     Đang tải dữ liệu...
                     <i class="fa fa-refresh fa-spin fa-fw"></i>
                 </td>
@@ -34,15 +38,90 @@
             <tr ng-repeat="r in roles">
                 <td>{{ r.MACV }}</td>
                 <td>{{ r.TENCHUVU }}</td>
+                <td class="text-center">{{ r.COUNT }}</td>
                 <td>{{ r.CREATED_AT }}</td>
                 <td>{{ r.UPDATED_AT }}</td>
                 <td class="text-center hidden-print">
-                    <button class="btn btn-default btn-xs"><i class="fa fa-edit"></i></button>
-                    <button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button>
+                    <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#editModal"
+                            ng-click="setData($index)">
+                        <span class="fa fa-pencil"></span>
+                    </button>
+                    <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteModal"
+                            ng-click="setData($index)" ng-hide="r.COUNT > 0">
+                        <span class="fa fa-trash"></span>
+                    </button>
                 </td>
             </tr>
             </tbody>
         </table>
     </div>
+
+    <!-- BEBIN: Modal cập nhật thông tin chức vụ -->
+    <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+        <form name="roleForm" ng-submit="updateRole()">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span
+                                class="fa fa-remove" aria-hidden="true"></span></button>
+                        <h4 class="modal-title custom_align" id="HeadingEdit">Cập Nhật Chức Vụ - {{ role.MaCV }}</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <input class="form-control" type="text" placeholder="Tên chức vụ mới"
+                                   ng-model="role.TenCV" required>
+                        </div>
+                    </div>
+                    <div class="modal-footer ">
+                        <button type="submit" class="btn btn-warning btn-lg" style="width: 100%;"
+                                ng-disabled="roleForm.$invalid" ng-hide="loading">
+                            <span class="fa fa-ok-sign"></span> Cập Nhật
+                        </button>
+                        <button type="button" class="btn btn-warning btn-lg" style="width: 100%;" disabled
+                                ng-show="loading">
+                            <i class="fa fa-spinner fa-spin"></i>
+                            Đang xử lý...
+                        </button>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+        </form>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- END: Modal cập nhật thông tin chức vụ -->
+
+    <!-- BEBIN: Modal xóa chức vụ -->
+    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span
+                            class="fa fa-remove" aria-hidden="true"></span></button>
+                    <h4 class="modal-title custom_align" id="Heading">Xóa chức vụ</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="alert alert-danger"><span class="fa fa-warning-sign"></span> Bạn có muốn xóa chức vụ?
+                        "{{ role.MACV }} - {{ role.TenCV }}"
+                    </div>
+                </div>
+                <div class="modal-footer ">
+                    <button type="button" class="btn btn-danger" ng-click="delete(role.MaCV)" ng-hide="loading">
+                        <span class="fa fa-ban"></span> Đồng Ý
+                    </button>
+                    <button type="button" class="btn btn-danger" ng-show="loading" disabled>
+                        <i class="fa fa-spinner fa-spin"></i>
+                        Đang xử lý...
+                    </button>
+                    <a type="button" class="btn btn-success" data-dismiss="modal">
+                        <span class="fa fa-check-circle"></span> Không
+                    </a>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- END: Modal xóa chức vụ -->
 </div>
 <!-- END: Quản lý chức vụ -->

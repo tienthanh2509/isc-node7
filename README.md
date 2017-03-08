@@ -22,7 +22,7 @@ npm install -g node-sass
 # Warning! Make sure you have private key before clone using ssh else try https instead
 # Sign your commit with GPG keys
 # Fast-clone
-git clone --depth=1 git@github.com:tienthanh2509/isc-node7.git
+git clone --depth=1 git@github.com:tienthanh2509/isc-node7.git -b develop
 
 ```
 

@@ -120,6 +120,6 @@ module.exports = function (grunt) {
     // Register task(s).
     grunt.registerTask('css', ['sass', 'cssmin']);
     grunt.registerTask('js', ['concat', 'uglify']);
-
+    // Grunt default task
     grunt.registerTask('default', ['css', 'js']);
 };

@@ -42,6 +42,10 @@ app.factory('QLNS', function ($http) {
             GET_BY_DEPARTMENT: function (id) {
                 return $http.get('/api/employee/getEmployeeByDepartment/' + id)
             },
+            //Lấy nhân viên theo phòng ban + chứng chỉ
+            GET_BY_CER_DEP: function(idd,idc){
+                return $http.get('/api/employee/getEmployeeByCertificateAndDepartment/'+idd+'/'+idc)
+            },
             // Lấy mốt nhân viên + phòng ban + chức vụ theo ID
             GET_DE_ROLE: function (id) {
                 return $http.get('/api/employee/withDepartmentandRole/' + id)
@@ -65,9 +69,17 @@ app.factory('QLNS', function ($http) {
             GETNAME: function () {
                 return $http.get('/api/roleName')
             },
-            //Thêm mới chức vụ
+            // Thêm mới chức vụ
             POST: function (role) {
                 return $http.post('/api/role', role)
+            },
+            // Cập nhật thông tin chức vụ
+            UPDATE: function (role) {
+                return $http.put('/api/role/' + role.MaCV, role)
+            },
+            // Xóa chức vụ
+            DELETE: function (id) {
+                return $http.delete('/api/role/' + id)
             }
         },
         // API phòng ban
@@ -157,6 +169,21 @@ app.factory('QLNS', function ($http) {
             // Lấy ra biến chứng chỉ toàn cục
             GET_ID_CERTIFICATE: function () {
                 return ID_CERTIFICATE;
+            }
+        },
+        typecontract:{
+            GET: function(){
+                return $http.get('/api/typecontract')
+            }
+        },
+        login:{
+            POST: function(admin){
+                return $http.post('/login', admin)
+            }
+        },
+        logout:{
+            GET: function(){
+                return $http.get('/logout')
             }
         }
     }

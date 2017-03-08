@@ -66,6 +66,14 @@ var getEmployeeByDepartment = function(id,res){
         res.end(JSON.stringify(rows));
     });
 };
+//Lấy nhân viên theo phòng ban + chứng chỉ
+var getEmployeeByCertificateAndDepartment = function(idd,idc,res){ //idc là id của certificate; idd là id của department
+    var query = "SELECT * FROM PHONGBAN_NHANVIEN_CHUNGCHI WHERE MAPB="+idd+" AND MACHUNGCHI="+idc;
+    console.log("Excute query:",query);
+    connection.query(query,function(err,rows){
+        res.end(JSON.stringify(rows));
+    });
+};
 // Lấy ra danh sách nhân viên theo mã phòng ban
 var getEmployeeWithDepartmentID = function(id, res){
     var query = "SELECT * FROM NHANVIEN WHERE MAPB = " + id;
@@ -79,7 +87,7 @@ var getEmployeeWithDepartmentID = function(id, res){
 var insertEmployee = function(employee, res){
     //console.log(employee);
     var values = [
-        [employee.maChucVu, employee.maPhongBan, employee.MaNhanVien, employee.Ho, employee.Ten, employee.TonGiao, employee.NgaySinh, employee.DiaChi, employee.DienThoai, employee.Email, employee.imgEmployPath, employee.GioiTinh]
+        [employee.MACV, employee.MAPB, employee.MANV, employee.HONV, employee.TENNV, employee.TONGIAO, employee.NGAYSINH, employee.DIACHI, employee.SODIENTHOAI, employee.EMAIL, employee.HINHANH, employee.GIOITINH]
     ];
     connection.query("INSERT INTO NHANVIEN(MACV, MAPB, MANV, HONV, TENNV, TONGIAO, NGAYSINH, DIACHI, SODIENTHOAI, EMAIL, HINHANH, GIOITINH) VALUES ?", [values], function(err){
         if(err){
@@ -141,5 +149,6 @@ module.exports = {
     getEmployeeWithName: getEmployeeWithName,
     getEmployeeByCertificate: getEmployeeByCertificate,
     getEmployeeByDepartment: getEmployeeByDepartment,
-    deleteEmployee: deleteEmployee
+    deleteEmployee: deleteEmployee,
+    getEmployeeByCertificateAndDepartment: getEmployeeByCertificateAndDepartment
 };

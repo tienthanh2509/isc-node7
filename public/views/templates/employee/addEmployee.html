@@ -1,4 +1,4 @@
-<div ng-controller="updateEmployeeCtrl">
+<div ng-controller="employeeCtrl">
     <!-- Add Employee -->
     <div class="row">
         <div class="col-lg-12 text-center">
@@ -110,9 +110,9 @@
 
                       <p>
                         Nam:
-                        <input type="radio" class="flat" name="gender" id="genderM" ng-click="employee.GIOITINH = 1" ng-checked="employee.GIOITINH" value="M" /> 
+                        <input type="radio" class="flat" name="gender" id="genderM" ng-click="employee.GIOITINH = 1" value="M" checked="" required /> 
                         Nữ:
-                        <input type="radio" class="flat" name="gender" id="genderF" ng-click="employee.GIOITINH = 0" ng-checked="!employee.GIOITINH" value="F" />
+                        <input type="radio" class="flat" name="gender" id="genderF" ng-click="employee.GIOITINH = 0" value="F" />
                       </p>
                     </div>
                 </div>
@@ -630,8 +630,13 @@
                     </a>
                     <!-- /Button Quay Lại -->
                     <!-- Button Lưu -->
-                    <button class="btn btn-primary btn-lg" ng-click="Save()"><i class="fa fa-save"></i> Lưu</button>
+                    <button class="btn btn-primary btn-lg" ng-disabled="!form.$dirty || (form.$dirty && form.$invalid)"
+                            ng-click="Save()"><i class="fa fa-save"></i> Lưu
+                    </button>
                     <!-- /Button Lưu -->
+                    <!-- Button Làm mới -->
+                    <button class="btn btn-warning btn-lg"ng-click="reset()"><i class="fa fa-repeat"></i> Làm mới</button>
+                    <!-- /Button Làm mới -->
                 </div>
             </div>
         </div>
