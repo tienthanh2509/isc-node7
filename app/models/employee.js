@@ -66,6 +66,14 @@ var getEmployeeByDepartment = function(id,res){
         res.end(JSON.stringify(rows));
     });
 };
+//Lấy nhân viên theo phòng ban + chứng chỉ
+var getEmployeeByCertificateAndDepartment = function(idd,idc,res){ //idc là id của certificate; idd là id của department
+    var query = "SELECT * FROM PHONGBAN_NHANVIEN_CHUNGCHI WHERE MAPB="+idd+" AND MACHUNGCHI="+idc;
+    console.log("Excute query:",query);
+    connection.query(query,function(err,rows){
+        res.end(JSON.stringify(rows));
+    });
+};
 // Lấy ra danh sách nhân viên theo mã phòng ban
 var getEmployeeWithDepartmentID = function(id, res){
     var query = "SELECT * FROM NHANVIEN WHERE MAPB = " + id;
@@ -141,5 +149,6 @@ module.exports = {
     getEmployeeWithName: getEmployeeWithName,
     getEmployeeByCertificate: getEmployeeByCertificate,
     getEmployeeByDepartment: getEmployeeByDepartment,
-    deleteEmployee: deleteEmployee
+    deleteEmployee: deleteEmployee,
+    getEmployeeByCertificateAndDepartment: getEmployeeByCertificateAndDepartment
 };
