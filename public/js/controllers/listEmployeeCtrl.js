@@ -29,20 +29,69 @@ app.controller('showListEmployeeCtrl', ['$scope', 'QLNS', function ($scope, QLNS
     };
     //Lấy danh sách nhân viên theo chứng chỉ
     $scope.listCertificate = function (id, name) {
-        $scope.renamePhongban(); //Rename dropdown box Phòng ban về mặc cmn định
-        $scope.chungchi = name;
-        QLNS.employee.GET_BY_CERTIFICATE(id).then(function (res) {
-            $scope.employee = res.data;
-        });
+        //$scope.renamePhongban(); //Rename dropdown box Phòng ban về mặc cmn định
+        if(idd == null)
+        {
+            console.log('idd:',idd);
+            $scope.chungchi = name;
+            QLNS.employee.GET_BY_CERTIFICATE(id).then(function(res){
+                $scope.employee = res.data;
+            });
+            $scope.getIDC(id);
+        }
+        else if(idd != null)
+        {
+            $scope.chungchi = name;
+            $scope.listEmployeeByDepAndCer(idd,id);
+            idc = id;
+        }
     };
 
     //Lấy danh sách nhân viên theo phòng ban
     $scope.listEmployeeByDepartment = function (id, name) {
-        $scope.renameChungchi(); //Rename dropdown box Chứng chỉ về mặc định
-        $scope.phongban = name;
-        QLNS.employee.GET_BY_DEPARTMENT(id).then(function (res) {
+       // $scope.renameChungchi(); //Rename dropdown box Chứng chỉ về mặc định
+        if(idc == null)
+        {
+            console.log('idc:',idc);
+            $scope.phongban = name;
+            QLNS.employee.GET_BY_DEPARTMENT(id).then(function(res){
+                $scope.employee = res.data;
+            });
+             $scope.getIDD(id);
+        }
+        
+        else if (idc != null)
+        {
+            $scope.phongban = name;
+            $scope.listEmployeeByDepAndCer(id,idc);
+            idd = id;
+            
+        }
+    };
+    //Lấy danh sách nhân viên theo phòng ban + chứng chỉ
+    $scope.listEmployeeByDepAndCer = function(idd,idc){
+        // $scope.phongban=nameD;
+        // $scope.chungchi=nameC;
+        QLNS.employee.GET_BY_CER_DEP(idd,idc).then(function(res){
             $scope.employee = res.data;
         });
+        // idd = null;
+        // idc = null;
+        console.log('idd:'+idd+';idc:'+idc);
+    };
+    //Lấy id của phòng ban
+    var idd = null; 
+    $scope.getIDD = function(id){
+        idd = id;
+        console.log('idd:',idd);
+        return idd;
+    };
+    //Lấy id của chứng chỉ
+    var idc = null; 
+    $scope.getIDC = function(id){
+        idc = id;
+         console.log('idc:',idc);
+        return idc;
     };
     //Đổ danh sách phòng ban vào dropdown box phòng ban
     $scope.listDepartment = function (id) {
