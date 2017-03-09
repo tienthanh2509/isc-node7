@@ -63,6 +63,13 @@ router.get('/employee/getEmployeeByDepartment/:id', function(req,res){
     employee.getEmployeeByDepartment(id,res);
 });
 
+//API lấy nhân viên theo phòng ban + chứng chỉ
+router.get('/employee/getEmployeeByCertificateAndDepartment/:idd/:idc',function(req,res){
+    var idd = req.params.idd;
+    var idc = req.params.idc;
+    employee.getEmployeeByCertificateAndDepartment(idd,idc,res);
+});
+
 // API lấy nhân viên theo Tên
 router.get('/employee/getWithName/:id', function (req, res) {
     var id = req.params.id;
