@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('updateEmployeeCtrl', ['$scope', 'QLNS', function ($scope, QLNS) {
+app.controller('updateEmployeeCtrl', ['$scope', 'QLNS', '$window', function ($scope, QLNS, $window) {
 
     // Thuộc tính nhân viên
     $scope.employee = {
@@ -56,7 +56,8 @@ app.controller('updateEmployeeCtrl', ['$scope', 'QLNS', function ($scope, QLNS) 
     // Lưu chỉnh sửa nhân viên
     $scope.Save = function () {
         QLNS.employee.UPDATE($scope.employee).then(function (res) {
-            alert(res.data);
+            //console.log(res.data);
+            $window.location.href = '/#!/employee/list';
         });
     };
 
@@ -71,9 +72,45 @@ app.controller('updateEmployeeCtrl', ['$scope', 'QLNS', function ($scope, QLNS) 
         }
     };
 
+    $scope.selectDepartment = function (mpb, pb) {
+        $scope.employee.MAPB = mpb;
+        $scope.employee.TENPHONGBAN = pb;
+        console.log(pb);
+    };
+
+    $scope.selectRole = function (mcv, cv) {
+        $scope.employee.MACV = mcv;
+        $scope.employee.TENCHUVU = cv;
+        console.log(cv);
+    };
+
+    $scope.selectMajoring = function (mcn, cn) {
+        $scope.employee.MACN = mcn;
+        $scope.employee.TENCN = cn;
+        console.log(cn);
+    };
+
     // Tải lên thông tin của nhân viên
     $scope.refresh = function () {
         $scope.getEmployee();
+        QLNS.department.GETNAME().then(function (res) {
+            //console.log(res.data);
+            $scope.departments = res.data;
+        });
+        QLNS.role.GETNAME().then(function (res) {
+            //console.log(res.data);
+            $scope.roles = res.data;
+        });
+        QLNS.majoring.GET().then(function (res) {
+            //console.log(res.data);
+            $scope.majoring = res.data;
+        });
+        QLNS.certificate.GET().then(function(res){
+            $scope.certificate = res.data;
+        });
+        QLNS.typecontract.GET().then(function(res){
+            $scope.typecontract = res.data;
+        });
     };
     $scope.refresh();
 

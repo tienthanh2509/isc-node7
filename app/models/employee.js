@@ -8,7 +8,7 @@ var connection = require('../models/connection');
 
 // Lấy ra danh sách tất cả nhân viên
 var getListEmployee = function (req, res) {
-    var query = 'SELECT * FROM PHONGBAN_NHANVIEN_CHUNGCHI';
+    var query = 'SELECT * FROM PHONGBAN_NHANVIEN_CHUNGCHI_CHUYENNGANH';
     console.log('Execute query:', query);
     connection.query(query, function (err, rows) {
         res.json(rows);
@@ -52,7 +52,7 @@ var getEmployeeDepartment = function(req, res){
 };
 //Lấy nhân viên theo chứng chỉ
 var getEmployeeByCertificate = function(id,res){
-    var query = "SELECT * FROM PHONGBAN_NHANVIEN_CHUNGCHI WHERE MACHUNGCHI = " +id;
+    var query = "SELECT * FROM PHONGBAN_NHANVIEN_CHUNGCHI_CHUYENNGANH WHERE MACHUNGCHI = " +id;
     console.log("Execute query:",query);
     connection.query(query,function(err,rows){
         res.end(JSON.stringify(rows));
@@ -60,7 +60,7 @@ var getEmployeeByCertificate = function(id,res){
 };
 //Lấy nhân viên theo phòng ban
 var getEmployeeByDepartment = function(id,res){
-    var query = "SELECT * FROM PHONGBAN_NHANVIEN_CHUNGCHI WHERE MAPB = " +id;
+    var query = "SELECT * FROM PHONGBAN_NHANVIEN_CHUNGCHI_CHUYENNGANH WHERE MAPB = " +id;
     console.log("Execute query:",query);
     connection.query(query,function(err,rows){
         res.end(JSON.stringify(rows));
@@ -68,7 +68,7 @@ var getEmployeeByDepartment = function(id,res){
 };
 //Lấy nhân viên theo phòng ban + chứng chỉ
 var getEmployeeByCertificateAndDepartment = function(idd,idc,res){ //idc là id của certificate; idd là id của department
-    var query = "SELECT * FROM PHONGBAN_NHANVIEN_CHUNGCHI WHERE MAPB="+idd+" AND MACHUNGCHI="+idc;
+    var query = "SELECT * FROM PHONGBAN_NHANVIEN_CHUNGCHI_CHUYENNGANH WHERE MAPB="+idd+" AND MACHUNGCHI="+idc;
     console.log("Excute query:",query);
     connection.query(query,function(err,rows){
         res.end(JSON.stringify(rows));
