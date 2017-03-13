@@ -1,7 +1,7 @@
 'use strict';
 
 app.controller('loginCtrl', ['$scope', 'QLNS', '$window', function($scope, QLNS, $window){
- 
+
     $scope.admin = {
         TAIKHOAN: '',
         MATKHAU: ''
@@ -24,5 +24,5 @@ app.controller('loginCtrl', ['$scope', 'QLNS', '$window', function($scope, QLNS,
           $window.location.href = '/login';
       });  
     };
-   
+
 }]);

@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('roleCtrl', ['$scope', 'QLNS', function ($scope, QLNS) {
+app.controller('roleCtrl', ['$scope', 'QLNS', '$window', function($scope, QLNS, $window) {
     // 1. Làm tươi nội dung
     $scope.refresh = function () {
         $scope.loading = null;
@@ -22,6 +22,7 @@ app.controller('roleCtrl', ['$scope', 'QLNS', function ($scope, QLNS) {
     // 2. Thêm mới chức vụ
     $scope.Save = function () {
         QLNS.role.POST($scope.role).then(function (res) {
+            $window.location.href = '#!/role';
             alert(res.data.message);
         })
     };

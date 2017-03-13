@@ -1,10 +1,10 @@
 'use strict';
 
-app.controller('certificateCtrl', ['$scope', 'QLNS', function ($scope, QLNS) {
+app.controller('certificateCtrl', ['$scope', 'QLNS', '$window', function($scope, QLNS, $window) {
     // Làm mới trang
     $scope.refresh = function () {
         $scope.loading = null;
-        $scope.certificate = null;
+        $scope.certificates = null;
 
         // Clear biến tạm
         $scope.certificate = {
@@ -20,19 +20,33 @@ app.controller('certificateCtrl', ['$scope', 'QLNS', function ($scope, QLNS) {
         });
     };
 
+
     // Lưu
     $scope.Save = function () {
-        //console.log($scope.certificate);
         QLNS.certificate.POST($scope.certificate).then(function (res) {
+            $window.location.href = '#!/certificate';
             alert(res.data);
-            //clearCertificate();
         });
     };
 
     // Xóa
-    $scope.delete = function (id) {
-        QLNS.certificate.DELETE(id).then(function (res) {
-            $scope.refesh();
+   $scope.delete = function (id) {
+        console.log('Xóa chứng chỉ', id, $scope.certificate);
+
+        $scope.loading = true;
+        QLNS.certificate.DELETE(id).then(function (response) {
+            console.log(response);
+
+            // Tải lại nội dung trang
+            $scope.loading = false;
+            $scope.refresh();
+
+            // Đóng modal
+            $('#deleteModal').modal('hide');
+        }, function (response) {
+            // TODO: Thiết lập thông báo lỗi
+            alert('Some thing went wrong!');
+            $scope.loading = false;
         });
     };
 
@@ -69,6 +83,7 @@ app.controller('certificateCtrl', ['$scope', 'QLNS', function ($scope, QLNS) {
             $scope.loading = false;
         });
     };
+
 
     // Load dữ liệu ban đầu
     $scope.refresh();

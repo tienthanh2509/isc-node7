@@ -4,7 +4,7 @@
  * Created by AnhDuc on 22/02/2017.
  * Updated by PhamThanh on 24/02/2017.
  */
-app.controller('departmentCtrl', ['$scope', 'QLNS', function ($scope, QLNS) {
+app.controller('departmentCtrl', ['$scope', 'QLNS', '$window', function($scope, QLNS, $window) {
     // 1. Làm tươi nội dung
     $scope.refresh = function () {
         $scope.loading = null;
@@ -28,6 +28,7 @@ app.controller('departmentCtrl', ['$scope', 'QLNS', function ($scope, QLNS) {
     // 2. Thêm mới phòng ban
     $scope.Save = function () {
         QLNS.department.POST($scope.department).then(function (res) {
+            $window.location.href = '#!/department';
             alert(res.data.message);
         })
     };

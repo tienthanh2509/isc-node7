@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('diplomaCtrl', ['$scope', 'QLNS', function ($scope, QLNS) {
+app.controller('diplomaCtrl', ['$scope', 'QLNS', '$window', function($scope, QLNS, $window) {
     $scope.diploma = {
         MaBC: null,
         TenBC: ''
@@ -13,6 +13,7 @@ app.controller('diplomaCtrl', ['$scope', 'QLNS', function ($scope, QLNS) {
     };
     $scope.Save = function () {
         QLNS.diploma.POST($scope.diploma).then(function (res) {
+            $window.location.href = '#!/diploma';
             alert(res.data.message);
         })
     };

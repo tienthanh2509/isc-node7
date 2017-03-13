@@ -15,7 +15,7 @@ var getDiploma = function(req, res){
 };
 var insertDiploma = function (diploma, res) {
     var values = [
-        [
+        [         
             diploma.TENBANGCAP
         ]
     ];

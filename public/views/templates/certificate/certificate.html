@@ -4,6 +4,9 @@
         <h2>Danh sách chứng chỉ</h2>
         <ul class="nav navbar-right panel_toolbox hidden-print">
             <li>
+                <a href="javascript:void(0)" ng-click="refresh()"><i class="fa fa-refresh"></i> Làm mới</a>
+            </li>
+            <li>
                 <a href="#!/certificate/add"><i class="fa fa-plus"></i> Thêm chứng chỉ mới</a>
             </li>
             <li>
@@ -48,7 +51,45 @@
             </tbody>
         </table>
     </div>
-    
+
+    <!-- BEBIN: Modal cập nhật thông tin chứng chỉ -->
+    <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+        <form name="certificateForm" ng-submit="updateCertificate()">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span
+                                class="fa fa-remove" aria-hidden="true"></span></button>
+                        <h4 class="modal-title custom_align" id="HeadingEdit">Cập Nhật Chứng Chỉ</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <input class="form-control" type="text" placeholder="Tên chứng chỉ"
+                                   ng-model="certificate.TenChungChi" required>
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" type="text" placeholder="Mô tả" ng-model="certificate.GhiChu">
+                        </div>
+                    </div>
+                    <div class="modal-footer ">
+                        <button type="submit" class="btn btn-warning btn-lg" style="width: 100%;"
+                                ng-disabled="certificateForm.$invalid" ng-hide="loading">
+                            <span class="fa fa-ok-sign"></span> Cập Nhật
+                        </button>
+                        <button type="button" class="btn btn-warning btn-lg" style="width: 100%;" disabled
+                                ng-show="loading">
+                            <i class="fa fa-spinner fa-spin"></i>
+                            Đang xử lý...
+                        </button>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+        </form>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- END: Modal cập nhật thông tin chứng chỉ -->
+
     <!-- BEBIN: Modal xóa chứng chỉ -->
     <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
         <div class="modal-dialog">
@@ -65,7 +106,7 @@
                 </div>
                 <div class="modal-footer ">
                     <button type="button" class="btn btn-danger" ng-click="delete(certificate.MaChungChi)" ng-hide="loading">
-                        <span class="fa fa-ban"></span> Đồng Ý
+                        <span class="fa fa-ban"></span> Đồng Ý
                     </button>
                     <button type="button" class="btn btn-danger" ng-show="loading" disabled>
                         <i class="fa fa-spinner fa-spin"></i>
@@ -81,49 +122,6 @@
         <!-- /.modal-dialog -->
     </div>
     <!-- END: Modal xóa chứng chỉ -->
-    
-    <!-- BEBIN: Modal cập nhật chứng chỉ -->
-    <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
-        <form name="certificateForm" ng-submit="updateCertificate()">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span
-                                class="fa fa-remove" aria-hidden="true"></span></button>
-                        <h4 class="modal-title custom_align" id="HeadingEdit">Cập Nhật Chứng Chỉ</h4>
-                    </div>
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <label>
-                                <input class="form-control" type="text" value="{{ certificate.MaChungChi }}" readonly>
-                            </label>
-                        </div>
-                        <div class="form-group">
-                            <input class="form-control" type="text" placeholder="Tên chứng chỉ"
-                                   ng-model="certificate.TenChungChi" required>
-                        </div>
-                        <div class="form-group">
-                            <input class="form-control" type="text" placeholder="Ghi Chú" ng-model="certificate.GhiChu">
-                        </div>
-                    </div>
-                    <div class="modal-footer ">
-                        <button type="submit" class="btn btn-warning btn-lg" style="width: 100%;"
-                                ng-disabled="certificateForm.$invalid" ng-hide="loading">
-                            <span class="fa fa-ok-sign"></span> Cập Nhật
-                        </button>
-                        <button type="button" class="btn btn-warning btn-lg" style="width: 100%;" disabled
-                                ng-show="loading">
-                            <i class="fa fa-spinner fa-spin"></i>
-                            Đang xử lý...
-                        </button>
-                    </div>
-                </div>
-                <!-- /.modal-content -->
-            </div>
-        </form>
-        <!-- /.modal-dialog -->
-    </div>
-    <!-- END: Modal cập nhật chứng chỉ -->
-</div>
 
+</div>
 <!-- END: Quản lý chức vụ -->
