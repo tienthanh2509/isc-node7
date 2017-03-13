@@ -83,8 +83,7 @@ app.controller('showListEmployeeCtrl', ['$scope', 'QLNS', function ($scope, QLNS
         QLNS.employee.GET_BY_CER_DEP(idd,idc).then(function(res){
             $scope.employee = res.data;
         });
-        // idd = null;
-        // idc = null;
+        
         console.log('idd:'+idd+';idc:'+idc);
     };
     //Lấy id của phòng ban
@@ -120,6 +119,8 @@ app.controller('showListEmployeeCtrl', ['$scope', 'QLNS', function ($scope, QLNS
         $scope.listDepartment();
         $scope.phongban = 'Phòng/ Ban';
         $scope.chungchi = 'Chứng chỉ';
+        idd = null;
+        idc = null;
     };
 
     //Rename dropdown box chứng chỉ và phòng ban
