@@ -4,7 +4,6 @@ app.factory('QLNS', function ($http) {
 
     // Biến ID nhân viên toàn cục
     var ID_EMPLOYEE = 0;
-    var ID_CERTIFICATE = 0;
 
     return {
         // API nhân viên
@@ -133,7 +132,6 @@ app.factory('QLNS', function ($http) {
             GET: function () {
                 return $http.get('/api/certificate')
             },
-
             // Thêm mới một chứng chỉ
             POST: function (certificate) {
                 return $http.post('/api/certificate', certificate)
@@ -142,7 +140,7 @@ app.factory('QLNS', function ($http) {
             DELETE: function (id) {
                 return $http.delete('/api/certificate/' + id)
             },
-            // Cập nhật thông tin chứng chỉ
+             // Cập nhật thông tin chứng chỉ
             UPDATE: function (certificate) {
                 return $http.post('/api/certificate/update/' + certificate.MaChungChi, certificate)
             }
@@ -156,7 +154,42 @@ app.factory('QLNS', function ($http) {
             // Lấy ra biến nhân viên toàn cục
             GET_ID_EMPLOYEE: function () {
                 return ID_EMPLOYEE;
-            },
+            }
+        },
+        typecontract:{
+            GET: function(){
+                return $http.get('/api/typecontract')
+            }
+        },
+        login:{
+            POST: function(admin){
+                return $http.post('/login', admin)
+            }
+        },
+        logout:{
+            GET: function(){
+                return $http.get('/logout')
+            }
+        },
+        administrator:{
+            LOGIN: function(admin){
+                return $http.post('/api/administratorLogin', admin)
+            }
+        },
+        typecontract:{
+            GET: function(){
+                return $http.get('/api/typecontract')
+            }
+        },
+        login:{
+            POST: function(admin){
+                return $http.post('/login', admin)
+            }
+        },
+        logout:{
+            GET: function(){
+                return $http.get('/logout')
+            }
         }
     }
 });
