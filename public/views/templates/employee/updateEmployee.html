@@ -2,7 +2,7 @@
     <!-- Add Employee -->
     <div class="row">
         <div class="col-lg-12 text-center">
-            <div class="h2">Thêm Mới Nhân Viên</div>
+            <div class="h2">Sửa Nhân Viên</div>
         </div>
     </div>
 
@@ -65,7 +65,7 @@
                         <div class="form-inline">
                             <input type="date" class="form-control" name="NgaySinh" ng-model="employee.NGAYSINH" />
                             <b class="fa fa-calendar"></b>
-
+                            <tt>{{employee.NGAYSINH | date: "yyyy/MM/dd"}}</tt>
                         </div>
                     </div>
                 </div>
@@ -110,9 +110,9 @@
 
                       <p>
                         Nam:
-                        <input type="radio" class="flat" name="gender" id="genderM" ng-click="employee.GIOITINH = 1" ng-checked="employee.GIOITINH" value="M" /> 
+                        <input type="radio" class="flat" name="gender" id="genderM" ng-click="employee.GIOITINH = 1" value="M" checked="" required /> 
                         Nữ:
-                        <input type="radio" class="flat" name="gender" id="genderF" ng-click="employee.GIOITINH = 0" ng-checked="!employee.GIOITINH" value="F" />
+                        <input type="radio" class="flat" name="gender" id="genderF" ng-click="employee.GIOITINH = 0" value="F" />
                       </p>
                     </div>
                 </div>
@@ -121,7 +121,7 @@
                 <div class="form-group">
                     <label for="inputDienthoai" class="col-sm-3 control-label">Điện Thoại:</label>
                     <div class="col-sm-9">
-                        <input type="number" class="form-control" name="DienThoai" ng-model="employee.SODIENTHOAI"
+                        <input type="text" class="form-control" name="DienThoai" ng-model="employee.SODIENTHOAI"
                                id="inputDienthoai" placeholder="Số điện thoại..." ng-minlength="8" ng-maxlength="11"
                                required>
                         <i class="fa fa-check text-success"

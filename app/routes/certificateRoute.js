@@ -8,15 +8,9 @@ var certificate = require('../models/certificate');
 
 router.use(bodyParser.json());
 
-// API lấy chứng chỉ theo ID
-router.get('/certificate/:id', function (req, res) {
-    var id = req.params.id;
-    certificate.getCertificateWithID(id, res);
-});
-
-// API lấy danh sách tất cả chứng chỉ
-router.get('/certificate', function(req, res){
-    certificate.getAll(req, res);
+// API lấy chứng chỉ
+router.get('/certificate', function (req, res) {
+    certificate.getListCertificate(req, res);
 });
 
 // API thêm mới một chứng chỉ
@@ -25,9 +19,15 @@ router.post('/certificate', function(req, res){
 });
 
 // API xóa chứng chỉ
-router.delete('/certificate/:id', function(req, res){
+router.delete('/certificate/:id', function (req, res) {
     var id = req.params.id;
     certificate.deleteCertificate(id, res);
+});
+
+// Cập nhật thông tin chứng chỉ
+router.post('/certificate/update/:id', function (req, res) {
+    var id = req.params.id;
+    certificate.updateCertificate(id, req.body, res);
 });
 
 module.exports = router;
