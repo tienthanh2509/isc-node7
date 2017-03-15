@@ -124,6 +124,10 @@ app.factory('QLNS', function ($http) {
             // Cập nhật thông tin bằng cấp
             updateDiploma: function (diploma) {
                 return $http.post('/api/diploma/update/' + diploma.MaBC, diploma)
+            },
+            // Xóa bằng cấp
+            DELETE: function (id) {
+                return $http.delete('/api/diploma/' + id)
             }
         },
         // API chứng chỉ
