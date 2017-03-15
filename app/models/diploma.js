@@ -1,35 +1,47 @@
-/*
- * Copyright (c) 2017 Node7 Team
- *
- * Licensed under MIT (https://github.com/tienthanh2509/isc-node7/blob/master/LICENSE)
- */
-
 var connection = require('../models/connection');
 
-var getDiploma = function(req, res){
-    var query = 'SELECT * FROM BANGCAP';
-    console.log('Execute query:', query);
-    connection.query(query, function(err, rows){
+// Lấy danh sách tất cả bằng cấp
+var getDiploma = function (req, res) {
+    var query = 'SELECT * FROM BANGCAP ';
+    connection.query(query, function (err, rows) {
         res.json(rows);
+    }); 
+};
+
+
+//Thêm mới
+var insertDiploma = function(diploma, res){
+    var values = [
+        [diploma.TenBangCap]
+    ];
+    connection.query("INSERT INTO BANGCAP(TENBANGCAP) VALUES ?", [values], function(err){
+        if(err){
+            res.end(err.message);
+        } else {
+            console.log('success');
+            res.end('success');      
+        }
     });
 };
-var insertDiploma = function (diploma, res) {
-    var values = [
-        [         
-            diploma.TENBANGCAP
-        ]
-    ];
 
-    connection.query("INSERT INTO BANGCAP(TENBANGCAP) VALUES ?", [values], function (err) {
+
+// Xóa
+var deleteDiploma = function (MaBC, res) {
+    var query = 'DELETE FROM BANGCAP WHERE MABANGCAP = ?';
+    console.log('Execute query:', query, MaBC);
+
+    connection.query(query, [MaBC], function (err) {
         if (err) {
-            console.log('Lỗi khi thêm bằng cấp.', values);
+            console.log('Lỗi khi xóa bằng cấp.');
+            console.log(err.message);
+
             res.json({
                 error: 1,
                 message: err.message
             });
         }
         else {
-            console.log('Đã thêm bằng cấp thành công.', values);
+            console.log('Đã xóa bằng cấp thành công.');
 
             res.json({
                 error: 0,
@@ -40,11 +52,13 @@ var insertDiploma = function (diploma, res) {
     })
 
 };
+
+// Cập nhật bằng cấp
 var updateDiploma = function (MaBC, diploma, res) {
     console.log(diploma);
 
     var values = [
-        diploma.TenBC,
+        diploma.TenBangCap,
         MaBC
     ];
 
@@ -74,8 +88,10 @@ var updateDiploma = function (MaBC, diploma, res) {
 
 };
 
+
 module.exports = {
     getDiploma: getDiploma,
     insertDiploma: insertDiploma,
-    updateDiploma: updateDiploma
+    updateDiploma: updateDiploma,
+    deleteDiploma: deleteDiploma
 };
