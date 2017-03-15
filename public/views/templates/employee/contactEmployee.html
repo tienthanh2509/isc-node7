@@ -114,7 +114,7 @@
 
                 <div class="clearfix"></div>
 
-                <div class="col-md-4 col-sm-4 col-xs-12 profile_details" ng-repeat="e in employee">
+                <div class="col-md-4 col-sm-4 col-xs-12 profile_details" ng-repeat="e in employee | filter: searchName">
                     <div class="well profile_view">
                         <div class="col-sm-12">
                         <h4 class="brief"><i>Phòng Ban: {{e.TENPHONGBAN}}</i></h4>
