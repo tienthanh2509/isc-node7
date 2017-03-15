@@ -1,6 +1,7 @@
 app.controller('showListEmployeeCtrl', ['$scope', 'QLNS', function ($scope, QLNS) {
     $scope.phongban = 'Phòng/ Ban';
     $scope.chungchi = 'Chứng chỉ';
+    $scope.trinhdo = 'Trình độ';
     $scope.loading = false;
 
     $scope.email = {
@@ -107,6 +108,12 @@ app.controller('showListEmployeeCtrl', ['$scope', 'QLNS', function ($scope, QLNS
         });
     };
 
+    //Đổ danh sách trình độ vào dropdown box trình độ
+    $scope.listDeploma =  function(id){
+        QLNS.deplpma.GET().then(function(res){
+            $scope.deploma = res.data;
+        });
+    };
     // Lấy mã nhân viên lưu vào biến toàn cục
     $scope.saveIdGobal = function (id) {
         QLNS.values.SET_ID_EMPLOYEE(id);
@@ -119,6 +126,7 @@ app.controller('showListEmployeeCtrl', ['$scope', 'QLNS', function ($scope, QLNS
         $scope.listDepartment();
         $scope.phongban = 'Phòng/ Ban';
         $scope.chungchi = 'Chứng chỉ';
+        $scope.trinhdo = 'Trình độ';
         idd = null;
         idc = null;
     };

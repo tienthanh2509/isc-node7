@@ -43,11 +43,11 @@
                             <div class="col-lg-6">
                                 <div class="dropdown">
                                     <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                        {{phongban}}
+                                        {{trinhdo}}
                                         <span class="caret"></span>
                                     </button>
                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                                        <li ng-repeat="t in department"><a ng-click="listEmployeeByDepartment(t.MAPB, t.TENPHONGBAN)">{{t.TENPHONGBAN}}</a></li>
+                                        <li ng-repeat="t in deploma"><a ng-click="">{{t.TENBANGCAP}}</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -150,11 +150,9 @@
                             <td>{{i.TENNV}}</td>
                             <td>{{i.NGAYSINH}}</td>
                             <td>{{i.TENPHONGBAN}}</td>
-                            <!--Đoạn này là dữ liệu "chế"-->
                             <td>{{i.TENCN}}</td>
-                            <td>Đại học</td>
+                            <td>{{i.TENBANGCAP}}</td>
                             <td>{{i.TENCHUNGCHI}}</td>
-                            <!--:)))-->
                             <td>{{i.SODIENTHOAI}}</td>
                             <td>{{i.EMAIL}}</td>
                             <td class="hidden-print">
