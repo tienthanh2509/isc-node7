@@ -26,11 +26,11 @@ var insertCertificate = function(certificate, res){
 };
 
 // Xóa chứng chỉ
-var deleteCertificate = function (MaPB, res) {
+var deleteCertificate = function (MaChungChi, res) {
     var query = 'DELETE FROM CHUNGCHI WHERE MACHUNGCHI = ?';
-    console.log('Execute query:', query, MaPB);
+    console.log('Execute query:', query, MaChungChi);
 
-    connection.query(query, [MaPB], function (err) {
+    connection.query(query, [MaChungChi], function (err) {
         if (err) {
             console.log('Lỗi khi xóa chứng chỉ.');
             console.log(err.message);
