@@ -22,8 +22,8 @@ app.controller('roleCtrl', ['$scope', 'QLNS', '$window', function($scope, QLNS, 
     // 2. Thêm mới chức vụ
     $scope.Save = function () {
         QLNS.role.POST($scope.role).then(function (res) {
-            $window.location.href = '#!/role';
-            alert(res.data.message);
+            $('#notiRoleModal').modal('show');
+            //alert(res.data.message);
         })
     };
 
@@ -77,6 +77,8 @@ app.controller('roleCtrl', ['$scope', 'QLNS', '$window', function($scope, QLNS, 
 
             // Đóng modal
             $('#deleteModal').modal('hide');
+            //Mở modal thông báo
+            $('#notiModal').modal('show');
         }, function (response) {
             // TODO: Thiết lập thông báo lỗi
             alert('Some thing went wrong!');
