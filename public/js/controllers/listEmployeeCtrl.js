@@ -146,6 +146,7 @@ app.controller('showListEmployeeCtrl', ['$scope', 'QLNS', function ($scope, QLNS
     // Xóa nhân viên
     $scope.delete = function (id) {
         QLNS.employee.DELETE(id).then(function (res) {
+            $('#notiModal').modal('show');
             $scope.refesh();
         });
     };

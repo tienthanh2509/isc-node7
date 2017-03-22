@@ -80,12 +80,6 @@ var clearEmployee = function(){
     //$scope.Households[0].name = '';
     //$scope.Diplomas[0].name = '';
     //$scope.HealthCertifications[0].name = '';
-    };
-    // Lưu
-    $scope.Save = function () {
-        //console.log($scope.employee);
-        if (!checkDepartment()) {
-    };
     //$scope.CVs[0].name = '';
     //$scope.ScoreTables[0].name = '';
     //$scope.Certificates[0].name = '';

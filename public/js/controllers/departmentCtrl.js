@@ -28,8 +28,8 @@ app.controller('departmentCtrl', ['$scope', 'QLNS', '$window', function($scope, 
     // 2. Thêm mới phòng ban
     $scope.Save = function () {
         QLNS.department.POST($scope.department).then(function (res) {
-            $window.location.href = '#!/department';
-            alert(res.data.message);
+            $('#notiDepartmentModal').modal('show');
+            // alert(res.data.message);
         })
     };
 
@@ -82,6 +82,7 @@ app.controller('departmentCtrl', ['$scope', 'QLNS', '$window', function($scope, 
 
             // Đóng modal
             $('#deleteModal').modal('hide');
+            $('#notiModal').modal('show');
         }, function (response) {
             // TODO: Thiết lập thông báo lỗi
             alert('Some thing went wrong!');

@@ -123,5 +123,34 @@
         <!-- /.modal-dialog -->
     </div>
     <!-- END: Modal xóa chức vụ -->
+
+     <!-- BEBIN: Modal thong báo xóa chức vụ thành công -->
+    <div class="modal fade" id="notiModal" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span
+                            class="fa fa-remove" aria-hidden="true"></span></button>
+                    <h4 class="modal-title custom_align" id="Heading">Xóa chức vụ</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="alert alert-success"><span class="fa fa-warning-sign"></span> Đã xóa thành công!
+                    </div>
+                </div>
+                <div class="modal-footer ">
+                    <button type="button" class="btn btn-danger" ng-show="loading" disabled>
+                        <i class="fa fa-spinner fa-spin"></i>
+                        Đang xử lý...
+                    </button>
+                    <a type="button" class="btn btn-success" data-dismiss="modal">
+                        <span class="fa fa-check-circle"></span> OK
+                    </a>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- END: Modal thông báo xóa chức vụ thành công -->
 </div>
 <!-- END: Quản lý chức vụ -->
