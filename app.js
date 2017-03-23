@@ -21,6 +21,7 @@ var role = require('./app/routes/roleRoute');
 var majoring = require('./app/routes/majoringRoute');
 var certificate = require('./app/routes/certificateRoute');
 var diploma = require('./app/routes/diplomaRoute');
+var administrator = require('./app/routes/administratorRoute');
 var typecontract = require('./app/routes/typecontractRoute');
 var login = require('./app/routes/loginRoute');
 
@@ -29,10 +30,10 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 
 app.use(session({
-     secret: '2C44-4D44-WppQ38S',
-     resave: true,
-     saveUninitialized: true
- }));
+    secret: '2C44-4D44-WppQ38S',
+    resave: true,
+    saveUninitialized: true
+}));
 
 // WebRoot
 app.use('/', express.static(__dirname + '/public'));
@@ -45,12 +46,15 @@ app.use('/vendors', express.static(__dirname + '/bower_components'));
  app.use('/', login);
 
 // API routes
+app.set('view engine', 'ejs');
+
 app.use('/api', employees);
 app.use('/api', department);
 app.use('/api', role);
 app.use('/api', majoring);
 app.use('/api', certificate);
 app.use('/api', diploma);
+app.use('/api', administrator);
 app.use('/api', typecontract);
 
 /////////////////////////////////////////////////

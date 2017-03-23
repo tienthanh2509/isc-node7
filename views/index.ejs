@@ -157,9 +157,67 @@
     </div>
 <!-- /Page QLNS -->
 
+<!-- BEBIN: Modal thong bao thêm chức vụ thanh cong-->
+<div class="modal fade" id="notiRoleModal" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span
+                        class="fa fa-remove" aria-hidden="true"></span></button>
+                <h4 class="modal-title custom_align" id="Heading">Thêm Mới</h4>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-success"><span class="fa fa-warning-sign"></span> Thêm thành công!
+                </div>
+            </div>
+            <div class="modal-footer ">
+                <a type="button" class="btn btn-success" id="btnNoti"  data-dismiss="modal">
+                    <span class="fa fa-check-circle"></span> OK
+                </a>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- END: Modal thong bao thêm chức vụ thanh cong-->
+
+<!-- BEBIN: Modal thong bao thêm phòng ban thanh cong-->
+<div class="modal fade" id="notiDepartmentModal" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span
+                        class="fa fa-remove" aria-hidden="true"></span></button>
+                <h4 class="modal-title custom_align" id="Heading">Thêm Mới</h4>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-success"><span class="fa fa-warning-sign"></span> Thêm phòng ban thành công!
+                </div>
+            </div>
+            <div class="modal-footer ">
+                <a type="button" class="btn btn-success" id="btnNotiDepart"  data-dismiss="modal">
+                    <span class="fa fa-check-circle"></span> OK
+                </a>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- END: Modal thong bao thêm phòng ban thanh cong-->
+
 <!-- jQuery -->
 <script src="/vendors/jquery/dist/jquery.min.js"></script>
 <script src="/export2excel/jquery.table2excel.min.js"></script>
+<script>
+    $('#btnNoti').click(function(){
+        window.location.href = "#!/role";
+    });
+    $('#btnNotiDepart').click(function(){
+        window.location.href = "#!/department";
+    });
+</script>
 <!-- Bootstrap -->
 <script src="/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
 

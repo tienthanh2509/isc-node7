@@ -4,7 +4,7 @@
  * Created by AnhDuc on 22/02/2017.
  * Updated by PhamThanh on 24/02/2017.
  */
-app.controller('departmentCtrl', ['$scope', 'QLNS', function ($scope, QLNS) {
+app.controller('departmentCtrl', ['$scope', 'QLNS', '$window', function($scope, QLNS, $window) {
     // 1. Làm tươi nội dung
     $scope.refresh = function () {
         $scope.loading = null;
@@ -28,7 +28,8 @@ app.controller('departmentCtrl', ['$scope', 'QLNS', function ($scope, QLNS) {
     // 2. Thêm mới phòng ban
     $scope.Save = function () {
         QLNS.department.POST($scope.department).then(function (res) {
-            alert(res.data.message);
+            $('#notiDepartmentModal').modal('show');
+            // alert(res.data.message);
         })
     };
 
@@ -81,6 +82,7 @@ app.controller('departmentCtrl', ['$scope', 'QLNS', function ($scope, QLNS) {
 
             // Đóng modal
             $('#deleteModal').modal('hide');
+            $('#notiModal').modal('show');
         }, function (response) {
             // TODO: Thiết lập thông báo lỗi
             alert('Some thing went wrong!');

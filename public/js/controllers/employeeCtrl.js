@@ -38,7 +38,7 @@ app.controller('employeeCtrl', ['$scope', 'Upload', '$timeout', '$http', 'QLNS',
         UPDATED_AT: ''
     };
 
-    var clearEmployee = function () {
+var clearEmployee = function(){
     // Thuộc tính nhân viên
     $scope.employee = {
         HONV: '',
@@ -80,18 +80,24 @@ app.controller('employeeCtrl', ['$scope', 'Upload', '$timeout', '$http', 'QLNS',
     //$scope.Households[0].name = '';
     //$scope.Diplomas[0].name = '';
     //$scope.HealthCertifications[0].name = '';
+    //$scope.CVs[0].name = '';
+    //$scope.ScoreTables[0].name = '';
+    //$scope.Certificates[0].name = '';
+    //$scope.Households[0].name = '';
+    //$scope.Diplomas[0].name = '';
+    //$scope.HealthCertifications[0].name = '';
     };
     // Lưu
-    $scope.Save = function () {
-        //console.log($scope.employee);
-        if (!checkDepartment()) {
+    $scope.Save = function(){     
+        console.log($scope.employee);
+        if(!checkDepartment()){
             alert('Vui lòng chọn Phòng Ban');
         } else if (!checkRole()) {
             alert('VUi lòng chọn Chức Vụ');
         } else if (!checkMajor()) {
             alert('Vui lòng chọn Chuyên Nghành');
         } else {
-            QLNS.employee.POST($scope.employee).then(function (res) {
+            QLNS.employee.POST($scope.employee).then(function(res){
                 alert(res.data);
                 clearEmployee();
                 refesh();
@@ -99,36 +105,37 @@ app.controller('employeeCtrl', ['$scope', 'Upload', '$timeout', '$http', 'QLNS',
         }
     };
 
-    $scope.selectDepartment = function (mpb, pb) {
+    $scope.selectDepartment = function(mpb, pb){
         $scope.employee.MAPB = mpb;
         $scope.employee.TENPHONGBAN = pb;
         console.log(pb);
     };
 
-    $scope.selectRole = function (mcv, cv) {
+    $scope.selectRole = function(mcv, cv){
         $scope.employee.MACV = mcv;
         $scope.employee.TENCHUVU = cv;
         console.log(cv);
     };
 
-    $scope.selectMajoring = function (mcn, cn) {
+    $scope.selectMajoring = function(mcn, cn){
         $scope.employee.MACN = mcn;
         $scope.employee.TENCN = cn;
         console.log(cn);
     };
 
-     // Reset lai employee
-     $scope.reset = function(){
-         clearEmployee();
-         refesh();
-      };
+
+    // Reset lai employee
+    $scope.reset = function(){
+        clearEmployee();
+        refesh();
+    };
 
     //Refesh Add Employee page
-    var refesh = function () {
+    var refesh = function(){
         $scope.employee.TENPHONGBAN = 'Chọn';
         $scope.employee.TENCHUVU = 'Chọn';
         $scope.employee.TENCN = 'Chọn';
-        QLNS.department.GETNAME().then(function (res) {
+        QLNS.department.GETNAME().then(function(res){
             //console.log(res.data);
             $scope.departments = res.data;
         });
@@ -150,17 +157,17 @@ app.controller('employeeCtrl', ['$scope', 'Upload', '$timeout', '$http', 'QLNS',
     refesh();
 
     // Check Phòng Ban
-    var checkDepartment = function () {
+    var checkDepartment = function(){
         return !($scope.employee.TENPHONGBAN === 'Chọn' || $scope.employee.TENPHONGBAN === '');
     };
 
     // check Chức Vụ
-    var checkRole = function () {
+    var checkRole = function(){
         return !($scope.employee.TENCHUVU === 'Chọn' || $scope.employee.TENCHUVU === '');
     };
 
     // check Chuyên Nghành
-    var checkMajor = function () {
+    var checkMajor = function(){
         return !($scope.employee.TENCN === 'Chọn' || $scope.employee.TENCN === '');
     };
 
@@ -264,30 +271,30 @@ app.controller('employeeCtrl', ['$scope', 'Upload', '$timeout', '$http', 'QLNS',
     $scope.uploadImage = function (files) {
         if (files && files.length) {
             for (var i = 0; i < files.length; i++) {
-                var file = files[i];
-                if (!file.$error) {
-                    Upload.upload({
-                        url: '/api/uploadImage',
-                        data: {
-                            file: file
-                        }
-                    }).then(function (resp) {
-                        //console.log(resp.data);
-                        $scope.employee.HINHANH = resp.data.originalname;
-                        $timeout(function () {
-                            $scope.logimg = 'file: ' +
-                                resp.config.data.file.name +
-                                ', Response: ' + JSON.stringify(resp.data) +
-                                '\n' + $scope.logimg;
-                        });
-                    }, null, function (evt) {
-                        var progressPercentage = parseInt(100.0 *
-                            evt.loaded / evt.total);
-                        $scope.logimg = 'progress: ' + progressPercentage +
-                            '% ' + evt.config.data.file.name + '\n' +
-                            $scope.logimg;
+              var file = files[i];
+              if (!file.$error) {
+                Upload.upload({
+                    url: '/api/uploadImage',
+                    data: {
+                      file: file  
+                    }
+                }).then(function (resp) {
+                    //console.log(resp.data);
+                    $scope.employee.HINHANH = resp.data.originalname;
+                    $timeout(function() {
+                        $scope.logimg = 'file: ' +
+                        resp.config.data.file.name +
+                        ', Response: ' + JSON.stringify(resp.data) +
+                        '\n' + $scope.logimg;
                     });
-                }
+                }, null, function (evt) {
+                    var progressPercentage = parseInt(100.0 *
+                    		evt.loaded / evt.total);
+                    $scope.logimg = 'progress: ' + progressPercentage + 
+                    	'% ' + evt.config.data.file.name + '\n' + 
+                      $scope.logimg;
+                });
+              }
             }
         }
     };

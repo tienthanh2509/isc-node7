@@ -1,26 +1,30 @@
-/*
- * Copyright (c) 2017 Node7 Team
- *
- * Licensed under MIT (https://github.com/tienthanh2509/isc-node7/blob/master/LICENSE)
- */
-
+//Lấy danh sách các bằng cấp
 var express = require('express');
 var router = express.Router();
 var bodyParser = require('body-parser');
 
-// use model employee
+// use model diploma
 var diploma = require('../models/diploma');
 
 router.use(bodyParser.json());
 
-router.get('/diploma', function(req, res){
+// API lấy bằng cấp
+router.get('/diploma', function (req, res) {
     diploma.getDiploma(req, res);
 });
-router.post('/diploma/add', function (req, res) {
+
+// API thêm mới một bằng cấp
+router.post('/diploma', function(req, res){
     diploma.insertDiploma(req.body, res);
 });
 
-// Sửa bằng cấp
+// API xóa bằng cấp
+router.delete('/diploma/:id', function (req, res) {
+    var id = req.params.id;
+    diploma.deleteDiploma(id, res);
+});
+
+// Cập nhật thông tin bằng cấp
 router.post('/diploma/update/:id', function (req, res) {
     var id = req.params.id;
     diploma.updateDiploma(id, req.body, res);

@@ -4,7 +4,6 @@ app.factory('QLNS', function ($http) {
 
     // Biến ID nhân viên toàn cục
     var ID_EMPLOYEE = 0;
-    var ID_CERTIFICATE = 0;
 
     return {
         // API nhân viên
@@ -41,10 +40,6 @@ app.factory('QLNS', function ($http) {
             //Lấy theo phòng ban
             GET_BY_DEPARTMENT: function (id) {
                 return $http.get('/api/employee/getEmployeeByDepartment/' + id)
-            },
-            //Lấy nhân viên theo phòng ban + chứng chỉ
-            GET_BY_CER_DEP: function(idd,idc){
-                return $http.get('/api/employee/getEmployeeByCertificateAndDepartment/'+idd+'/'+idc)
             },
             // Lấy mốt nhân viên + phòng ban + chức vụ theo ID
             GET_DE_ROLE: function (id) {
@@ -129,6 +124,10 @@ app.factory('QLNS', function ($http) {
             // Cập nhật thông tin bằng cấp
             updateDiploma: function (diploma) {
                 return $http.post('/api/diploma/update/' + diploma.MaBC, diploma)
+            },
+            // Xóa bằng cấp
+            DELETE: function (id) {
+                return $http.delete('/api/diploma/' + id)
             }
         },
         // API chứng chỉ
@@ -137,12 +136,6 @@ app.factory('QLNS', function ($http) {
             GET: function () {
                 return $http.get('/api/certificate')
             },
-
-            // Lấy chứng chỉ theo ID
-            GET_WITH_IDCC: function (id) {
-                return $http.get('/api/certificate/' + id)
-            },
-
             // Thêm mới một chứng chỉ
             POST: function (certificate) {
                 return $http.post('/api/certificate', certificate)
@@ -150,6 +143,10 @@ app.factory('QLNS', function ($http) {
             // Xóa chứng chỉ
             DELETE: function (id) {
                 return $http.delete('/api/certificate/' + id)
+            },
+             // Cập nhật thông tin chứng chỉ
+            UPDATE: function (certificate) {
+                return $http.post('/api/certificate/update/' + certificate.MaChungChi, certificate)
             }
         },
         // API chung
@@ -161,14 +158,26 @@ app.factory('QLNS', function ($http) {
             // Lấy ra biến nhân viên toàn cục
             GET_ID_EMPLOYEE: function () {
                 return ID_EMPLOYEE;
-            },
-            // Gán giá trị ID chứng chỉ được chọn làm biến toàn cụ
-            SET_ID_CERTIFICATE: function (id) {
-                ID_CERTIFICATE = id;
-            },
-            // Lấy ra biến chứng chỉ toàn cục
-            GET_ID_CERTIFICATE: function () {
-                return ID_CERTIFICATE;
+            }
+        },
+        typecontract:{
+            GET: function(){
+                return $http.get('/api/typecontract')
+            }
+        },
+        login:{
+            POST: function(admin){
+                return $http.post('/login', admin)
+            }
+        },
+        logout:{
+            GET: function(){
+                return $http.get('/logout')
+            }
+        },
+        administrator:{
+            LOGIN: function(admin){
+                return $http.post('/api/administratorLogin', admin)
             }
         },
         typecontract:{
