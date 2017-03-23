@@ -2,6 +2,8 @@
 
 [![Build Status](https://travis-ci.org/tienthanh2509/isc-node7.svg?branch=master)](https://travis-ci.org/tienthanh2509/isc-node7) [![MIT Licence](https://badges.frapsoft.com/os/mit/mit.svg?v=103)](https://opensource.org/licenses/mit-license.php)
 
+# Scrum board
+https://github.com/tienthanh2509/isc-node7/projects/1
 
 # Before play
 ```bash
