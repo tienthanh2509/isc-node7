@@ -41,6 +41,9 @@ app.factory('QLNS', function ($http) {
             GET_BY_DEPARTMENT: function (id) {
                 return $http.get('/api/employee/getEmployeeByDepartment/' + id)
             },
+            GET_BY_DIPLOMA: function (id) {
+                return $http.get('/api/employee/getEmployeeByDiploma/' + id)
+            },
             // Lấy mốt nhân viên + phòng ban + chức vụ theo ID
             GET_DE_ROLE: function (id) {
                 return $http.get('/api/employee/withDepartmentandRole/' + id)

@@ -66,8 +66,24 @@ var getEmployeeByDepartment = function(id,res){
         res.end(JSON.stringify(rows));
     });
 };
+//Lấy nhân viên theo bằng cấp
+var getEmployeeByDiploma = function(id,res){
+    var query = "SELECT * FROM DS_NHANVIEN WHERE MABANGCAP = " +id;
+    console.log("Execute query:",query);
+    connection.query(query,function(err,rows){
+        res.end(JSON.stringify(rows));
+    });
+};
 //Lấy nhân viên theo phòng ban + chứng chỉ
 var getEmployeeByCertificateAndDepartment = function(idd,idc,res){ //idc là id của certificate; idd là id của department
+    var query = "SELECT * FROM DS_NHANVIEN WHERE MAPB="+idd+" AND MACHUNGCHI LIKE '%"+idc+"%'";
+    console.log("Excute query:",query);
+    connection.query(query,function(err,rows){
+        res.end(JSON.stringify(rows));
+    });
+};
+//Lấy nhân viên theo phòng ban + trình độ
+var getEmployeeByDiplomaAndDepartment = function(idd,idc,res){ //idc là id của certificate; idd là id của department
     var query = "SELECT * FROM DS_NHANVIEN WHERE MAPB="+idd+" AND MACHUNGCHI LIKE '%"+idc+"%'";
     console.log("Excute query:",query);
     connection.query(query,function(err,rows){
@@ -149,6 +165,7 @@ module.exports = {
     getEmployeeWithName: getEmployeeWithName,
     getEmployeeByCertificate: getEmployeeByCertificate,
     getEmployeeByDepartment: getEmployeeByDepartment,
+    getEmployeeByDiploma: getEmployeeByDiploma,
     deleteEmployee: deleteEmployee,
     getEmployeeByCertificateAndDepartment: getEmployeeByCertificateAndDepartment
 };

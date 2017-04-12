@@ -87,6 +87,17 @@ app.controller('showListEmployeeCtrl', ['$scope', 'QLNS', function ($scope, QLNS
         
         console.log('idd:'+idd+';idc:'+idc);
     };
+    //Lấy danh sách nhân viên theo phòng ban +  trình độ
+    $scope.listEmployeeByDepAndDip = function(idd,idc){
+        // $scope.phongban=nameD;
+        // $scope.chungchi=nameC;
+        QLNS.employee.GET_BY_DEP_DIP(idd,idc).then(function(res){
+            $scope.employee = res.data;
+        });
+        
+        console.log('idd:'+idd+';idc:'+idc);
+    };
+
     //Lấy id của phòng ban
     var idd = null; 
     $scope.getIDD = function(id){
@@ -109,11 +120,33 @@ app.controller('showListEmployeeCtrl', ['$scope', 'QLNS', function ($scope, QLNS
     };
 
     //Đổ danh sách trình độ vào dropdown box trình độ
-    $scope.listDeploma =  function(id){
-        QLNS.deplpma.GET().then(function(res){
-            $scope.deploma = res.data;
+    $scope.listDiploma =  function(id){
+        QLNS.diploma.GET().then(function(res){
+            $scope.diploma = res.data;
         });
     };
+
+    $scope.listEmployeeByDiploma = function (id, name) {
+        if(idc == null)
+        {
+            console.log('idc:',idc);
+            $scope.trinhdo = name;
+            QLNS.employee.GET_BY_DIPLOMA(id).then(function(res){
+                $scope.employee = res.data;
+            });
+             $scope.getIDD(id);
+        }
+        
+        else if (idc != null)
+        {
+            $scope.trinhdo = name;
+            $scope.listEmployeeByDepAndDip(id);
+            idd = id;
+            
+        }
+    };
+
+
     // Lấy mã nhân viên lưu vào biến toàn cục
     $scope.saveIdGobal = function (id) {
         QLNS.values.SET_ID_EMPLOYEE(id);
@@ -124,6 +157,7 @@ app.controller('showListEmployeeCtrl', ['$scope', 'QLNS', function ($scope, QLNS
         $scope.getEmployee();
         $scope.getCertificate();
         $scope.listDepartment();
+        $scope.listDiploma();
         $scope.phongban = 'Phòng/ Ban';
         $scope.chungchi = 'Chứng chỉ';
         $scope.trinhdo = 'Trình độ';
